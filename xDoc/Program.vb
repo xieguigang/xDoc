@@ -12,8 +12,16 @@ Module Program
 
     Public Function ExecFile(path As String, args As CommandLine) As Integer
         Dim ps As New ProjectSpace()
-        Dim mdOutputFolder As String = path.ParentPath & "/docs/"
-        Call ps.ImportFromXmlDocFile(path)
+        Dim mdOutputFolder As String = args.GetValue("/out", path.ParentPath & "/docs/")
+
+        If path.FileExists Then
+            Call ps.ImportFromXmlDocFile(path)
+        ElseIf path.DirectoryExists Then
+            Call ps.ImportFromXmlDocFolder(path)
+        Else
+            Throw New Exception(path & " is not a valid file system object!")
+        End If
+
         Call ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo"))
         Return 0
     End Function
