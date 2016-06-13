@@ -8971,10 +8971,26 @@ to take away yo [rest of string was truncated]&quot;;.
  A collection of one or more projects put together, and their attendant namespaces.
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly.ProjectSpace.ExportMarkdownFiles(System.String,System.String,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="folderPath"></param>
+ <param name="pageTemplate">a markdown page template. This token: [content] will be replaced with generated content.</param>
+</member>
 <member name="T:Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly.ProjectType">
  <summary>
  A type within a project namespace.
  </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly.ProjectType.ExportMarkdownFile(System.String,System.String,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="folderPath"></param>
+ <param name="pageTemplate"></param>
+ <param name="hexoPublish"></param>
+ <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
 </member>
 <member name="F:Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization.memberTypes.Type">
  <summary>
