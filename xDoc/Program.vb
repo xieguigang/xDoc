@@ -22,7 +22,6 @@ Module Program
             Throw New Exception(path & " is not a valid file system object!")
         End If
 
-        Call ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo"))
-        Return 0
+        Return ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo"))
     End Function
 End Module
