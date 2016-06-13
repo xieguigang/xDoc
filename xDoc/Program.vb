@@ -14,7 +14,7 @@ Module Program
         Dim ps As New ProjectSpace()
         Dim mdOutputFolder As String = path.ParentPath & "/docs/"
         Call ps.ImportFromXmlDocFile(path)
-        Call ps.ExportMarkdownFiles(mdOutputFolder)
+        Call ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo"))
         Return 0
     End Function
 End Module
