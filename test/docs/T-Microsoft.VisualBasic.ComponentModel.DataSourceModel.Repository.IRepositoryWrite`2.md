@@ -8,6 +8,7 @@ Interface to support writing (and deletes) to a typed repository
 
 #### AddNew
 Adds an entity that we know to be new and returns its assigned key
+
 _returns: 
  The unique identifier for the entity
  _

@@ -7,22 +7,28 @@ Simple type parser
 ### Methods
 
 #### ParseBoolean
-text parser
+@"T:System.Boolean" text parser
+
 _returns: _
 #### ParseDate
-text parser
+@"T:System.DateTime" text parser
+
 _returns: _
 #### ParseDouble
-text parser
+@"T:System.Double" text parser
+
 _returns: _
 #### ParseInteger
-text parser
+@"T:System.Int32" text parser
+
 _returns: _
 #### ParseLong
-text parser
+@"T:System.Int64" text parser
+
 _returns: _
 #### ParseSingle
-text parser
+@"T:System.Single" text parser
+
 _returns: _
 
 

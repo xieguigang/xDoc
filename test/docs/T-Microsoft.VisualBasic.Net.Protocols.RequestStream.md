@@ -12,39 +12,47 @@ Socket user client => Socket server data request &
 #### #ctor
 Deserialize (当还有剩余数据的时候会将数据进行剪裁)
 #### CreatePackage
-服务器端返回数据所使用的，所有的标签为
+服务器端返回数据所使用的，所有的标签为@"F:Microsoft.VisualBasic.HTTP_RFC.RFC_OK"
+
 _returns: _
 #### CreatePackage``1
-服务器端返回数据所使用的，默认使用json序列化，所有的标签为
+服务器端返回数据所使用的，默认使用json序列化，所有的标签为@"F:Microsoft.VisualBasic.HTTP_RFC.RFC_OK"
+
 _returns: _
 #### CreateProtocol``1
 这个函数是使用json序列化参数信息的
+
 _returns: _
 #### GetRawStream``1
-从原始数据流之中进行反序列化得到一个嵌套的数据串流对象
+从原始数据流@"P:Microsoft.VisualBasic.Net.Protocols.RequestStream.ChunkBuffer"之中进行反序列化得到一个嵌套的数据串流对象
+
 _returns: _
 #### GetUTF8String
 默认是使用UTF8编码来编码字符串的
+
 _returns: _
 #### LoadObject``1
 json
+
 _returns: _
 #### op_Equality
 简单的字符串等价
+
 _returns: _
 #### Serialize
 执行序列化进行网络之间的数据传输
+
 _returns: _
 
 
 ### Properties
 
 #### BufferLength
-Buffer length of the protocol request raw stream data .(协议数据的长度)
+Buffer length of the protocol request raw stream data @"P:Microsoft.VisualBasic.Net.Protocols.RequestStream.ChunkBuffer".(协议数据的长度)
 #### ChunkBuffer
 The raw stream data of the details data request or the server response data.(协议的具体数据请求)
 #### FullRead
-部分的数据是否完整？
+@"P:Microsoft.VisualBasic.Net.Protocols.RequestStream.ChunkBuffer"部分的数据是否完整？
 #### IsPlantText
 这个数据仅仅是一个文本，没有包含有任何协议头数据
 #### IsSSL_PublicToken

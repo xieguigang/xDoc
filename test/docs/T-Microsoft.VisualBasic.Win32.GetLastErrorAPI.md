@@ -2,7 +2,7 @@
 # GetLastErrorAPI
 _namespace: [Microsoft.VisualBasic.Win32](N-Microsoft.VisualBasic.Win32.md)_
 
-Wrapper for the returns value of api
+Wrapper for the returns value of api @"M:Microsoft.VisualBasic.Win32.GetLastErrorAPI.GetLastError"
 
 ### Methods
 
@@ -16,6 +16,7 @@ Wrapper for the returns value of api
  才是有效的。通常，只有在函数返回一个错误结果，而且已知函数会设置GetLastError
  变量的前提下，才应访问GetLastError；这时能保证获得有效的结果。SetLastError函
  数主要在对api函数进行模拟的dll函数中使用。
+
 _returns: _
 
 

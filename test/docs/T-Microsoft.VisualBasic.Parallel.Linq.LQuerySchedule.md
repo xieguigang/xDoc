@@ -10,9 +10,11 @@ Parallel Linq query library for VisualBasic.
 
 #### AutoConfig
 假如小于0，则认为是自动配置，0被认为是单线程，反之直接返回
+
 _returns: _
 #### LQuery``2
 将大量的短时间的任务进行分区，合并，然后再执行并行化
+
 _returns: _
 
 

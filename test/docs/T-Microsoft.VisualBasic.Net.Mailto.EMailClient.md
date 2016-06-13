@@ -8,6 +8,7 @@ A client of gmail.com
 
 #### GmailClient
 Gmail
+
 _returns: _
 #### SendMessagesTo
 

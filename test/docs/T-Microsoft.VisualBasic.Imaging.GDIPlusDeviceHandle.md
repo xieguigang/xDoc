@@ -8,6 +8,7 @@ GDI+ device handle for encapsulates a GDI+ drawing surface.(GDI+绘图设备句�
 
 #### CreateDevice
 
+
 _returns: _
 #### Dispose
 Releases all resources used by this System.Drawing.Graphics.
@@ -20,11 +21,13 @@ Draws the specified text string at the specified location with the specified
  System.Drawing.Brush and System.Drawing.Font objects.
 #### MeasureString
 Measures the specified string when drawn with the specified System.Drawing.Font.
+
 _returns: This method returns a System.Drawing.SizeF structure that represents the size,
  in the units specified by the System.Drawing.Graphics.PageUnit property, of the
  string specified by the text parameter as drawn with the font parameter._
 #### Save
 将GDI+设备之中的图像数据保存到指定的文件路径之中，默认的图像文件的格式为PNG格式
+
 _returns: _
 
 

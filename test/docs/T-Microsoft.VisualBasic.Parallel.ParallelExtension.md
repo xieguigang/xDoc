@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Parallel](N-Microsoft.VisualBasic.Parallel.md
 
 #### RunTask
 Start a new thread and then returns the background thread task handle.
+
 _returns: _
 
 

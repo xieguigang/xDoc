@@ -8,9 +8,11 @@ Windows的任务管理器的接口
 
 #### ProcessUsage
 获取CPU的使用率
+
 _returns: _
 #### ProcessUsageDetails
 类似于任务管理器的函数：Memory, CPU, ProcessName, PID, CommandLine
+
 _returns: Memory, CPU_
 
 

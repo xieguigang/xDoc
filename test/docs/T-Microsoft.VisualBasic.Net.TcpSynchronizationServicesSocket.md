@@ -11,6 +11,7 @@ Socket listening object which is running at the server side asynchronous able mu
 短连接socket服务端
 #### BeginListen
 函数返回Socket的注销方法
+
 _returns: _
 #### Dispose
 Stop the server socket listening threads.(终止服务器Socket监听线程)
@@ -21,6 +22,7 @@ All the data has been read from the client. Display it on the console.
 SERVER_INTERNAL_EXCEPTION，Server encounter an internal exception during processing
  the data request from the remote device.
  (判断是否服务器在处理客户端的请求的时候，发生了内部错误)
+
 _returns: _
 #### Run
 This server waits for a connection and then uses asychronous operations to
@@ -37,6 +39,6 @@ Server reply the processing result of the request from the client.
 The server services listening on this local port.(当前的这个服务器对象实例所监听的本地端口号)
 #### Responsehandler
 This function pointer using for the data request handling of the data request from the client socket. 
- [Public Delegate Function DataResponseHandler(str As , RemoteAddress As ) As ]
+ [Public Delegate Function DataResponseHandler(str As @"T:System.String", RemoteAddress As @"T:System.Net.IPEndPoint") As @"T:System.String"]
  (这个函数指针用于处理来自于客户端的请求)
 

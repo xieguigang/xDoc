@@ -19,9 +19,10 @@ _namespace: [Microsoft.VisualBasic.Net.Persistent.Socket](N-Microsoft.VisualBasi
 Retrieve the socket from the state object.
 #### readDataBuffer
 Read data from the remote device.
+
 _returns: _
 #### Receive
-An exception of type '' occurred in System.dll but was not handled in user code
+An exception of type '@"T:System.Net.Sockets.SocketException"' occurred in System.dll but was not handled in user code
  Additional information: A request to send or receive data was disallowed because the socket is not connected and
  (when sending on a datagram socket using a sendto call) no address was supplied
 #### ReceiveCallback

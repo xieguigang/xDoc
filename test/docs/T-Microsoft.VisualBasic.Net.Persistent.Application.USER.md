@@ -10,11 +10,13 @@ _namespace: [Microsoft.VisualBasic.Net.Persistent.Application](N-Microsoft.Visua
 
 #### __sendMessageToMe
 
+
 _returns: _
 #### BeginConnect
 不会发生阻塞
 #### SendMessage
 True标识发送成功，False标识用户离线
+
 _returns: _
 
 

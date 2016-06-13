@@ -8,6 +8,7 @@ Encoding fileEncoding = TextFileEncodingDetector.DetectTextFileEncoding("you fil
 
 #### DetectTextFileEncoding
 completely arbitrary - inappropriate for high numbers of files / high speed requirements
+
 _returns: _
 
 

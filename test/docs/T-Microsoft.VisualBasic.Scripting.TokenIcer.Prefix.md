@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Scripting.TokenIcer](N-Microsoft.VisualBasic.
 
 #### MathParserHash
 These lines add each grammar rule to the dictionary
+
 _returns: _
 
 

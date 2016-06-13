@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](N-Microsoft.VisualB
 
 #### RegisterApp``1
 有点多此一举？？
+
 _returns: _
 
 

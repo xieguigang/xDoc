@@ -7,13 +7,15 @@ Represents a double range with minimum and maximum values
 ### Methods
 
 #### #ctor
-Initializes a new instance of the class
+Initializes a new instance of the @"T:Microsoft.VisualBasic.ComponentModel.Ranges.DoubleRange" class
 #### IsInside
 Check if the specified range is inside this range
+
 _returns: True if the specified range is inside this range or
  false otherwise._
 #### IsOverlapping
 Check if the specified range overlaps with this range
+
 _returns: True if the specified range overlaps with this range or
  false otherwise._
 

@@ -7,7 +7,7 @@ _namespace: [Microsoft.VisualBasic.Parallel.Tasks](N-Microsoft.VisualBasic.Paral
 ### Methods
 
 #### Abort
-取消当前的任务的执行，在线程内部产生的异常可以在获取得到
+取消当前的任务的执行，在线程内部产生的异常可以在@"P:Microsoft.VisualBasic.Parallel.Tasks.__backgroundTask`1.ExecuteException"获取得到
 
 
 ### Properties

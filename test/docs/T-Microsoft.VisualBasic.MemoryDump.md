@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic](N-Microsoft.VisualBasic.md)_
 
 #### __dumpInvoke
 Create memory dump for a class object instance
+
 _returns: _
 
 

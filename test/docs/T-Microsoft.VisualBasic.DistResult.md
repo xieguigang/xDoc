@@ -8,13 +8,14 @@ _namespace: [Microsoft.VisualBasic](N-Microsoft.VisualBasic.md)_
 
 #### Visualize
 Output HTML result for visualization
+
 _returns: _
 
 
 ### Properties
 
 #### DistEdits
-How doest the evolve from .(这个结果描述了subject是如何变化成为Query的)
+How doest the @"P:Microsoft.VisualBasic.DistResult.Hypotheses" evolve from @"P:Microsoft.VisualBasic.DistResult.Reference".(这个结果描述了subject是如何变化成为Query的)
 #### MatchSimilarity
 m+ scores
 #### NumMatches

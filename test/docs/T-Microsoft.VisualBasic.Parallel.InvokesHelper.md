@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Parallel](N-Microsoft.VisualBasic.Parallel.md
 
 #### Invoke
 
+
 _returns: _
 
 

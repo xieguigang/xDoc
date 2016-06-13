@@ -7,14 +7,17 @@ _namespace: [Microsoft.VisualBasic.Serialization](N-Microsoft.VisualBasic.Serial
 ### Methods
 
 #### GetJson
-使用来屏蔽掉不想序列化的属性
+使用@"T:System.Web.Script.Serialization.ScriptIgnoreAttribute"来屏蔽掉不想序列化的属性
+
 _returns: _
 #### GetJson``1
-Gets the json text value of the target object, the attribute 
+Gets the json text value of the target object, the attribute @"T:System.Web.Script.Serialization.ScriptIgnoreAttribute" 
  can be used for block the property which is will not serialize to the text.
- (使用来屏蔽掉不想序列化的属性)
+ (使用@"T:System.Web.Script.Serialization.ScriptIgnoreAttribute"来屏蔽掉不想序列化的属性)
+
 _returns: _
 #### LoadObject
+
 
 _returns: _
 #### LoadObject``1

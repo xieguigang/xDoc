@@ -14,21 +14,27 @@ Clears the console buffer and corresponding console window of display informatio
 Copies a specified source area of the screen buffer to a specified destination area.
 #### OpenStandardError
 Acquires the standard error stream, which is set to a specified buffer size.
+
 _returns: The standard error stream._
 #### OpenStandardInput
 Acquires the standard input stream, which is set to a specified buffer size.
+
 _returns: The standard input stream._
 #### OpenStandardOutput
 Acquires the standard output stream, which is set to a specified buffer size.
+
 _returns: The standard output stream._
 #### Read
 Reads the next character from the standard input stream.
+
 _returns: The next character from the input stream, or negative one (-1) if there are currently no more characters to be read._
 #### ReadKey
 Obtains the next character or function key pressed by the user. The pressed key is optionally displayed in the console window.
+
 _returns: A System.ConsoleKeyInfo object that describes the System.ConsoleKey constant and Unicode character, if any, that correspond to the pressed console key. The System.ConsoleKeyInfo object also describes, in a bitwise combination of System.ConsoleModifiers values, whether one or more Shift, Alt, or Ctrl modifier keys was pressed simultaneously with the console key._
 #### ReadLine
 Reads the next line of characters from the standard input stream.
+
 _returns: The next line of characters from the input stream, or null if no more lines are available._
 #### ResetColor
 Sets the foreground and background console colors to their defaults.

@@ -7,7 +7,7 @@ _namespace: [Microsoft.VisualBasic.Terminal](N-Microsoft.VisualBasic.Terminal.md
 ### Methods
 
 #### SetProgress
-是进度条的百分比
+**p**是进度条的百分比
 
 
 

@@ -13,11 +13,12 @@ Initializes a new instance of the System.Collections.Generic.Dictionary`2 class
  comparer for the key type.
 #### ContainsKey
 
+
 _returns: _
 
 
 ### Properties
 
 #### Item
-添加和替换操作主要在这里进行
+添加@"M:Microsoft.VisualBasic.ComponentModel.Collection.Generic.HashDictionary`1.Add(System.Collections.Generic.KeyValuePair{System.String,`0})"和替换操作主要在这里进行
 

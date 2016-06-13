@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Imaging](N-Microsoft.VisualBasic.Imaging.md)_
 
 #### Jet
 *
+
 _returns: _
 
 

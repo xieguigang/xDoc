@@ -10,6 +10,7 @@ File includes search tools
 Add includes directory into the search path.
 #### GetPath
 Get the absolutely file path from the includes file's relative path.
+
 _returns: _
 
 

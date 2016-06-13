@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.CommandLine.Reflection](N-Microsoft.VisualBas
 
 #### PrintHelp
 Prints the formatted help information on the console.
+
 _returns: _
 
 

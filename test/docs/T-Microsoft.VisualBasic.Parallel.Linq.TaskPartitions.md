@@ -8,10 +8,12 @@ _namespace: [Microsoft.VisualBasic.Parallel.Linq](N-Microsoft.VisualBasic.Parall
 
 #### Partitioning``2
 进行分区之后返回一个长时间的任务组合
+
 _returns: _
 #### SplitIterator``1
 Performance the partitioning operation on the input sequence.
- (请注意，这个函数适用于数量非常多的序列。对所输入的序列进行分区操作，函数参数是每一个分区里面的元素的数量)
+ (请注意，这个函数适用于数量非常多的序列。对所输入的序列进行分区操作，**parTokens**函数参数是每一个分区里面的元素的数量)
+
 _returns: _
 
 

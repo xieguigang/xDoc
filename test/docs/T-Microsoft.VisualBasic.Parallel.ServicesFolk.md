@@ -9,9 +9,11 @@ _namespace: [Microsoft.VisualBasic.Parallel](N-Microsoft.VisualBasic.Parallel.md
 
 #### Folk
 函数返回子进程的交互数据通信的端口号
+
 _returns: 函数返回子服务的交互端口_
 #### ReturnPortal
 子服务向服务主节点返回端口号数据，这个方法需要要在子服务上面的服务程序启动之后再调用
+
 _returns: _
 
 

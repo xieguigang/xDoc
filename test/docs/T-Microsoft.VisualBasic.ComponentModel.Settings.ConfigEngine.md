@@ -8,15 +8,19 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Settings](N-Microsoft.VisualBa
 
 #### ExistsNode
 大小写不敏感
+
 _returns: _
 #### GetSettingsNode
 大小写不敏感的
+
 _returns: _
 #### Set
-请注意，必须是小写的
+请注意，**name**必须是小写的
+
 _returns: _
 #### View
-假若函数参数为空，则函数输出所有的变量的值，请注意，这个函数并不在终端上面显示任何消息
+假若函数参数**name**为空，则函数输出所有的变量的值，请注意，这个函数并不在终端上面显示任何消息
+
 _returns: _
 
 

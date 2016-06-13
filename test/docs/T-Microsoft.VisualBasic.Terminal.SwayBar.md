@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Terminal](N-Microsoft.VisualBasic.Terminal.md
 
 #### BlankPointer
 sets the atribute blankPointer with a empty string the same length that the pointer
+
 _returns: A string filled with space characters_
 #### ClearBar
 reset the bar to its original state

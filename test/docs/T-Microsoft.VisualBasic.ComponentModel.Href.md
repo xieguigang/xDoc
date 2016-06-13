@@ -7,7 +7,8 @@ Resource link data.
 ### Methods
 
 #### GetFullPath
-获取所指向的资源文件的完整路径
+获取@"P:Microsoft.VisualBasic.ComponentModel.Href.Value"所指向的资源文件的完整路径
+
 _returns: _
 
 

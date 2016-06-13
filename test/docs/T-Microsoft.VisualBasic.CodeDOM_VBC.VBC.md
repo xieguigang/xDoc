@@ -8,9 +8,11 @@ _namespace: [Microsoft.VisualBasic.CodeDOM_VBC](N-Microsoft.VisualBasic.CodeDOM_
 
 #### CompileCode
 
+
 _returns: _
 #### CreateParameters
 Construct of the vbc.exe compiler parameters.
+
 _returns: _
 
 

@@ -9,14 +9,16 @@ _namespace: [Microsoft.VisualBasic.Language.UnixBash](N-Microsoft.VisualBasic.La
 #### GetMapPath
 Map linux path on Windows:
  [~ -> C:\User\<user_name>]
- [# -> ]
+ [# -> @"P:Microsoft.VisualBasic.App.HOME"]
  [/ -> C:\]
  [/usr/bin -> C:\Program Files\]
  [/usr -> C:\User\]
- [- -> ]
+ [- -> @"P:Microsoft.VisualBasic.App.PreviousDirectory"]
+
 _returns: _
 #### HOME
 Get user home folder
+
 _returns: _
 
 

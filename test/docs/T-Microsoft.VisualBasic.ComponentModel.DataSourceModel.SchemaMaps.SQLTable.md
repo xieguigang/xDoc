@@ -8,15 +8,19 @@ SQL之中的一个数据表的抽象描述接口
 
 #### GetDeleteSQL
 DELETE FROM table_name WHERE field = value;
+
 _returns: _
 #### GetInsertSQL
 INSERT INTO table_name (field1, field2,...) VALUES (value1, value2,....)
+
 _returns: _
 #### GetUpdateSQL
 UPDATE table_name SET field = <new value> WHERE field = <value>
+
 _returns: _
 #### ToString
-Display the INSERT INTO sql from function .
+Display the INSERT INTO sql from function @"M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SQLTable.GetInsertSQL".
+
 _returns: _
 
 

@@ -10,6 +10,7 @@ _namespace: [Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](N-Microso
 不可以使用本方法初始化目标对象为实例方法的类型
 #### Execute
 
+
 _returns: _
 
 

@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Terminal.STDIO__.I_FormatProvider](N-Microsof
 
 #### ActionFormat
 将一个输入的字符串按照用户指定的格式进行格式化后返回
+
 _returns: 经过格式化之后的字符串_
 
 

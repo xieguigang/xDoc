@@ -10,6 +10,7 @@ _namespace: [Microsoft.VisualBasic.Net.Persistent.Application](N-Microsoft.Visua
 
 #### Install
 安装新的用户私有密匙
+
 _returns: _
 
 

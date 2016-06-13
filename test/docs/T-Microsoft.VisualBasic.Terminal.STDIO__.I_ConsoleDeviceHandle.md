@@ -8,9 +8,11 @@ Represents the standard input, output, and error streams for console application
 
 #### Read
 Reads the next character from the standard input stream.(从输入流读取下一个字符)
+
 _returns: The next character from the input stream, or negative one (-1) if there are currently no more characters to be read._
 #### ReadLine
 Reads the next line of characters from the standard input stream.(从输入流读取下一行字符)
+
 _returns: The next line of characters from the input stream, or null if no more lines are available._
 #### WriteLine
 Writes the text representation of the specified array of objects, followed by the current line terminator, to the standard output stream using the specified format information.

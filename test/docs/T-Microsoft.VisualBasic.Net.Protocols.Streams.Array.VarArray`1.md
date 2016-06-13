@@ -10,6 +10,7 @@ The bytes length of the element in thee source sequence is not fixed.
 #### Serialize
 Long + T + Long + T
  其中Long是一个8字节长度的数组，用来指示T的长度
+
 _returns: _
 
 

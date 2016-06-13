@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](N-
 
 #### GetFields``1
 这个只是得到最上面的一层属性值
+
 _returns: _
 
 

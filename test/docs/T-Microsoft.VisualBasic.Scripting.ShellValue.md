@@ -8,6 +8,7 @@ Script shell result.
 
 #### GetObject``1
 Parsing object from the standard output
+
 _returns: _
 
 

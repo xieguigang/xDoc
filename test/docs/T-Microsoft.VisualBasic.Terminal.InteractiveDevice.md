@@ -10,6 +10,7 @@ _namespace: [Microsoft.VisualBasic.Terminal](N-Microsoft.VisualBasic.Terminal.md
 
 #### Save
 保存历史数据
+
 _returns: _
 
 

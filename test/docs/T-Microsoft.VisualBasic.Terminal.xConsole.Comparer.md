@@ -10,6 +10,7 @@ This can compute the input then return back the most appropriate word.
 Initliaze a new instance
 #### Find
 Find a word from an input abbreviation (es n > name)
+
 _returns: _
 
 

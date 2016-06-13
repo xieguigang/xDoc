@@ -8,6 +8,7 @@ Create Custom Color Maps
 
 #### ColorSequence
 
+
 _returns: _
 
 

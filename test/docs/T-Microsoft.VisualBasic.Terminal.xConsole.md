@@ -8,11 +8,13 @@ Allows you to color and animate the console. ~ overpowered.it ~ TheTrigger - �
 
 #### ClearInput
 Clear the user input in stack
+
 _returns: _
 #### ClosestConsoleColor
 Convert rgb color to ConsoleColor. From stackoverflow
 #### ConvertHexStringToByteArray
 Convert String to byte array
+
 _returns: _
 #### CoolWrite
 Gradual output animation 👍👍
@@ -22,22 +24,27 @@ Gradual output animation
 Show credits
 #### getColor
 Convert input to color
+
 _returns: 👽👽👽👾_
 #### Implode
 (php-like) Implode a List of strings
+
 _returns: Imploded string_
 #### ListFonts
 Show list of fonts
 #### ParseLine
 Parse the input string
+
 _returns: _
 #### Print
 The Parser
 #### ReadKeys
 Read EACH keys from the buffer input (visible and hidden chars)
+
 _returns: string with all chars_
 #### ReadLine
 Read the line, then parse it.
+
 _returns: Return a List of strings_
 #### RestoreColors
 Restore default colors

@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel](N-Microsoft.VisualBasic.Compo
 
 #### ToString
 (dd hh:mm:ss) 输出可以被MySQL数据库所识别的字符串格式
+
 _returns: _
 
 

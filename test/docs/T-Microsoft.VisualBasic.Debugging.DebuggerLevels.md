@@ -2,7 +2,7 @@
 # DebuggerLevels
 _namespace: [Microsoft.VisualBasic.Debugging](N-Microsoft.VisualBasic.Debugging.md)_
 
-默认的参数值是
+默认的参数值是@"F:Microsoft.VisualBasic.Debugging.DebuggerLevels.On"
 
 
 

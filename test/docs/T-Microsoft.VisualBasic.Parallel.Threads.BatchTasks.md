@@ -11,6 +11,7 @@ _namespace: [Microsoft.VisualBasic.Parallel.Threads](N-Microsoft.VisualBasic.Par
  使用这个并行化函数可以避免这个问题，同时也可以自己手动控制线程的并发数
 #### BatchTask``2
 
+
 _returns: _
 
 

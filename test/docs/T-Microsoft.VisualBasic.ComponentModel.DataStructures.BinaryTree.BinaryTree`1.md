@@ -29,24 +29,29 @@ Delete a given node. This is the more complex method in the binary search
  to locate the node for deletion.
 #### DirectFind
 假若节点是不适用标识符来标识自己的左右的位置，则必须要使用这个方法才可以查找成功
+
 _returns: _
 #### findSuccessor
 Find the next ordinal node starting at node startNode.
  Due to the structure of a binary search tree, the
  successor node is simply the left most node on the right branch.
+
 _returns: Returns a reference to the node if successful, else null_
 #### FindSymbol
 Find name in tree. Return a reference to the node
  if symbol found else return null to indicate failure.
+
 _returns: Returns null if it fails to find the node, else returns reference to node_
 #### insert
 Add a symbol to the tree if it's a new one. Returns reference to the new
  node if a new node inserted, else returns null to indicate node already present.
+
 _returns:  Returns reference to the new node is the node was inserted.
  If a duplicate node (same name was located then returns null_
 #### ToString
 Return the tree depicted as a simple string, useful for debugging, eg
  50(40(30(20, 35), 45(44, 46)), 60)
+
 _returns: Returns the tree_
 
 

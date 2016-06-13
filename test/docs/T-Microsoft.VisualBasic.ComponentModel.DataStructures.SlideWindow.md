@@ -8,6 +8,7 @@ Create a collection of slide Windows data for the target collection object.
 
 #### CreateSlideWindows``1
 Create a collection of slide Windows data for the target collection object.(创建一个滑窗集合)
+
 _returns: _
 
 

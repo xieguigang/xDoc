@@ -7,6 +7,7 @@ _namespace: [Microsoft.VisualBasic.Language](N-Microsoft.VisualBasic.Language.md
 ### Methods
 
 #### xFormat
+@"M:Microsoft.VisualBasic.Terminal.STDIO.Format(System.String,System.String[])"
 
 _returns: _
 

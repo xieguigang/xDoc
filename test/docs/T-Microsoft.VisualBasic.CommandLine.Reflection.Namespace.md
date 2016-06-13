@@ -2,7 +2,7 @@
 # Namespace
 _namespace: [Microsoft.VisualBasic.CommandLine.Reflection](N-Microsoft.VisualBasic.CommandLine.Reflection.md)_
 
-(CommandLine interpreter executation Entry and the ShellScript software packages namespace.)这是一个命令行解释器所使用的执行入口点的集合
+(@"T:Microsoft.VisualBasic.CommandLine.Interpreter"[CommandLine interpreter] executation Entry and the ShellScript software packages namespace.)这是一个命令行解释器所使用的执行入口点的集合
 
 ### Methods
 
@@ -10,6 +10,7 @@ _namespace: [Microsoft.VisualBasic.CommandLine.Reflection](N-Microsoft.VisualBas
 The name value of this namespace module.(本命名空间模块的名称值)
 #### CreateInstance
 从目标类型之中构造出一个命令行解释器
+
 _returns: _
 
 

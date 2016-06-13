@@ -13,6 +13,7 @@ http://www.codeproject.com/Articles/18635/Ping-exe-replica-in-C
 
 #### Ping
 返回与目标远程机器之间的平均通信时间长度
+
 _returns: _
 
 

@@ -10,6 +10,7 @@ Define tree nodes
 Constructor to create a single node
 #### GetEnumerator
 最多只有两个元素
+
 _returns: _
 
 

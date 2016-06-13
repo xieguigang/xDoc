@@ -7,7 +7,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](N-Microsoft.Visu
 ### Methods
 
 #### #ctor
-The path parameter can be shortcut by method
+The path parameter can be shortcut by method @"M:Microsoft.VisualBasic.Language.UnixBash.PathMapper.GetMapPath(System.String)"
 
 
 

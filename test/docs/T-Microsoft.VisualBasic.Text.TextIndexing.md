@@ -10,9 +10,11 @@ _namespace: [Microsoft.VisualBasic.Text](N-Microsoft.VisualBasic.Text.md)_
 Creates a text index instance object for the statement fuzzy match in the whole text document.
 #### Found
 
+
 _returns: _
 #### IsMatch
 函数返回最长的匹配的个数，-1表示没有匹配
+
 _returns: _
 
 

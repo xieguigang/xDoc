@@ -7,7 +7,8 @@ _namespace: [Microsoft.VisualBasic.SecurityString](N-Microsoft.VisualBasic.Secur
 ### Methods
 
 #### GetMd5hashLong
-->
+@"M:System.Security.Cryptography.HashAlgorithm.ComputeHash(System.Byte[])" -> @"M:Microsoft.VisualBasic.SecurityString.MD5Hash.ToLong(System.Byte[])"
+
 _returns: _
 
 

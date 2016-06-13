@@ -8,6 +8,7 @@ http://www.evolgenius.info/evolview/
 
 #### __makeInternalNode``1
 Dec 5, 2011; can be used to make rootnode
+
 _returns: _
 #### parseInforAndMakeNewLeafNode``1
 created on Oct 20, 2013 
@@ -15,6 +16,7 @@ created on Oct 20, 2013
 #### TreeParser``1
 created: Oct 20, 2013 : a better and easier to maintain parser for newick and nexus trees
  NOTE: this is a recursive function
+
 _returns: _
 
 

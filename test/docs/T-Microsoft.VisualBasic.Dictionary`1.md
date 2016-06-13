@@ -16,21 +16,27 @@ Initializes a new instance of the System.Collections.Generic.SortedDictionary`2
 Adds an element with the specified key and value into the System.Collections.Generic.SortedDictionary`2.
 #### Find
 
+
 _returns: _
 #### op_Addition
 Adds an element with the specified key and value into the System.Collections.Generic.SortedDictionary`2.
+
 _returns: _
 #### op_Exponent
 Find a variable in the hash table
+
 _returns: _
 #### Remove
 假若目标元素不存在于本字典之中，则会返回False
+
 _returns: _
 #### SafeGetValue
 If the value is not found in the hash directionary, then the default value will be returns, and the default value is nothing.
+
 _returns: _
 #### TryGetValue
 Gets the value associated with the specified key.
+
 _returns: When this method returns, the value associated with the specified key, if the
  key is found; otherwise, the default value for the type of the value parameter._
 

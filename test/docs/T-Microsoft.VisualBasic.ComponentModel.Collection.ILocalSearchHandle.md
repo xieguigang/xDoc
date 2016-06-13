@@ -8,8 +8,10 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Collection](N-Microsoft.Visual
 
 #### Match
 
+
 _returns: _
 #### Matches
+
 
 _returns: _
 

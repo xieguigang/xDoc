@@ -9,6 +9,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel](N-Microsoft.VisualBasic.Compo
 #### CreateCompleteObjectPairs
 Creates the completely combination of the elements in the target input collection source.
  (创建完完全全的两两配对)
+
 _returns: _
 
 

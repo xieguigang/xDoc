@@ -10,15 +10,19 @@ Derives a SHA256 key from a password using an extension of the PBKDF1 algorithm.
 
 #### DecryptString
 字符串的解密方法
+
 _returns: _
 #### EncryptData
 Encrypt the plain text string.
+
 _returns: _
 #### GetDynamicsCertification
 双重动态数据签名
+
 _returns: _
 #### GetDynamicsCertification``1
 双重动态数据签名
+
 _returns: _
 
 

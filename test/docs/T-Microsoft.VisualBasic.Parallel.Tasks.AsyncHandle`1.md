@@ -8,9 +8,11 @@ Represents the status of an asynchronous operation.(背景线程加载数据)
 
 #### GetValue
 没有完成会一直阻塞线程在这里
+
 _returns: _
 #### Run
 Start the background task thread.(启动后台背景线程)
+
 _returns: _
 
 

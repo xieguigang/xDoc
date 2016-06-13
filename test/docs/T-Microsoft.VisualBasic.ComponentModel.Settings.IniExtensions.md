@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Settings](N-Microsoft.VisualBa
 
 #### LoadIni``1
 The section name of the profile data is the type name
+
 _returns: _
 #### WriteIni``1
 The section name of the profile data is the type name

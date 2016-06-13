@@ -8,9 +8,11 @@ _namespace: [Microsoft.VisualBasic.Text.Similarity](N-Microsoft.VisualBasic.Text
 
 #### Match
 基于字符的比较
+
 _returns: _
 #### MatchFuzzy
 基于单词的比较
+
 _returns: _
 
 

@@ -7,7 +7,8 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](N-Microsof
 ### Methods
 
 #### Equals
-Call by the method
+Call by the method @"M:Microsoft.VisualBasic.IEnumerations.GetItem``1(System.Collections.Generic.IEnumerable{``0},System.String)"
+
 _returns: _
 
 

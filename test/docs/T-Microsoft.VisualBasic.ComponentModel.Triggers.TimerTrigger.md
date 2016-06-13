@@ -10,6 +10,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Triggers](N-Microsoft.VisualBa
 
 #### __test
 不计算毫秒
+
 _returns: _
 
 

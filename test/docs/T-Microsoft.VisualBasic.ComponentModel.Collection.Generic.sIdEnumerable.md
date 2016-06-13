@@ -2,7 +2,7 @@
 # sIdEnumerable
 _namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](N-Microsoft.VisualBasic.ComponentModel.Collection.Generic.md)_
 
-This type of object have a property to unique identified itself in a collection.
+This type of object have a @"P:Microsoft.VisualBasic.ComponentModel.Collection.Generic.sIdEnumerable.Identifier" property to unique identified itself in a collection.
 
 
 

@@ -8,9 +8,11 @@ _namespace: [Microsoft.VisualBasic.Text](N-Microsoft.VisualBasic.Text.md)_
 
 #### Get
 把汉字转换成拼音(全拼)
+
 _returns: 转换后的拼音(全拼)字符串_
 #### GetFirst
 取拼音第一个字段
+
 _returns: _
 
 

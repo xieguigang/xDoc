@@ -8,9 +8,10 @@ Object model of the text file doucment.(文本文件的对象模型，这个文�
 
 #### getPath
 Automatically determine the path paramater: If the target path is empty, then return
- the file object path property, if not then return the
- directly.
- (当的值不为空的时候，本对象之中的路径参数将会被替换，反之返回本对象的路径参数)
+ the file object path @"P:Microsoft.VisualBasic.ComponentModel.ITextFile.FilePath" property, if not then return the
+ **path** directly.
+ (当**path**的值不为空的时候，本对象之中的路径参数将会被替换，反之返回本对象的路径参数)
+
 _returns: _
 
 

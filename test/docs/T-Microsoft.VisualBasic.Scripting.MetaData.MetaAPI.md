@@ -8,11 +8,12 @@ _namespace: [Microsoft.VisualBasic.Scripting.MetaData](N-Microsoft.VisualBasic.S
 
 #### GetEntry
 获取定义在类型定义上面的命名空间的标记信息
+
 _returns: _
 
 
 ### Properties
 
 #### TypeInfo
-
+@"T:Microsoft.VisualBasic.Scripting.MetaData.PackageNamespace"
 

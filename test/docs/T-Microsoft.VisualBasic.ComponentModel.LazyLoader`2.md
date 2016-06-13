@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.ComponentModel](N-Microsoft.VisualBasic.Compo
 
 #### WriteData
 Write the data back onto the filesystem.(将数据回写进入文件系统之中)
+
 _returns: _
 
 
@@ -16,5 +17,5 @@ _returns: _
 #### URL
 The data source.(数据源)
 #### Value
-Gets the value from the data source
+Gets the value from the data source @"P:Microsoft.VisualBasic.ComponentModel.LazyLoader`2.URL"
 

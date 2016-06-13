@@ -9,12 +9,15 @@ _namespace: [Microsoft.VisualBasic.Serialization](N-Microsoft.VisualBasic.Serial
 
 #### GetNodeMapping``2
 获取从源映射至数据模型的映射过程
+
 _returns: _
 #### LoadMapping``2
 从源江基本的值类型映射到数据模型，以将配置数据读取出来并进行加载
+
 _returns: _
 #### WriteMapping``2
 从数据模型将值类型数据映射回源，以将配置数据写入文件
+
 _returns: _
 
 

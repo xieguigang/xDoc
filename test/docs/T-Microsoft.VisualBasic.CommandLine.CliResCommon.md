@@ -10,6 +10,7 @@ CLI resources manager
 
 #### TryRelease
 
+
 _returns: _
 
 

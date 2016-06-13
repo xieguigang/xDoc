@@ -8,8 +8,10 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Settings](N-Microsoft.VisualBa
 
 #### GenerateConfigurations``1
 从类型实体生成配置文件数据
+
 _returns: _
 #### TryParse``2
+
 
 _returns: _
 

@@ -12,6 +12,7 @@ Initialize a custom spinner
 Breaks the spinner
 #### Turn
 Turn the spin!
+
 _returns: False if it has been stopped_
 
 

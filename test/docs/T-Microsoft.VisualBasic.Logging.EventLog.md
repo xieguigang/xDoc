@@ -10,12 +10,15 @@ Provides interaction with Windows event logs.(这个日志入口点对象的创�
 
 #### LogException
 Writes a localized entry to the event log.
+
 _returns: _
 #### ToString
-$"{}//{}"
+$"{@"P:Microsoft.VisualBasic.Logging.EventLog.Services"}//{@"P:Microsoft.VisualBasic.Logging.EventLog.Product"}"
+
 _returns: _
 #### WriteEntry
 Writes a localized entry to the event log.
+
 _returns: _
 
 

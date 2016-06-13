@@ -8,6 +8,7 @@ Wrapper class for *.ini and *.inf configure file.(可能文件中的注释行会
 
 #### GetValue
 Get the value from a specific section/key in a file of path
+
 _returns: _
 
 

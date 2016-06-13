@@ -11,8 +11,10 @@ You can create a console window In a Windows Forms project. Project + properties
  And Set Startup Object To "Sub Main". 
  
  Modify the Application.Run() statement To create the proper startup form, If necessary.
+
 _returns: _
 #### Shell
+
 
 _returns: _
 #### ShowConsoleWindows

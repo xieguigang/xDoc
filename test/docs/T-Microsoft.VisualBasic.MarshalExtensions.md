@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic](N-Microsoft.VisualBasic.md)_
 
 #### MarshalAs``1
 方便进行数组操作的一个函数
+
 _returns: _
 
 

@@ -10,6 +10,7 @@ MMFProtocol socket object for the inter-process communication on the localhost, 
 
 #### ReadData
 直接从映射文件之中读取数据
+
 _returns: _
 #### SendMessage
 

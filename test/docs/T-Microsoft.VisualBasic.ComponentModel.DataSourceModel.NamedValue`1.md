@@ -7,7 +7,7 @@ The value object have a name string.
 ### Methods
 
 #### #ctor
-Creates a object bind with a specific .
+Creates a object bind with a specific @"P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.Name".
 
 
 ### Properties

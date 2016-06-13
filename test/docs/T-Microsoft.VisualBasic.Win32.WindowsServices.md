@@ -10,9 +10,11 @@ Windows event logger services & installer services.
 
 #### Initialize
 You should execute the log category entry creates job under the administrators privileges!
+
 _returns: _
 #### LogsInstaller
 You should execute the log category entry creates job under the administrators privileges!
+
 _returns: _
 #### RegisterURLProtocol
 (**** Please notice, that the application has To have admin privileges To be able To write the needed stuff into registry. ****)
@@ -37,7 +39,7 @@ _returns: _
 ### Properties
 
 #### Initialized
-Does component have been initialized?
+Does component @"P:Microsoft.VisualBasic.Win32.WindowsServices.ServicesLogs" have been initialized?
 #### ServicesLogs
 Windows system logging services interface, you can viewing the application log events from Event Viewer:
  Explorer >> Manage >> Event Viewer >> Applications and Services Logs >> <Your_Product>

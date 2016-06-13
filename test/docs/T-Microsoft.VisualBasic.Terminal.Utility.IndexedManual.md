@@ -7,7 +7,7 @@ _namespace: [Microsoft.VisualBasic.Terminal.Utility](N-Microsoft.VisualBasic.Ter
 ### Methods
 
 #### #ctor
-与所不同的是，本对象之中的这个字符串数组表示的是一页帮助，而不是一行帮助信息
+与@"T:Microsoft.VisualBasic.Terminal.Utility.ManualPages"所不同的是，本对象之中的这个字符串数组表示的是一页帮助，而不是一行帮助信息
 #### PrintPrompted
 
 #### ShowManual

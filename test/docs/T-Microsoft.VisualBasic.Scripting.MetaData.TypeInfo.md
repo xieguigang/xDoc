@@ -10,13 +10,16 @@ The type reference information.(类型信息)
 Creates type reference from the definition.
 #### GetType
 Get mapping type information.
+
 _returns: _
 #### LoadAssembly
 Loads the assembly file which contains this type. If the is not a valid directory location, 
- then using the location as default.
+ then using the location @"P:Microsoft.VisualBasic.App.HOME" as default.
+
 _returns: _
 #### op_Equality
 检查a是否是指向b的类型引用的
+
 _returns: _
 
 
@@ -25,7 +28,7 @@ _returns: _
 #### assm
 The assembly file which contains this type definition.(模块文件)
 #### FullIdentity
-.(类型源)
+@"P:System.Type.FullName".(类型源)
 #### SystemKnownType
 Is this type object is a known system type?(是否是已知的类型？)
 

@@ -12,12 +12,14 @@ Represents a column of certain data frames. The mapping between to schema is als
 #### #ctor
 
 #### LoadMapping
-Load the mapping property, if the custom attribute 
+Load the mapping property, if the custom attribute @"T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.DataFrameColumnAttribute" 
  have no name value, then the property name will be used as the mapping name.
  (这个函数会自动给空名称值进行属性名的赋值操作的)
+
 _returns: _
 #### LoadMapping``1
 没有名称属性的映射使用属性名来表述
+
 _returns: _
 
 

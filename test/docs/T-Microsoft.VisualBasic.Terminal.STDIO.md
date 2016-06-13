@@ -10,13 +10,16 @@ A standard input/output compatibility package that makes VisualBasic console
 
 #### __testEquals
 
+
 _returns: _
 #### cat
 不换行
 #### Format
 Formatting a string using some formation arguments.(使用一些指定的格式化参数来格式化一个字符串)
+
 _returns: _
 #### MsgBox
+
 
 _returns: _
 #### Printf
@@ -24,6 +27,7 @@ Output the string to the console using a specific formation.(按照指定的格�
 #### scanf
 Read the string that user input on the console to the function paramenter.
  (将用户在终端窗口之上输入的数据赋值给一个字符串变量)
+
 _returns: _
 
 

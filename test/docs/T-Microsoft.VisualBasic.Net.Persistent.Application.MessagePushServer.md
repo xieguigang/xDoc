@@ -10,17 +10,20 @@ _namespace: [Microsoft.VisualBasic.Net.Persistent.Application](N-Microsoft.Visua
 
 #### __requestHandlerInterface
 只要是为ssl服务设置的
+
 _returns: _
 #### __sendMessage
+
 
 _returns: _
 #### __usrInvokeSend
 用户客户端请求发送消息至指定编号的用户的终端之上
+
 _returns: _
 #### AcceptClient
 建立一个新的连接
 #### DisconnectUser
-Disconnect user persistent connection who have the specific from this server.
+Disconnect user persistent connection who have the specific **user_id** from this server.
  (断开服务器与用户客户端的长连接)
 #### RemoveFreeConnections
 哈希值不存在于现有的登录用户列表之中就是空闲连接

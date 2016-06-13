@@ -7,8 +7,9 @@ _namespace: [Microsoft.VisualBasic.ComponentModel.Settings](N-Microsoft.VisualBa
 ### Methods
 
 #### IsFsysValid
-这个方法只是针对和这两种类型而言才有效的
+这个方法只是针对@"F:Microsoft.VisualBasic.ComponentModel.Settings.ValueTypes.File"和@"F:Microsoft.VisualBasic.ComponentModel.Settings.ValueTypes.Directory"这两种类型而言才有效的
  对于其他的类型数据，都是返回False
+
 _returns: _
 
 

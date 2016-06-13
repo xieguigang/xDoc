@@ -8,6 +8,7 @@ An object for the text file format xml data storage.(用于存储与XML文件之
 
 #### Equals
 
+
 _returns: _
 
 

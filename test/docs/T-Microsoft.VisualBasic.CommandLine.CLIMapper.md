@@ -7,7 +7,8 @@ _namespace: [Microsoft.VisualBasic.CommandLine](N-Microsoft.VisualBasic.CommandL
 ### Methods
 
 #### Maps``1
-The properties in the class type needs decorating with attribute
+The properties in the class type needs decorating with attribute @"T:Microsoft.VisualBasic.CommandLine.Reflection.CLIParameter"
+
 _returns: _
 
 

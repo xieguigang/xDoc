@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Serialization](N-Microsoft.VisualBasic.Serial
 
 #### LoadDocument``1
 加载完数据之后返回其自身
+
 _returns: _
 
 

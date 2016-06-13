@@ -8,6 +8,7 @@ _namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](N-Microsoft.VisualB
 
 #### InvokeProtocol3
 
+
 _returns: _
 
 
