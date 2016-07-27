@@ -7,7 +7,14 @@ Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly
 Module Program
 
     Public Function Main() As Integer
-        Return GetType(Program).RunCLI(App.CommandLine, executeFile:=AddressOf ExecFile)
+        Return GetType(Program).RunCLI(App.CommandLine,
+            executeFile:=AddressOf ExecFile,
+            executeEmpty:=AddressOf Program.Help)
+    End Function
+
+    Private Function Help() As Integer
+        Call "xDoc <docs.xml/*.xml DIR> /out <out_DIR> /hexo".__DEBUG_ECHO
+        Return 0
     End Function
 
     Public Function ExecFile(path As String, args As CommandLine) As Integer
