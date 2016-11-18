@@ -1,5 +1,5 @@
 ﻿# CloneExtensions
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 Some extension for copy a collection object.
 

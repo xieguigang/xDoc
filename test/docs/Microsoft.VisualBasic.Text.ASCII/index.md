@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Byte](./Byte.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.ASCII/Byte.md')">Byte</a>||
 

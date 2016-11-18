@@ -1,5 +1,5 @@
 ﻿# Extensions
-_namespace: [Microsoft.VisualBasic.Linq](./index.md)_
+_namespace: [Microsoft.VisualBasic.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')"></a>)_
 
 Linq Helpers.(为了方便编写Linq代码而构建的一个拓展模块)
 

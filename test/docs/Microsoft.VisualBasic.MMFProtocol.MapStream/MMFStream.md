@@ -1,5 +1,5 @@
 ﻿# MMFStream
-_namespace: [Microsoft.VisualBasic.MMFProtocol.MapStream](./index.md)_
+_namespace: [Microsoft.VisualBasic.MMFProtocol.MapStream](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.MapStream/index.md')"></a>)_
 
 
 

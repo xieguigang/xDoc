@@ -1,5 +1,5 @@
 ﻿# Shell
-_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.STDIO__/index.md')"></a>)_
 
 
 

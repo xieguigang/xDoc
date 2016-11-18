@@ -1,5 +1,5 @@
 ﻿# RandomNumbers
-_namespace: [Microsoft.VisualBasic.Language.C](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.C](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C/index.md')"></a>)_
 
 This class provides the ability to simulate the behavior of the C/C++ functions for 
 generating random numbers, using the .NET Framework @``T:System.Random`` class.

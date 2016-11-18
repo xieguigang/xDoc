@@ -1,5 +1,5 @@
 ﻿# Ranking`1
-_namespace: [Microsoft.VisualBasic.Mathematical.Ranks](./index.md)_
+_namespace: [Microsoft.VisualBasic.Mathematical.Ranks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Ranks/index.md')"></a>)_
 
 
 

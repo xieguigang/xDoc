@@ -35,7 +35,7 @@ Module Program
 
         Call $"{path} --> {mdOutputFolder}".__DEBUG_ECHO
 
-        Dim type As Libraries = args.GetValue("/lib", Libraries.Github)
+        Dim type As Libraries = args.GetValue("/lib", Libraries.Github, __ctype:=AddressOf GetLibraryType)
 
         If ps.ExportMarkdownFiles(mdOutputFolder, [lib]:=type) Then
             Call "Document library generates success!".__DEBUG_ECHO

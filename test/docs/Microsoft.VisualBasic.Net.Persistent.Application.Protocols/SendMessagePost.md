@@ -1,5 +1,5 @@
 ﻿# SendMessagePost
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Application.Protocols](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Persistent.Application.Protocols](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application.Protocols/index.md')"></a>)_
 
 
 

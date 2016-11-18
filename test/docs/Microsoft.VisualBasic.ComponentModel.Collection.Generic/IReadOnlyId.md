@@ -1,5 +1,5 @@
 ﻿# IReadOnlyId
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')"></a>)_
 
 
 

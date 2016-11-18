@@ -1,5 +1,5 @@
 ﻿# USER
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')"></a>)_
 
 服务器也相当于一个USER，只不过服务器的UID为0，即最高级的用户
 

@@ -1,5 +1,5 @@
 ﻿# IniExtensions
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
 
 读写Ini文件的拓展
 

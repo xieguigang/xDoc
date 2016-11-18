@@ -1,5 +1,5 @@
 ﻿# XmlExtensions
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# PartitionedStream
-_namespace: [Microsoft.VisualBasic.Text](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
 
 只是针对文本文件的
 

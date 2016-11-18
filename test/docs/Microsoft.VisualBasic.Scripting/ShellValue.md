@@ -1,5 +1,5 @@
 ﻿# ShellValue
-_namespace: [Microsoft.VisualBasic.Scripting](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')"></a>)_
 
 Script shell result.
 

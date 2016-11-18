@@ -1,5 +1,5 @@
 ﻿# VisualBasicCode
-_namespace: [Microsoft.VisualBasic.Serialization.JSON](./index.md)_
+_namespace: [Microsoft.VisualBasic.Serialization.JSON](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON/index.md')"></a>)_
 
 Generates the VisualBasic source code from json schema
 

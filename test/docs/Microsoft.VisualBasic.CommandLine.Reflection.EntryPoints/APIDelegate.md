@@ -1,5 +1,5 @@
 ﻿# APIDelegate
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints/index.md')"></a>)_
 
 
 

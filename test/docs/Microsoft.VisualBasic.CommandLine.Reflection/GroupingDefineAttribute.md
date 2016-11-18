@@ -1,5 +1,5 @@
 ﻿# GroupingDefineAttribute
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
 
 应用于命令行类型容器之上的，用于功能分组的详细描述信息
 

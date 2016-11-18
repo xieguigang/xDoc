@@ -1,5 +1,5 @@
 ﻿# Constants
-_namespace: [Microsoft.VisualBasic.Terminal.Utility](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.Utility](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')"></a>)_
 
 Constants used with PInvoke methods
 

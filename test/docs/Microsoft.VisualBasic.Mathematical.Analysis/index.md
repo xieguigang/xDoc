@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[TokenConnections](./TokenConnections.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Analysis/TokenConnections.md')">TokenConnections</a>||
 

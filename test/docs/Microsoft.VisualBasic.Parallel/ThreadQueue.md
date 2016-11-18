@@ -1,5 +1,5 @@
 ﻿# ThreadQueue
-_namespace: [Microsoft.VisualBasic.Parallel](./index.md)_
+_namespace: [Microsoft.VisualBasic.Parallel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel/index.md')"></a>)_
 
 任务线程队列
 

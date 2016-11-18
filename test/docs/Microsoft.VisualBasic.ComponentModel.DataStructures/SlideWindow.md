@@ -1,5 +1,5 @@
 ﻿# SlideWindow
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')"></a>)_
 
 Create a collection of slide Windows data for the target collection object.
 

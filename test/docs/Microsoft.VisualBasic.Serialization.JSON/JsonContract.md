@@ -1,5 +1,5 @@
 ﻿# JsonContract
-_namespace: [Microsoft.VisualBasic.Serialization.JSON](./index.md)_
+_namespace: [Microsoft.VisualBasic.Serialization.JSON](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON/index.md')"></a>)_
 
 Only works on the Public visible type.
  (使用.NET系统环境之中自带的框架进行JSON序列化和反序列化)

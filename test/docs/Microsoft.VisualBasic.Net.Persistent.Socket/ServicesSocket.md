@@ -1,5 +1,5 @@
 ﻿# ServicesSocket
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Socket](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Persistent.Socket](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')"></a>)_
 
 
 

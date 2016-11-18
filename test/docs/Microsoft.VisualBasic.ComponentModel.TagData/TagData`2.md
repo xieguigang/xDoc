@@ -1,5 +1,5 @@
 ﻿# TagData`2
-_namespace: [Microsoft.VisualBasic.ComponentModel.TagData](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.TagData](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.TagData/index.md')"></a>)_
 
 
 

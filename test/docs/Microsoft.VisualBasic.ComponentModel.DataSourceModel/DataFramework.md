@@ -1,5 +1,5 @@
 ﻿# DataFramework
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel/index.md')"></a>)_
 
 在目标对象中必须要具有一个属性有自定义属性@``T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.DataFrameColumnAttribute``
 

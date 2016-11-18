@@ -3,8 +3,8 @@
 
 |Type|Summary|
 |----|-------|
-|[BinaryTree`1](./BinaryTree`1.md)|The Binary tree itself. ...|
-|[ClusterParts](./ClusterParts.md)||
-|[NewickParser](./NewickParser.md)|http://www.evolgenius.info/evolview/|
-|[TreeNode`1](./TreeNode`1.md)|Define tree nodes|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/BinaryTree`1.md')">BinaryTree`1</a>|The Binary tree itself. ...|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/ClusterParts.md')">ClusterParts</a>||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/NewickParser.md')">NewickParser</a>|http://www.evolgenius.info/evolview/|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/TreeNode`1.md')">TreeNode`1</a>|Define tree nodes|
 

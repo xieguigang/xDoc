@@ -1,5 +1,5 @@
 ﻿# Md5HashProvider
-_namespace: [Microsoft.VisualBasic.SecurityString](./index.md)_
+_namespace: [Microsoft.VisualBasic.SecurityString](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SecurityString/index.md')"></a>)_
 
 并行化的需求
 

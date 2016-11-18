@@ -1,5 +1,5 @@
 ﻿# Includes
-_namespace: [Microsoft.VisualBasic.FileIO](./index.md)_
+_namespace: [Microsoft.VisualBasic.FileIO](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO/index.md')"></a>)_
 
 File includes search tools
 

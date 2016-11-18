@@ -1,5 +1,5 @@
 ﻿# MailConfigure
-_namespace: [Microsoft.VisualBasic.Net.Mailto](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Mailto](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Mailto/index.md')"></a>)_
 
 
 

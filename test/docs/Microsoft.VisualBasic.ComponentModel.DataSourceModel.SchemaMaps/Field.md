@@ -1,5 +1,5 @@
 ﻿# Field
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')"></a>)_
 
 @``T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.DataFrameColumnAttribute``属性的别称
 

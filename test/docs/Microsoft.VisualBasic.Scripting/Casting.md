@@ -1,5 +1,5 @@
 ﻿# Casting
-_namespace: [Microsoft.VisualBasic.Scripting](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')"></a>)_
 
 Methods for convert the @``T:System.String`` to some .NET data types.
 

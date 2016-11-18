@@ -1,5 +1,5 @@
 ﻿# ColorCube
-_namespace: [Microsoft.VisualBasic.Imaging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Imaging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')"></a>)_
 
 Describes the RGB color space as a 3D cube with the origin at Black.
 

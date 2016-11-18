@@ -1,5 +1,5 @@
 ﻿# TaskPartitions
-_namespace: [Microsoft.VisualBasic.Parallel.Linq](./index.md)_
+_namespace: [Microsoft.VisualBasic.Parallel.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Linq/index.md')"></a>)_
 
 对大量的短时间的任务进行分区的操作是在这里完成的
 

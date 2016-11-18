@@ -1,5 +1,5 @@
 ﻿# OSVersionInfo
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits](./index.md)_
+_namespace: [Microsoft.VisualBasic.SoftwareToolkits](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits/index.md')"></a>)_
 
 Provides detailed information about the host operating system.(用于判断操作系统的具体版本信息的工具)
 

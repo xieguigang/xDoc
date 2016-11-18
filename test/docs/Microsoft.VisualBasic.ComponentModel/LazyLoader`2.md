@@ -1,5 +1,5 @@
 ﻿# LazyLoader`2
-_namespace: [Microsoft.VisualBasic.ComponentModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
 
 当所需要进行加载的数据的量非常大的时候，则可以使用本方法进行延时按需加载
 

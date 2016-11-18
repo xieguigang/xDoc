@@ -1,5 +1,5 @@
 ﻿# Options
-_namespace: [Microsoft.VisualBasic.Language.UnixBash.SearchOpt](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.UnixBash.SearchOpt](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash.SearchOpt/index.md')"></a>)_
 
 
 

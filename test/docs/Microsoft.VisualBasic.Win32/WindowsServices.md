@@ -1,5 +1,5 @@
 ﻿# WindowsServices
-_namespace: [Microsoft.VisualBasic.Win32](./index.md)_
+_namespace: [Microsoft.VisualBasic.Win32](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')"></a>)_
 
 Windows event logger services & installer services.
  (这个模块主要的功能是日志服务，包括在安装阶段对日志记录的创建以及自定义url协议的创建等，

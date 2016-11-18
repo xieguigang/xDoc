@@ -1,5 +1,5 @@
 ﻿# Optional
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
 
 Optional commandline arguments.(本属性标记一个命令行字符串之中的可选参数)
 

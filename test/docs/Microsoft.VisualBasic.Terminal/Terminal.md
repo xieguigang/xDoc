@@ -1,5 +1,5 @@
 ﻿# Terminal
-_namespace: [Microsoft.VisualBasic.Terminal](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')"></a>)_
 
 Represents the standard input, output, and error streams for console applications. 交互式的命令行终端
 

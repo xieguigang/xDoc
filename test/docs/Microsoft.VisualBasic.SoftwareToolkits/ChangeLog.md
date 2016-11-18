@@ -1,5 +1,5 @@
 ﻿# ChangeLog
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits](./index.md)_
+_namespace: [Microsoft.VisualBasic.SoftwareToolkits](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits/index.md')"></a>)_
 
 Tools for generate the program change log document.
 

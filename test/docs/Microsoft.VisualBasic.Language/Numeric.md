@@ -1,5 +1,5 @@
 ﻿# Numeric
-_namespace: [Microsoft.VisualBasic.Language](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
 
 Defines a generalized type-specific comparison method that a value type or class
  implements to order or sort its instances.

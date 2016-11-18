@@ -1,5 +1,5 @@
 ﻿# SingleInstanceFormEntry`1
-_namespace: [Microsoft.VisualBasic.Windows.Forms](./index.md)_
+_namespace: [Microsoft.VisualBasic.Windows.Forms](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Windows.Forms/index.md')"></a>)_
 
 只打开一个窗体，当窗体已经打开的时候，就会忽略当前的这一次单击事件，反之没有窗体被打开的时候就会打开新的窗体
 

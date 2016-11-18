@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[NameOf](./NameOf.md)|Name of @``T:System.Text.RegularExpressions.RegexOptions``|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.RegexExtensions/NameOf.md')">NameOf</a>|Name of @``T:System.Text.RegularExpressions.RegexOptions``|
 

@@ -1,5 +1,5 @@
 ﻿# SlideWindowHandle`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')"></a>)_
 
 A slide window data model.(滑窗操作的数据模型)
 

@@ -1,5 +1,5 @@
 ﻿# IORedirectFile
-_namespace: [Microsoft.VisualBasic.CommandLine](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
 
 Using this class object rather than @``T:Microsoft.VisualBasic.CommandLine.IORedirect`` is more encouraged.
  (假若所建立的子进程并不需要进行终端交互，相较于@``T:Microsoft.VisualBasic.CommandLine.IORedirect``对象，更加推荐使用本对象类型来执行。

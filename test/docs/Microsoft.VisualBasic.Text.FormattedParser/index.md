@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[DoContinute](./DoContinute.md)|Condition for continue move the parser pointer.|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.FormattedParser/DoContinute.md')">DoContinute</a>|Condition for continue move the parser pointer.|
 

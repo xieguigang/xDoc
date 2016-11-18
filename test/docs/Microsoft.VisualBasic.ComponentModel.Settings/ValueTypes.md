@@ -1,5 +1,5 @@
 ﻿# ValueTypes
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
 
 这个并不是指宿主属性的数据类型，而是指代这一数据类型所代表的具体的实际对象
 

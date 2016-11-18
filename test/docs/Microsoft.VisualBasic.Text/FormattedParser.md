@@ -1,5 +1,5 @@
 ﻿# FormattedParser
-_namespace: [Microsoft.VisualBasic.Text](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
 
 Parser API for the well formatted documents.
 

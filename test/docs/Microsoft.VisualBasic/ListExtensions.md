@@ -1,5 +1,5 @@
 ﻿# ListExtensions
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 Initializes a new instance of the @``T:Microsoft.VisualBasic.Language.List`1```1 class that
  contains elements copied from the specified collection and has sufficient capacity

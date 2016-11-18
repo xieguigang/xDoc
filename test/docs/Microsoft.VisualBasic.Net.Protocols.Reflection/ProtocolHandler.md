@@ -1,5 +1,5 @@
 ﻿# ProtocolHandler
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')"></a>)_
 
 这个模块只处理@``T:Microsoft.VisualBasic.Net.Abstract.DataRequestHandler``类型的接口
 

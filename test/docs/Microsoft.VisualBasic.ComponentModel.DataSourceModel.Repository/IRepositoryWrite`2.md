@@ -1,5 +1,5 @@
 ﻿# IRepositoryWrite`2
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')"></a>)_
 
 Interface to support writing (and deletes) to a typed repository
 

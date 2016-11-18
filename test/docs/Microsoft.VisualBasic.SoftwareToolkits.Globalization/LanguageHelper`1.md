@@ -1,5 +1,5 @@
 ﻿# LanguageHelper`1
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.Globalization](./index.md)_
+_namespace: [Microsoft.VisualBasic.SoftwareToolkits.Globalization](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.Globalization/index.md')"></a>)_
 
 
 

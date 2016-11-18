@@ -1,5 +1,5 @@
 ﻿# INIProfile
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')"></a>)_
 
 Wrapper class for *.ini and *.inf configure file.(可能文件中的注释行会受到影响，所以请尽量使用本类型中的两个静态函数来操作INI文件)
 

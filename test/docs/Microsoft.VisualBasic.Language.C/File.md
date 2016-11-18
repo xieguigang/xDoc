@@ -1,5 +1,5 @@
 ﻿# File
-_namespace: [Microsoft.VisualBasic.Language.C](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.C](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C/index.md')"></a>)_
 
 
 

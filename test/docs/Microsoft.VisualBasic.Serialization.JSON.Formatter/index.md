@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[JsonFormatter](./JsonFormatter.md)|Provides JSON formatting functionality.|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON.Formatter/JsonFormatter.md')">JsonFormatter</a>|Provides JSON formatting functionality.|
 

@@ -1,5 +1,5 @@
 ﻿# List`1
-_namespace: [Microsoft.VisualBasic.Language](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
 
 Represents a strongly typed list of objects that can be accessed by index. Provides
  methods to search, sort, and manipulate lists.To browse the .NET Framework source

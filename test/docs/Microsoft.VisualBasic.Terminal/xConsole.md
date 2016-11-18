@@ -1,5 +1,5 @@
 ﻿# xConsole
-_namespace: [Microsoft.VisualBasic.Terminal](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')"></a>)_
 
 Allows you to color and animate the console. ~ overpowered.it ~ TheTrigger - 💸
 

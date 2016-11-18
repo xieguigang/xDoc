@@ -1,5 +1,5 @@
 ﻿# TaskManager
-_namespace: [Microsoft.VisualBasic.Win32](./index.md)_
+_namespace: [Microsoft.VisualBasic.Win32](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')"></a>)_
 
 Windows的任务管理器的接口
 

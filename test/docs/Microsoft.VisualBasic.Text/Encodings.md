@@ -1,5 +1,5 @@
 ﻿# Encodings
-_namespace: [Microsoft.VisualBasic.Text](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
 
 The text document encodings constant for text file read and write
 

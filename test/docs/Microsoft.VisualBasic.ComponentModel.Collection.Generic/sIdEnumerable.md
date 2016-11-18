@@ -1,5 +1,5 @@
 ﻿# sIdEnumerable
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')"></a>)_
 
 This type of object have a @``P:Microsoft.VisualBasic.ComponentModel.Collection.Generic.sIdEnumerable.Identifier`` property to unique identified itself in a collection.
 

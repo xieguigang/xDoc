@@ -1,5 +1,5 @@
 ﻿# Functions
-_namespace: [Microsoft.VisualBasic.Language.Perl](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.Perl](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Perl/index.md')"></a>)_
 
 
 

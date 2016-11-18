@@ -1,5 +1,5 @@
 ﻿# MSG_TYPES
-_namespace: [Microsoft.VisualBasic.Logging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Logging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Logging/index.md')"></a>)_
 
 The types enumeration of the log file message.
 

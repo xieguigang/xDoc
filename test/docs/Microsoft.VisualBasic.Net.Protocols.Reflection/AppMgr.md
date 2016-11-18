@@ -1,5 +1,5 @@
 ﻿# AppMgr
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')"></a>)_
 
 能够处理多种协议数据
 

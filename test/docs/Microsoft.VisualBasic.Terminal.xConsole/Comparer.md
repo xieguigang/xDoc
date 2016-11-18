@@ -1,5 +1,5 @@
 ﻿# Comparer
-_namespace: [Microsoft.VisualBasic.Terminal.xConsole](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.xConsole](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.xConsole/index.md')"></a>)_
 
 This can compute the input then return back the most appropriate word.
 

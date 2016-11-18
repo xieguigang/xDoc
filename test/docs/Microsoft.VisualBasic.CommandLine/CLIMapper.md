@@ -1,5 +1,5 @@
 ﻿# CLIMapper
-_namespace: [Microsoft.VisualBasic.CommandLine](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
 
 从可写属性之中赋值
 

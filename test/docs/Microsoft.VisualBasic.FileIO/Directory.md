@@ -1,5 +1,5 @@
 ﻿# Directory
-_namespace: [Microsoft.VisualBasic.FileIO](./index.md)_
+_namespace: [Microsoft.VisualBasic.FileIO](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO/index.md')"></a>)_
 
 A wrapper object for the processing of relative file path.
 

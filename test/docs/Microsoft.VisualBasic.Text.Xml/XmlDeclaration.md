@@ -1,5 +1,5 @@
 ﻿# XmlDeclaration
-_namespace: [Microsoft.VisualBasic.Text.Xml](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text.Xml](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml/index.md')"></a>)_
 
 
 

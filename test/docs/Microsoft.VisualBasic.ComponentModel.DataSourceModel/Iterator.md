@@ -1,5 +1,5 @@
 ﻿# Iterator
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel/index.md')"></a>)_
 
 Implements for the @``T:System.Collections.Generic.IEnumerable`1``, Supports a simple iteration over a non-generic collection.
  (这个迭代器对象主要是用在远程数据源之中的，对于本地的数据源而言，使用这个迭代器的效率太低了，但是对于远程数据源而言，由于存在网络延迟，所以这个迭代器的效率影响将可以被忽略不计)

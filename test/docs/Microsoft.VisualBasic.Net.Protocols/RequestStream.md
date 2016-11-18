@@ -1,5 +1,5 @@
 ﻿# RequestStream
-_namespace: [Microsoft.VisualBasic.Net.Protocols](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')"></a>)_
 
 Socket user client => Socket server data request &
  Socket server => Socket user client data response package.

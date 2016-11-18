@@ -1,5 +1,5 @@
 ﻿# TokenParser`1
-_namespace: [Microsoft.VisualBasic.Scripting.TokenIcer](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting.TokenIcer](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.TokenIcer/index.md')"></a>)_
 
 TokenParser
 

@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Ranking`1](./Ranking`1.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Ranks/Ranking`1.md')">Ranking`1</a>||
 

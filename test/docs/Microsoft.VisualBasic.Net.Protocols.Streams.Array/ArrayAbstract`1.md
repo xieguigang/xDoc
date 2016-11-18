@@ -1,5 +1,5 @@
 ﻿# ArrayAbstract`1
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Streams.Array](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols.Streams.Array](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams.Array/index.md')"></a>)_
 
 
 

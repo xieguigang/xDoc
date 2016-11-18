@@ -1,5 +1,5 @@
 ﻿# Grouping
-_namespace: [Microsoft.VisualBasic.CommandLine](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
 
 
 

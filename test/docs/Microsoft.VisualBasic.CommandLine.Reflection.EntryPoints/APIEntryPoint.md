@@ -1,5 +1,5 @@
 ﻿# APIEntryPoint
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints/index.md')"></a>)_
 
 The entry point data of the commands in the command line which was original loaded 
  from the source meta data in the compiled target.

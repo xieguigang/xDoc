@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[REPARSE_DATA_BUFFER](./REPARSE_DATA_BUFFER.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint/REPARSE_DATA_BUFFER.md')">REPARSE_DATA_BUFFER</a>||
 

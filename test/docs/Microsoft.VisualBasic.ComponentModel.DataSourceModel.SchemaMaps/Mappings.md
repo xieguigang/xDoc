@@ -1,5 +1,5 @@
 ﻿# Mappings
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')"></a>)_
 
 
 

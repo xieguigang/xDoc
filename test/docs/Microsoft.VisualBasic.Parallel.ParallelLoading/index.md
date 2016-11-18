@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[LoadEntry](./LoadEntry.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ParallelLoading/LoadEntry.md')">LoadEntry</a>||
 

@@ -1,5 +1,5 @@
 ﻿# ProjectSpace
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly](./index.md)_
+_namespace: [Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly/index.md')"></a>)_
 
 A collection of one or more projects put together, and their attendant namespaces.
 

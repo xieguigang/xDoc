@@ -1,5 +1,5 @@
 ﻿# DebuggerLevels
-_namespace: [Microsoft.VisualBasic.Debugging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Debugging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Debugging/index.md')"></a>)_
 
 默认的参数值是@``F:Microsoft.VisualBasic.Debugging.DebuggerLevels.On``
 

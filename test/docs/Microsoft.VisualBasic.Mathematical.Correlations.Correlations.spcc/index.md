@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[__spccInner](./__spccInner.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations.Correlations.spcc/__spccInner.md')">__spccInner</a>||
 

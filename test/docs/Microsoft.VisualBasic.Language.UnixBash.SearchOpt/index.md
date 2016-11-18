@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Options](./Options.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash.SearchOpt/Options.md')">Options</a>||
 

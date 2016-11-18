@@ -1,5 +1,5 @@
 ﻿# SSLClient
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')"></a>)_
 
 
 

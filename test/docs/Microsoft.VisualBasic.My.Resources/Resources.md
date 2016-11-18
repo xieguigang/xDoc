@@ -1,5 +1,5 @@
 ﻿# Resources
-_namespace: [Microsoft.VisualBasic.My.Resources](./index.md)_
+_namespace: [Microsoft.VisualBasic.My.Resources](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.My.Resources/index.md')"></a>)_
 
 A strongly-typed resource class, for looking up localized strings, etc.
 

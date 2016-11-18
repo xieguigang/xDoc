@@ -1,5 +1,5 @@
 ﻿# VBDebugger
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 Debugger helper module for VisualBasic Enterprises System.
 

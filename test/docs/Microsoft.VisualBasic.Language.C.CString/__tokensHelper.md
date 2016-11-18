@@ -1,5 +1,5 @@
 ﻿# __tokensHelper
-_namespace: [Microsoft.VisualBasic.Language.C.CString](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.C.CString](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C.CString/index.md')"></a>)_
 
 
 

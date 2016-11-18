@@ -1,5 +1,5 @@
 ﻿# PropertyValue`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel/index.md')"></a>)_
 
 The @``T:System.Reflection.PropertyInfo`` like definition of the extension property.
 

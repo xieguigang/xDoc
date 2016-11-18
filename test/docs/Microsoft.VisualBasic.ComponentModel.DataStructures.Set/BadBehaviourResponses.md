@@ -1,5 +1,5 @@
 ﻿# BadBehaviourResponses
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures.Set](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures.Set](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.Set/index.md')"></a>)_
 
 Enum of values to determine the aggressiveness of the response of the
  class to bad data.

@@ -1,5 +1,5 @@
 ﻿# PackageNamespace
-_namespace: [Microsoft.VisualBasic.Scripting.MetaData](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting.MetaData](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.MetaData/index.md')"></a>)_
 
 This attribute provides a more details information about a namepace package module in your scripting plugins.
 

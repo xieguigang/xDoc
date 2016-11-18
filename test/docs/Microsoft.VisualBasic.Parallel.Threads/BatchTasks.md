@@ -1,5 +1,5 @@
 ﻿# BatchTasks
-_namespace: [Microsoft.VisualBasic.Parallel.Threads](./index.md)_
+_namespace: [Microsoft.VisualBasic.Parallel.Threads](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Threads/index.md')"></a>)_
 
 Parallel batch task tool for processor
 

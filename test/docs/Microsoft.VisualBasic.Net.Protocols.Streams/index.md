@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[String](./String.md)|字符串序列流|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams/String.md')">String</a>|字符串序列流|
 

@@ -1,5 +1,5 @@
 ﻿# GrayBitmap
-_namespace: [Microsoft.VisualBasic.Imaging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Imaging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')"></a>)_
 
 Download by http://www.codefans.net
 

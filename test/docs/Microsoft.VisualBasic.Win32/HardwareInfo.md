@@ -1,5 +1,5 @@
 ﻿# HardwareInfo
-_namespace: [Microsoft.VisualBasic.Win32](./index.md)_
+_namespace: [Microsoft.VisualBasic.Win32](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')"></a>)_
 
 Get mother board serial numbers and CPU IDs in Visual Basic .NET
 

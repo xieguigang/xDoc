@@ -3,6 +3,6 @@
 
 |Type|Summary|
 |----|-------|
-|[APIDelegate](./APIDelegate.md)||
-|[APIEntryPoint](./APIEntryPoint.md)|The entry point data of the commands in the command line which was original loaded  ...|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints/APIDelegate.md')">APIDelegate</a>||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints/APIEntryPoint.md')">APIEntryPoint</a>|The entry point data of the commands in the command line which was original loaded  ...|
 

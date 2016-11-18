@@ -1,5 +1,5 @@
 ﻿# ClusterParts
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/index.md')"></a>)_
 
 
 

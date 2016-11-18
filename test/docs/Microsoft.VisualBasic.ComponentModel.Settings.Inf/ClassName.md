@@ -1,5 +1,5 @@
 ﻿# ClassName
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')"></a>)_
 
 定义在Ini配置文件之中的Section的名称
 

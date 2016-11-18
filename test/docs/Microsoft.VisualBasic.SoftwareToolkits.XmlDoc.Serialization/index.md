@@ -3,7 +3,7 @@
 
 |Type|Summary|
 |----|-------|
-|[Doc](./Doc.md)|.NET assembly generated XML comments documents file.|
-|[DocAPI](./DocAPI.md)||
-|[memberTypes](./memberTypes.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization/Doc.md')">Doc</a>|.NET assembly generated XML comments documents file.|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization/DocAPI.md')">DocAPI</a>||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization/memberTypes.md')">memberTypes</a>||
 

@@ -1,5 +1,5 @@
 ﻿# MatrixExtensions
-_namespace: [Microsoft.VisualBasic.Mathematical](./index.md)_
+_namespace: [Microsoft.VisualBasic.Mathematical](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')"></a>)_
 
 This class contains methods that perform mathematical operations on matrices.
  Operations currently supported are matrix multiplication and scalar multiplication.

@@ -1,5 +1,5 @@
 ﻿# RandomRange
-_namespace: [Microsoft.VisualBasic.Mathematical](./index.md)_
+_namespace: [Microsoft.VisualBasic.Mathematical](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')"></a>)_
 
 针对负数到正数的range随机数，小数位最多精确到1E-4
 

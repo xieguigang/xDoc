@@ -1,5 +1,5 @@
 ﻿# IDataRequestHandler
-_namespace: [Microsoft.VisualBasic.Net.Abstract](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Abstract](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Abstract/index.md')"></a>)_
 
 
 

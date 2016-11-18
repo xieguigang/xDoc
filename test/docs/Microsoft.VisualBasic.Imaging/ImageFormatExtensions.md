@@ -1,5 +1,5 @@
 ﻿# ImageFormatExtensions
-_namespace: [Microsoft.VisualBasic.Imaging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Imaging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')"></a>)_
 
 Specifies the file format of the image. Not inheritable.
 

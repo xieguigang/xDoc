@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[__tokensHelper](./__tokensHelper.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C.CString/__tokensHelper.md')">__tokensHelper</a>||
 

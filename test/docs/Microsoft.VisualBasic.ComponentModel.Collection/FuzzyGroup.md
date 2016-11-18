@@ -1,5 +1,5 @@
 ﻿# FuzzyGroup
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Collection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection/index.md')"></a>)_
 
 对数据进行分组，通过标签数据的相似度
 

@@ -1,5 +1,5 @@
 ﻿# FirstOrDefaultHelper`1
-_namespace: [Microsoft.VisualBasic.Language.LinqAPIHelpers](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.LinqAPIHelpers](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.LinqAPIHelpers/index.md')"></a>)_
 
 
 

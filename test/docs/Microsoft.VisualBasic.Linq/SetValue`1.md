@@ -1,5 +1,5 @@
 ﻿# SetValue`1
-_namespace: [Microsoft.VisualBasic.Linq](./index.md)_
+_namespace: [Microsoft.VisualBasic.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')"></a>)_
 
 Set value linq expression helper
 

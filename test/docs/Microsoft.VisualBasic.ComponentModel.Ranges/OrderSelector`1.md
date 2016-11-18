@@ -1,5 +1,5 @@
 ﻿# OrderSelector`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.Ranges](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Ranges](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Ranges/index.md')"></a>)_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# Resources
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits](./index.md)_
+_namespace: [Microsoft.VisualBasic.SoftwareToolkits](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits/index.md')"></a>)_
 
 Represents a resource manager that provides convenient access to culture-specific
  resources at run time.Security Note: Calling methods in this class with untrusted

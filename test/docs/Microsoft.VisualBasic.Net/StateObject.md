@@ -1,5 +1,5 @@
 ﻿# StateObject
-_namespace: [Microsoft.VisualBasic.Net](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
 
 State object for reading client data asynchronously
 

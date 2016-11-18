@@ -1,5 +1,5 @@
 ﻿# InputHandler
-_namespace: [Microsoft.VisualBasic.Scripting](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')"></a>)_
 
 转换从终端或者脚本文件之中输入的字符串的类型的转换
 

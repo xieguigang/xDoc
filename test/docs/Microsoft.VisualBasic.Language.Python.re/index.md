@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Match](./Match.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python.re/Match.md')">Match</a>||
 

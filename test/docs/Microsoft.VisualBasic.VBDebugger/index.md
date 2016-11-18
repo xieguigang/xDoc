@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[VisualBasicAppException](./VisualBasicAppException.md)|VisualBasic application exception wrapper|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.VBDebugger/VisualBasicAppException.md')">VisualBasicAppException</a>|VisualBasic application exception wrapper|
 

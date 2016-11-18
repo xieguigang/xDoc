@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[CPOLLicense](./CPOLLicense.md)|http://www.codeproject.com/Articles/42492/Using-LINQ-to-Calculate-Basic-Statistics|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.StatisticsMathExtensions/CPOLLicense.md')">CPOLLicense</a>|http://www.codeproject.com/Articles/42492/Using-LINQ-to-Calculate-Basic-Statistics|
 

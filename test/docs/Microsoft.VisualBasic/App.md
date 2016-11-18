@@ -1,5 +1,5 @@
 ﻿# App
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 Provides information about, and means to manipulate, the current environment Application information collection.
  (More easily runtime environment information provider on @``F:System.PlatformID.Unix``/LINUX platform for visualbasic program.)

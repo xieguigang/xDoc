@@ -1,5 +1,5 @@
 ﻿# DictionaryParser
-_namespace: [Microsoft.VisualBasic.CommandLine.Parsers](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Parsers](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Parsers/index.md')"></a>)_
 
 
 

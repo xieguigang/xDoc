@@ -1,5 +1,5 @@
 ﻿# Namespace
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
 
 (@``T:Microsoft.VisualBasic.CommandLine.Interpreter``[CommandLine interpreter] executation Entry and the ShellScript software packages namespace.)这是一个命令行解释器所使用的执行入口点的集合
 

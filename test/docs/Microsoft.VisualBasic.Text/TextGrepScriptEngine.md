@@ -1,5 +1,5 @@
 ﻿# TextGrepScriptEngine
-_namespace: [Microsoft.VisualBasic.Text](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
 
 A script object for grep the gene id in the blast output query and subject title.(用于解析基因名称的脚本类，这个对象是在项目的初始阶段，为了方便命令行操作而设置的)
 

@@ -1,5 +1,5 @@
 ﻿# Certificate
-_namespace: [Microsoft.VisualBasic.Net.SSL](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.SSL](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL/index.md')"></a>)_
 
 应用程序的完整性验证和用户身份的验证
 

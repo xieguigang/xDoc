@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[WindowsNameList](./WindowsNameList.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.OSVersionInfo/WindowsNameList.md')">WindowsNameList</a>||
 

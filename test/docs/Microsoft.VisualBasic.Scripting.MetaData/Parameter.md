@@ -1,5 +1,5 @@
 ﻿# Parameter
-_namespace: [Microsoft.VisualBasic.Scripting.MetaData](./index.md)_
+_namespace: [Microsoft.VisualBasic.Scripting.MetaData](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.MetaData/index.md')"></a>)_
 
 You Cann assign the parameter value using the parameter's alias name in the scripting using this attribute.
  (你可以使用本属性将函数的参数名进行重命名，这样子你就可以使用本属性得到一个书写更加漂亮的编程脚本文件了)

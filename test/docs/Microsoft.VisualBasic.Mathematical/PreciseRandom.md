@@ -1,5 +1,5 @@
 ﻿# PreciseRandom
-_namespace: [Microsoft.VisualBasic.Mathematical](./index.md)_
+_namespace: [Microsoft.VisualBasic.Mathematical](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')"></a>)_
 
 主要针对的是非常小的小数（仅适用于Positive Number）
 

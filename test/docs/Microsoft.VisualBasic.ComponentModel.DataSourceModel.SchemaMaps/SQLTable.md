@@ -1,5 +1,5 @@
 ﻿# SQLTable
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')"></a>)_
 
 SQL之中的一个数据表的抽象描述接口
 

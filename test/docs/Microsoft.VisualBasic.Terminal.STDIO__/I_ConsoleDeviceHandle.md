@@ -1,5 +1,5 @@
 ﻿# I_ConsoleDeviceHandle
-_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.STDIO__/index.md')"></a>)_
 
 Represents the standard input, output, and error streams for console applications.(表示一个输入输出流控制台界面接口)
 

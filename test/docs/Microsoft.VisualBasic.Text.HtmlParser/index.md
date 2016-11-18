@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[TableParser](./TableParser.md)|The string parser for the table html text block|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.HtmlParser/TableParser.md')">TableParser</a>|The string parser for the table html text block|
 

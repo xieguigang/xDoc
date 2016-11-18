@@ -1,5 +1,5 @@
 ﻿# ActiveViews
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
 
 
 

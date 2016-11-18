@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[DictionaryParser](./DictionaryParser.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Parsers/DictionaryParser.md')">DictionaryParser</a>||
 

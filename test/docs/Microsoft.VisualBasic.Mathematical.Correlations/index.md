@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Correlations](./Correlations.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations/Correlations.md')">Correlations</a>||
 

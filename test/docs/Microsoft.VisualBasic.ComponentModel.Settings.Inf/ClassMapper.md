@@ -1,5 +1,5 @@
 ﻿# ClassMapper
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')"></a>)_
 
 使用这个属性来标记需要进行序列化的对象属性: @``T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.DataFrameColumnAttribute``
 

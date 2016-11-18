@@ -1,5 +1,5 @@
 ﻿# CFormatProvider
-_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.STDIO__](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.STDIO__/index.md')"></a>)_
 
 Provides C like format print
 

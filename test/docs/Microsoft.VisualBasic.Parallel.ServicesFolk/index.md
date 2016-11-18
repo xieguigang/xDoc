@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[__getChildPortal](./__getChildPortal.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ServicesFolk/__getChildPortal.md')">__getChildPortal</a>||
 

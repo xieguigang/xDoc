@@ -1,5 +1,5 @@
 ﻿# IKeyedEntity`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')"></a>)_
 
 Interface defining any item we can store in a repository and can identify by
  an unique key

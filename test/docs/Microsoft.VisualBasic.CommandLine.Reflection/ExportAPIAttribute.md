@@ -1,5 +1,5 @@
 ﻿# ExportAPIAttribute
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
 
 A command object that with a specific name.(一个具有特定名称命令执行对象)
 

@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[__groupHelper`1](./__groupHelper`1.md)|分组操作的内部帮助类|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup/__groupHelper`1.md')">__groupHelper`1</a>|分组操作的内部帮助类|
 

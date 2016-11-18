@@ -1,5 +1,5 @@
 ﻿# Dictionary`1
-_namespace: [Microsoft.VisualBasic](./index.md)_
+_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
 
 Represents a collection of keys and values.To browse the .NET Framework source
  code for this type, see the Reference Source.

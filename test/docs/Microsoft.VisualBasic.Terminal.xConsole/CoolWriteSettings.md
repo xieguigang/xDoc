@@ -1,5 +1,5 @@
 ﻿# CoolWriteSettings
-_namespace: [Microsoft.VisualBasic.Terminal.xConsole](./index.md)_
+_namespace: [Microsoft.VisualBasic.Terminal.xConsole](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.xConsole/index.md')"></a>)_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# BufferedStream
-_namespace: [Microsoft.VisualBasic.ComponentModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
 
 Buffered large text dataset reader
 

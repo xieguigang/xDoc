@@ -1,5 +1,5 @@
 ﻿# XmlDoc
-_namespace: [Microsoft.VisualBasic.Text.Xml](./index.md)_
+_namespace: [Microsoft.VisualBasic.Text.Xml](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml/index.md')"></a>)_
 
 请使用@``M:Microsoft.VisualBasic.Text.Xml.XmlDoc.ToString``方法获取修改之后的Xml文档
 

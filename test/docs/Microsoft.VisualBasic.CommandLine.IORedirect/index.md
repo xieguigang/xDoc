@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[ProcessExitCallBack](./ProcessExitCallBack.md)|A function pointer for process the events when the target invoked child process was terminated and exit. ...|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.IORedirect/ProcessExitCallBack.md')">ProcessExitCallBack</a>|A function pointer for process the events when the target invoked child process was terminated and exit. ...|
 

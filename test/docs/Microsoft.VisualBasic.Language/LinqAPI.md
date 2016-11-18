@@ -1,5 +1,5 @@
 ﻿# LinqAPI
-_namespace: [Microsoft.VisualBasic.Language](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
 
 Language syntax extension for the Linq expression in VisualBasic language
 

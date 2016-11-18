@@ -1,5 +1,5 @@
 ﻿# StructFormatter
-_namespace: [Microsoft.VisualBasic.Serialization.BinaryDumping](./index.md)_
+_namespace: [Microsoft.VisualBasic.Serialization.BinaryDumping](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.BinaryDumping/index.md')"></a>)_
 
 
 

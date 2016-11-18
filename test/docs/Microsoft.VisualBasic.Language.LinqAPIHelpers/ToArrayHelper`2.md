@@ -1,5 +1,5 @@
 ﻿# ToArrayHelper`2
-_namespace: [Microsoft.VisualBasic.Language.LinqAPIHelpers](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.LinqAPIHelpers](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.LinqAPIHelpers/index.md')"></a>)_
 
 Execute a linq expression. Creates an array from a @``T:System.Collections.Generic.IEnumerable`1``.
 

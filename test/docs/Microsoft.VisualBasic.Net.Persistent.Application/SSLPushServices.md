@@ -1,5 +1,5 @@
 ﻿# SSLPushServices
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')"></a>)_
 
 消息都是经过加密操作了的
 

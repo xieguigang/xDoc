@@ -1,5 +1,5 @@
 ﻿# IParallelTask
-_namespace: [Microsoft.VisualBasic.Parallel.Tasks](./index.md)_
+_namespace: [Microsoft.VisualBasic.Parallel.Tasks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')"></a>)_
 
 
 

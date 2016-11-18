@@ -1,5 +1,5 @@
 ﻿# GDIPlusDeviceHandle
-_namespace: [Microsoft.VisualBasic.Imaging](./index.md)_
+_namespace: [Microsoft.VisualBasic.Imaging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')"></a>)_
 
 GDI+ device handle for encapsulates a GDI+ drawing surface.(GDI+绘图设备句柄)
 

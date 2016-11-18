@@ -1,5 +1,5 @@
 ﻿# Byte
-_namespace: [Microsoft.VisualBasic.Emit.Marshal](./index.md)_
+_namespace: [Microsoft.VisualBasic.Emit.Marshal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Marshal/index.md')"></a>)_
 
 Represents a pointer to an 8-bit unsigned integer array.
 

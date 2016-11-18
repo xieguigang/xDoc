@@ -1,5 +1,5 @@
 ﻿# AsynInvoke
-_namespace: [Microsoft.VisualBasic.Net](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
 
 The server socket should returns some data string to this client or this client will stuck at the @``M:Microsoft.VisualBasic.Net.AsynInvoke.SendMessage(Microsoft.VisualBasic.Net.Protocols.RequestStream)`` function.
  (服务器端@``T:Microsoft.VisualBasic.Net.TcpSynchronizationServicesSocket``必须要返回数据，否则本客户端会在@``M:Microsoft.VisualBasic.Net.AsynInvoke.SendMessage(Microsoft.VisualBasic.Net.Protocols.RequestStream)``函数位置一直处于等待的状态)

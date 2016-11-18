@@ -1,5 +1,5 @@
 ﻿# KeyValuePair
-_namespace: [Microsoft.VisualBasic.ComponentModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
 
 An object for the text file format xml data storage.(用于存储与XML文件之中的字符串键值对对象)
 

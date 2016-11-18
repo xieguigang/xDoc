@@ -3,6 +3,6 @@
 
 |Type|Summary|
 |----|-------|
-|[Evaluations](./Evaluations.md)||
-|[ISimilarity](./ISimilarity.md)|Summary description for StringMatcher.|
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Similarity/Evaluations.md')">Evaluations</a>||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Similarity/ISimilarity.md')">ISimilarity</a>|Summary description for StringMatcher.|
 

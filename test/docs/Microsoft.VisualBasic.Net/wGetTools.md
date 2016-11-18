@@ -1,5 +1,5 @@
 ﻿# wGetTools
-_namespace: [Microsoft.VisualBasic.Net](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
 
 提供一些比较详细的数据信息和事件处理
 

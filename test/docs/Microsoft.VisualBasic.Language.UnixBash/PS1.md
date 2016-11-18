@@ -1,5 +1,5 @@
 ﻿# PS1
-_namespace: [Microsoft.VisualBasic.Language.UnixBash](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.UnixBash](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash/index.md')"></a>)_
 
 PS (Prompt Sign)
 

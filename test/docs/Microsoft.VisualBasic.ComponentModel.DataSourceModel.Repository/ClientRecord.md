@@ -1,5 +1,5 @@
 ﻿# ClientRecord
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')"></a>)_
 
 Record for storing a client record in the common database
 

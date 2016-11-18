@@ -1,5 +1,5 @@
 ﻿# PingUtility
-_namespace: [Microsoft.VisualBasic.Net](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
 
 http://www.codeproject.com/Articles/18635/Ping-exe-replica-in-C
  

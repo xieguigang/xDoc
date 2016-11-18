@@ -1,5 +1,5 @@
 ﻿# Match
-_namespace: [Microsoft.VisualBasic.Language.Python.re](./index.md)_
+_namespace: [Microsoft.VisualBasic.Language.Python.re](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python.re/index.md')"></a>)_
 
 
 

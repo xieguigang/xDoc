@@ -1,5 +1,5 @@
 ﻿# Protocols
-_namespace: [Microsoft.VisualBasic.Net.Protocols.RequestStream](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols.RequestStream](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.RequestStream/index.md')"></a>)_
 
 最基本的Socket数据串流协议
 

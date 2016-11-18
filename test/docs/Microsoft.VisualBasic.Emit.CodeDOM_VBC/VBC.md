@@ -1,5 +1,5 @@
 ﻿# VBC
-_namespace: [Microsoft.VisualBasic.Emit.CodeDOM_VBC](./index.md)_
+_namespace: [Microsoft.VisualBasic.Emit.CodeDOM_VBC](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.CodeDOM_VBC/index.md')"></a>)_
 
 Extension wrappers for VisualBasic compiler
 

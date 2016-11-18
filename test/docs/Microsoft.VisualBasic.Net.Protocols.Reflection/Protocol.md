@@ -1,5 +1,5 @@
 ﻿# Protocol
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](./index.md)_
+_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')"></a>)_
 
 This attribute indicates the entry point of the protocol processor definition location and the details of the protocol processor.
 

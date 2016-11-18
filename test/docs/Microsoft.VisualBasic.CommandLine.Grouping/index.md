@@ -3,5 +3,5 @@
 
 |Type|Summary|
 |----|-------|
-|[Groups](./Groups.md)||
+|<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Grouping/Groups.md')">Groups</a>||
 

@@ -1,5 +1,5 @@
 ﻿# IIterator`1
-_namespace: [Microsoft.VisualBasic.Linq](./index.md)_
+_namespace: [Microsoft.VisualBasic.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')"></a>)_
 
 Exposes the enumerator, which supports a simple iteration over a collection of
  a specified type.To browse the .NET Framework source code for this type, see

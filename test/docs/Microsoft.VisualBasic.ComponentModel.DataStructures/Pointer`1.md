@@ -1,5 +1,5 @@
 ﻿# Pointer`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')"></a>)_
 
 
 

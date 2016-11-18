@@ -1,5 +1,5 @@
 ﻿# ISaveHandle
-_namespace: [Microsoft.VisualBasic.ComponentModel](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
 
 This is a file object which have a handle to save its data to the filesystem.(这是一个带有文件数据保存方法的文件模型)
 

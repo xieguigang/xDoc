@@ -1,5 +1,5 @@
 ﻿# Section
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](./index.md)_
+_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')"></a>)_
 
 
 
