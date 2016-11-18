@@ -1,0 +1,116 @@
+.ftrH,.ftrHd,.ftrD>a,.ftrD>div {
+	white-space:nowrap;
+	height:36px;
+	line-height:36px;
+	padding:0 15px
+}
+.ftrD {
+	max-height:216px;
+	overflow:hidden;
+	min-width:125px
+}
+.amazonBackground {
+	background:#f2f2f2 !important
+}
+.ftrD>a,.ftrD>div {
+	display:block
+}
+.ftrS .ftrD {
+	margin-right:10px
+}
+.ftrSbR {
+	position:absolute;
+	top:0;
+	right:0;
+	height:100%;
+	margin:5px 0;
+	padding-right:3px
+}
+.ftrB .sw_ddbk {
+	margin:2px 0 2px 7px
+}
+.ftrB .sw_tpcg,.ftrB .sw_tpcbl {
+	margin:0 0 0 14px
+}
+.ftrH,.ftrHd,.ftrB .sw_ddbk,.ftrB .sw_tpcg,.ftrB .sw_tpcbl {
+	display:inline-block;
+	*display:inline;
+	zoom:1
+}
+z {
+	a:1
+}
+.b_imagePair .inner img,.b_hList img {
+	display:block
+}
+.b_imagePair>.inner,.b_hList .cico {
+	padding-bottom:10px
+}
+.b_title .b_imagePair>.inner,.b_vList>li>.b_imagePair>.inner,.b_hList .b_imagePair>.inner,.b_vPanel>div>.b_imagePair>.inner,.b_gridList .b_imagePair>.inner,.b_caption .b_imagePair>.inner,.b_attribution .b_imagePair>.inner,.b_imagePair>.inner>.b_footnote,.b_poleContent .b_imagePair>.inner {
+	padding-bottom:0
+}
+.b_imagePair>.inner {
+	float:left
+}
+.b_imagePair.reverse>.inner {
+	float:right
+}
+.b_imagePair .b_imagePair:last-child:after {
+	clear:none
+}
+.b_algo .b_title .b_imagePair,.b_ans .b_title .b_imagePair {
+	display:block
+}
+.b_imagePair.wide_m>.inner,li.wide_m {
+	width:128px
+}
+.b_imagePair.wide_m {
+	padding-left:138px
+}
+.b_imagePair.wide_m>.inner {
+	margin:2px 0 0 -138px
+}
+.b_imagePair.wide_m.reverse {
+	padding-left:0;
+	padding-right:138px
+}
+.b_imagePair.wide_m.reverse>.inner {
+	margin:2px -138px 0 0
+}
+.b_imagePair.square_s>.inner,li.square_s {
+	width:50px
+}
+li.square_s {
+	word-wrap:break-word
+}
+.b_imagePair.square_s {
+	padding-left:60px
+}
+.b_imagePair.square_s>.inner {
+	margin:2px 0 0 -60px
+}
+.b_imagePair.square_s.reverse {
+	padding-left:0;
+	padding-right:60px
+}
+.b_imagePair.square_s.reverse>.inner {
+	margin:2px -60px 0 0
+}
+.b_vList>li.b_annooverride {
+	padding-bottom:0
+}
+.b_annooverride .b_factrow {
+	padding-top:2px
+}
+#b_context .b_rs .b_vList>li {
+	padding-bottom:4px
+}
+#b_context .b_rs>.b_vList {
+	padding-bottom:6px
+}
+#b_results .b_ans .b_rs h2 {
+	padding-bottom:6px
+}
+z {
+	a:1
+}
