@@ -29,6 +29,14 @@ Module Program
             Throw New Exception(path & " is not a valid file system object!")
         End If
 
-        Return ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo"))
+        Call $"{path} --> {mdOutputFolder}".__DEBUG_ECHO
+
+        If ps.ExportMarkdownFiles(mdOutputFolder, args.GetBoolean("/hexo")) Then
+            Call "Document library generates success!".__DEBUG_ECHO
+        Else
+            Call "Job failure!".PrintException
+        End If
+
+        Return 0
     End Function
 End Module
