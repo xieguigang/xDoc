@@ -1,5 +1,5 @@
 ﻿# Set
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures</a>_
 
 Represents an unordered grouping of unique hetrogenous members.
  (这个对象的功能和List类似，但是这个对象的主要的作用是进行一些集合运算：使用AND求交集以及使用OR求并集的)

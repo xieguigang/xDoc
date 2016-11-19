@@ -1,5 +1,5 @@
 ﻿# ProgressBar
-_namespace: [Microsoft.VisualBasic.Terminal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')">Microsoft.VisualBasic.Terminal</a>_
 
 
 

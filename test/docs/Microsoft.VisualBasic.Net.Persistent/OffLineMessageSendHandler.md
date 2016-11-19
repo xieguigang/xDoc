@@ -1,5 +1,5 @@
 ﻿# OffLineMessageSendHandler
-_namespace: [Microsoft.VisualBasic.Net.Persistent](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent/index.md')">Microsoft.VisualBasic.Net.Persistent</a>_
 
 离线数据请求
 

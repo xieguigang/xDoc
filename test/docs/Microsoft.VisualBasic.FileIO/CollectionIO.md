@@ -1,5 +1,5 @@
 ﻿# CollectionIO
-_namespace: [Microsoft.VisualBasic.FileIO](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO/index.md')">Microsoft.VisualBasic.FileIO</a>_
 
 Collection IO extensions
 

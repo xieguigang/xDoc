@@ -1,5 +1,5 @@
 ﻿# StructSerializer
-_namespace: [Microsoft.VisualBasic.Serialization.BinaryDumping](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.BinaryDumping/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.BinaryDumping/index.md')">Microsoft.VisualBasic.Serialization.BinaryDumping</a>_
 
 Some times these method is not works well, not sure why?
 

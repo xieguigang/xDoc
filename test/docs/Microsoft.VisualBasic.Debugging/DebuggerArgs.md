@@ -1,5 +1,5 @@
 ﻿# DebuggerArgs
-_namespace: [Microsoft.VisualBasic.Debugging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Debugging/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Debugging/index.md')">Microsoft.VisualBasic.Debugging</a>_
 
 调试器设置参数模块
 

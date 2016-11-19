@@ -1,5 +1,5 @@
 ﻿# AsyncHandle`1
-_namespace: [Microsoft.VisualBasic.Parallel.Tasks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')">Microsoft.VisualBasic.Parallel.Tasks</a>_
 
 Represents the status of an asynchronous operation.(背景线程加载数据)
 

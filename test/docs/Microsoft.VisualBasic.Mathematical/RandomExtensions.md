@@ -1,5 +1,5 @@
 ﻿# RandomExtensions
-_namespace: [Microsoft.VisualBasic.Mathematical](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')">Microsoft.VisualBasic.Mathematical</a>_
 
 Some extension methods for @``T:System.Random`` for creating a few more kinds of random stuff.
 

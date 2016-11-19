@@ -1,5 +1,5 @@
 ﻿# StringResources`1
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.Globalization](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.Globalization/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.Globalization/index.md')">Microsoft.VisualBasic.SoftwareToolkits.Globalization</a>_
 
 
 

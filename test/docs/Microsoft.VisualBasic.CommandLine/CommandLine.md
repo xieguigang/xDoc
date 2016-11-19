@@ -1,5 +1,5 @@
 ﻿# CommandLine
-_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')">Microsoft.VisualBasic.CommandLine</a>_
 
 A command line object that parse from the user input commandline string.
  (从用户所输入的命令行字符串之中解析出来的命令行对象，标准的命令行格式为：

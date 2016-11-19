@@ -1,5 +1,5 @@
 ﻿# PathMapper
-_namespace: [Microsoft.VisualBasic.Language.UnixBash](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash/index.md')">Microsoft.VisualBasic.Language.UnixBash</a>_
 
 Maps the linux path to the Windows path.(这个模块是将Linux路径映射为Windows路径的)
 

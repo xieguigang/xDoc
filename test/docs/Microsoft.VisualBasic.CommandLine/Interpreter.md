@@ -1,5 +1,5 @@
 ﻿# Interpreter
-_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')">Microsoft.VisualBasic.CommandLine</a>_
 
 Command line interpreter for your **CLI** program.
  (命令行解释器，请注意，在调试模式之下，命令行解释器会在运行完命令之后暂停，而Release模式之下则不会。

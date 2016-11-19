@@ -1,5 +1,5 @@
 ﻿# Schema`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps</a>_
 
 Schema for two dimension table.
 

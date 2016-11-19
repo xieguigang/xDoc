@@ -1,5 +1,5 @@
 ﻿# DataFrameColumnAttribute
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps</a>_
 
 Represents a column of certain data frames. The mapping between to schema is also can be represent by this attribute. 
  (也可以使用这个对象来完成在两个数据源之间的属性的映射，由于对于一些列名称的属性值缺失的映射而言，

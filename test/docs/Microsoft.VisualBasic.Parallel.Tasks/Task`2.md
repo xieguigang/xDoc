@@ -1,5 +1,5 @@
 ﻿# Task`2
-_namespace: [Microsoft.VisualBasic.Parallel.Tasks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')">Microsoft.VisualBasic.Parallel.Tasks</a>_
 
 更加底层的线程模式，和LINQ相比不会受到CPU核心数目的限制
 

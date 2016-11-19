@@ -1,5 +1,5 @@
 ﻿# MSIOReader
-_namespace: [Microsoft.VisualBasic.MMFProtocol.MapStream](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.MapStream/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.MapStream/index.md')">Microsoft.VisualBasic.MMFProtocol.MapStream</a>_
 
 
 

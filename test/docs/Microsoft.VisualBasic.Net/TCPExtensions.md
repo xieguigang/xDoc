@@ -1,5 +1,5 @@
 ﻿# TCPExtensions
-_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')">Microsoft.VisualBasic.Net</a>_
 
 
 

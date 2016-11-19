@@ -1,5 +1,5 @@
 ﻿# RepositoryReadException
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository</a>_
 
 An exception that occured when reading from the repository backing store
 

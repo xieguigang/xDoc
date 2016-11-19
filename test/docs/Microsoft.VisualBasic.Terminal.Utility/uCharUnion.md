@@ -1,5 +1,5 @@
 ﻿# uCharUnion
-_namespace: [Microsoft.VisualBasic.Terminal.Utility](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')">Microsoft.VisualBasic.Terminal.Utility</a>_
 
 ' Struct uChar is meant to support the Windows Console API's uChar union.
  ' Unions do not exist in the pure .NET world. We have to use the regular

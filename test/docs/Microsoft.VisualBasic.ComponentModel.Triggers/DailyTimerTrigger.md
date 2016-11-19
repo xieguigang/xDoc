@@ -1,5 +1,5 @@
 ﻿# DailyTimerTrigger
-_namespace: [Microsoft.VisualBasic.ComponentModel.Triggers](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Triggers/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Triggers/index.md')">Microsoft.VisualBasic.ComponentModel.Triggers</a>_
 
 这个只会比较时和分，每天都会触发
 

@@ -1,5 +1,5 @@
 ﻿# ConfigEngine
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')">Microsoft.VisualBasic.ComponentModel.Settings</a>_
 
 只包含有对数据映射目标对象的属性读写，并不包含有文件数据的读写操作
 

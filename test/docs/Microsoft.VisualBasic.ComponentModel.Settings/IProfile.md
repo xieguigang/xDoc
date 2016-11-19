@@ -1,5 +1,5 @@
 ﻿# IProfile
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')">Microsoft.VisualBasic.ComponentModel.Settings</a>_
 
 具备有保存数据功能的可配置数据文件的基本定义
 

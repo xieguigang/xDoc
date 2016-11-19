@@ -1,5 +1,5 @@
 ﻿# IOProvider
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings.Inf](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')">Microsoft.VisualBasic.ComponentModel.Settings.Inf</a>_
 
 
 

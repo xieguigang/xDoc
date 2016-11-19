@@ -1,5 +1,5 @@
 ﻿# __protocolInvoker
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')">Microsoft.VisualBasic.Net.Protocols.Reflection</a>_
 
 
 

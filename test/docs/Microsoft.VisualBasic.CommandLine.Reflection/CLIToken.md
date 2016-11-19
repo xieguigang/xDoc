@@ -1,5 +1,5 @@
 ﻿# CLIToken
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')">Microsoft.VisualBasic.CommandLine.Reflection</a>_
 
 A very basically type in the @``T:Microsoft.VisualBasic.CommandLine.CommandLine``
 

@@ -1,5 +1,5 @@
 ﻿# __getChildPortal
-_namespace: [Microsoft.VisualBasic.Parallel.ServicesFolk](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ServicesFolk/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ServicesFolk/index.md')">Microsoft.VisualBasic.Parallel.ServicesFolk</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# NameOf
-_namespace: [Microsoft.VisualBasic.RegexExtensions](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.RegexExtensions/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.RegexExtensions/index.md')">Microsoft.VisualBasic.RegexExtensions</a>_
 
 Name of @``T:System.Text.RegularExpressions.RegexOptions``
 

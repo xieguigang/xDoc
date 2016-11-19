@@ -1,5 +1,5 @@
 ﻿# Func`1
-_namespace: [Microsoft.VisualBasic.Scripting.TokenIcer](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.TokenIcer/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.TokenIcer/index.md')">Microsoft.VisualBasic.Scripting.TokenIcer</a>_
 
 
 

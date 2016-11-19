@@ -1,5 +1,5 @@
 ﻿# IntPtr`1
-_namespace: [Microsoft.VisualBasic.Emit.Marshal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Marshal/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Marshal/index.md')">Microsoft.VisualBasic.Emit.Marshal</a>_
 
 内存指针
 

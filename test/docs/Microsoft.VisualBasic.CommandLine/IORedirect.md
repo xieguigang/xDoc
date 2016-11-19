@@ -1,5 +1,5 @@
 ﻿# IORedirect
-_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')">Microsoft.VisualBasic.CommandLine</a>_
 
 A communication fundation class type for the commandline program interop.
  (一个简单的用于从当前进程派生子进程的Wrapper对象，假若需要folk出来的子进程对象

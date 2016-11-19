@@ -1,5 +1,5 @@
 ﻿# Settings`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')">Microsoft.VisualBasic.ComponentModel.Settings</a>_
 
 
 

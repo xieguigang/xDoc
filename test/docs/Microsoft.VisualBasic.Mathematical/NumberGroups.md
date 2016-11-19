@@ -1,5 +1,5 @@
 ﻿# NumberGroups
-_namespace: [Microsoft.VisualBasic.Mathematical](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical/index.md')">Microsoft.VisualBasic.Mathematical</a>_
 
 Simple number vector grouping
 

@@ -1,5 +1,5 @@
 ﻿# ProgramPathSearchTool
-_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')">Microsoft.VisualBasic</a>_
 
 Search the path from a specific keyword.(通过关键词来推测路径)
 

@@ -1,5 +1,5 @@
 ﻿# Pointer
-_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')">Microsoft.VisualBasic.Language</a>_
 
 Type of @``T:System.Int32`` pointer class to the @``T:System.Array`` class.
  (@``T:System.Int32``类型，一般用来进行数组操作的)

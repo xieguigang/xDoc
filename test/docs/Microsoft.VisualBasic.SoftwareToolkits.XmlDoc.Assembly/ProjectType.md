@@ -1,5 +1,5 @@
 ﻿# ProjectType
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly/index.md')">Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly</a>_
 
 A type within a project namespace.
 

@@ -1,5 +1,5 @@
 ﻿# ConsolePasswordInput
-_namespace: [Microsoft.VisualBasic.Terminal.Utility](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')">Microsoft.VisualBasic.Terminal.Utility</a>_
 
 Summary description for ConsolePasswordInput.
 

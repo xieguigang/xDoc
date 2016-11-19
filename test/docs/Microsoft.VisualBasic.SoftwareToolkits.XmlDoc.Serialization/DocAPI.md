@@ -1,5 +1,5 @@
 ﻿# DocAPI
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization/index.md')">Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization</a>_
 
 
 

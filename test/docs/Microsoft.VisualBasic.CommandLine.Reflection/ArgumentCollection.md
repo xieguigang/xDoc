@@ -1,5 +1,5 @@
 ﻿# ArgumentCollection
-_namespace: [Microsoft.VisualBasic.CommandLine.Reflection](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')">Microsoft.VisualBasic.CommandLine.Reflection</a>_
 
 The help information for a specific command line parameter switch.(某一个指定的命令的开关的帮助信息)
 

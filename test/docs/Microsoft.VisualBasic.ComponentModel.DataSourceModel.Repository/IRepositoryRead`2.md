@@ -1,5 +1,5 @@
 ﻿# IRepositoryRead`2
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository</a>_
 
 Interface to support reading entities from the backing store
 

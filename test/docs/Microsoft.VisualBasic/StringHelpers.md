@@ -1,5 +1,5 @@
 ﻿# StringHelpers
-_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')">Microsoft.VisualBasic</a>_
 
 The extensions module for facilities the string operations.
 

@@ -1,5 +1,5 @@
 ﻿# UpdateThread
-_namespace: [Microsoft.VisualBasic.Parallel.Tasks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')">Microsoft.VisualBasic.Parallel.Tasks</a>_
 
 Running a specific @``T:System.Action`` in the background periodically.
  (比较适合用于在服务器上面执行周期性的计划任务)

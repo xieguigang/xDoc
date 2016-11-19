@@ -1,5 +1,5 @@
 ﻿# RequestBuilder
-_namespace: [Microsoft.VisualBasic.Net.Http](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')">Microsoft.VisualBasic.Net.Http</a>_
 
 
 

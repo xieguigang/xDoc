@@ -1,5 +1,5 @@
 ﻿# WindowsNameList
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.OSVersionInfo](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.OSVersionInfo/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.OSVersionInfo/index.md')">Microsoft.VisualBasic.SoftwareToolkits.OSVersionInfo</a>_
 
 
 

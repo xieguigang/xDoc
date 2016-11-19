@@ -1,5 +1,5 @@
 ﻿# Class`1
-_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')">Microsoft.VisualBasic.Language</a>_
 
 @``T:System.Type``
 

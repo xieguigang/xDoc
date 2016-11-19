@@ -1,5 +1,5 @@
 ﻿# TripleDES
-_namespace: [Microsoft.VisualBasic.SecurityString](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SecurityString/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SecurityString/index.md')">Microsoft.VisualBasic.SecurityString</a>_
 
 
 

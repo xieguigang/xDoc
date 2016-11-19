@@ -1,5 +1,5 @@
 ﻿# PriorityClass
-_namespace: [Microsoft.VisualBasic.Win32](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')">Microsoft.VisualBasic.Win32</a>_
 
 Process priority class helper.
 

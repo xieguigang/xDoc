@@ -1,5 +1,5 @@
 ﻿# PriorityLevels
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.NgenInstaller](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.NgenInstaller/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.NgenInstaller/index.md')">Microsoft.VisualBasic.SoftwareToolkits.NgenInstaller</a>_
 
 
 

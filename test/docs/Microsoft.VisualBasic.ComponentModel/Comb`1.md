@@ -1,5 +1,5 @@
 ﻿# Comb`1
-_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')">Microsoft.VisualBasic.ComponentModel</a>_
 
 对象类型的组合输出工具，即目标类型的集合之中的元素两两组合配对
 

@@ -1,5 +1,5 @@
 ﻿# Actives
-_namespace: [Microsoft.VisualBasic.Scripting](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')">Microsoft.VisualBasic.Scripting</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# PrimitiveParser
-_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')">Microsoft.VisualBasic</a>_
 
 Simple type parser extension function for @``T:System.String``
 

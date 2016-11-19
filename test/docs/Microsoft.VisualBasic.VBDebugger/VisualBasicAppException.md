@@ -1,5 +1,5 @@
 ﻿# VisualBasicAppException
-_namespace: [Microsoft.VisualBasic.VBDebugger](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.VBDebugger/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.VBDebugger/index.md')">Microsoft.VisualBasic.VBDebugger</a>_
 
 VisualBasic application exception wrapper
 

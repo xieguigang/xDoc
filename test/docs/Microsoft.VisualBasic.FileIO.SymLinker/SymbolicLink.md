@@ -1,5 +1,5 @@
 ﻿# SymbolicLink
-_namespace: [Microsoft.VisualBasic.FileIO.SymLinker](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker/index.md')">Microsoft.VisualBasic.FileIO.SymLinker</a>_
 
 
 

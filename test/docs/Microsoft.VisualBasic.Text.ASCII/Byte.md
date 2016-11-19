@@ -1,5 +1,5 @@
 ﻿# Byte
-_namespace: [Microsoft.VisualBasic.Text.ASCII](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.ASCII/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.ASCII/index.md')">Microsoft.VisualBasic.Text.ASCII</a>_
 
 
 

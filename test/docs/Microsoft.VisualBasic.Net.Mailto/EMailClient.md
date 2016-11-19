@@ -1,5 +1,5 @@
 ﻿# EMailClient
-_namespace: [Microsoft.VisualBasic.Net.Mailto](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Mailto/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Mailto/index.md')">Microsoft.VisualBasic.Net.Mailto</a>_
 
 A client of gmail.com
 

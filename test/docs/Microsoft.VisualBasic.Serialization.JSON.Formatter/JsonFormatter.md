@@ -1,5 +1,5 @@
 ﻿# JsonFormatter
-_namespace: [Microsoft.VisualBasic.Serialization.JSON.Formatter](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON.Formatter/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON.Formatter/index.md')">Microsoft.VisualBasic.Serialization.JSON.Formatter</a>_
 
 Provides JSON formatting functionality.
 

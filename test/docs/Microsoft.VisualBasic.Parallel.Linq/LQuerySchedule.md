@@ -1,5 +1,5 @@
 ﻿# LQuerySchedule
-_namespace: [Microsoft.VisualBasic.Parallel.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Linq/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Linq/index.md')">Microsoft.VisualBasic.Parallel.Linq</a>_
 
 Parallel Linq query library for VisualBasic.
  (用于高效率执行批量查询操作和用于检测操作超时的工具对象，请注意，为了提高查询的工作效率，请尽量避免在查询操作之中生成新的临时对象

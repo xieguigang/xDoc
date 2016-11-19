@@ -1,5 +1,5 @@
 ﻿# PersistentClient
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Socket](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')">Microsoft.VisualBasic.Net.Persistent.Socket</a>_
 
 请注意，这个对象是应用于客户端与服务器保持长连接所使用，并不会主动发送消息给服务器，而是被动的接受服务器的数据请求
 

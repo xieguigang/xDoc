@@ -1,5 +1,5 @@
 ﻿# ASCII
-_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')">Microsoft.VisualBasic.Text</a>_
 
 ``ASCII`` (``American Standard Code for Information Interchange``，美国信息互换标准代码，``ASCⅡ``) 是基于拉丁字母的一套电脑编码系统。
  它主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准``ISO/IEC 646``。

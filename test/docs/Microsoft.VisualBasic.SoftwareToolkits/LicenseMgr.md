@@ -1,5 +1,5 @@
 ﻿# LicenseMgr
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits/index.md')">Microsoft.VisualBasic.SoftwareToolkits</a>_
 
 Source code license manager
 

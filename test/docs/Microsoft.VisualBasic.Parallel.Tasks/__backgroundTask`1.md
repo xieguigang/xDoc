@@ -1,5 +1,5 @@
 ﻿# __backgroundTask`1
-_namespace: [Microsoft.VisualBasic.Parallel.Tasks](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')">Microsoft.VisualBasic.Parallel.Tasks</a>_
 
 
 

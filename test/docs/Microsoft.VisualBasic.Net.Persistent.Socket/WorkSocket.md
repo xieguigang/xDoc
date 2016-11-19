@@ -1,5 +1,5 @@
 ﻿# WorkSocket
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Socket](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')">Microsoft.VisualBasic.Net.Persistent.Socket</a>_
 
 长连接之中只是进行消息的发送处理，并不保证数据能够被接收到
 

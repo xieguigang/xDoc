@@ -1,5 +1,5 @@
 ﻿# WebResult
-_namespace: [Microsoft.VisualBasic.Net.Http](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')">Microsoft.VisualBasic.Net.Http</a>_
 
 The data structure for represents the search result of the Web search egine.
 

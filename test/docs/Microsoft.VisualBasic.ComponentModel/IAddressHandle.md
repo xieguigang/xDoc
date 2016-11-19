@@ -1,5 +1,5 @@
 ﻿# IAddressHandle
-_namespace: [Microsoft.VisualBasic.ComponentModel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')">Microsoft.VisualBasic.ComponentModel</a>_
 
 This object gets a object handle value to indicated that the position this object exists 
  in the list collection structure. 

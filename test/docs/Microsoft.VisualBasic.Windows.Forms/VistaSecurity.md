@@ -1,5 +1,5 @@
 ﻿# VistaSecurity
-_namespace: [Microsoft.VisualBasic.Windows.Forms](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Windows.Forms/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Windows.Forms/index.md')">Microsoft.VisualBasic.Windows.Forms</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# TableParser
-_namespace: [Microsoft.VisualBasic.Text.HtmlParser](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.HtmlParser/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.HtmlParser/index.md')">Microsoft.VisualBasic.Text.HtmlParser</a>_
 
 The string parser for the table html text block
 

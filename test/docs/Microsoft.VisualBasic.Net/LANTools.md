@@ -1,5 +1,5 @@
 ﻿# LANTools
-_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')">Microsoft.VisualBasic.Net</a>_
 
 http://www.codeproject.com/Tips/358946/Retrieving-IP-and-MAC-addresses-for-a-LAN
 

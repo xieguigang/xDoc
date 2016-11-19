@@ -1,5 +1,5 @@
 ﻿# TreeNode`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree</a>_
 
 Define tree nodes
 

@@ -1,5 +1,5 @@
 ﻿# IPEndPoint
-_namespace: [Microsoft.VisualBasic.Net](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')">Microsoft.VisualBasic.Net</a>_
 
 The object of @``T:System.Net.IPEndPoint`` can not be Xml serialization.
  (系统自带的@``T:System.Net.IPEndPoint``不能够进行Xml序列化)

@@ -1,5 +1,5 @@
 ﻿# IClassObject
-_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')">Microsoft.VisualBasic.Language</a>_
 
 The base class object in VisualBasic
 

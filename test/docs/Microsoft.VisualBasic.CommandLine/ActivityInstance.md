@@ -1,5 +1,5 @@
 ﻿# ActivityInstance
-_namespace: [Microsoft.VisualBasic.CommandLine](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')">Microsoft.VisualBasic.CommandLine</a>_
 
 Interpreter for object instance.(对于@``T:Microsoft.VisualBasic.CommandLine.Interpreter``而言，其仅解析静态的方法，二本对象则实例方法和静态方法都进行解析)
 

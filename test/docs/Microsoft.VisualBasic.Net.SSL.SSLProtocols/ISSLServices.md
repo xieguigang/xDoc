@@ -1,5 +1,5 @@
 ﻿# ISSLServices
-_namespace: [Microsoft.VisualBasic.Net.SSL.SSLProtocols](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL.SSLProtocols/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL.SSLProtocols/index.md')">Microsoft.VisualBasic.Net.SSL.SSLProtocols</a>_
 
 抽象SSL服务器
 

@@ -1,5 +1,5 @@
 ﻿# GZip
-_namespace: [Microsoft.VisualBasic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')">Microsoft.VisualBasic</a>_
 
 Creating Zip Files Easily in .NET 4.5
  Tim Corey, 11 May 2012

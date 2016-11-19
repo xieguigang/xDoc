@@ -1,5 +1,5 @@
 ﻿# Pipeline
-_namespace: [Microsoft.VisualBasic.MMFProtocol.Pipeline](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.Pipeline/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.Pipeline/index.md')">Microsoft.VisualBasic.MMFProtocol.Pipeline</a>_
 
 exec cmd /var $<piplineName>, this can be using in the CLI programming for passing the variables between the program more efficient
 

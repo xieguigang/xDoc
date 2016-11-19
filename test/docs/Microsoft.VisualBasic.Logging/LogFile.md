@@ -1,5 +1,5 @@
 ﻿# LogFile
-_namespace: [Microsoft.VisualBasic.Logging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Logging/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Logging/index.md')">Microsoft.VisualBasic.Logging</a>_
 
 日志文件记录模块.
 

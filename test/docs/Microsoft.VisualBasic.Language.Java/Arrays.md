@@ -1,5 +1,5 @@
 ﻿# Arrays
-_namespace: [Microsoft.VisualBasic.Language.Java](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Java/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Java/index.md')">Microsoft.VisualBasic.Language.Java</a>_
 
 
 

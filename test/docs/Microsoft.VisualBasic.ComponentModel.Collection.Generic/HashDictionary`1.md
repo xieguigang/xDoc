@@ -1,5 +1,5 @@
 ﻿# HashDictionary`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')">Microsoft.VisualBasic.ComponentModel.Collection.Generic</a>_
 
 The key of the dictionary is string value and the keys is not sensitive to the character case.
  (字典的键名为字符串，大小写不敏感，行为和哈希表类型)

@@ -1,5 +1,5 @@
 ﻿# re
-_namespace: [Microsoft.VisualBasic.Language.Python](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python/index.md')">Microsoft.VisualBasic.Language.Python</a>_
 
 This module provides regular expression matching operations similar to those found in Perl. ``re`` module in the python language.
 

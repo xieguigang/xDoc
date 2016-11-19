@@ -1,5 +1,5 @@
 ﻿# hBitmap
-_namespace: [Microsoft.VisualBasic.Imaging](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')">Microsoft.VisualBasic.Imaging</a>_
 
 线程不安全的图片数据对象
 

@@ -1,5 +1,5 @@
 ﻿# ErrorCodes
-_namespace: [Microsoft.VisualBasic.Win32.GetLastErrorAPI](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32.GetLastErrorAPI/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32.GetLastErrorAPI/index.md')">Microsoft.VisualBasic.Win32.GetLastErrorAPI</a>_
 
 This article lists the error codes you may encounter in Windows NT. For the remaining error codes, 
  please see the following article(s) in the Microsoft Knowledge Base:

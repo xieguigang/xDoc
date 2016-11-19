@@ -1,5 +1,5 @@
 ﻿# STDIO
-_namespace: [Microsoft.VisualBasic.Terminal](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')">Microsoft.VisualBasic.Terminal</a>_
 
 A standard input/output compatibility package that makes VisualBasic console
  program easily running on the Linux server or mac osx operating system.

@@ -1,5 +1,5 @@
 ﻿# MMFSocket
-_namespace: [Microsoft.VisualBasic.MMFProtocol](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol/index.md')">Microsoft.VisualBasic.MMFProtocol</a>_
 
 MMFProtocol socket object for the inter-process communication on the localhost, this can be using for the data exchange between two process.
 

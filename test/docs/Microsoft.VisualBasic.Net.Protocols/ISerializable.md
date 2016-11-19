@@ -1,5 +1,5 @@
 ﻿# ISerializable
-_namespace: [Microsoft.VisualBasic.Net.Protocols](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')">Microsoft.VisualBasic.Net.Protocols</a>_
 
 支持序列化的对象，则这个对象可以被应用于@``T:Microsoft.VisualBasic.Net.Protocols.RequestStream``数据载体的网络传输操作过程
 

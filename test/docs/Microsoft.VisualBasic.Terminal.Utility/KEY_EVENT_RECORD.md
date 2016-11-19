@@ -1,5 +1,5 @@
 ﻿# KEY_EVENT_RECORD
-_namespace: [Microsoft.VisualBasic.Terminal.Utility](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')">Microsoft.VisualBasic.Terminal.Utility</a>_
 
 ' The struct KEY_EVENT_RECORD is used to report keyboard input events
  ' in a console INPUT_RECORD structure.

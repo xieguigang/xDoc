@@ -1,5 +1,5 @@
 ﻿# LoadEntry
-_namespace: [Microsoft.VisualBasic.Parallel.ParallelLoading](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ParallelLoading/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ParallelLoading/index.md')">Microsoft.VisualBasic.Parallel.ParallelLoading</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# VBC
-_namespace: [Microsoft.VisualBasic.Emit.CodeDOM_VBC](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.CodeDOM_VBC/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.CodeDOM_VBC/index.md')">Microsoft.VisualBasic.Emit.CodeDOM_VBC</a>_
 
 Extension wrappers for VisualBasic compiler
 

@@ -1,5 +1,5 @@
 ﻿# CountHelper`1
-_namespace: [Microsoft.VisualBasic.Language.LinqAPIHelpers](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.LinqAPIHelpers/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.LinqAPIHelpers/index.md')">Microsoft.VisualBasic.Language.LinqAPIHelpers</a>_
 
 
 

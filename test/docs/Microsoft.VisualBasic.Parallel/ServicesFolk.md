@@ -1,5 +1,5 @@
 ﻿# ServicesFolk
-_namespace: [Microsoft.VisualBasic.Parallel](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel/index.md')">Microsoft.VisualBasic.Parallel</a>_
 
 主服务和子服务之间的相互作用的特点是子服务不会知道主服务节点的数据接口，所有的交互都是通过子服务上面的一个模块来监听主服务来实现的
  当主服务有数据需要向子服务更新的时候，会主动发送数据请求至子服务节点

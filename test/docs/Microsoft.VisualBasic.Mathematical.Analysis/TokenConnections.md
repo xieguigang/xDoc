@@ -1,5 +1,5 @@
 ﻿# TokenConnections
-_namespace: [Microsoft.VisualBasic.Mathematical.Analysis](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Analysis/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Analysis/index.md')">Microsoft.VisualBasic.Mathematical.Analysis</a>_
 
 
 

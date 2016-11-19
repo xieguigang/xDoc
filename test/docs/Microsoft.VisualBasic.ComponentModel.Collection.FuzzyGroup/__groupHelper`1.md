@@ -1,5 +1,5 @@
 ﻿# __groupHelper`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup/index.md')">Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup</a>_
 
 分组操作的内部帮助类
 

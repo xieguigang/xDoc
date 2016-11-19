@@ -1,5 +1,5 @@
 ﻿# IServicesSocket
-_namespace: [Microsoft.VisualBasic.Net.Abstract](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Abstract/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Abstract/index.md')">Microsoft.VisualBasic.Net.Abstract</a>_
 
 Socket listening object which is running at the server side asynchronous able multiple threading.
  (运行于服务器端上面的Socket监听对象，多线程模型)

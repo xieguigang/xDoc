@@ -1,5 +1,5 @@
 ﻿# MessagePushServer
-_namespace: [Microsoft.VisualBasic.Net.Persistent.Application](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')">Microsoft.VisualBasic.Net.Persistent.Application</a>_
 
 长连接模式的消息推送服务器
 

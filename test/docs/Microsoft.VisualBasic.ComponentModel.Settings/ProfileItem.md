@@ -1,5 +1,5 @@
 ﻿# ProfileItem
-_namespace: [Microsoft.VisualBasic.ComponentModel.Settings](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')">Microsoft.VisualBasic.ComponentModel.Settings</a>_
 
 The simple configuration mapping node in the current profile data, the data type of this node 
  object should be just the simplest data type such as String, Integer, Long, Double, Boolean.

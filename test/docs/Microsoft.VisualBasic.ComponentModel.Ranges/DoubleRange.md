@@ -1,5 +1,5 @@
 ﻿# DoubleRange
-_namespace: [Microsoft.VisualBasic.ComponentModel.Ranges](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Ranges/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Ranges/index.md')">Microsoft.VisualBasic.ComponentModel.Ranges</a>_
 
 Represents a double range with minimum and maximum values
 

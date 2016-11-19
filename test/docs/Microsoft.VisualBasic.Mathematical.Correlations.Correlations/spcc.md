@@ -1,5 +1,5 @@
 ﻿# spcc
-_namespace: [Microsoft.VisualBasic.Mathematical.Correlations.Correlations](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations.Correlations/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations.Correlations/index.md')">Microsoft.VisualBasic.Mathematical.Correlations.Correlations</a>_
 
 计算所需要的临时变量类型
 

@@ -1,5 +1,5 @@
 ﻿# IteratorExtensions
-_namespace: [Microsoft.VisualBasic.Linq](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')">Microsoft.VisualBasic.Linq</a>_
 
 
 

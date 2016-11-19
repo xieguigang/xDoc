@@ -1,5 +1,5 @@
 ﻿# ProjectNamespace
-_namespace: [Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly/index.md')">Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly</a>_
 
 A namespace within a project -- typically a collection of related types. Equates to a .net Namespace.
 

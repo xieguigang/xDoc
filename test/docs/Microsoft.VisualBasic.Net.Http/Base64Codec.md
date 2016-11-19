@@ -1,5 +1,5 @@
 ﻿# Base64Codec
-_namespace: [Microsoft.VisualBasic.Net.Http](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')">Microsoft.VisualBasic.Net.Http</a>_
 
 Tools API for encoded the image into a base64 string.
 

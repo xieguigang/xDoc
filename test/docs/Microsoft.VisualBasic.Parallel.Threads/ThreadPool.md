@@ -1,5 +1,5 @@
 ﻿# ThreadPool
-_namespace: [Microsoft.VisualBasic.Parallel.Threads](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Threads/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Threads/index.md')">Microsoft.VisualBasic.Parallel.Threads</a>_
 
 使用多条线程来执行任务队列，推荐在编写Web服务器的时候使用这个模块来执行任务
 

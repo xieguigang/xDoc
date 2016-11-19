@@ -1,5 +1,5 @@
 ﻿# SSLProtocols
-_namespace: [Microsoft.VisualBasic.Net.SSL](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL/index.md')">Microsoft.VisualBasic.Net.SSL</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# LoopArray`1
-_namespace: [Microsoft.VisualBasic.ComponentModel.DataStructures](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures</a>_
 
 
 

@@ -1,5 +1,5 @@
 ﻿# RawStream
-_namespace: [Microsoft.VisualBasic.Net.Protocols](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')">Microsoft.VisualBasic.Net.Protocols</a>_
 
 原始串流的基本模型，这个流对象应该具备有两个基本的方法：
  1. 从原始的字节流之中反序列化构造出自身的构造函数

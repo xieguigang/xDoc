@@ -1,5 +1,5 @@
 ﻿# IPairItem`2
-_namespace: [Microsoft.VisualBasic.ComponentModel.Collection.Generic](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')">Microsoft.VisualBasic.ComponentModel.Collection.Generic</a>_
 
 
 

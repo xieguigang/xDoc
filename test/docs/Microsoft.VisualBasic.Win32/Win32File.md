@@ -1,5 +1,5 @@
 ﻿# Win32File
-_namespace: [Microsoft.VisualBasic.Win32](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')">Microsoft.VisualBasic.Win32</a>_
 
 .NET 2.0 Workaround for PathTooLongException
 

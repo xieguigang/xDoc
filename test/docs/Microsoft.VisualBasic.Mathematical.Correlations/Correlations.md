@@ -1,5 +1,5 @@
 ﻿# Correlations
-_namespace: [Microsoft.VisualBasic.Mathematical.Correlations](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Mathematical.Correlations/index.md')">Microsoft.VisualBasic.Mathematical.Correlations</a>_
 
 
 

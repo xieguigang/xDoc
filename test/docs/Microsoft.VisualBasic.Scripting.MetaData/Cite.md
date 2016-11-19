@@ -1,5 +1,5 @@
 ﻿# Cite
-_namespace: [Microsoft.VisualBasic.Scripting.MetaData](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.MetaData/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.MetaData/index.md')">Microsoft.VisualBasic.Scripting.MetaData</a>_
 
 EndNote tags
 

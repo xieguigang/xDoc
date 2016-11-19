@@ -1,5 +1,5 @@
 ﻿# VarArray`1
-_namespace: [Microsoft.VisualBasic.Net.Protocols.Streams.Array](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams.Array/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams.Array/index.md')">Microsoft.VisualBasic.Net.Protocols.Streams.Array</a>_
 
 The bytes length of the element in thee source sequence is not fixed.
  (序列里面的元素的长度是不固定的)

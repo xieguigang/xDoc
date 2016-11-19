@@ -1,5 +1,5 @@
 ﻿# TextSegment
-_namespace: [Microsoft.VisualBasic.Text](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')">Microsoft.VisualBasic.Text</a>_
 
 文本之中的一个片段
 

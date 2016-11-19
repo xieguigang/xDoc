@@ -1,5 +1,5 @@
 ﻿# ContentType
-_namespace: [Microsoft.VisualBasic.Net.Protocols.ContentTypes](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.ContentTypes/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.ContentTypes/index.md')">Microsoft.VisualBasic.Net.Protocols.ContentTypes</a>_
 
 MIME types / Internet Media Types
 

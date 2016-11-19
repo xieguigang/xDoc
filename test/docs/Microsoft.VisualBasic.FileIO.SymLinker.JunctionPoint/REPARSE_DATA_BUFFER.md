@@ -1,5 +1,5 @@
 ﻿# REPARSE_DATA_BUFFER
-_namespace: [Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint/index.md')">Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint</a>_
 
 
 

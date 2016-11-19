@@ -1,5 +1,5 @@
 ﻿# Value`1
-_namespace: [Microsoft.VisualBasic.Language](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')">Microsoft.VisualBasic.Language</a>_
 
 You can applying this data type into a dictionary object to makes the mathematics calculation more easily.
 

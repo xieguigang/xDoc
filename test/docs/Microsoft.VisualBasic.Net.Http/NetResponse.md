@@ -1,5 +1,5 @@
 ﻿# NetResponse
-_namespace: [Microsoft.VisualBasic.Net.Http](<a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')"></a>)_
+_namespace: <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')">Microsoft.VisualBasic.Net.Http</a>_
 
 The following is a list of Hypertext Transfer Protocol (HTTP) response status codes. This includes codes from IETF internet standards 
  as well as other IETF RFCs, other specifications and some additional commonly used codes. The first digit of the status code specifies 
