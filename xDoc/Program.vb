@@ -1,7 +1,9 @@
 ﻿Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization
+Imports Microsoft.VisualBasic.Text
 
 ''' <summary>
 ''' 
@@ -48,5 +50,14 @@ Module Program
         End If
 
         Return 0
+    End Function
+
+    <ExportAPI("/Build.sitemap", Usage:="/Build.sitemap /wwwroot <wwwroot.DIR> /host <base-url>")>
+    Public Function BuildSiteMap(args As CommandLine) As Integer
+        Dim wwwroot$ = args("/wwwroot")
+        Dim host$ = args("/host")
+        Dim sitemap As sitemap = sitemap.ScanAllFiles(wwwroot, host,)
+        Dim out$ = wwwroot & "/sitemap.xml"
+        Return sitemap.Save(out, Encodings.UTF8).CLICode
     End Function
 End Module
