@@ -1,4 +1,6 @@
-﻿Imports Microsoft.VisualBasic.CommandLine
+﻿Imports System.ComponentModel
+Imports Microsoft.VisualBasic.CommandLine
+Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly
@@ -8,20 +10,15 @@ Imports Microsoft.VisualBasic.Text
 ''' <summary>
 ''' 
 ''' </summary>
-Module Program
+<CLI> Module Program
 
     Public Function Main() As Integer
-        Return GetType(Program).RunCLI(App.CommandLine, executeEmpty:=AddressOf Program.Help)
+        Return GetType(Program).RunCLI(App.CommandLine)
     End Function
 
-    Private Function Help() As Integer
-        Call "xDoc /Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /out <outDIR>]".__DEBUG_ECHO
-        Return 0
-    End Function
-
-    <ExportAPI("/Build",
-               Info:="Build sdk document library from xml assembly docs with just one simple command.",
-               Usage:="/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /func <load> /out <outDIR>]")>
+    <ExportAPI("/Build")>
+    <Description("Build sdk document library from xml assembly docs with just one simple command.")>
+    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /func <load> /out <outDIR>]")>
     Public Function Build(args As CommandLine) As Integer
         Dim ps As New ProjectSpace()
         Dim path$ = args("/in")
@@ -52,7 +49,8 @@ Module Program
         Return 0
     End Function
 
-    <ExportAPI("/Build.sitemap", Usage:="/Build.sitemap /wwwroot <wwwroot.DIR> /host <base-url>")>
+    <ExportAPI("/Build.sitemap")>
+    <Usage("/Build.sitemap /wwwroot <wwwroot.DIR> /host <base-url>")>
     Public Function BuildSiteMap(args As CommandLine) As Integer
         Dim wwwroot$ = args("/wwwroot")
         Dim host$ = args("/host")
