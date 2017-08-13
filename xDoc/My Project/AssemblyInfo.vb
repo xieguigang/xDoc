@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("xDoc")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyTitle(".NET assembly XML doc document processor tool")>
+<Assembly: AssemblyDescription(".NET assembly XML doc document processor tool")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("xDoc")>
-<Assembly: AssemblyCopyright("Copyright ©  2016")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyProduct("Microsoft VisualBasic")>
+<Assembly: AssemblyCopyright("Copyright © sciBASIC 2017")>
+<Assembly: AssemblyTrademark("sciBASIC")>
 
 <Assembly: ComVisible(False)>
 
