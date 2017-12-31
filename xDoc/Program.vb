@@ -1,10 +1,10 @@
 ﻿Imports System.ComponentModel
+Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
-Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Assembly
-Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Text
 
 ''' <summary>
