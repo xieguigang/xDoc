@@ -1,3 +1,3 @@
-[submodule "runtime"]
-	path = runtime
-	url = https://github.com/xieguigang/sciBASIC.git
+[submodule "Yilia"]
+	path = Yilia
+	url = https://github.com/xieguigang/Yilia.git
