@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "xDoc_tool", "xDoc\xDoc_tool.vbproj", "{AC36906A-9765-4743-8EBA-A552F4F23F2A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "47-dotnet_Microsoft.VisualBasic", "runtime\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj", "{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "47-dotnet_Microsoft.VisualBasic", "Yilia\runtime\sciBASIC#\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj", "{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,9 @@ Global
 		DEMO|Any CPU = DEMO|Any CPU
 		DEMO|x64 = DEMO|x64
 		DEMO|x86 = DEMO|x86
+		docs|Any CPU = docs|Any CPU
+		docs|x64 = docs|x64
+		docs|x86 = docs|x86
 		GCModeller(Release_X64)|Any CPU = GCModeller(Release_X64)|Any CPU
 		GCModeller(Release_X64)|x64 = GCModeller(Release_X64)|x64
 		GCModeller(Release_X64)|x86 = GCModeller(Release_X64)|x86
@@ -80,6 +83,12 @@ Global
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.DEMO|x64.Build.0 = Debug|x64
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.DEMO|x86.ActiveCfg = Debug|Any CPU
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.DEMO|x86.Build.0 = Debug|Any CPU
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|Any CPU.Build.0 = Debug|Any CPU
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|x64.ActiveCfg = Debug|x64
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|x64.Build.0 = Debug|x64
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|x86.ActiveCfg = Debug|Any CPU
+		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.docs|x86.Build.0 = Debug|Any CPU
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.GCModeller(Release_X64)|Any CPU.ActiveCfg = Release|Any CPU
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.GCModeller(Release_X64)|Any CPU.Build.0 = Release|Any CPU
 		{AC36906A-9765-4743-8EBA-A552F4F23F2A}.GCModeller(Release_X64)|x64.ActiveCfg = Release|x64
@@ -170,6 +179,12 @@ Global
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.DEMO|x64.Build.0 = DEMO|x64
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.DEMO|x86.ActiveCfg = DEMO|x86
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.DEMO|x86.Build.0 = DEMO|x86
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|Any CPU.ActiveCfg = docs|Any CPU
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|Any CPU.Build.0 = docs|Any CPU
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|x64.ActiveCfg = docs|x64
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|x64.Build.0 = docs|x64
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|x86.ActiveCfg = docs|x86
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.docs|x86.Build.0 = docs|x86
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.GCModeller(Release_X64)|Any CPU.ActiveCfg = GCModeller(Release_X64)|Any CPU
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.GCModeller(Release_X64)|Any CPU.Build.0 = GCModeller(Release_X64)|Any CPU
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.GCModeller(Release_X64)|x64.ActiveCfg = GCModeller(Release_X64)|x64
@@ -224,12 +239,12 @@ Global
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Surveillance-of-infectious-diseases|x64.Build.0 = Surveillance-of-infectious-diseases|x64
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Surveillance-of-infectious-diseases|x86.ActiveCfg = Surveillance-of-infectious-diseases|x86
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Surveillance-of-infectious-diseases|x86.Build.0 = Surveillance-of-infectious-diseases|x86
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|Any CPU.ActiveCfg = docs|Any CPU
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|Any CPU.Build.0 = docs|Any CPU
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x64.ActiveCfg = installer_x64|x64
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x64.Build.0 = installer_x64|x64
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x86.ActiveCfg = docs|x86
-		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x86.Build.0 = docs|x86
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x64.ActiveCfg = Yilia-Release_x64|x64
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x64.Build.0 = Yilia-Release_x64|x64
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x86.ActiveCfg = Yilia-Release_x64|x86
+		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.xDoc_tool_x64|x86.Build.0 = Yilia-Release_x64|x86
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Yilia-Release_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Yilia-Release_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Yilia-Release_x64|x64.ActiveCfg = Yilia-Release_x64|x64
