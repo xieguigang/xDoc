@@ -8,7 +8,7 @@ Imports Microsoft.VisualBasic.SoftwareToolkits.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Text
 
 ''' <summary>
-''' 
+''' VB.NET 开发工具包，使用这个程序将会从Assembly的XML注释文档之中导出makrdown文档，然后可以配合Yilia工具生成静态的html帮助文档
 ''' </summary>
 <CLI> Module Program
 
