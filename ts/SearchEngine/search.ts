@@ -1,4 +1,5 @@
 ﻿// module parsing the GET query parameters and then search the index.json by using binary tree method.
+import $ from "jquery";
 
 class node {
 
@@ -29,7 +30,7 @@ class node {
     /*
      * Get page url based on the @resource string.
      */
-    getURL() {
+    getURL(): string {
 
     }
 }
@@ -43,7 +44,7 @@ class tree {
     }
 
     // search this binary tree and then returns the node object, and finally using the returned node object build a result url and show the search result description.
-    search(term: string) {
+    search(term: string): node {
 
     }
 }
@@ -66,10 +67,10 @@ function getSearchResult() {
     $.get("./index.json", function (index) {
 
         var searchEngine = new tree(index);
-        var node = searchEngine.search(key);
-        var url = node.getURL();
-        var title = "<h2><a href='${url}'>${key}</a></h2>";
-        var description = "<p>${node.description}</p>";
+        var term = searchEngine.search(key);
+        var url = term.getURL();
+        var title = `<h2><a href='${url}'>${key}</a></h2>`;
+        var description = `<p>${term.description}</p>`;
 
         $("#search-result").html(title + description);
 
