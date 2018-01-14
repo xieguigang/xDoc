@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "SearchEngine", "SearchEngine\SearchEngine.njsproj", "{95296614-51E0-46A7-AB1B-FA044E793DDE}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "SearchEngine", "index_search\search.njsproj", "{95296614-51E0-46A7-AB1B-FA044E793DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
