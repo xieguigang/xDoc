@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>95296614-51e0-46a7-ab1b-fa044e793dde</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>search.ts</StartupFile>
+    <StartupFile>github-commit.ts</StartupFile>
     <StartWebBrowser>True</StartWebBrowser>
     <SearchPath>
     </SearchPath>
