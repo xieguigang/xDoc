@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Language
 
 Namespace Markdown
@@ -6,7 +7,7 @@ Namespace Markdown
     Public Class ProjectSpaceExports : Inherits ProjectSpace
 
         Sub New(ps As ProjectSpace)
-            Me.projects = ps.AsList
+            Me.projects = {ps.Sum}.AsList
             Me.handle = ps.ToString
         End Sub
 
