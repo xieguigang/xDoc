@@ -118,9 +118,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Markdown\Extensions.vb" />
+    <Compile Include="Markdown\Libraries.vb" />
     <Compile Include="Markdown\TypeExports.vb" />
     <Compile Include="Markdown\NamespaceExports.vb" />
     <Compile Include="Markdown\ProjectSpaceExports.vb" />
+    <Compile Include="Markdown\URLBuilder.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
