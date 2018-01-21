@@ -36,62 +36,12 @@ class commit {
  */
 function getCommits(git: string, branch: string = "master") {
 
-    var url = `https://github.com/${git}/commits/${branch}.atom`;
-    var xhr = createCORSRequest(url);
+    var url = `https://github.com/${git}/commits/${branch}`;
 
-    if (!xhr) {
-        throw new Error('CORS not supported');
-    } else {
-        // Response handlers.
-        xhr.onload = function () {
-            var xml = xhr.responseText;
-            console.log(xml);
-        };
+    $.get(url, {}, function (html) {
+        console.log(html);
+    }, "html");
 
-        xhr.onreadystatechange = function () {            
-                var xml = xhr.responseText;
-                console.log(xml);            
-        };
-
-        xhr.onerror = function () {
-            var xml = xhr.responseText;
-            console.log(xml);
-        };
-
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        xhr.send(null);
-    }
-}
-
-function createCORSRequest(url: string, method: string = "GET") {
-    var xhr = new XMLHttpRequest();
-
-    if ("withCredentials" in xhr) {
-
-        // Check if the XMLHttpRequest object has a "withCredentials" property.
-        // "withCredentials" only exists on XMLHTTPRequest2 objects.
-        xhr.open(method, url, true);
-
-        console.log("withCredentials");
-
-    } else if (typeof XDomainRequest != "undefined") {
-
-        // Otherwise, check if XDomainRequest.
-        // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-        xhr = new XDomainRequest();
-        xhr.open(method, url);
-
-        console.log("XDomainRequest");
-
-    } else {
-
-        // Otherwise, CORS is not supported by the browser.
-        xhr = null;
-
-    }
-
-    return xhr;
 }
 
 // test

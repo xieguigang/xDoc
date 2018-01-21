@@ -22,7 +22,7 @@ Imports Microsoft.VisualBasic.Text
     Public Function Build(args As CommandLine) As Integer
         Dim ps As New ProjectSpace()
         Dim path$ = args("/in")
-        Dim mdOutputFolder As String = args.GetValue("/out", path.ParentPath & "/docs/")
+        Dim mdOutputFolder$ = args("/out") Or $"{path.ParentPath}/docs/"
 
         Call "Loading xml assembly documents....".__DEBUG_ECHO
 
