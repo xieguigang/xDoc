@@ -18,7 +18,7 @@ Imports Microsoft.VisualBasic.Text
 
     <ExportAPI("/Build")>
     <Description("Build sdk document library from xml assembly docs with just one simple command.")>
-    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /func <load> /out <outDIR>]")>
+    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /out <outDIR>]")>
     Public Function Build(args As CommandLine) As Integer
         Dim ps As New ProjectSpace()
         Dim path$ = args("/in")
@@ -37,8 +37,7 @@ Imports Microsoft.VisualBasic.Text
         Call $"{path} --> {mdOutputFolder}".__DEBUG_ECHO
 
         Dim type As Libraries = args.GetValue("/lib", Libraries.Github, __ctype:=AddressOf GetLibraryType)
-        Dim jsfunc As String = args.GetValue("/func", "load")
-        Dim url As New URLBuilder(type, jsfunc)
+        Dim url As New URLBuilder(type)
 
         If ps.ExportMarkdownFiles(mdOutputFolder, url) Then
             Call "Document library generates success!".__DEBUG_ECHO
