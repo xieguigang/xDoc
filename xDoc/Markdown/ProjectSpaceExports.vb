@@ -1,8 +1,14 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.Language
 
 Namespace Markdown
 
     Public Class ProjectSpaceExports : Inherits ProjectSpace
+
+        Sub New(ps As ProjectSpace)
+            Me.projects = ps.AsList
+            Me.handle = ps.ToString
+        End Sub
 
         ''' <summary>
         ''' 
@@ -16,12 +22,15 @@ Namespace Markdown
 
             For Each p As Project In Me.projects
                 For Each pn As ProjectNamespace In p.Namespaces
-                    pn.ExportMarkdownFile(folderPath, pageTemplate, url)
-                    directory = url.GetNamespaceSave(folderPath, pn).ParentPath
 
-                    For Each pt As ProjectType In pn.Types
-                        pt.ExportMarkdownFile(directory, pageTemplate, url)
-                    Next
+                    With New NamespaceExports(pn)
+                        .ExportMarkdownFile(folderPath, pageTemplate, url)
+                        directory = url.GetNamespaceSave(folderPath, pn).ParentPath
+
+                        For Each pt As ProjectType In pn.Types
+                            .ExportMarkdownFile(directory, pageTemplate, url)
+                        Next
+                    End With
                 Next
             Next
         End Sub

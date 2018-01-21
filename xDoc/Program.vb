@@ -1,11 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
-Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.Text
+Imports xDoc.Markdown
 
 ''' <summary>
 ''' VB.NET 开发工具包，使用这个程序将会从Assembly的XML注释文档之中导出makrdown文档，然后可以配合Yilia工具生成静态的html帮助文档
@@ -39,7 +39,7 @@ Imports Microsoft.VisualBasic.Text
         Dim type As Libraries = args.GetValue("/lib", Libraries.Github, __ctype:=AddressOf GetLibraryType)
         Dim url As New URLBuilder(type)
 
-        If ps.ExportMarkdownFiles(mdOutputFolder, url) Then
+        If New ProjectSpaceExports(ps).ExportMarkdownFiles(mdOutputFolder, url) Then
             Call "Document library generates success!".__DEBUG_ECHO
         Else
             Call "Job failure!".PrintException

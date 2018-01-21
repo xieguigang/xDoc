@@ -6,6 +6,11 @@ Namespace Markdown
 
     Public Class NamespaceExports : Inherits ProjectNamespace
 
+        Sub New(ns As ProjectNamespace)
+            Call MyBase.New(ns)
+            Path = ns.Path
+        End Sub
+
         ''' <summary>
         ''' Exports for namespace markdown documents
         ''' </summary>

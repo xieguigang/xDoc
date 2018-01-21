@@ -25,5 +25,28 @@ Namespace Markdown
                 Return Markdown.Libraries.Github
             End If
         End Function
+
+        <Extension>
+        Public Function CleanText(incomingText As String) As String
+            If incomingText Is Nothing Then
+                Return String.Empty
+            End If
+
+            incomingText = incomingText.Replace(vbTab, "").Trim()
+
+            Dim results As String = String.Empty
+            Dim lastCharWasSpace As Boolean = False
+            For Each c As Char In incomingText
+                If c <> " "c Then
+                    lastCharWasSpace = False
+                    results += c
+                ElseIf Not lastCharWasSpace Then
+                    lastCharWasSpace = True
+                    results += c
+                End If
+            Next
+
+            Return results
+        End Function
     End Module
 End Namespace

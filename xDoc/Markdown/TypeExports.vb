@@ -1,9 +1,14 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.Text
 
 Namespace Markdown
 
     Public Class TypeExports : Inherits ProjectType
+
+        Sub New(type As ProjectType)
+            Call MyBase.New(type)
+        End Sub
 
         ''' <summary>
         ''' Exports for the specific type in a namespace
@@ -31,7 +36,7 @@ Namespace Markdown
                         methodList.AppendLine($"{pm.Declare}")
                         methodList.AppendLine("```")
                     End If
-                    methodList.AppendLine(CleanText(pm.Summary))
+                    methodList.AppendLine(pm.Summary.CleanText)
 
                     If Not pm.Params.IsNullOrEmpty Then
                         Call methodList.AppendLine()
@@ -98,7 +103,7 @@ Namespace Markdown
                                                "{3}" & vbCr & vbLf &
                                                vbCr & vbLf &
                                                "{4}" & vbCr & vbLf &
-                                               "{5}", Me.Name, Me.[Namespace].Path, CleanText(Me._Summary), rmk, methodList.ToString(), propertyList.ToString())
+                                               "{5}", Me.Name, Me.[Namespace].Path, Me.Summary.CleanText, rmk, methodList.ToString(), propertyList.ToString())
 
             Dim path$ = url.GetTypeSave(folderPath, Me) ' *.md save path
 
