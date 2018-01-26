@@ -10,27 +10,21 @@ Namespace Markdown
             Call MyBase.New(type)
         End Sub
 
-        ''' <summary>
-        ''' Exports for the specific type in a namespace
-        ''' </summary>
-        ''' <param name="folderPath"></param>
-        ''' <param name="pageTemplate"></param>
-        ''' <param name="url"></param>
-        ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
-        Public Sub ExportMarkdownFile(folderPath As String, pageTemplate As String, url As URLBuilder)
+        Private Function methodMarkdown(url As URLBuilder) As String
             Dim methodList As New StringBuilder()
 
-            If Me.methods.Values.Count > 0 Then
-                methodList.AppendLine("### Methods" & vbCr & vbLf)
+            methodList.AppendLine("### Methods" & vbCr & vbLf)
 
-                Dim sortedMembers As New SortedList(Of String, ProjectMember)()
+            For Each methodGroup In methods.OrderBy(Function(m) m.Key)
+                Dim list = methodGroup.Value
 
-                For Each pm As ProjectMember In Me.methods.Values
-                    sortedMembers.Add(pm.Name, pm)
-                Next
+                methodList.AppendLine("#### " & list(0).Name)
 
-                For Each pm As ProjectMember In sortedMembers.Values
-                    methodList.AppendLine("#### " & pm.Name)
+                If list.Count > 1 Then
+                    methodList.AppendLine($"> {list.Count} function overloads.")
+                End If
+
+                For Each pm In list
                     If Not pm.Declare.StringEmpty Then
                         methodList.AppendLine("```csharp")
                         methodList.AppendLine($"{pm.Declare}")
@@ -65,35 +59,57 @@ Namespace Markdown
 
                     Call methodList.AppendLine()
                 Next
-            End If
-
-            Dim propertyList As New StringBuilder()
-
-            If Me.properties.Count > 0 Then
-                propertyList.AppendLine("### Properties" & vbCr & vbLf)
-
-                Dim sortedMembers As SortedList(Of String, ProjectMember) = New SortedList(Of String, ProjectMember)()
-
-                For Each pm As ProjectMember In Me.properties.Values
-                    sortedMembers.Add(pm.Name, pm)
-                Next
-
-                For Each pm As ProjectMember In sortedMembers.Values
-                    propertyList.AppendLine("#### " & pm.Name)
-                    propertyList.AppendLine(CleanText(pm.Summary))
-                Next
-            End If
-
-            Dim rmk As String = ""
-
-            For Each l As String In Remarks.lTokens
-                rmk &= "> " & l & vbCrLf
             Next
 
-            If Trim(rmk) = ">" OrElse rmk.StringEmpty Then
-                rmk = ""
+            Return methodList.ToString
+        End Function
+
+        Private Function propertyMarkdown() As String
+            Dim propertyList As New StringBuilder()
+
+            propertyList.AppendLine("### Properties" & vbCr & vbLf)
+
+            For Each pm In properties.OrderBy(Function(p) p.Key)
+                Dim list = pm.Value
+
+                propertyList.AppendLine("#### " & list(0).Name)
+
+                If list.Count > 1 Then
+                    propertyList.AppendLine($"> {list.Count} property overloads.")
+                End If
+
+                For Each prop As ProjectMember In list
+                    propertyList.AppendLine(prop.Summary.CleanText())
+                Next
+            Next
+
+            Return propertyList.ToString
+        End Function
+
+        ''' <summary>
+        ''' Exports for the specific type in a namespace
+        ''' </summary>
+        ''' <param name="folderPath"></param>
+        ''' <param name="pageTemplate"></param>
+        ''' <param name="url"></param>
+        ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
+        Public Sub ExportMarkdownFile(folderPath As String, pageTemplate As String, url As URLBuilder)
+            Dim methodList$
+            Dim propertyList$
+
+            If Me.methods.Count = 0 Then
+                methodList = ""
+            Else
+                methodList = methodMarkdown(url)
             End If
 
+            If Me.properties.Count = 0 Then
+                propertyList = ""
+            Else
+                propertyList = propertyMarkdown()
+            End If
+
+            Dim rmk As String = Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
             Dim link$ = url.GetTypeNamespaceLink(Me)
             Dim text As String = String.Format("# {0}" & vbCr & vbLf &
                                                $"_namespace: {link}_" & vbCr & vbLf &
