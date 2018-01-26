@@ -38,8 +38,9 @@ Imports xDoc.Markdown
 
         Dim type As Libraries = args.GetValue("/lib", Libraries.Github, __ctype:=AddressOf GetLibraryType)
         Dim url As New URLBuilder(type)
+        Dim library As New ProjectSpaceExports(ps)
 
-        If New ProjectSpaceExports(ps).ExportMarkdownFiles(mdOutputFolder, url) Then
+        If library.ExportMarkdownFiles(mdOutputFolder, url) Then
             Call "Document library generates success!".__DEBUG_ECHO
         Else
             Call "Job failure!".PrintException
