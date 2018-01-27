@@ -50,5 +50,30 @@ Namespace Markdown
 
             Return results
         End Function
+
+        <Extension>
+        Public Function MarkdownPage(markdown$, title$, url As URLBuilder) As String
+            Select Case url.lib
+                Case LibType.Hexo
+                    Return _
+$"---
+title: {title}
+---
+
+{markdown}
+"
+                Case LibType.xDoc
+                    Return _
+$"---
+title: {title}
+url: ""folder/file""
+---
+
+{markdown}
+"
+                Case Else
+                    Return markdown
+            End Select
+        End Function
     End Module
 End Namespace

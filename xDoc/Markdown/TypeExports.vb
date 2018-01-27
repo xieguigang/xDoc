@@ -111,15 +111,20 @@ Namespace Markdown
 
             Dim remarks As String = Me.Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
             Dim link$ = url.GetTypeNamespaceLink(Me)
-            Dim text As String = String.Format("# {0}" & vbCr & vbLf &
-                                               $"_namespace: {link}_" & vbCr & vbLf &
-                                               vbCr & vbLf &
-                                               "{2}" & vbCr & vbLf &
-                                               vbCr & vbLf &
-                                               "{3}" & vbCr & vbLf &
-                                               vbCr & vbLf &
-                                               "{4}" & vbCr & vbLf &
-                                               "{5}", Me.Name, Me.[Namespace].Path, Me.Summary.CleanText, remarks, methodList.ToString(), propertyList.ToString())
+            Dim text$ =
+$"# {Name}
+
+_namespace: {link}_
+
+{Summary.CleanText}
+
+{remarks}
+
+{methodList.ToString()}
+
+{propertyList.ToString()}"
+
+            text = text.MarkdownPage(title:="Class " & Name, url:=url)
 
             Return text
         End Function

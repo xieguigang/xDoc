@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
-Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Text
 Imports xDoc.Exports
 
 Namespace Markdown
@@ -22,11 +22,15 @@ Namespace Markdown
         Public Function ExportMarkdownFiles(pageBuilder As PageExports) As Boolean
             Dim directory$
             Dim md$
+            Dim path$
 
             For Each p As Project In Me.projects
                 For Each pn As ProjectNamespace In p.Namespaces
                     Dim nsExport As New NamespaceExports(pn)
+
                     md = nsExport.MarkdownPage(pageBuilder.url)
+                    path = pageBuilder.url.GetNamespaceSave(nsExport)
+                    md.SaveTo(path, TextEncodings.UTF8WithoutBOM)
 
                     For Each pt As ProjectType In pn.Types
                         Dim typeExport As New TypeExports(pt)

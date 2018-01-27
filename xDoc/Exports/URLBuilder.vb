@@ -40,13 +40,14 @@ Namespace Exports
         Dim ext$
         Dim folderPath$
 
-        Sub New(type As Libraries)
+        Sub New(type As Libraries, folderPath$)
+            Me.folderPath = folderPath
             Me.lib = type
             Me.ext = If(type = Libraries.Hexo, ".html", ".md")
         End Sub
 
-        Sub New()
-            Me.New(Libraries.Github)
+        Sub New(folderPath As String)
+            Me.New(Libraries.Github, folderPath)
         End Sub
 
         Public Overrides Function ToString() As String

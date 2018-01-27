@@ -1,6 +1,5 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
-Imports Microsoft.VisualBasic.Text
 Imports xDoc.Exports
 
 Namespace Markdown
@@ -19,41 +18,18 @@ Namespace Markdown
         ''' <param name="url"></param>
         Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
             Dim typeList As New StringBuilder()
-            Dim projectTypes As New SortedList(Of String, ProjectType)()
-
-            For Each pt As ProjectType In Me.Types
-                projectTypes.Add(pt.Name, pt)
-            Next
 
             Call typeList.AppendLine("|Type|Summary|")
             Call typeList.AppendLine("|----|-------|")
 
-            For Each pt As ProjectType In projectTypes.Values
-                Dim lines$() = If(pt.Summary Is Nothing, "", pt.Summary) _
-                    .Trim(ASCII.CR, ASCII.LF) _
-                    .Trim _
-                    .lTokens
-                Dim summary$ = If(lines.IsNullOrEmpty OrElse lines.Length = 1,
-                    lines.FirstOrDefault,
-                    lines.First & " ...")
+            For Each pt As ProjectType In Types.OrderBy(Function(t) t.Name)
+                Dim summary$ = pt.Summary.lTokens.JoinBy("<br />")
                 Dim link As String = url.GetNamespaceTypeUrl(Me, pt)
 
                 Call typeList.AppendLine($"|{link}|{summary}|")
             Next
 
-            Dim text As String
-            Dim path$ = url.GetNamespaceSave(Me) ' *.md output path
-
-            If url.[lib] = Libraries.Hexo Then
-                text = $"---
-title: {Me.Path}
----"
-                text = text & vbCrLf & vbCrLf & typeList.ToString
-            Else
-                text = vbCr & vbLf & "# {0}" & vbCr & vbLf & vbCr & vbLf & "{1}" & vbCr & vbLf
-                text = String.Format(text, Me.Path, typeList.ToString())
-            End If
-
+            Dim text$ = typeList.ToString.MarkdownPage(title:=Me.Path, url:=url)
             Return text
         End Function
     End Class
