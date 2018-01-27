@@ -13,87 +13,79 @@ Namespace Markdown
         End Sub
 
         Private Function methodMarkdown(url As URLBuilder) As String
-            Dim methodList As New StringBuilder()
+            Return ExportMembersInternal(methods, "Methods", "method")
+        End Function
 
-            methodList.AppendLine("### Methods" & vbCr & vbLf)
+        Private Shared Function ExportMembersInternal(methods As Dictionary(Of String, List(Of ProjectMember)), type$, typeDescript$) As String
+            Dim markdown As New StringBuilder()
+
+            If methods.Count = 0 Then
+                Return ""
+            Else
+                markdown.AppendLine($"### {type}" & vbCr & vbLf)
+            End If
 
             For Each methodGroup In methods.OrderBy(Function(m) m.Key)
                 Dim list = methodGroup.Value
 
-                methodList.AppendLine("#### " & list(0).Name)
+                markdown.AppendLine("#### " & list(0).Name)
 
                 If list.Count > 1 Then
-                    methodList.AppendLine($"> {list.Count} function overloads.")
+                    markdown.AppendLine($"> {list.Count} {typeDescript} overloads.")
                 End If
 
                 For Each pm In list
-                    If Not pm.Declare.StringEmpty Then
-                        methodList.AppendLine("```csharp")
-                        methodList.AppendLine($"{pm.Declare}")
-                        methodList.AppendLine("```")
-                    End If
-                    methodList.AppendLine(pm.Summary.CleanText)
-
-                    If Not pm.Params.IsNullOrEmpty Then
-                        Call methodList.AppendLine()
-                        Call methodList.AppendLine("|Parameter Name|Remarks|")
-                        Call methodList.AppendLine("|--------------|-------|")
-
-                        For Each arg In pm.Params
-                            Call methodList.AppendLine($"|{arg.name}|{arg.text}|")
-                        Next
-
-                        Call methodList.AppendLine()
-                    End If
-
-                    If Not pm.Returns.StringEmpty Then
-                        If Not url.[lib] = Libraries.Hexo Then
-                            methodList.AppendLine()
-                        End If
-                        methodList.AppendLine("_returns: " & pm.Returns & "_")
-                    End If
-
-                    If Not pm.Remarks.StringEmpty Then
-                        For Each line As String In pm.Remarks.lTokens
-                            Call methodList.AppendLine("> " & line)
-                        Next
-                    End If
-
-                    Call methodList.AppendLine()
+                    Call memberInternal(member:=pm, markdown:=markdown)
                 Next
             Next
 
-            Return methodList.ToString
+            Return markdown.ToString
         End Function
 
-        Private Function propertyMarkdown() As String
-            Dim propertyList As New StringBuilder()
+        Private Shared Sub memberInternal(member As ProjectMember, markdown As StringBuilder)
+            If Not member.Declare.StringEmpty Then
+                markdown.AppendLine("```vbnet")
+                markdown.AppendLine($"{member.Declare}")
+                markdown.AppendLine("```")
+            End If
+            markdown.AppendLine(member.Summary.CleanText)
 
-            propertyList.AppendLine("### Properties" & vbCr & vbLf)
+            If Not member.Params.IsNullOrEmpty Then
+                Call markdown.AppendLine()
+                Call markdown.AppendLine("|Parameter Name|Remarks|")
+                Call markdown.AppendLine("|--------------|-------|")
 
-            For Each pm In properties.OrderBy(Function(p) p.Key)
-                Dim list = pm.Value
-
-                propertyList.AppendLine("#### " & list(0).Name)
-
-                If list.Count > 1 Then
-                    propertyList.AppendLine($"> {list.Count} property overloads.")
-                End If
-
-                For Each prop As ProjectMember In list
-                    propertyList.AppendLine(prop.Summary.CleanText())
+                For Each arg In member.Params
+                    Call markdown.AppendLine($"|{arg.name}|{arg.text}|")
                 Next
-            Next
 
-            Return propertyList.ToString
+                Call markdown.AppendLine()
+            End If
+
+            If Not member.Returns.StringEmpty Then
+                markdown.AppendLine()
+                markdown.AppendLine("_returns: " & member.Returns & "_")
+            End If
+
+            If Not member.Remarks.StringEmpty Then
+                For Each line As String In member.Remarks.lTokens
+                    Call markdown.AppendLine("> " & line)
+                Next
+            End If
+
+            Call markdown.AppendLine()
+        End Sub
+
+        Private Function propertyMarkdown() As String
+            Return ExportMembersInternal(properties, "Properties", "property")
         End Function
 
         Private Function FieldsMarkdown() As String
-
+            Return ExportMembersInternal(fields.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Fields", "field")
         End Function
 
         Private Function EventsMarkdown() As String
-
+            Return ExportMembersInternal(events.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Events", "event")
         End Function
 
         ''' <summary>
@@ -102,36 +94,14 @@ Namespace Markdown
         ''' <param name="url"></param>
         ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
         Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
-            Dim methodList$
-            Dim propertyList$
-            Dim eventList$
-            Dim fieldList$
-
-            If Me.events.Count = 0 Then
-                eventList = ""
-            Else
-                eventList = EventsMarkdown()
-            End If
-
-            If Me.fields.Count = 0 Then
-                fieldList = ""
-            Else
-                fieldList = FieldsMarkdown()
-            End If
-
-            If Me.methods.Count = 0 Then
-                methodList = ""
-            Else
-                methodList = methodMarkdown(url)
-            End If
-
-            If Me.properties.Count = 0 Then
-                propertyList = ""
-            Else
-                propertyList = propertyMarkdown()
-            End If
-
-            Dim remarks$ = Me.Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
+            Dim methodList$ = methodMarkdown(url)
+            Dim propertyList$ = propertyMarkdown()
+            Dim eventList$ = EventsMarkdown()
+            Dim fieldList$ = FieldsMarkdown()
+            Dim remarks$ = Me.Remarks _
+                .lTokens _
+                .Select(Function(line) "> " & line) _
+                .JoinBy(ASCII.LF)
             Dim summary$ = Me.Summary.CleanText
             Dim link$ = url.GetTypeNamespaceLink(Me)
             Dim text$ =

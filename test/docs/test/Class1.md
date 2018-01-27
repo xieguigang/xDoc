@@ -20,13 +20,13 @@ _namespace: /docs/test/index.md_
 ### Methods
 
 #### overloadsMethod
-> 4 function overloads.
-```csharp
+> 4 method overloads.
+```vbnet
 test.Class1.overloadsMethod
 ```
 11111111111111
 
-```csharp
+```vbnet
 test.Class1.overloadsMethod(System.Int32)
 ```
 2222222
@@ -36,7 +36,7 @@ test.Class1.overloadsMethod(System.Int32)
 |m2%|AAAA@@@@@@22222|
 
 
-```csharp
+```vbnet
 test.Class1.overloadsMethod(System.String)
 ```
 333333
@@ -46,7 +46,7 @@ test.Class1.overloadsMethod(System.String)
 |ss$|AAAAA|
 
 
-```csharp
+```vbnet
 test.Class1.overloadsMethod(System.DateTime,System.String)
 ```
 FFFFFFFF
@@ -65,7 +65,28 @@ _returns: lllllllllllllllllllll_
 
 #### M1
 > 3 property overloads.
+```vbnet
+test.Class1.M1
+```
 11111111111111111111111
+
+```vbnet
+test.Class1.M1
+```
 2222222222222222222222222222
+
+```vbnet
+test.Class1.M1(System.String,System.Int32,System.Double,System.Decimal,System.Single)
+```
 ooooooooooverloads
+
+|Parameter Name|Remarks|
+|--------------|-------|
+|x$|-|
+|y%|-|
+|z#|-|
+|e@|-|
+|t!|-|
+
+
 
