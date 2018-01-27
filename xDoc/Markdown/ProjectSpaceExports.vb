@@ -20,7 +20,6 @@ Namespace Markdown
         End Sub
 
         Public Function ExportMarkdownFiles(pageBuilder As PageExports) As Boolean
-            Dim directory$
             Dim md$
             Dim path$
 
@@ -35,11 +34,13 @@ Namespace Markdown
                     For Each pt As ProjectType In pn.Types
                         Dim typeExport As New TypeExports(pt)
                         md = typeExport.MarkdownPage(pageBuilder.url)
+                        path = pageBuilder.url.GetTypeSave(type:=pt)
+                        md.SaveTo(path, TextEncodings.UTF8WithoutBOM)
                     Next
                 Next
             Next
 
-            Call pageBuilder.SaveNamespaceIndexPage(target:=Me)
+            Return pageBuilder.SaveNamespaceIndexPage(target:=Me)
         End Function
     End Class
 End Namespace

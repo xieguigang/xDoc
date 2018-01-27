@@ -88,6 +88,14 @@ Namespace Markdown
             Return propertyList.ToString
         End Function
 
+        Private Function FieldsMarkdown() As String
+
+        End Function
+
+        Private Function EventsMarkdown() As String
+
+        End Function
+
         ''' <summary>
         ''' Exports for the specific type in a namespace
         ''' </summary>
@@ -96,6 +104,20 @@ Namespace Markdown
         Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
             Dim methodList$
             Dim propertyList$
+            Dim eventList$
+            Dim fieldList$
+
+            If Me.events.Count = 0 Then
+                eventList = ""
+            Else
+                eventList = EventsMarkdown()
+            End If
+
+            If Me.fields.Count = 0 Then
+                fieldList = ""
+            Else
+                fieldList = FieldsMarkdown()
+            End If
 
             If Me.methods.Count = 0 Then
                 methodList = ""
@@ -109,20 +131,25 @@ Namespace Markdown
                 propertyList = propertyMarkdown()
             End If
 
-            Dim remarks As String = Me.Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
+            Dim remarks$ = Me.Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
+            Dim summary$ = Me.Summary.CleanText
             Dim link$ = url.GetTypeNamespaceLink(Me)
             Dim text$ =
 $"# {Name}
 
 _namespace: {link}_
 
-{Summary.CleanText}
+{summary}
 
 {remarks}
 
-{methodList.ToString()}
+{fieldList}
 
-{propertyList.ToString()}"
+{eventList}
+
+{methodList}
+
+{propertyList}"
 
             text = text.MarkdownPage(title:="Class " & Name, url:=url)
 

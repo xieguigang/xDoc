@@ -98,16 +98,17 @@ Namespace Exports
             End With
         End Function
 
-        Public Function GetTypeSave(folderPath$, type As ProjectType) As String
+        Public Function GetTypeSave(type As ProjectType) As String
             Dim path$
 
             Select Case [lib]
                 Case Libraries.Hexo
-                    path = folderPath & "/T-" & type.[Namespace].Path & "." & type.Name & ".md"
+                    ' hexo只允许一级目录
+                    path = folderPath & $"/T-{type.Namespace.Path}.{type.Name}.md"
                 Case Libraries.Github
-                    path = folderPath & "/" & type.Name & ".md"
+                    path = folderPath & $"/{type.Namespace.Path}/{type.Name}.md"
                 Case Libraries.xDoc
-                    path = folderPath & "/" & type.Name & ".md"
+                    path = folderPath & $"/{type.Namespace.Path.Replace("."c, "/")}/{type.Name}.md"
                 Case Else
                     Throw New NotImplementedException
             End Select
