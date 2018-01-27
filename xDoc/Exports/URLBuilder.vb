@@ -38,6 +38,7 @@ Namespace Exports
         ''' link url after hexo generates the static site
         ''' </summary>
         Dim ext$
+        Dim folderPath$
 
         Sub New(type As Libraries)
             Me.lib = type
@@ -75,10 +76,9 @@ Namespace Exports
         ''' <summary>
         ''' ``*.md`` output path
         ''' </summary>
-        ''' <param name="folderPath$"></param>
         ''' <param name="ns"></param>
         ''' <returns></returns>
-        Public Function GetNamespaceSave(folderPath$, ns As ProjectNamespace) As String
+        Public Function GetNamespaceSave(ns As ProjectNamespace) As String
             With Me
                 Dim path$
 

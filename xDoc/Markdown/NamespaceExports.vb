@@ -16,10 +16,8 @@ Namespace Markdown
         ''' <summary>
         ''' Exports for namespace markdown documents
         ''' </summary>
-        ''' <param name="folderPath"></param>
-        ''' <param name="pageTemplate"></param>
         ''' <param name="url"></param>
-        Public Sub ExportMarkdownFile(folderPath As String, pageTemplate As String, url As URLBuilder)
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
             Dim typeList As New StringBuilder()
             Dim projectTypes As New SortedList(Of String, ProjectType)()
 
@@ -44,7 +42,7 @@ Namespace Markdown
             Next
 
             Dim text As String
-            Dim path$ = url.GetNamespaceSave(folderPath, Me) ' *.md output path
+            Dim path$ = url.GetNamespaceSave(Me) ' *.md output path
 
             If url.[lib] = Libraries.Hexo Then
                 text = $"---
@@ -56,15 +54,7 @@ title: {Me.Path}
                 text = String.Format(text, Me.Path, typeList.ToString())
             End If
 
-            If pageTemplate IsNot Nothing Then
-                text = pageTemplate.Replace("[content]", text)
-            End If
-
-            Call text.SaveTo(path, UTF8WithoutBOM)
-        End Sub
-
-        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
-            Throw New NotImplementedException()
+            Return text
         End Function
     End Class
 End Namespace

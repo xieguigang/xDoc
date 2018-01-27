@@ -91,11 +91,9 @@ Namespace Markdown
         ''' <summary>
         ''' Exports for the specific type in a namespace
         ''' </summary>
-        ''' <param name="folderPath"></param>
-        ''' <param name="pageTemplate"></param>
         ''' <param name="url"></param>
         ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
-        Public Sub ExportMarkdownFile()
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
             Dim methodList$
             Dim propertyList$
 
@@ -123,25 +121,7 @@ Namespace Markdown
                                                "{4}" & vbCr & vbLf &
                                                "{5}", Me.Name, Me.[Namespace].Path, Me.Summary.CleanText, rmk, methodList.ToString(), propertyList.ToString())
 
-            Dim path$ = url.GetTypeSave(folderPath, Me) ' *.md save path
-
-            If url.[lib] = Libraries.Hexo Then
-                text = $"---
-title: {Me.Name}
----
-
-" & text
-            Else
-                If pageTemplate IsNot Nothing Then
-                    text = pageTemplate.Replace("[content]", text)
-                End If
-            End If
-
-            Call text.SaveTo(path, UTF8WithoutBOM)
-        End Sub
-
-        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
-            Throw New NotImplementedException()
+            Return text
         End Function
     End Class
 End Namespace

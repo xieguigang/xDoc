@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.Text
+Imports xDoc.Exports
 Imports xDoc.Markdown
 
 ''' <summary>

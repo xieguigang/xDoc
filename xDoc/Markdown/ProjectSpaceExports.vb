@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Language
+Imports xDoc.Exports
 
 Namespace Markdown
 
