@@ -13,6 +13,8 @@ Namespace Markdown
     Public Class ProjectSpaceExports : Inherits ProjectSpace
 
         Sub New(ps As ProjectSpace)
+            Call MyBase.New(excludeVBSpecific:=False)
+
             Me.projects = {ps.Sum}.AsList
             Me.handle = ps.ToString
         End Sub

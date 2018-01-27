@@ -19,11 +19,12 @@ Imports xDoc.Markdown
 
     <ExportAPI("/Build")>
     <Description("Build sdk document library from xml assembly docs with just one simple command.")>
-    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /out <outDIR>]")>
+    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /vb_spec.exclude /out <outDIR>]")>
     Public Function Build(args As CommandLine) As Integer
-        Dim ps As New ProjectSpace()
         Dim path$ = args("/in")
+        Dim removesVBSpecific As Boolean = args("/vb_spec.exclude")
         Dim mdOutputFolder$ = args("/out") Or $"{path.ParentPath}/docs/"
+        Dim ps As New ProjectSpace(removesVBSpecific)
 
         Call "Loading xml assembly documents....".__DEBUG_ECHO
 
