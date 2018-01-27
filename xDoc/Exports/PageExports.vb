@@ -64,7 +64,7 @@ Namespace Exports
             If [lib] = Libraries.Hexo Then
                 Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
             ElseIf [lib] = Libraries.xDoc Then
-                Return $"|[{ns}](/{ns.Replace(".", "/")}/index.html)|{If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")}|"
+                Return $"|[{ns}](/docs/{ns.Replace(".", "/")}/index.html)|{If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")}|"
             Else
                 Throw New NotImplementedException
             End If

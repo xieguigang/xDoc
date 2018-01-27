@@ -66,7 +66,7 @@ Namespace Exports
                     file = $"./{pt.Name}.md"
                     link = $"[{pt.Name}]({file})"
                 Case Libraries.xDoc
-                    link = $"/docs/{ns.Path.Replace("."c, "/"c)}/{pt.Name}.md"
+                    link = $"/docs/{ns.Path.Replace("."c, "/"c)}/{pt.Name}.html"
                 Case Else
                     Throw New NotImplementedException
             End Select
@@ -130,7 +130,7 @@ Namespace Exports
 
                 link = $"[{type.[Namespace].Path}]({file})"
             Else
-                link = $"/docs/{type.[Namespace].Path.Replace("."c, "/"c)}/index.md"
+                link = $"/docs/{type.[Namespace].Path.Replace("."c, "/"c)}/index.html"
             End If
 
             Return link
