@@ -26,7 +26,7 @@
 
 #End Region
 
-Namespace Markdown
+Namespace Exports
 
     Public Enum Libraries
         ''' <summary>

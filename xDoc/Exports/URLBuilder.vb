@@ -28,7 +28,7 @@
 
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 
-Namespace Markdown
+Namespace Exports
 
     Public Class URLBuilder
 

@@ -1,5 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Language
+Imports xDoc.Exports
+Imports LibType = xDoc.Exports.Libraries
 
 Namespace Markdown
 
@@ -22,20 +24,20 @@ Namespace Markdown
             If libraries.ContainsKey(type = LCase(+type)) Then
                 Return libraries(+type)
             Else
-                Return Markdown.Libraries.Github
+                Return LibType.Github
             End If
         End Function
 
-        <Extension>
-        Public Function CleanText(incomingText As String) As String
-            If incomingText Is Nothing Then
-                Return String.Empty
-            End If
-
-            incomingText = incomingText.Replace(vbTab, "").Trim()
-
+        <Extension> Public Function CleanText(incomingText As String) As String
             Dim results As String = String.Empty
             Dim lastCharWasSpace As Boolean = False
+
+            If incomingText Is Nothing Then
+                Return String.Empty
+            Else
+                incomingText = incomingText.Replace(vbTab, "").Trim()
+            End If
+
             For Each c As Char In incomingText
                 If c <> " "c Then
                     lastCharWasSpace = False
