@@ -109,7 +109,7 @@ Namespace Markdown
                 propertyList = propertyMarkdown()
             End If
 
-            Dim rmk As String = Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
+            Dim remarks As String = Me.Remarks.lTokens.Select(Function(line) "> " & line).JoinBy(ASCII.LF)
             Dim link$ = url.GetTypeNamespaceLink(Me)
             Dim text As String = String.Format("# {0}" & vbCr & vbLf &
                                                $"_namespace: {link}_" & vbCr & vbLf &
@@ -119,7 +119,7 @@ Namespace Markdown
                                                "{3}" & vbCr & vbLf &
                                                vbCr & vbLf &
                                                "{4}" & vbCr & vbLf &
-                                               "{5}", Me.Name, Me.[Namespace].Path, Me.Summary.CleanText, rmk, methodList.ToString(), propertyList.ToString())
+                                               "{5}", Me.Name, Me.[Namespace].Path, Me.Summary.CleanText, remarks, methodList.ToString(), propertyList.ToString())
 
             Return text
         End Function

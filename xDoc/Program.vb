@@ -41,7 +41,7 @@ Imports xDoc.Markdown
         Dim url As New URLBuilder(type)
         Dim library As New ProjectSpaceExports(ps)
 
-        If library.ExportMarkdownFiles(mdOutputFolder, url) Then
+        If library.ExportMarkdownFiles(New PageExports(mdOutputFolder, url)) Then
             Call "Document library generates success!".__DEBUG_ECHO
         Else
             Call "Job failure!".PrintException
