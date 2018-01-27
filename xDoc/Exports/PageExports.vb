@@ -1,5 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Language
+Imports xDoc.Markdown
 
 Namespace Exports
 
@@ -42,32 +44,29 @@ Namespace Exports
                       Let list = x.Namespaces.Select(Function(ns) ns.Path)
                       Select list
 
+            Dim annotations = target.ScanAnnotations
             Dim ext As String = If(url.[lib] = Libraries.Hexo, ".html", ".md")
             Dim links As String() = allns _
                 .OrderBy(Function(ns) ns) _
-                .Select(Function(ns) __getIndexLink(ns, ext, url.[lib])) _
+                .Select(Function(ns) __getIndexLink(ns, ext, url.[lib], annotations)) _
                 .ToArray
-            Dim sb As String = "Browser by namespace:" & vbCrLf &
-                vbCrLf &
-                links.JoinBy(vbCrLf)
-
-            If url.[lib] = Libraries.Hexo Then
-                sb = $"---
-title: API index
-date: {Now.ToString}
----
-
-" & sb
-            End If
+            Dim sb As String = "Browser by namespace:" & vbCrLf & vbCrLf
+            sb = sb & "|Namespace|Description|
+|----------|-----------|
+"
+            sb = sb & links.JoinBy(vbCrLf)
+            sb = sb.MarkdownPage("API index", url)
 
             Return sb.SaveTo(path)
         End Function
 
-        Private Shared Function __getIndexLink(ns$, ext$, [lib] As Libraries) As String
-            If [lib] <> Libraries.xDoc Then
+        Private Shared Function __getIndexLink(ns$, ext$, [lib] As Libraries, annotations As Dictionary(Of String, String)) As String
+            If [lib] = Libraries.Hexo Then
                 Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
+            ElseIf [lib] = Libraries.xDoc Then
+                Return $"|[{ns}](/{ns.Replace(".", "/")}/index.html)|{If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")}|"
             Else
-                Return $"+ <a href=""#"" onClick=""load('/docs/{ns}/index.md')"">{ns}</a>"
+                Throw New NotImplementedException
             End If
         End Function
     End Class

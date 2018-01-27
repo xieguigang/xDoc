@@ -1,149 +1,156 @@
+---
+title: API index
+url: "folder/file"
+---
+
 Browser by namespace:
 
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic/index.md')">Microsoft.VisualBasic</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices/index.md')">Microsoft.VisualBasic.ApplicationServices</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Debugging/index.md')">Microsoft.VisualBasic.ApplicationServices.Debugging</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Debugging.Logging/index.md')">Microsoft.VisualBasic.ApplicationServices.Debugging.Logging</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Development/index.md')">Microsoft.VisualBasic.ApplicationServices.Development</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly/index.md')">Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization/index.md')">Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Globalization/index.md')">Microsoft.VisualBasic.ApplicationServices.Globalization</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.GZip/index.md')">Microsoft.VisualBasic.ApplicationServices.GZip</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.NgenInstaller/index.md')">Microsoft.VisualBasic.ApplicationServices.NgenInstaller</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.OSVersionInfo/index.md')">Microsoft.VisualBasic.ApplicationServices.OSVersionInfo</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Terminal/index.md')">Microsoft.VisualBasic.ApplicationServices.Terminal</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ApplicationServices.Windows.Forms/index.md')">Microsoft.VisualBasic.ApplicationServices.Windows.Forms</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine/index.md')">Microsoft.VisualBasic.CommandLine</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Grouping/index.md')">Microsoft.VisualBasic.CommandLine.Grouping</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.InteropService/index.md')">Microsoft.VisualBasic.CommandLine.InteropService</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.InteropService.SharedORM/index.md')">Microsoft.VisualBasic.CommandLine.InteropService.SharedORM</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.IORedirect/index.md')">Microsoft.VisualBasic.CommandLine.IORedirect</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Parsers/index.md')">Microsoft.VisualBasic.CommandLine.Parsers</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection/index.md')">Microsoft.VisualBasic.CommandLine.Reflection</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints/index.md')">Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel/index.md')">Microsoft.VisualBasic.ComponentModel</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Algorithm/index.md')">Microsoft.VisualBasic.ComponentModel.Algorithm</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Algorithm.base/index.md')">Microsoft.VisualBasic.ComponentModel.Algorithm.base</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection/index.md')">Microsoft.VisualBasic.ComponentModel.Collection</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup/index.md')">Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Collection.Generic/index.md')">Microsoft.VisualBasic.ComponentModel.Collection.Generic</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps/index.md')">Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.DataStructures.Tree/index.md')">Microsoft.VisualBasic.ComponentModel.DataStructures.Tree</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Map`2/index.md')">Microsoft.VisualBasic.ComponentModel.Map`2</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Ranges/index.md')">Microsoft.VisualBasic.ComponentModel.Ranges</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings/index.md')">Microsoft.VisualBasic.ComponentModel.Settings</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Settings.Inf/index.md')">Microsoft.VisualBasic.ComponentModel.Settings.Inf</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.TagData/index.md')">Microsoft.VisualBasic.ComponentModel.TagData</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ComponentModel.Triggers/index.md')">Microsoft.VisualBasic.ComponentModel.Triggers</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Data.Trinity.NLP/index.md')">Microsoft.VisualBasic.Data.Trinity.NLP</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.CodeDOM_VBC/index.md')">Microsoft.VisualBasic.Emit.CodeDOM_VBC</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Delegates/index.md')">Microsoft.VisualBasic.Emit.Delegates</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Marshal/index.md')">Microsoft.VisualBasic.Emit.Marshal</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Emit.Parameters/index.md')">Microsoft.VisualBasic.Emit.Parameters</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO/index.md')">Microsoft.VisualBasic.FileIO</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker/index.md')">Microsoft.VisualBasic.FileIO.SymLinker</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint/index.md')">Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging/index.md')">Microsoft.VisualBasic.Imaging</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.BitmapImage/index.md')">Microsoft.VisualBasic.Imaging.BitmapImage</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale/index.md')">Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.Graphics2D/index.md')">Microsoft.VisualBasic.Imaging.Graphics2D</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.LayoutModel/index.md')">Microsoft.VisualBasic.Imaging.LayoutModel</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.Math2D/index.md')">Microsoft.VisualBasic.Imaging.Math2D</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Imaging.Math2D.GeometryMath/index.md')">Microsoft.VisualBasic.Imaging.Math2D.GeometryMath</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language/index.md')">Microsoft.VisualBasic.Language</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C/index.md')">Microsoft.VisualBasic.Language.C</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.C.CString/index.md')">Microsoft.VisualBasic.Language.C.CString</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Default/index.md')">Microsoft.VisualBasic.Language.Default</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Java/index.md')">Microsoft.VisualBasic.Language.Java</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.LinqAPIHelpers/index.md')">Microsoft.VisualBasic.Language.LinqAPIHelpers</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Perl/index.md')">Microsoft.VisualBasic.Language.Perl</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python/index.md')">Microsoft.VisualBasic.Language.Python</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Python.re/index.md')">Microsoft.VisualBasic.Language.Python.re</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash/index.md')">Microsoft.VisualBasic.Language.UnixBash</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash.FileSystem/index.md')">Microsoft.VisualBasic.Language.UnixBash.FileSystem</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.UnixBash.SearchOpt/index.md')">Microsoft.VisualBasic.Language.UnixBash.SearchOpt</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Value`1/index.md')">Microsoft.VisualBasic.Language.Value`1</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Values/index.md')">Microsoft.VisualBasic.Language.Values</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Language.Vectorization/index.md')">Microsoft.VisualBasic.Language.Vectorization</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Linq/index.md')">Microsoft.VisualBasic.Linq</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math/index.md')">Microsoft.VisualBasic.Math</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Correlations/index.md')">Microsoft.VisualBasic.Math.Correlations</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Correlations.Correlations/index.md')">Microsoft.VisualBasic.Math.Correlations.Correlations</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Correlations.Correlations.spcc/index.md')">Microsoft.VisualBasic.Math.Correlations.Correlations.spcc</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Correlations.Ranking/index.md')">Microsoft.VisualBasic.Math.Correlations.Ranking</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.NumberGroups/index.md')">Microsoft.VisualBasic.Math.NumberGroups</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Ranks/index.md')">Microsoft.VisualBasic.Math.Ranks</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Statistics/index.md')">Microsoft.VisualBasic.Math.Statistics</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Math.Statistics.Linq/index.md')">Microsoft.VisualBasic.Math.Statistics.Linq</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol/index.md')">Microsoft.VisualBasic.MMFProtocol</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.MapStream/index.md')">Microsoft.VisualBasic.MMFProtocol.MapStream</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.MMFProtocol.Pipeline/index.md')">Microsoft.VisualBasic.MMFProtocol.Pipeline</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net/index.md')">Microsoft.VisualBasic.Net</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Abstract/index.md')">Microsoft.VisualBasic.Net.Abstract</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Http/index.md')">Microsoft.VisualBasic.Net.Http</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.LANTools/index.md')">Microsoft.VisualBasic.Net.LANTools</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Mailto/index.md')">Microsoft.VisualBasic.Net.Mailto</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent/index.md')">Microsoft.VisualBasic.Net.Persistent</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application/index.md')">Microsoft.VisualBasic.Net.Persistent.Application</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Application.Protocols/index.md')">Microsoft.VisualBasic.Net.Persistent.Application.Protocols</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Persistent.Socket/index.md')">Microsoft.VisualBasic.Net.Persistent.Socket</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols/index.md')">Microsoft.VisualBasic.Net.Protocols</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.ContentTypes/index.md')">Microsoft.VisualBasic.Net.Protocols.ContentTypes</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Reflection/index.md')">Microsoft.VisualBasic.Net.Protocols.Reflection</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.RequestStream/index.md')">Microsoft.VisualBasic.Net.Protocols.RequestStream</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams/index.md')">Microsoft.VisualBasic.Net.Protocols.Streams</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.Protocols.Streams.Array/index.md')">Microsoft.VisualBasic.Net.Protocols.Streams.Array</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL/index.md')">Microsoft.VisualBasic.Net.SSL</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Net.SSL.SSLProtocols/index.md')">Microsoft.VisualBasic.Net.SSL.SSLProtocols</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel/index.md')">Microsoft.VisualBasic.Parallel</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Linq/index.md')">Microsoft.VisualBasic.Parallel.Linq</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Linq.TaskPartitions/index.md')">Microsoft.VisualBasic.Parallel.Linq.TaskPartitions</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ParallelLoading/index.md')">Microsoft.VisualBasic.Parallel.ParallelLoading</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.ServicesFolk/index.md')">Microsoft.VisualBasic.Parallel.ServicesFolk</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks/index.md')">Microsoft.VisualBasic.Parallel.Tasks</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Tasks.Actor`2/index.md')">Microsoft.VisualBasic.Parallel.Tasks.Actor`2</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Threads/index.md')">Microsoft.VisualBasic.Parallel.Threads</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Parallel.Threads.ThreadPool/index.md')">Microsoft.VisualBasic.Parallel.Threads.ThreadPool</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.RegexExtensions/index.md')">Microsoft.VisualBasic.RegexExtensions</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting/index.md')">Microsoft.VisualBasic.Scripting</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.Abstract/index.md')">Microsoft.VisualBasic.Scripting.Abstract</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.Expressions/index.md')">Microsoft.VisualBasic.Scripting.Expressions</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.Expressions.Selector/index.md')">Microsoft.VisualBasic.Scripting.Expressions.Selector</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.MetaData/index.md')">Microsoft.VisualBasic.Scripting.MetaData</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.Runtime/index.md')">Microsoft.VisualBasic.Scripting.Runtime</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.SymbolBuilder/index.md')">Microsoft.VisualBasic.Scripting.SymbolBuilder</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.TokenIcer/index.md')">Microsoft.VisualBasic.Scripting.TokenIcer</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Scripting.TokenIcer.Prefix/index.md')">Microsoft.VisualBasic.Scripting.TokenIcer.Prefix</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.SecurityString/index.md')">Microsoft.VisualBasic.SecurityString</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization/index.md')">Microsoft.VisualBasic.Serialization</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.BinaryDumping/index.md')">Microsoft.VisualBasic.Serialization.BinaryDumping</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON/index.md')">Microsoft.VisualBasic.Serialization.JSON</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Serialization.JSON.Formatter/index.md')">Microsoft.VisualBasic.Serialization.JSON.Formatter</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal/index.md')">Microsoft.VisualBasic.Terminal</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Helpers/index.md')">Microsoft.VisualBasic.Terminal.Helpers</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.ProgressBar/index.md')">Microsoft.VisualBasic.Terminal.ProgressBar</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.STDIO__/index.md')">Microsoft.VisualBasic.Terminal.STDIO__</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.Utility/index.md')">Microsoft.VisualBasic.Terminal.Utility</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Terminal.xConsole/index.md')">Microsoft.VisualBasic.Terminal.xConsole</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text/index.md')">Microsoft.VisualBasic.Text</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.ASCII/index.md')">Microsoft.VisualBasic.Text.ASCII</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.FormattedParser/index.md')">Microsoft.VisualBasic.Text.FormattedParser</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.HtmlParser/index.md')">Microsoft.VisualBasic.Text.HtmlParser</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Levenshtein/index.md')">Microsoft.VisualBasic.Text.Levenshtein</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Search/index.md')">Microsoft.VisualBasic.Text.Search</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Similarity/index.md')">Microsoft.VisualBasic.Text.Similarity</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml/index.md')">Microsoft.VisualBasic.Text.Xml</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml.Linq/index.md')">Microsoft.VisualBasic.Text.Xml.Linq</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml.Models/index.md')">Microsoft.VisualBasic.Text.Xml.Models</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml.Models.KeyValuePair/index.md')">Microsoft.VisualBasic.Text.Xml.Models.KeyValuePair</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Text.Xml.OpenXml/index.md')">Microsoft.VisualBasic.Text.Xml.OpenXml</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.ValueTypes/index.md')">Microsoft.VisualBasic.ValueTypes</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.VectorExtensions/index.md')">Microsoft.VisualBasic.VectorExtensions</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32/index.md')">Microsoft.VisualBasic.Win32</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Win32.GetLastErrorAPI/index.md')">Microsoft.VisualBasic.Win32.GetLastErrorAPI</a>
-+ <a href="#" onClick="load('/docs/Microsoft.VisualBasic.Windows.Forms/index.md')">Microsoft.VisualBasic.Windows.Forms</a>
-+ <a href="#" onClick="load('/docs/test/index.md')">test</a>
+|Namespace|Description|
+|----------|-----------|
+|[Microsoft.VisualBasic](/Microsoft/VisualBasic/index.html)|The ``sciBASIC#`` runtime.|
+|[Microsoft.VisualBasic.ApplicationServices](/Microsoft/VisualBasic/ApplicationServices/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Debugging](/Microsoft/VisualBasic/ApplicationServices/Debugging/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Debugging.Logging](/Microsoft/VisualBasic/ApplicationServices/Debugging/Logging/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Development](/Microsoft/VisualBasic/ApplicationServices/Development/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly](/Microsoft/VisualBasic/ApplicationServices/Development/XmlDoc/Assembly/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization](/Microsoft/VisualBasic/ApplicationServices/Development/XmlDoc/Serialization/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Globalization](/Microsoft/VisualBasic/ApplicationServices/Globalization/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.GZip](/Microsoft/VisualBasic/ApplicationServices/GZip/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.NgenInstaller](/Microsoft/VisualBasic/ApplicationServices/NgenInstaller/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.OSVersionInfo](/Microsoft/VisualBasic/ApplicationServices/OSVersionInfo/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Terminal](/Microsoft/VisualBasic/ApplicationServices/Terminal/index.html)|-|
+|[Microsoft.VisualBasic.ApplicationServices.Windows.Forms](/Microsoft/VisualBasic/ApplicationServices/Windows/Forms/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine](/Microsoft/VisualBasic/CommandLine/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.Grouping](/Microsoft/VisualBasic/CommandLine/Grouping/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.InteropService](/Microsoft/VisualBasic/CommandLine/InteropService/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.InteropService.SharedORM](/Microsoft/VisualBasic/CommandLine/InteropService/SharedORM/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.IORedirect](/Microsoft/VisualBasic/CommandLine/IORedirect/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.Parsers](/Microsoft/VisualBasic/CommandLine/Parsers/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.Reflection](/Microsoft/VisualBasic/CommandLine/Reflection/index.html)|-|
+|[Microsoft.VisualBasic.CommandLine.Reflection.EntryPoints](/Microsoft/VisualBasic/CommandLine/Reflection/EntryPoints/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel](/Microsoft/VisualBasic/ComponentModel/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Algorithm](/Microsoft/VisualBasic/ComponentModel/Algorithm/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Algorithm.base](/Microsoft/VisualBasic/ComponentModel/Algorithm/base/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Collection](/Microsoft/VisualBasic/ComponentModel/Collection/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Collection.FuzzyGroup](/Microsoft/VisualBasic/ComponentModel/Collection/FuzzyGroup/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Collection.Generic](/Microsoft/VisualBasic/ComponentModel/Collection/Generic/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataSourceModel](/Microsoft/VisualBasic/ComponentModel/DataSourceModel/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository](/Microsoft/VisualBasic/ComponentModel/DataSourceModel/Repository/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps](/Microsoft/VisualBasic/ComponentModel/DataSourceModel/SchemaMaps/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataStructures](/Microsoft/VisualBasic/ComponentModel/DataStructures/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataStructures.BinaryTree](/Microsoft/VisualBasic/ComponentModel/DataStructures/BinaryTree/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.DataStructures.Tree](/Microsoft/VisualBasic/ComponentModel/DataStructures/Tree/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Map`2](/Microsoft/VisualBasic/ComponentModel/Map`2/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Ranges](/Microsoft/VisualBasic/ComponentModel/Ranges/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Settings](/Microsoft/VisualBasic/ComponentModel/Settings/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Settings.Inf](/Microsoft/VisualBasic/ComponentModel/Settings/Inf/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.TagData](/Microsoft/VisualBasic/ComponentModel/TagData/index.html)|-|
+|[Microsoft.VisualBasic.ComponentModel.Triggers](/Microsoft/VisualBasic/ComponentModel/Triggers/index.html)|-|
+|[Microsoft.VisualBasic.Data.Trinity.NLP](/Microsoft/VisualBasic/Data/Trinity/NLP/index.html)|-|
+|[Microsoft.VisualBasic.Emit.CodeDOM_VBC](/Microsoft/VisualBasic/Emit/CodeDOM_VBC/index.html)|-|
+|[Microsoft.VisualBasic.Emit.Delegates](/Microsoft/VisualBasic/Emit/Delegates/index.html)|-|
+|[Microsoft.VisualBasic.Emit.Marshal](/Microsoft/VisualBasic/Emit/Marshal/index.html)|-|
+|[Microsoft.VisualBasic.Emit.Parameters](/Microsoft/VisualBasic/Emit/Parameters/index.html)|-|
+|[Microsoft.VisualBasic.FileIO](/Microsoft/VisualBasic/FileIO/index.html)|-|
+|[Microsoft.VisualBasic.FileIO.SymLinker](/Microsoft/VisualBasic/FileIO/SymLinker/index.html)|-|
+|[Microsoft.VisualBasic.FileIO.SymLinker.JunctionPoint](/Microsoft/VisualBasic/FileIO/SymLinker/JunctionPoint/index.html)|-|
+|[Microsoft.VisualBasic.Imaging](/Microsoft/VisualBasic/Imaging/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.BitmapImage](/Microsoft/VisualBasic/Imaging/BitmapImage/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale](/Microsoft/VisualBasic/Imaging/BitmapImage/BitmapScale/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.Graphics2D](/Microsoft/VisualBasic/Imaging/Graphics2D/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.LayoutModel](/Microsoft/VisualBasic/Imaging/LayoutModel/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.Math2D](/Microsoft/VisualBasic/Imaging/Math2D/index.html)|-|
+|[Microsoft.VisualBasic.Imaging.Math2D.GeometryMath](/Microsoft/VisualBasic/Imaging/Math2D/GeometryMath/index.html)|-|
+|[Microsoft.VisualBasic.Language](/Microsoft/VisualBasic/Language/index.html)|The VisualBasic.NET language addons|
+|[Microsoft.VisualBasic.Language.C](/Microsoft/VisualBasic/Language/C/index.html)|-|
+|[Microsoft.VisualBasic.Language.C.CString](/Microsoft/VisualBasic/Language/C/CString/index.html)|-|
+|[Microsoft.VisualBasic.Language.Default](/Microsoft/VisualBasic/Language/Default/index.html)|-|
+|[Microsoft.VisualBasic.Language.Java](/Microsoft/VisualBasic/Language/Java/index.html)|-|
+|[Microsoft.VisualBasic.Language.LinqAPIHelpers](/Microsoft/VisualBasic/Language/LinqAPIHelpers/index.html)|-|
+|[Microsoft.VisualBasic.Language.Perl](/Microsoft/VisualBasic/Language/Perl/index.html)|-|
+|[Microsoft.VisualBasic.Language.Python](/Microsoft/VisualBasic/Language/Python/index.html)|-|
+|[Microsoft.VisualBasic.Language.Python.re](/Microsoft/VisualBasic/Language/Python/re/index.html)|-|
+|[Microsoft.VisualBasic.Language.UnixBash](/Microsoft/VisualBasic/Language/UnixBash/index.html)|-|
+|[Microsoft.VisualBasic.Language.UnixBash.FileSystem](/Microsoft/VisualBasic/Language/UnixBash/FileSystem/index.html)|-|
+|[Microsoft.VisualBasic.Language.UnixBash.SearchOpt](/Microsoft/VisualBasic/Language/UnixBash/SearchOpt/index.html)|-|
+|[Microsoft.VisualBasic.Language.Value`1](/Microsoft/VisualBasic/Language/Value`1/index.html)|-|
+|[Microsoft.VisualBasic.Language.Values](/Microsoft/VisualBasic/Language/Values/index.html)|-|
+|[Microsoft.VisualBasic.Language.Vectorization](/Microsoft/VisualBasic/Language/Vectorization/index.html)|-|
+|[Microsoft.VisualBasic.Linq](/Microsoft/VisualBasic/Linq/index.html)|-|
+|[Microsoft.VisualBasic.Math](/Microsoft/VisualBasic/Math/index.html)|-|
+|[Microsoft.VisualBasic.Math.Correlations](/Microsoft/VisualBasic/Math/Correlations/index.html)|-|
+|[Microsoft.VisualBasic.Math.Correlations.Correlations](/Microsoft/VisualBasic/Math/Correlations/Correlations/index.html)|-|
+|[Microsoft.VisualBasic.Math.Correlations.Correlations.spcc](/Microsoft/VisualBasic/Math/Correlations/Correlations/spcc/index.html)|-|
+|[Microsoft.VisualBasic.Math.Correlations.Ranking](/Microsoft/VisualBasic/Math/Correlations/Ranking/index.html)|-|
+|[Microsoft.VisualBasic.Math.NumberGroups](/Microsoft/VisualBasic/Math/NumberGroups/index.html)|-|
+|[Microsoft.VisualBasic.Math.Ranks](/Microsoft/VisualBasic/Math/Ranks/index.html)|-|
+|[Microsoft.VisualBasic.Math.Statistics](/Microsoft/VisualBasic/Math/Statistics/index.html)|-|
+|[Microsoft.VisualBasic.Math.Statistics.Linq](/Microsoft/VisualBasic/Math/Statistics/Linq/index.html)|-|
+|[Microsoft.VisualBasic.MMFProtocol](/Microsoft/VisualBasic/MMFProtocol/index.html)|-|
+|[Microsoft.VisualBasic.MMFProtocol.MapStream](/Microsoft/VisualBasic/MMFProtocol/MapStream/index.html)|-|
+|[Microsoft.VisualBasic.MMFProtocol.Pipeline](/Microsoft/VisualBasic/MMFProtocol/Pipeline/index.html)|-|
+|[Microsoft.VisualBasic.Net](/Microsoft/VisualBasic/Net/index.html)|-|
+|[Microsoft.VisualBasic.Net.Abstract](/Microsoft/VisualBasic/Net/Abstract/index.html)|-|
+|[Microsoft.VisualBasic.Net.Http](/Microsoft/VisualBasic/Net/Http/index.html)|-|
+|[Microsoft.VisualBasic.Net.LANTools](/Microsoft/VisualBasic/Net/LANTools/index.html)|-|
+|[Microsoft.VisualBasic.Net.Mailto](/Microsoft/VisualBasic/Net/Mailto/index.html)|-|
+|[Microsoft.VisualBasic.Net.Persistent](/Microsoft/VisualBasic/Net/Persistent/index.html)|-|
+|[Microsoft.VisualBasic.Net.Persistent.Application](/Microsoft/VisualBasic/Net/Persistent/Application/index.html)|-|
+|[Microsoft.VisualBasic.Net.Persistent.Application.Protocols](/Microsoft/VisualBasic/Net/Persistent/Application/Protocols/index.html)|-|
+|[Microsoft.VisualBasic.Net.Persistent.Socket](/Microsoft/VisualBasic/Net/Persistent/Socket/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols](/Microsoft/VisualBasic/Net/Protocols/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols.ContentTypes](/Microsoft/VisualBasic/Net/Protocols/ContentTypes/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols.Reflection](/Microsoft/VisualBasic/Net/Protocols/Reflection/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols.RequestStream](/Microsoft/VisualBasic/Net/Protocols/RequestStream/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols.Streams](/Microsoft/VisualBasic/Net/Protocols/Streams/index.html)|-|
+|[Microsoft.VisualBasic.Net.Protocols.Streams.Array](/Microsoft/VisualBasic/Net/Protocols/Streams/Array/index.html)|-|
+|[Microsoft.VisualBasic.Net.SSL](/Microsoft/VisualBasic/Net/SSL/index.html)|-|
+|[Microsoft.VisualBasic.Net.SSL.SSLProtocols](/Microsoft/VisualBasic/Net/SSL/SSLProtocols/index.html)|-|
+|[Microsoft.VisualBasic.Parallel](/Microsoft/VisualBasic/Parallel/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Linq](/Microsoft/VisualBasic/Parallel/Linq/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Linq.TaskPartitions](/Microsoft/VisualBasic/Parallel/Linq/TaskPartitions/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.ParallelLoading](/Microsoft/VisualBasic/Parallel/ParallelLoading/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.ServicesFolk](/Microsoft/VisualBasic/Parallel/ServicesFolk/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Tasks](/Microsoft/VisualBasic/Parallel/Tasks/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Tasks.Actor`2](/Microsoft/VisualBasic/Parallel/Tasks/Actor`2/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Threads](/Microsoft/VisualBasic/Parallel/Threads/index.html)|-|
+|[Microsoft.VisualBasic.Parallel.Threads.ThreadPool](/Microsoft/VisualBasic/Parallel/Threads/ThreadPool/index.html)|-|
+|[Microsoft.VisualBasic.RegexExtensions](/Microsoft/VisualBasic/RegexExtensions/index.html)|-|
+|[Microsoft.VisualBasic.Scripting](/Microsoft/VisualBasic/Scripting/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.Abstract](/Microsoft/VisualBasic/Scripting/Abstract/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.Expressions](/Microsoft/VisualBasic/Scripting/Expressions/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.Expressions.Selector](/Microsoft/VisualBasic/Scripting/Expressions/Selector/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.MetaData](/Microsoft/VisualBasic/Scripting/MetaData/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.Runtime](/Microsoft/VisualBasic/Scripting/Runtime/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.SymbolBuilder](/Microsoft/VisualBasic/Scripting/SymbolBuilder/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.TokenIcer](/Microsoft/VisualBasic/Scripting/TokenIcer/index.html)|-|
+|[Microsoft.VisualBasic.Scripting.TokenIcer.Prefix](/Microsoft/VisualBasic/Scripting/TokenIcer/Prefix/index.html)|-|
+|[Microsoft.VisualBasic.SecurityString](/Microsoft/VisualBasic/SecurityString/index.html)|-|
+|[Microsoft.VisualBasic.Serialization](/Microsoft/VisualBasic/Serialization/index.html)|-|
+|[Microsoft.VisualBasic.Serialization.BinaryDumping](/Microsoft/VisualBasic/Serialization/BinaryDumping/index.html)|-|
+|[Microsoft.VisualBasic.Serialization.JSON](/Microsoft/VisualBasic/Serialization/JSON/index.html)|-|
+|[Microsoft.VisualBasic.Serialization.JSON.Formatter](/Microsoft/VisualBasic/Serialization/JSON/Formatter/index.html)|-|
+|[Microsoft.VisualBasic.Terminal](/Microsoft/VisualBasic/Terminal/index.html)|-|
+|[Microsoft.VisualBasic.Terminal.Helpers](/Microsoft/VisualBasic/Terminal/Helpers/index.html)|-|
+|[Microsoft.VisualBasic.Terminal.ProgressBar](/Microsoft/VisualBasic/Terminal/ProgressBar/index.html)|-|
+|[Microsoft.VisualBasic.Terminal.STDIO__](/Microsoft/VisualBasic/Terminal/STDIO__/index.html)|-|
+|[Microsoft.VisualBasic.Terminal.Utility](/Microsoft/VisualBasic/Terminal/Utility/index.html)|-|
+|[Microsoft.VisualBasic.Terminal.xConsole](/Microsoft/VisualBasic/Terminal/xConsole/index.html)|-|
+|[Microsoft.VisualBasic.Text](/Microsoft/VisualBasic/Text/index.html)|-|
+|[Microsoft.VisualBasic.Text.ASCII](/Microsoft/VisualBasic/Text/ASCII/index.html)|-|
+|[Microsoft.VisualBasic.Text.FormattedParser](/Microsoft/VisualBasic/Text/FormattedParser/index.html)|-|
+|[Microsoft.VisualBasic.Text.HtmlParser](/Microsoft/VisualBasic/Text/HtmlParser/index.html)|-|
+|[Microsoft.VisualBasic.Text.Levenshtein](/Microsoft/VisualBasic/Text/Levenshtein/index.html)|-|
+|[Microsoft.VisualBasic.Text.Search](/Microsoft/VisualBasic/Text/Search/index.html)|-|
+|[Microsoft.VisualBasic.Text.Similarity](/Microsoft/VisualBasic/Text/Similarity/index.html)|-|
+|[Microsoft.VisualBasic.Text.Xml](/Microsoft/VisualBasic/Text/Xml/index.html)|-|
+|[Microsoft.VisualBasic.Text.Xml.Linq](/Microsoft/VisualBasic/Text/Xml/Linq/index.html)|-|
+|[Microsoft.VisualBasic.Text.Xml.Models](/Microsoft/VisualBasic/Text/Xml/Models/index.html)|-|
+|[Microsoft.VisualBasic.Text.Xml.Models.KeyValuePair](/Microsoft/VisualBasic/Text/Xml/Models/KeyValuePair/index.html)|-|
+|[Microsoft.VisualBasic.Text.Xml.OpenXml](/Microsoft/VisualBasic/Text/Xml/OpenXml/index.html)|-|
+|[Microsoft.VisualBasic.ValueTypes](/Microsoft/VisualBasic/ValueTypes/index.html)|-|
+|[Microsoft.VisualBasic.VectorExtensions](/Microsoft/VisualBasic/VectorExtensions/index.html)|-|
+|[Microsoft.VisualBasic.Win32](/Microsoft/VisualBasic/Win32/index.html)|-|
+|[Microsoft.VisualBasic.Win32.GetLastErrorAPI](/Microsoft/VisualBasic/Win32/GetLastErrorAPI/index.html)|-|
+|[Microsoft.VisualBasic.Windows.Forms](/Microsoft/VisualBasic/Windows/Forms/index.html)|-|
+|[test](/test/index.html)|namespace summary test for ``test`` namespace.|

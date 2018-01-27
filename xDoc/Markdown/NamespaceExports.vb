@@ -26,7 +26,7 @@ Namespace Markdown
                 Dim summary$ = pt.Summary.lTokens.JoinBy("<br />")
                 Dim link As String = url.GetNamespaceTypeUrl(Me, pt)
 
-                Call typeList.AppendLine($"|{link}|{summary}|")
+                Call typeList.AppendLine($"|[{pt.Name}]({link})|{summary}|")
             Next
 
             Dim text$ = typeList.ToString.MarkdownPage(title:=Me.Path, url:=url)
