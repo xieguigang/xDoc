@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exports\PageExports.vb" />
+    <Compile Include="Markdown\Abstract.vb" />
     <Compile Include="Markdown\Extensions.vb" />
     <Compile Include="Exports\Libraries.vb" />
     <Compile Include="Markdown\TypeExports.vb" />

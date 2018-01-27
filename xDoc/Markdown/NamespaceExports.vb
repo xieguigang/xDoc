@@ -1,10 +1,12 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.Text
+Imports xDoc.Exports
 
 Namespace Markdown
 
     Public Class NamespaceExports : Inherits ProjectNamespace
+        Implements IMarkdownExport
 
         Sub New(ns As ProjectNamespace)
             Call MyBase.New(ns)
@@ -60,5 +62,9 @@ title: {Me.Path}
 
             Call text.SaveTo(path, UTF8WithoutBOM)
         End Sub
+
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
+            Throw New NotImplementedException()
+        End Function
     End Class
 End Namespace

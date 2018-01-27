@@ -1,10 +1,12 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.Text
+Imports xDoc.Exports
 
 Namespace Markdown
 
     Public Class TypeExports : Inherits ProjectType
+        Implements IMarkdownExport
 
         Sub New(type As ProjectType)
             Call MyBase.New(type)
@@ -93,7 +95,7 @@ Namespace Markdown
         ''' <param name="pageTemplate"></param>
         ''' <param name="url"></param>
         ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
-        Public Sub ExportMarkdownFile(folderPath As String, pageTemplate As String, url As URLBuilder)
+        Public Sub ExportMarkdownFile()
             Dim methodList$
             Dim propertyList$
 
@@ -137,5 +139,9 @@ title: {Me.Name}
 
             Call text.SaveTo(path, UTF8WithoutBOM)
         End Sub
+
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
+            Throw New NotImplementedException()
+        End Function
     End Class
 End Namespace
