@@ -31,7 +31,7 @@ Namespace Markdown
                     path = pageBuilder.url.GetNamespaceSave(nsExport)
                     md.SaveTo(path, TextEncodings.UTF8WithoutBOM)
 
-                    For Each pt As ProjectType In pn.Types
+                    For Each pt As ProjectType In pn.Types.Where(Function(type) type.Name <> NamespaceDoc)
                         Dim typeExport As New TypeExports(pt)
                         md = typeExport.MarkdownPage(pageBuilder.url)
                         path = pageBuilder.url.GetTypeSave(type:=pt)

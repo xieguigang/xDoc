@@ -11,6 +11,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "test1", "test\test1\test1.v
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "test2", "test\test2\test2.vbproj", "{36AB06C9-CC20-4CB0-A492-BD9EAE59FD14}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{ACB607DD-4B96-4DDD-B35F-F00AFA1054DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Biodeep_UNIX_x64|Any CPU = Biodeep_UNIX_x64|Any CPU
@@ -450,6 +452,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BE561F7-12CA-42D8-BAB0-B8F889D4A3FB} = {ACB607DD-4B96-4DDD-B35F-F00AFA1054DA}
+		{36AB06C9-CC20-4CB0-A492-BD9EAE59FD14} = {ACB607DD-4B96-4DDD-B35F-F00AFA1054DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BBEDB0E-4C8D-4FE8-BE22-90E52131FA40}
