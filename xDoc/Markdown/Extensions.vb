@@ -52,6 +52,16 @@ Namespace Markdown
         End Function
 
         <Extension>
+        Public Function IsConstructor(memberName$) As Boolean
+            Return memberName.TextEquals("#ctor")
+        End Function
+
+        <Extension>
+        Public Function IsOperator(memberName$) As Boolean
+            Return InStr(memberName, "op_") = 1
+        End Function
+
+        <Extension>
         Public Function MarkdownPage(markdown$, title$, url As URLBuilder) As String
             Select Case url.lib
                 Case LibType.Hexo

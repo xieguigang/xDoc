@@ -13,6 +13,11 @@ Namespace Markdown
         End Sub
 
         Private Function methodMarkdown(url As URLBuilder) As String
+            Dim methods = Me.methods _
+                .Where(Function(tuple)
+                           Return Not tuple.Key.IsConstructor AndAlso Not tuple.Key.IsOperator
+                       End Function) _
+                .ToDictionary
             Return ExportMembersInternal(methods, "Methods", "method")
         End Function
 
@@ -76,6 +81,26 @@ Namespace Markdown
             Call markdown.AppendLine()
         End Sub
 
+        Private Function constructorMarkdown() As String
+            Dim ctors As New Dictionary(Of String, List(Of ProjectMember))
+            If methods.ContainsKey("#ctor") Then
+                ctors.Add(".ctor", methods("#ctor"))
+            End If
+            Return ExportMembersInternal(ctors, "Constructor", "constructors")
+        End Function
+
+        Private Function operatorMarkdown() As String
+            Dim ops As New Dictionary(Of String, List(Of ProjectMember))
+
+            For Each m In methods
+                If m.Key.IsOperator Then
+                    ops.Add(m.Key, m.Value)
+                End If
+            Next
+
+            Return ExportMembersInternal(ops, "Constructor", "constructors")
+        End Function
+
         Private Function propertyMarkdown() As String
             Return ExportMembersInternal(properties, "Properties", "property")
         End Function
@@ -117,9 +142,13 @@ _namespace: {link}_
 
 {eventList}
 
+{propertyList}
+
+{constructorMarkdown()}
+
 {methodList}
 
-{propertyList}"
+{operatorMarkdown()}"
 
             text = text.MarkdownPage(title:="Class " & Name, url:=url)
 
