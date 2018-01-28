@@ -5,7 +5,7 @@ url: "folder/file"
 
 # Class1
 
-_namespace: /docs/test/index.md_
+_namespace: [test](/docs/test/index.html)_
 
 1111111111111111111111
 
@@ -17,17 +17,49 @@ _namespace: /docs/test/index.md_
 
 
 
+### Properties
+
+#### M1
+> 3 property overloads.
+```vbnet
+Class1.M1
+```
+11111111111111111111111
+
+```vbnet
+Class1.M1
+```
+2222222222222222222222222222
+
+```vbnet
+Class1.M1(System.String,System.Int32,System.Double,System.Decimal,System.Single)
+```
+ooooooooooverloads
+
+|Parameter Name|Remarks|
+|--------------|-------|
+|x$|-|
+|y%|-|
+|z#|-|
+|e@|-|
+|t!|-|
+
+
+
+
+
+
 ### Methods
 
 #### overloadsMethod
 > 4 method overloads.
 ```vbnet
-test.Class1.overloadsMethod
+Class1.overloadsMethod
 ```
 11111111111111
 
 ```vbnet
-test.Class1.overloadsMethod(System.Int32)
+Class1.overloadsMethod(System.Int32)
 ```
 2222222
 
@@ -37,7 +69,7 @@ test.Class1.overloadsMethod(System.Int32)
 
 
 ```vbnet
-test.Class1.overloadsMethod(System.String)
+Class1.overloadsMethod(System.String)
 ```
 333333
 
@@ -47,7 +79,7 @@ test.Class1.overloadsMethod(System.String)
 
 
 ```vbnet
-test.Class1.overloadsMethod(System.DateTime,System.String)
+Class1.overloadsMethod(System.DateTime,System.String)
 ```
 FFFFFFFF
 
@@ -59,34 +91,6 @@ FFFFFFFF
 
 _returns: lllllllllllllllllllll_
 
-
-
-### Properties
-
-#### M1
-> 3 property overloads.
-```vbnet
-test.Class1.M1
-```
-11111111111111111111111
-
-```vbnet
-test.Class1.M1
-```
-2222222222222222222222222222
-
-```vbnet
-test.Class1.M1(System.String,System.Int32,System.Double,System.Decimal,System.Single)
-```
-ooooooooooverloads
-
-|Parameter Name|Remarks|
-|--------------|-------|
-|x$|-|
-|y%|-|
-|z#|-|
-|e@|-|
-|t!|-|
 
 
 

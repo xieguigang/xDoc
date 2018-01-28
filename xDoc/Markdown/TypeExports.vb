@@ -18,10 +18,10 @@ Namespace Markdown
                            Return Not tuple.Key.IsConstructor AndAlso Not tuple.Key.IsOperator
                        End Function) _
                 .ToDictionary
-            Return ExportMembersInternal(methods, "Methods", "method")
+            Return ExportMembersInternal(methods, "Methods", "method", [Namespace].Path)
         End Function
 
-        Private Shared Function ExportMembersInternal(methods As Dictionary(Of String, List(Of ProjectMember)), type$, typeDescript$) As String
+        Private Shared Function ExportMembersInternal(methods As Dictionary(Of String, List(Of ProjectMember)), type$, typeDescript$, namespace$) As String
             Dim markdown As New StringBuilder()
 
             If methods.Count = 0 Then
@@ -40,17 +40,17 @@ Namespace Markdown
                 End If
 
                 For Each pm In list
-                    Call memberInternal(member:=pm, markdown:=markdown)
+                    Call memberInternal(member:=pm, markdown:=markdown, namespaceSkip:=[namespace].Length)
                 Next
             Next
 
             Return markdown.ToString
         End Function
 
-        Private Shared Sub memberInternal(member As ProjectMember, markdown As StringBuilder)
+        Private Shared Sub memberInternal(member As ProjectMember, markdown As StringBuilder, namespaceSkip%)
             If Not member.Declare.StringEmpty Then
                 markdown.AppendLine("```vbnet")
-                markdown.AppendLine($"{member.Declare}")
+                markdown.AppendLine($"{Mid(member.Declare, namespaceSkip + 2)}")
                 markdown.AppendLine("```")
             End If
             markdown.AppendLine(member.Summary.CleanText)
@@ -86,7 +86,7 @@ Namespace Markdown
             If methods.ContainsKey("#ctor") Then
                 ctors.Add(".ctor", methods("#ctor"))
             End If
-            Return ExportMembersInternal(ctors, "Constructor", "constructors")
+            Return ExportMembersInternal(ctors, "Constructor", "constructors", [Namespace].Path)
         End Function
 
         Private Function operatorMarkdown() As String
@@ -98,19 +98,19 @@ Namespace Markdown
                 End If
             Next
 
-            Return ExportMembersInternal(ops, "Constructor", "constructors")
+            Return ExportMembersInternal(ops, "Operator", "operators", [Namespace].Path)
         End Function
 
         Private Function propertyMarkdown() As String
-            Return ExportMembersInternal(properties, "Properties", "property")
+            Return ExportMembersInternal(properties, "Properties", "property", [Namespace].Path)
         End Function
 
         Private Function FieldsMarkdown() As String
-            Return ExportMembersInternal(fields.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Fields", "field")
+            Return ExportMembersInternal(fields.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Fields", "field", [Namespace].Path)
         End Function
 
         Private Function EventsMarkdown() As String
-            Return ExportMembersInternal(events.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Events", "event")
+            Return ExportMembersInternal(events.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Events", "event", [Namespace].Path)
         End Function
 
         ''' <summary>
@@ -132,7 +132,7 @@ Namespace Markdown
             Dim text$ =
 $"# {Name}
 
-_namespace: {link}_
+_namespace: [{[Namespace].Path}]({link})_
 
 {summary}
 

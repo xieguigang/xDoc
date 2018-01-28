@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 /App
 /test/App
+/test/docs/Microsoft/VisualBasic
