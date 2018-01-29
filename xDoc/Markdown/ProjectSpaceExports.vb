@@ -12,10 +12,10 @@ Namespace Markdown
     ''' </summary>
     Public Class ProjectSpaceExports : Inherits ProjectSpace
 
-        Sub New(ps As ProjectSpace)
+        Sub New(ps As ProjectSpace, Optional excludeNamespace$() = Nothing)
             Call MyBase.New(excludeVBSpecific:=False)
 
-            Me.projects = {ps.Sum}.AsList
+            Me.projects = {ps.Sum(excludeNamespace, name:=ps.ToString)}.AsList
             Me.handle = ps.ToString
         End Sub
 
