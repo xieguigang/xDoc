@@ -74,10 +74,12 @@ Namespace Exports
                 Dim info$ = If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")
 
                 If html Then
-                    Return <tr>
-                               <td><a href=<%= $"/docs/{ns.Replace(".", "/")}/index.html" %>><%= ns %></a></td>
-                               <td><%= info %></td>
-                           </tr>
+                    Return (<tr>
+                                <td>
+                                    <a href=<%= $"/docs/{ns.Replace(".", "/")}/index.html" %>><%= ns %></a>
+                                </td>
+                                <td><%= info %></td>
+                            </tr>).ToString
                 Else
                     Return $"|[{ns}](/docs/{ns.Replace(".", "/")}/index.html)|{info}|"
                 End If
