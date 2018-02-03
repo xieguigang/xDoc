@@ -5,7 +5,7 @@ Imports xDoc.Exports
 Namespace Markdown
 
     Public Class NamespaceExports : Inherits ProjectNamespace
-        Implements IMarkdownExport
+        Implements IPageBuilder
 
         Sub New(ns As ProjectNamespace)
             Call MyBase.New(ns)
@@ -16,7 +16,7 @@ Namespace Markdown
         ''' Exports for namespace markdown documents
         ''' </summary>
         ''' <param name="url"></param>
-        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IPageBuilder.MarkdownPage
             Dim typeList As New StringBuilder()
 
             Call typeList.AppendLine("|Type|Summary|")
@@ -31,6 +31,10 @@ Namespace Markdown
 
             Dim text$ = typeList.ToString.MarkdownPage(title:=Me.Path, url:=url)
             Return text
+        End Function
+
+        Public Function HtmlPage(url As URLBuilder) As String Implements IPageBuilder.HtmlPage
+            Throw New NotImplementedException()
         End Function
     End Class
 End Namespace

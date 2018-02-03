@@ -6,7 +6,7 @@ Imports xDoc.Exports
 Namespace Markdown
 
     Public Class TypeExports : Inherits ProjectType
-        Implements IMarkdownExport
+        Implements IPageBuilder
 
         Sub New(type As ProjectType)
             Call MyBase.New(type)
@@ -118,7 +118,7 @@ Namespace Markdown
         ''' </summary>
         ''' <param name="url"></param>
         ''' <remarks>这里还应该包括完整的函数的参数注释的输出</remarks>
-        Public Function MarkdownPage(url As URLBuilder) As String Implements IMarkdownExport.MarkdownPage
+        Public Function MarkdownPage(url As URLBuilder) As String Implements IPageBuilder.MarkdownPage
             Dim methodList$ = methodMarkdown(url)
             Dim propertyList$ = propertyMarkdown()
             Dim eventList$ = EventsMarkdown()
@@ -153,6 +153,10 @@ _namespace: [{[Namespace].Path}]({link})_
             text = text.MarkdownPage(title:="Class " & Name, url:=url)
 
             Return text
+        End Function
+
+        Public Function HtmlPage(url As URLBuilder) As String Implements IPageBuilder.HtmlPage
+            Throw New NotImplementedException()
         End Function
     End Class
 End Namespace

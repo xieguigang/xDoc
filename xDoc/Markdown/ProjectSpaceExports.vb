@@ -44,7 +44,27 @@ Namespace Markdown
         End Function
 
         Public Function ExportHTMLFiles(pageBuilder As PageExports) As Boolean
+            Dim html$
+            Dim path$
 
+            For Each p As Project In Me.projects
+                For Each pn As ProjectNamespace In p.Namespaces
+                    Dim nsExport As New NamespaceExports(pn)
+
+                    html = nsExport.HtmlPage(pageBuilder.url)
+                    path = pageBuilder.url.GetNamespaceSave(nsExport)
+                    html.SaveTo(path, TextEncodings.UTF8WithoutBOM)
+
+                    For Each pt As ProjectType In pn.Types.Where(Function(type) type.Name <> NamespaceDoc)
+                        Dim typeExport As New TypeExports(pt)
+                        html = typeExport.HtmlPage(pageBuilder.url)
+                        path = pageBuilder.url.GetTypeSave(type:=pt)
+                        html.SaveTo(path, TextEncodings.UTF8WithoutBOM)
+                    Next
+                Next
+            Next
+
+            Return pageBuilder.SaveNamespaceIndexPage(target:=Me)
         End Function
     End Class
 End Namespace
