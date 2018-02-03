@@ -121,6 +121,7 @@
     <Compile Include="Markdown\Abstract.vb" />
     <Compile Include="Markdown\Extensions.vb" />
     <Compile Include="Exports\Libraries.vb" />
+    <Compile Include="Exports\HtmlTypeExports.vb" />
     <Compile Include="Markdown\TypeExports.vb" />
     <Compile Include="Markdown\NamespaceExports.vb" />
     <Compile Include="Markdown\ProjectSpaceExports.vb" />

@@ -156,7 +156,7 @@ _namespace: [{[Namespace].Path}]({link})_
         End Function
 
         Public Function HtmlPage(url As URLBuilder) As String Implements IPageBuilder.HtmlPage
-            Throw New NotImplementedException()
+
         End Function
     End Class
 End Namespace
