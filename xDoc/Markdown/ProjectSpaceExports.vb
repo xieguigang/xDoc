@@ -64,7 +64,7 @@ Namespace Markdown
                 Next
             Next
 
-            Return pageBuilder.SaveNamespaceIndexPage(target:=Me)
+            Return pageBuilder.SaveNamespaceIndexHtmlPage(target:=Me)
         End Function
     End Class
 End Namespace

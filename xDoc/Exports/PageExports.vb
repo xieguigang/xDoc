@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+﻿Imports System.Text
+Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Language
 Imports xDoc.Markdown
@@ -48,7 +49,9 @@ Namespace Exports
             Dim ext As String = If(url.[lib] = Libraries.Hexo, ".html", ".md")
             Dim links As String() = allns _
                 .OrderBy(Function(ns) ns) _
-                .Select(Function(ns) __getIndexLink(ns, ext, url.[lib], annotations)) _
+                .Select(Function(ns)
+                            Return __getIndexLink(ns, ext, url.[lib], annotations, html:=False)
+                        End Function) _
                 .ToArray
             Dim sb As String = "Browser by namespace:" & vbCrLf & vbCrLf
             sb = sb & "|Namespace|Description|
@@ -60,14 +63,63 @@ Namespace Exports
             Return sb.SaveTo(path)
         End Function
 
-        Private Shared Function __getIndexLink(ns$, ext$, [lib] As Libraries, annotations As Dictionary(Of String, String)) As String
+        Private Shared Function __getIndexLink(ns$, ext$, [lib] As Libraries, annotations As Dictionary(Of String, String), html As Boolean) As String
             If [lib] = Libraries.Hexo Then
-                Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
+                If html Then
+                    Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
+                Else
+                    Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
+                End If
             ElseIf [lib] = Libraries.xDoc Then
-                Return $"|[{ns}](/docs/{ns.Replace(".", "/")}/index.html)|{If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")}|"
+                Dim info$ = If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")
+
+                If html Then
+                    Return <tr>
+                               <td><a href=<%= $"/docs/{ns.Replace(".", "/")}/index.html" %>><%= ns %></a></td>
+                               <td><%= info %></td>
+                           </tr>
+                Else
+                    Return $"|[{ns}](/docs/{ns.Replace(".", "/")}/index.html)|{info}|"
+                End If
             Else
                 Throw New NotImplementedException
             End If
+        End Function
+
+        Public Function SaveNamespaceIndexHtmlPage(target As ProjectSpace) As Boolean
+            Dim path As String = folderPath & "/index.md"
+            Dim allns$() = LinqAPI.Exec(Of String) _
+ _
+                () <= From x As Project
+                      In target
+                      Let list = x.Namespaces.Select(Function(ns) ns.Path)
+                      Select list
+
+            Dim annotations = target.ScanAnnotations
+            Dim ext As String = If(url.[lib] = Libraries.Hexo, ".html", ".md")
+            Dim links As String() = allns _
+                .OrderBy(Function(ns) ns) _
+                .Select(Function(ns)
+                            Return __getIndexLink(ns, ext, url.[lib], annotations, html:=True)
+                        End Function) _
+                .ToArray
+            Dim sb As New StringBuilder
+
+            sb.AppendLine(<p>Browser by namespace:</p>)
+            sb.AppendLine("<table>")
+            sb.AppendLine(<thead>
+                              <tr>
+                                  <th>Namespace</th>
+                                  <th>Description</th>
+                              </tr>
+                          </thead>)
+
+            sb.AppendLine("<tbody>")
+            sb.AppendLine(links.JoinBy(vbCrLf))
+            sb.AppendLine("</tbody>")
+            sb.AppendLine("</table>")
+
+            Return sb.ToString.MarkdownPage("API index", url).SaveTo(path)
         End Function
     End Class
 End Namespace
