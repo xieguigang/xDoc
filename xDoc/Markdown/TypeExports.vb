@@ -156,7 +156,45 @@ _namespace: [{[Namespace].Path}]({link})_
         End Function
 
         Public Function HtmlPage(url As URLBuilder) As String Implements IPageBuilder.HtmlPage
+            Dim methodList$ = url.methodMarkdown(methods, [Namespace])
+            Dim propertyList$ = properties.propertyMarkdown([Namespace])
+            Dim eventList$ = events.EventsMarkdown([Namespace])
+            Dim fieldList$ = fields.FieldsMarkdown([Namespace])
+            Dim constructors = methods.constructorMarkdown([Namespace])
+            Dim operators = methods.operatorMarkdown([Namespace])
+            Dim html As New StringBuilder
+            Dim link$ = url.GetTypeNamespaceLink(Me)
 
+            html.AppendLine(<h1><%= Name %></h1>)
+            html.AppendLine(<i>namespace: <a href=<%= link %>><%= [Namespace].Path %></a></i>)
+            html.AppendLine(
+                <p>
+                    <%= Me.Summary.CleanText %>
+                </p>)
+            html.AppendLine(
+                <blockquot>
+                    <%= Me.Remarks %>
+                </blockquot>)
+
+            Dim text$ =
+$"{fieldList}
+
+{eventList}
+
+{propertyList}
+
+{constructors}
+
+{methodList}
+
+{operators}"
+
+            html.AppendLine(<div id="content">
+                                <%= text %>
+                            </div>)
+            text = text.MarkdownPage(title:="Class " & Name, url:=url)
+
+            Return text
         End Function
     End Class
 End Namespace

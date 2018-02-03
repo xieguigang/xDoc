@@ -8,6 +8,53 @@ Namespace Exports
     Module HtmlTypeExports
 
         <Extension>
+        Public Function constructorMarkdown(methods As Dictionary(Of String, List(Of ProjectMember)), [namespace] As ProjectNamespace) As String
+            Dim ctors As New Dictionary(Of String, List(Of ProjectMember))
+            If methods.ContainsKey("#ctor") Then
+                ctors.Add(".ctor", methods("#ctor"))
+            End If
+            Return ExportMembersInternal(ctors, "Constructor", "constructors", [namespace].Path)
+        End Function
+
+        <Extension>
+        Public Function operatorMarkdown(methods As Dictionary(Of String, List(Of ProjectMember)), [namespace] As ProjectNamespace) As String
+            Dim ops As New Dictionary(Of String, List(Of ProjectMember))
+
+            For Each m In methods
+                If m.Key.IsOperator Then
+                    ops.Add(m.Key, m.Value)
+                End If
+            Next
+
+            Return ExportMembersInternal(ops, "Operator", "operators", [namespace].Path)
+        End Function
+
+        <Extension>
+        Public Function propertyMarkdown(properties As Dictionary(Of String, List(Of ProjectMember)), [namespace] As ProjectNamespace) As String
+            Return ExportMembersInternal(properties, "Properties", "property", [namespace].Path)
+        End Function
+
+        <Extension>
+        Public Function FieldsMarkdown(fields As Dictionary(Of String, ProjectMember), [namespace] As ProjectNamespace) As String
+            Return ExportMembersInternal(fields.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Fields", "field", [namespace].Path)
+        End Function
+
+        <Extension>
+        Public Function EventsMarkdown(events As Dictionary(Of String, ProjectMember), [namespace] As ProjectNamespace) As String
+            Return ExportMembersInternal(events.ToDictionary(Function(f) f.Key, Function(f) {f.Value}.ToList), "Events", "event", [namespace].Path)
+        End Function
+
+        <Extension>
+        Public Function methodMarkdown(url As URLBuilder, methodList As Dictionary(Of String, List(Of ProjectMember)), [namespace] As ProjectNamespace) As String
+            Dim methods = methodList _
+                .Where(Function(tuple)
+                           Return Not tuple.Key.IsConstructor AndAlso Not tuple.Key.IsOperator
+                       End Function) _
+                .ToDictionary
+            Return ExportMembersInternal(methods, "Methods", "method", [namespace].Path)
+        End Function
+
+        <Extension>
         Private Function ExportMembersInternal(methods As Dictionary(Of String, List(Of ProjectMember)), type$, typeDescript$, namespace$) As String
             Dim html As New StringBuilder()
 
