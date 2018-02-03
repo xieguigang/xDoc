@@ -8,6 +8,40 @@ Namespace Exports
     Module HtmlTypeExports
 
         <Extension>
+        Private Function ExportMembersInternal(methods As Dictionary(Of String, List(Of ProjectMember)), type$, typeDescript$, namespace$) As String
+            Dim html As New StringBuilder()
+
+            If methods.Count = 0 Then
+                Return ""
+            Else
+                html.AppendLine(<h3>
+                                    <%= type %>
+                                </h3>)
+            End If
+
+            For Each methodGroup In methods.OrderBy(Function(m) m.Key)
+                Dim list = methodGroup.Value
+
+                html.AppendLine(<h4>
+                                    <%= list(0).Name %>
+                                </h4>)
+
+                If list.Count > 1 Then
+                    html.AppendLine(
+                        <blockquot>
+                            <%= list.Count %><%= typeDescript %> Overloads.
+                        </blockquot>)
+                End If
+
+                For Each pm In list
+                    Call memberInternal(member:=pm, html:=html, namespaceSkip:=[namespace].Length)
+                Next
+            Next
+
+            Return html.ToString
+        End Function
+
+        <Extension>
         Private Sub memberInternal(member As ProjectMember, html As StringBuilder, namespaceSkip%)
             If Not member.Declare.StringEmpty Then
                 html.AppendLine(
