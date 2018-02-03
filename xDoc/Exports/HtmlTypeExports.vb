@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.MIME.Markup.MarkDown
 Imports xDoc.Markdown
 
 Namespace Exports
@@ -88,6 +89,8 @@ Namespace Exports
             Return html.ToString
         End Function
 
+        ReadOnly markdown As New MarkdownHTML
+
         <Extension>
         Private Sub memberInternal(member As ProjectMember, html As StringBuilder, namespaceSkip%)
             If Not member.Declare.StringEmpty Then
@@ -101,8 +104,8 @@ Namespace Exports
 
             html.AppendLine(
                 <p>
-                    <%= member.Summary.CleanText %>
-                </p>)
+                    <%= "%s" %>
+                </p>, markdown.Transform(member.Summary.CleanText))
 
             If Not member.Params.IsNullOrEmpty Then
                 Call html.AppendLine("<table>")
@@ -119,8 +122,8 @@ Namespace Exports
                     Call html.AppendLine(
                         <tr>
                             <td><%= arg.name %></td>
-                            <td><%= arg.text %></td>
-                        </tr>)
+                            <td><%= "%s" %></td>
+                        </tr>, markdown.Transform(arg.text))
                 Next
 
                 Call html.AppendLine("</tbody>")
@@ -131,14 +134,14 @@ Namespace Exports
                 html.AppendLine()
                 html.AppendLine(
                     <p>
-                        <i>returns: <%= member.Returns %></i>
-                    </p>)
+                        <i>returns: <%= "%s" %></i>
+                    </p>, markdown.Transform(member.Returns))
             End If
 
             If Not member.Remarks.StringEmpty Then
                 html.AppendLine(<blockquot>
-                                    <%= member.Remarks %>
-                                </blockquot>)
+                                    <%= "%s" %>
+                                </blockquot>, markdown.Transform(member.Remarks))
             End If
 
             Call html.AppendLine()

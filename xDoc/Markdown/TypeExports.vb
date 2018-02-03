@@ -1,5 +1,6 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
+Imports Microsoft.VisualBasic.MIME.Markup.MarkDown
 Imports Microsoft.VisualBasic.Text
 Imports xDoc.Exports
 
@@ -164,17 +165,20 @@ _namespace: [{[Namespace].Path}]({link})_
             Dim operators = methods.operatorMarkdown([Namespace])
             Dim html As New StringBuilder
             Dim link$ = url.GetTypeNamespaceLink(Me)
+            Dim markdown As New MarkdownHTML
 
             html.AppendLine(<h1><%= Name %></h1>)
             html.AppendLine(<i>namespace: <a href=<%= link %>><%= [Namespace].Path %></a></i>)
             html.AppendLine(
                 <p>
-                    <%= Me.Summary.CleanText %>
-                </p>)
+                    <%= "%s" %>
+                </p>,
+                markdown.Transform(Me.Summary.CleanText))
             html.AppendLine(
                 <blockquot>
-                    <%= Me.Remarks %>
-                </blockquot>)
+                    <%= "%s" %>
+                </blockquot>,
+                markdown.Transform(Me.Remarks))
 
             Dim text$ =
 $"{fieldList}
@@ -190,9 +194,9 @@ $"{fieldList}
 {operators}"
 
             html.AppendLine(<div id="content">
-                                <%= text %>
-                            </div>)
-            text = text.MarkdownPage(title:="Class " & Name, url:=url)
+                                <%= "%s" %>
+                            </div>, text)
+            text = html.ToString.MarkdownPage(title:="Class " & Name, url:=url)
 
             Return text
         End Function
