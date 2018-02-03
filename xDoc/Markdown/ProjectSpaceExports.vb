@@ -42,5 +42,9 @@ Namespace Markdown
 
             Return pageBuilder.SaveNamespaceIndexPage(target:=Me)
         End Function
+
+        Public Function ExportHTMLFiles(pageBuilder As PageExports) As Boolean
+
+        End Function
     End Class
 End Namespace

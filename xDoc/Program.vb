@@ -19,12 +19,15 @@ Imports xDoc.Markdown
 
     <ExportAPI("/Build")>
     <Description("Build sdk document library from xml assembly docs with just one simple command.")>
-    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /vb_spec.exclude /out <outDIR>]")>
+    <Usage("/Build /in <source.xml/*.xml DIR> [/lib <github/xdoc/hexo, default:=github> /html /vb_spec.exclude /out <outDIR>]")>
+    <Argument("/vb_spec.exclude", True, CLITypes.Boolean,
+              Description:="Removes the VisualBasic specific ``My`` namespace.")>
     Public Function Build(args As CommandLine) As Integer
         Dim path$ = args("/in")
         Dim removesVBSpecific As Boolean = args("/vb_spec.exclude")
         Dim mdOutputFolder$ = args("/out") Or $"{path.ParentPath}/docs/"
         Dim ps As New ProjectSpace(removesVBSpecific)
+        Dim htmlOutput As Boolean = args("/html")
 
         Call "Loading xml assembly documents....".__DEBUG_ECHO
 
@@ -42,10 +45,18 @@ Imports xDoc.Markdown
         Dim url As New URLBuilder(type, mdOutputFolder)
         Dim library As New ProjectSpaceExports(ps)
 
-        If library.ExportMarkdownFiles(New PageExports(mdOutputFolder, url)) Then
-            Call "Document library generates success!".__DEBUG_ECHO
+        If htmlOutput Then
+            If library.ExportHTMLFiles(New PageExports(mdOutputFolder, url)) Then
+                Call "Document library generates success!".__DEBUG_ECHO
+            Else
+                Call "Job failure!".PrintException
+            End If
         Else
-            Call "Job failure!".PrintException
+            If library.ExportMarkdownFiles(New PageExports(mdOutputFolder, url)) Then
+                Call "Document library generates success!".__DEBUG_ECHO
+            Else
+                Call "Job failure!".PrintException
+            End If
         End If
 
         Return 0
