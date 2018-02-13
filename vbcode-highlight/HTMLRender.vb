@@ -2,6 +2,7 @@
 Imports System.Text
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
+Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 
 Public Module HTMLRender
@@ -62,30 +63,59 @@ Public Module HTMLRender
     ''' <returns></returns>
     <Extension>
     Public Function ToVBhtml(vb As String) As String
-        Dim html As New StringBuilder(vb)
+        Dim html As New ScriptBuilder(vb)
         Dim keywords$() = VBLanguage _
             .VBKeywords _
             .Split("|"c) _
             .Where(Function(w) Not w.StringEmpty) _
+            .OrderByDescending(Function(s) s.Length) _
             .ToArray
         Dim span$
 
+        ' html 之中的 & <> 要在第一步进行转义，否则会将后面所生成的html标签也给转义掉的
         html.Replace("&", "&amp;") _
             .Replace("<", "&lt;") _
-            .Replace(">", "&gt;")
+            .Replace(">", "&gt;") _
+            .Replace(" ", "&nbsp;")
 
-        html.Replace(" ", "&nbsp;").Replace(vbCrLf, "<br />")
+        Dim comments$() = html.Preview _
+            .Matches("['].+$", RegexICMul) _
+            .ToArray
+
+        Dim strings$() = html.Preview _
+            .Matches("[""].*?[""]", RegexICSng) _
+            .ToArray
+
+        For Each str As String In comments
+            span = (<span class="string"><%= str %></span>).ToString.Replace("&amp;", "&")
+            html.Replace(str, span)
+        Next
+
+        For Each [REM] As String In comments
+            span = (<span class="comment"><%= [REM] %></span>).ToString.Replace("&amp;", "&")
+            html.Replace([REM], span)
+        Next
+
+        ' As type
+        ' 因为As是一个关键词，所以需要在keyword的前面发生替换
+        Dim types$() = html _
+            .Preview _
+            .Matches("As(&nbsp;)+" & VBLanguage.IdentiferPattern, RegexICSng) _
+            .ToArray
+
+        For Each type As String In types
+            span = Mid(type, 3)
+            span = (<span class="type"><%= span %></span>).ToString.Replace("&amp;", "&")
+            html.Replace(type, "As" & span)
+        Next
+
+        html.Replace(vbCrLf, "<br />" & ASCII.LF)
 
         For Each word As String In keywords
             span = (<span class="keyword"><%= word %></span>).ToString
             html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
-        Next
-
-        Dim comments$() = vb.Matches("'.+$", RegexICMul).ToArray
-
-        For Each [REM] As String In comments
-            span = (<span class="comment"><%= [REM] %></span>).ToString
-            html.Replace([REM], span)
+            html.Replace($"&nbsp;{word}", $"&nbsp;{span}&nbsp;")
+            html.Replace($"{word}&nbsp;", $"{span}&nbsp;")
         Next
 
         Return html.ToString
