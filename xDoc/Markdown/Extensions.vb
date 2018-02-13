@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports Dev.xDoc.Exports
 Imports Microsoft.VisualBasic.Language
-Imports xDoc.Exports
-Imports LibType = xDoc.Exports.Libraries
+Imports LibType = Dev.xDoc.Exports.Libraries
 
 Namespace Markdown
 

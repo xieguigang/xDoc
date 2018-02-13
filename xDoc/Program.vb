@@ -1,12 +1,12 @@
 ﻿Imports System.ComponentModel
+Imports Dev.xDoc.Exports
+Imports Dev.xDoc.Markdown
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.Text
-Imports xDoc.Exports
-Imports xDoc.Markdown
 
 ''' <summary>
 ''' VB.NET 开发工具包，使用这个程序将会从Assembly的XML注释文档之中导出makrdown文档，然后可以配合Yilia工具生成静态的html帮助文档

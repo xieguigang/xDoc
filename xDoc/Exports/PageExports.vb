@@ -1,8 +1,8 @@
 ﻿Imports System.Text
+Imports Dev.xDoc.Markdown
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Serialization
 Imports Microsoft.VisualBasic.Language
-Imports xDoc.Markdown
 
 Namespace Exports
 

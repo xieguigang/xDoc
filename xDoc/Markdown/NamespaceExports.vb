@@ -1,6 +1,6 @@
 ﻿Imports System.Text
+Imports Dev.xDoc.Exports
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
-Imports xDoc.Exports
 
 Namespace Markdown
 
