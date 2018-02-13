@@ -1,8 +1,8 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
-Imports Microsoft.VisualBasic.Language.C
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
+Imports Microsoft.VisualBasic.Text.Xml
 
 Public Module HTMLRender
 
@@ -14,20 +14,20 @@ Public Module HTMLRender
                 font: {$font_style} {$font_size}px {$font_family};   
                 color: {$font_color};
             }
-            .vscode > keyword {
-                color: {$color_keyword};
+            .vscode > .keyword {
+                color: {$color_keyword} !important;
             }
-            .vscode > comment {
-                color: {$color_comment};
+            .vscode > .comment {
+                color: {$color_comment} !important;
             }
-            .vscode > type {
-                color: {$color_type};
+            .vscode > .type {
+                color: {$color_type} !important;
             }
-            .vscode > string {
-                color: {$color_string};
+            .vscode > .string {
+                color: {$color_string} !important;
             }   
-            .vscode > xml {
-                color: {$color_xml};
+            .vscode > .xml {
+                color: {$color_xml} !important;
             }
         </style>
 
@@ -55,10 +55,46 @@ Public Module HTMLRender
         End With
     End Function
 
+    ''' <summary>
+    ''' Render *.vb source file to html page
+    ''' </summary>
+    ''' <param name="vb"></param>
+    ''' <returns></returns>
+    <Extension>
+    Public Function ToVBhtml(vb As String) As String
+        Dim html As New StringBuilder(vb)
+        Dim keywords$() = VBLanguage _
+            .VBKeywords _
+            .Split("|"c) _
+            .Where(Function(w) Not w.StringEmpty) _
+            .ToArray
+        Dim span$
+
+        html.Replace("&", "&amp;") _
+            .Replace("<", "&lt;") _
+            .Replace(">", "&gt;")
+
+        html.Replace(" ", "&nbsp;").Replace(vbCrLf, "<br />")
+
+        For Each word As String In keywords
+            span = (<span class="keyword"><%= word %></span>).ToString
+            html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
+        Next
+
+        Dim comments$() = vb.Matches("'.+$", RegexICMul).ToArray
+
+        For Each [REM] As String In comments
+            span = (<span class="comment"><%= [REM] %></span>).ToString
+            html.Replace([REM], span)
+        Next
+
+        Return html.ToString
+    End Function
+
     <Extension>
     Public Function Render(vb$, Optional schema As Schema = Nothing) As String
         Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
-        Dim html As New StringBuilder
+        Dim html$ = vb.ToVBhtml
 
         Return sprintf(
             <div>

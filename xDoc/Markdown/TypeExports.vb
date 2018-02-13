@@ -3,6 +3,7 @@ Imports Dev.xDoc.Exports
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.MIME.Markup.MarkDown
 Imports Microsoft.VisualBasic.Text
+Imports Microsoft.VisualBasic.Text.Xml
 
 Namespace Markdown
 
