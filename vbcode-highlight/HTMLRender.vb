@@ -1,40 +1,41 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
+Imports Microsoft.VisualBasic.Language.C
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
 
 Public Module HTMLRender
 
-    ReadOnly CSS$ = <style type="text/css">
-
-                        /* ---------------------{$theme_name}----------------------- */
-
-                        .vscode {
-                            background-color: {$background};
-                            font: {$font_style} {$font_size}px {$font_family};   
-                            color: {$font_color};
-                        }
-                        .vscode > keyword {
-                            color: {$color_keyword};
-                        }
-                        .vscode > comment {
-                            color: {$color_comment};
-                        }
-                        .vscode > type {
-                            color: {$color_type};
-                        }
-                        .vscode > string {
-                            color: {$color_string};
-                        }   
-                        .vscode > xml {
-                            color: {$color_xml}
-                        }
-
-                    </style>
+    ReadOnly CSS$ =
+ _
+    <style type="text/css">
+        .vscode {
+            background-color: {$background};
+            font: {$font_style} {$font_size}px {$font_family};   
+            color: {$font_color};
+        }
+        .vscode > keyword {
+            color: {$color_keyword};
+        }
+        .vscode > comment {
+            color: {$color_comment};
+        }
+        .vscode > type {
+            color: {$color_type};
+        }
+        .vscode > string {
+            color: {$color_string};
+        }   
+        .vscode > xml {
+            color: {$color_xml}
+        }
+    </style>
 
     <Extension>
     Public Function CSSStyle(theme As Schema) As String
         With New ScriptBuilder(HTMLRender.CSS)
+
+            ' assign css variable values
 
             !background = theme.background
             !theme_name = theme.ThemeName
@@ -57,6 +58,8 @@ Public Module HTMLRender
     <Extension>
     Public Function Render(vb$, Optional schema As Schema = Nothing) As String
         Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
+        Dim html As New StringBuilder
 
+        Return sprintf(<div class="vscode">%s</div>, html)
     End Function
 End Module

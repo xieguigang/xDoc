@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AC36906A-9765-4743-8EBA-A552F4F23F2A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>xDoc.Program</StartupObject>
-    <RootNamespace>xDoc</RootNamespace>
+    <StartupObject>Dev.xDoc.Program</StartupObject>
+    <RootNamespace>Dev.xDoc</RootNamespace>
     <AssemblyName>xDoc</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
@@ -167,6 +167,10 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\vbcode-highlight\vbcode-highlight.vbproj">
+      <Project>{4a1d6588-3574-40b5-881a-2707846a7318}</Project>
+      <Name>vbcode-highlight</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yilia\runtime\sciBASIC#\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj">
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
       <Name>47-dotnet_Microsoft.VisualBasic</Name>

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4A1D6588-3574-40B5-881A-2707846A7318}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>vbcode_highlight</RootNamespace>
-    <AssemblyName>vbcode-highlight</AssemblyName>
+    <RootNamespace>Dev.xDoc.VBCode</RootNamespace>
+    <AssemblyName>Dev.xDoc.VBCode</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>vbcode-highlight.xml</DocumentationFile>
+    <DocumentationFile>Dev.xDoc.VBCode.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>vbcode-highlight.xml</DocumentationFile>
+    <DocumentationFile>Dev.xDoc.VBCode.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
