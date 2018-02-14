@@ -2,8 +2,12 @@
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.ApplicationServices.Development
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
+Imports Microsoft.VisualBasic.ComponentModel.Algorithm.base
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
@@ -29,6 +33,8 @@ Public Module ProjectDocument
         With App.GetAppSysTempFile(".zip", App.PID)
             Call My.Resources._lib.FlushStream(.ByRef)
             Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
+            Call My.Resources.Folder_16x.SaveAs($"{EXPORT}/images/Folder_16x.png")
+            Call My.Resources.VB_16x.SaveAs($"{EXPORT}/images/VB_16x.png")
         End With
 
         ' itemgroups\compiles
@@ -105,7 +111,91 @@ Public Module ProjectDocument
     <Extension>
     Public Function Summary(vbproj As String) As String
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
+        Dim tree$ = jstree(vbproj)
 
+        Return sprintf(
+            <html>
+                <head>
+                    <title><%= assmInfo.AssemblyTitle %></title>
 
+                    <link rel="stylesheet" href="lib/jstree/default/style.min.css"/>
+
+                    <script type="text/javascript" src="lib/jquery.min.js"></script>
+                    <script type="text/javascript" src="lib/jstree/jstree.min.js"></script>
+                </head>
+                <body>
+
+                    <h2>Project Files</h2>
+
+                    <div id="vbproj-tree"></div>
+
+                    <script type="text/javascript">
+                        $('#vbproj-tree').jstree({ 
+                            'core' : {
+                                'data' : %s
+                            } 
+                        });
+                    </script>
+                </body>
+            </html>, tree)
+    End Function
+
+    Public Function jstree(vbproj As String) As String
+        Dim files$() = vbproj _
+            .EnumerateSourceFiles _
+            .ToArray
+        Dim nodes As New Dictionary(Of String, jstreeNode)
+
+        nodes("#") = New jstreeNode With {.id = "#"}
+
+        For Each path As String In files
+            Dim tokens$() = path.Split("\"c)
+            Dim append As New List(Of String)
+            Dim parent$
+
+            For i As Integer = 0 To tokens.Length - 1
+                parent = append.JoinBy("\")
+                append += tokens(i)
+                path = append.JoinBy("\")
+
+                If i = 0 Then
+                    parent = "#"
+                End If
+
+                If Not nodes.ContainsKey(path) Then
+                    nodes(path) = New jstreeNode With {
+                        .id = "n" & nodes.Count,
+                        .parent = nodes(parent).id,
+                        .text = tokens(i)
+                    }
+
+                    If i = tokens.Length - 1 Then
+                        nodes(path).icon = "images/VB_16x.png"
+                    Else
+                        nodes(path).icon = "images/Folder_16x.png"
+                    End If
+                End If
+            Next
+        Next
+
+        nodes.Remove("#")
+
+        Return nodes _
+            .Values _
+            .ToArray _
+            .GetJson(indent:=True) _
+            .Replace("\", "/")
     End Function
 End Module
+
+Public Class jstreeNode
+
+    Public Property id As String
+    Public Property parent As String
+    Public Property text As String
+    Public Property icon As String
+
+    Public Overrides Function ToString() As String
+        Return Me.GetJson
+    End Function
+End Class
