@@ -11,6 +11,8 @@ function getUrl(id) {
 }
 
 function openinnewTab(url) {
-    var win = window.open(url, '_blank');
-    win.focus();
+    if (url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
 }
