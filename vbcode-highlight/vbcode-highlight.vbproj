@@ -145,5 +145,8 @@
   <ItemGroup>
     <None Include="Resources\VB_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\url.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

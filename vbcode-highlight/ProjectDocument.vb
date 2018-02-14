@@ -31,10 +31,12 @@ Public Module ProjectDocument
         Call vbproj.Summary.SaveTo($"{EXPORT}/index.html")
 
         With App.GetAppSysTempFile(".zip", App.PID)
-            Call My.Resources._lib.FlushStream(.ByRef)
-            Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
             Call My.Resources.Folder_16x.SaveAs($"{EXPORT}/images/Folder_16x.png")
             Call My.Resources.VB_16x.SaveAs($"{EXPORT}/images/VB_16x.png")
+            Call My.Resources.url.SaveTo($"{EXPORT}/lib/url.js")
+            Call My.Resources._lib.FlushStream(.ByRef)
+
+            Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
         End With
 
         ' itemgroups\compiles
@@ -111,7 +113,12 @@ Public Module ProjectDocument
     <Extension>
     Public Function Summary(vbproj As String) As String
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
-        Dim tree$ = jstree(vbproj)
+        Dim tree$, path$
+
+        With jstree(vbproj)
+            path = .path
+            tree = .jstree
+        End With
 
         Return sprintf(
             <html>
@@ -122,6 +129,10 @@ Public Module ProjectDocument
 
                     <script type="text/javascript" src="lib/jquery.min.js"></script>
                     <script type="text/javascript" src="lib/jstree/jstree.min.js"></script>
+
+                    <script type="text/javascript">
+                        var nodePath = %s;
+                    </script>
                 </head>
                 <body>
 
@@ -135,20 +146,25 @@ Public Module ProjectDocument
                                 'data' : %s
                             } 
                         });
+
+                        $('#vbproj-tree').on("changed.jstree", function (e, data) {
+                            console.log(data.selected);
+                        });
                     </script>
                 </body>
-            </html>, tree)
+            </html>, path, tree)
     End Function
 
-    Public Function jstree(vbproj As String) As String
+    Public Function jstree(vbproj As String) As (path$, jstree$)
         Dim files$() = vbproj _
             .EnumerateSourceFiles _
             .ToArray
         Dim nodes As New Dictionary(Of String, jstreeNode)
+        Dim pathList As New Dictionary(Of String, String)
 
         nodes("#") = New jstreeNode With {.id = "#"}
 
-        For Each path As String In files
+        For Each path As String In files.OrderByDescending(Function(l) l.Split("\"c).Length)
             Dim tokens$() = path.Split("\"c)
             Dim append As New List(Of String)
             Dim parent$
@@ -174,17 +190,22 @@ Public Module ProjectDocument
                     Else
                         nodes(path).icon = "images/Folder_16x.png"
                     End If
+
+                    pathList(nodes(path).id) = path
                 End If
             Next
         Next
 
         nodes.Remove("#")
 
-        Return nodes _
+        Dim pathArray As String = pathList.GetJson.Replace("\", "/")
+        Dim tree$ = nodes _
             .Values _
             .ToArray _
             .GetJson(indent:=True) _
             .Replace("\", "/")
+
+        Return (pathArray, tree)
     End Function
 End Module
 
