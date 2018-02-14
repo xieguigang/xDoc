@@ -205,7 +205,11 @@ Public Module HTMLRender
     Public Function Render(vb$, Optional schema As Schema = Nothing) As String
         Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
         Dim html$ = vb.ToVBhtml
+        Return ApplyCSS(html, css)
+    End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    <Extension> Friend Function ApplyCSS(html$, css$) As String
         Return sprintf(
             <div>
                 <style type="text/css">
