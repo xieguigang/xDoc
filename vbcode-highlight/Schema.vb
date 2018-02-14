@@ -40,7 +40,7 @@ Public Class Schema
             .Xml = "gray",
             .font = New CSSFont With {
                 .family = FontFace.Consolas & ", " & FontFace.MicrosoftYaHei,
-                .size = 12,
+                .size = 11,
                 .style = FontStyle.Regular
             }
         }

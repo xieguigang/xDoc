@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ApplicationServices.Development
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
+Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 
@@ -9,19 +10,58 @@ Public Module ProjectDocument
     Public Function Build(vbproj$, EXPORT$, Optional schema As Schema = Nothing) As Boolean
         Dim assmInfo As AssemblyInfo = vbproj.GetAssemblyInfo
         Dim folder$ = vbproj.ParentPath
-        Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
+        Dim css$
+        Dim fontSize!
+        Dim fontStyle$
+
+        With (schema Or Schema.VisualStudioDefault)
+            fontSize = .font.size
+            fontStyle = .font.CSSInlineStyle
+            css = .CSSStyle _
+                .Replace(".vscode > ", "")
+        End With
 
         ' index.html
         Call assmInfo.Summary.SaveTo($"{EXPORT}/index.html")
 
         ' itemgroups\compiles
         For Each file As String In vbproj.EnumerateSourceFiles
-            Dim html$ = $"{folder}/{file}".ReadAllText _
+            Dim vb$ = $"{folder}/{file}".ReadAllText
+            Dim html$ = vb _
                 .ToVBhtml _
                 .jsfilelinecontainer
 
-            Call HTMLRender _
-                .ApplyCSS(html, css) _
+            Call sprintf(
+                <html>
+                    <head>
+                        <title>%s</title>
+
+                        <style type="text/css">
+                            %s
+                        </style>
+                        <style type="text/css">                           
+                            .js-line-number {
+                                color: #2b91af;                                
+                                text-align: right;
+                                padding-right: 5px;
+                                border-right-style: inset;
+                            }
+
+                            .js-file-line .js-line-number {
+                                font: <%= fontStyle %>;
+                            }
+
+                            .js-file-line {
+                                padding-left: 10px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="vscode">
+                            %s
+                        </div>
+                    </body>
+                </html>, file, css, html) _
                 .SaveTo($"{EXPORT}/{file}".ChangeSuffix("html"))
         Next
 
