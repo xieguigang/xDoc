@@ -1,14 +1,16 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.ApplicationServices.Development
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
+Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
 
 Public Module ProjectDocument
 
     Public Function Build(vbproj$, EXPORT$, Optional schema As Schema = Nothing) As Boolean
-        Dim assmInfo As AssemblyInfo = vbproj.GetAssemblyInfo
         Dim folder$ = vbproj.ParentPath
         Dim css$
         Dim fontSize!
@@ -22,7 +24,12 @@ Public Module ProjectDocument
         End With
 
         ' index.html
-        Call assmInfo.Summary.SaveTo($"{EXPORT}/index.html")
+        Call vbproj.Summary.SaveTo($"{EXPORT}/index.html")
+
+        With App.GetAppSysTempFile(".zip", App.PID)
+            Call My.Resources._lib.FlushStream(.ByRef)
+            Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
+        End With
 
         ' itemgroups\compiles
         For Each file As String In vbproj.EnumerateSourceFiles
@@ -96,7 +103,9 @@ Public Module ProjectDocument
     End Function
 
     <Extension>
-    Public Function Summary(assmInfo As AssemblyInfo) As String
+    Public Function Summary(vbproj As String) As String
+        Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
+
 
     End Function
 End Module
