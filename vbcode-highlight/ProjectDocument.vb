@@ -78,6 +78,8 @@ Public Module ProjectDocument
                     </body>
                 </html>, file, css, html) _
                 .SaveTo($"{EXPORT}/{file}".ChangeSuffix("html"))
+
+            Call file.__DEBUG_ECHO
         Next
 
         Return True
