@@ -35,8 +35,8 @@ Public Class Schema
             .[string] = "#a31515",
             .keyword = "#0000ff",
             .font = New CSSFont With {
-                .family = FontFace.Consolas,
-                .size = 11,
+                .family = FontFace.Consolas & ", " & FontFace.MicrosoftYaHei,
+                .size = 12,
                 .style = FontStyle.Regular
             }
         }

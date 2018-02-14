@@ -55,6 +55,8 @@ Public Module HTMLRender
         End With
     End Function
 
+    Const stringQuot$ = "${vb_string_quot}"
+
     ''' <summary>
     ''' Render *.vb source file to html page
     ''' </summary>
@@ -66,7 +68,9 @@ Public Module HTMLRender
         Dim keywords$() = VBLanguage _
             .VBKeywords _
             .Split("|"c) _
-            .Where(Function(w) Not w.StringEmpty) _
+            .Where(Function(w)
+                       Return Not w.StringEmpty
+                   End Function) _
             .OrderByDescending(Function(s) s.Length) _
             .ToArray
         Dim span$
@@ -86,14 +90,19 @@ Public Module HTMLRender
             .ToArray
 
         For Each str As String In strings
-            span = (<span class="string"><%= str %></span>).ToString.Replace("&amp;", "&").Replace("""", "{vb_string_quot}")
+            span = (<span class="string"><%= str %></span>) _
+                .ToString _
+                .Replace("&amp;", "&") _
+                .Replace("""", stringQuot)
             html.Replace(str, span)
         Next
 
-        html.Replace("{vb_string_quot}", """")
+        html.Replace(stringQuot, """")
 
         For Each [REM] As String In comments
-            span = (<span class="comment"><%= [REM] %></span>).ToString.Replace("&amp;", "&")
+            span = (<span class="comment"><%= [REM] %></span>) _
+                .ToString _
+                .Replace("&amp;", "&")
             html.Replace([REM], span)
         Next
 
@@ -106,7 +115,9 @@ Public Module HTMLRender
 
         For Each type As String In types
             span = Mid(type, 3)
-            span = (<span class="type"><%= span %></span>).ToString.Replace("&amp;", "&")
+            span = (<span class="type"><%= span %></span>) _
+                .ToString _
+                .Replace("&amp;", "&")
             html.Replace(type, "As" & span)
         Next
 
@@ -115,7 +126,7 @@ Public Module HTMLRender
         For Each word As String In keywords
             span = (<span class="keyword"><%= word %></span>).ToString
             html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
-            html.Replace($"&nbsp;{word}", $"&nbsp;{span}&nbsp;")
+            html.Replace($"&nbsp;{word}", $"&nbsp;{span}")
             html.Replace($"{word}&nbsp;", $"{span}&nbsp;")
         Next
 
