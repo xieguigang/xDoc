@@ -12,6 +12,8 @@ Public Class Schema
     Public Property keyword As String
     Public Property identifier As String
     Public Property XmlComment As String
+    Public Property Xml As String
+    Public Property XmlInterpolate As String
     Public Property comments As String
     Public Property typeName As String
     Public Property background As String
@@ -34,6 +36,8 @@ Public Class Schema
             .typeName = "#2b91af",
             .[string] = "#a31515",
             .keyword = "#0000ff",
+            .XmlInterpolate = "cyan",
+            .Xml = "gray",
             .font = New CSSFont With {
                 .family = FontFace.Consolas & ", " & FontFace.MicrosoftYaHei,
                 .size = 12,

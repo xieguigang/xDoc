@@ -26,8 +26,14 @@ Public Module HTMLRender
             .vscode > .string {
                 color: {$color_string} !important;
             }   
+            .vscode > .xml_comment {
+                color: {$color_xml_comment} !important;
+            }
             .vscode > .xml {
                 color: {$color_xml} !important;
+            }
+            .vscode > .xml_interpolate {
+                color: {$color_xml_interpolate} !important;
             }
         </style>
 
@@ -49,13 +55,16 @@ Public Module HTMLRender
             !color_comment = theme.comments
             !color_type = theme.typeName
             !color_string = theme.string
-            !color_xml = theme.XmlComment
+            !color_xml = theme.Xml
+            !color_xml_comment = theme.XmlComment
+            !color_xml_interpolate = theme.XmlInterpolate
 
             Return .ToString
         End With
     End Function
 
     Const stringQuot$ = "${vb_string_quot}"
+    Const commentQuot$ = "${vb_comment_quot}"
 
     ''' <summary>
     ''' Render *.vb source file to html page
@@ -65,6 +74,7 @@ Public Module HTMLRender
     <Extension>
     Public Function ToVBhtml(vb As String) As String
         Dim html As New ScriptBuilder(vb)
+        Dim span$
         Dim keywords$() = VBLanguage _
             .VBKeywords _
             .Split("|"c) _
@@ -73,7 +83,6 @@ Public Module HTMLRender
                    End Function) _
             .OrderByDescending(Function(s) s.Length) _
             .ToArray
-        Dim span$
 
         ' html 之中的 & <> 要在第一步进行转义，否则会将后面所生成的html标签也给转义掉的
         html.Replace("&", "&amp;") _
@@ -81,8 +90,31 @@ Public Module HTMLRender
             .Replace(">", "&gt;") _
             .Replace(" ", "&nbsp;")
 
+        Dim xmlComments$() = html.Preview _
+            .Matches("[']{3}.+$", RegexICMul) _
+            .ToArray
+
+        For Each xmlComment$ In xmlComments
+            span = (<span class="xml_comment"><%= xmlComment.TrimNewLine %></span>) _
+               .ToString _
+               .Replace("&amp;", "&") _
+               .Replace("'", commentQuot) _
+               .Replace("""", stringQuot)
+
+            Call html.Replace(xmlComment, span)
+        Next
+
+        Dim xmlInterpolate$() = html.Preview _
+            .Matches("<%[=].*%>", RegexICSng) _
+            .ToArray
+
+        For Each interpolate As String In xmlInterpolate
+            span = (<span class="xml_interpolate"><%= interpolate %></span>).ToString
+            Call html.Replace(interpolate, span)
+        Next
+
         Dim comments$() = html.Preview _
-            .Matches("['].+$", RegexICMul) _
+            .Matches("['][^'].+$", RegexICMul) _
             .ToArray
 
         Dim strings$() = html.Preview _
@@ -94,23 +126,26 @@ Public Module HTMLRender
                 .ToString _
                 .Replace("&amp;", "&") _
                 .Replace("""", stringQuot)
-            html.Replace(str, span)
+
+            Call html.Replace(str, span)
         Next
 
-        html.Replace(stringQuot, """")
+        Call html.Replace(stringQuot, """")
+        Call html.Replace(commentQuot, "'")
 
         For Each [REM] As String In comments
-            span = (<span class="comment"><%= [REM] %></span>) _
+            span = (<span class="comment"><%= [REM].TrimNewLine %></span>) _
                 .ToString _
                 .Replace("&amp;", "&")
-            html.Replace([REM], span)
+
+            Call html.Replace([REM], span)
         Next
 
         ' As type
         ' 因为As是一个关键词，所以需要在keyword的前面发生替换
         Dim types$() = html _
             .Preview _
-            .Matches("As(&nbsp;)+" & VBLanguage.IdentiferPattern, RegexICSng) _
+            .Matches("As(&nbsp;)(New(&nbsp;))?(&nbsp;)+" & VBLanguage.IdentiferPattern, RegexICSng) _
             .ToArray
 
         For Each type As String In types
@@ -118,17 +153,31 @@ Public Module HTMLRender
             span = (<span class="type"><%= span %></span>) _
                 .ToString _
                 .Replace("&amp;", "&")
-            html.Replace(type, "As" & span)
-        Next
 
-        html.Replace(vbCrLf, "<br />" & ASCII.LF)
+            Call html.Replace(type, "As" & span)
+        Next
 
         For Each word As String In keywords
             span = (<span class="keyword"><%= word %></span>).ToString
             html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
-            html.Replace($"&nbsp;{word}", $"&nbsp;{span}")
-            html.Replace($"{word}&nbsp;", $"{span}&nbsp;")
+
+            Dim lineBreaks$() = html.Preview _
+                .Matches($"^{word}[&]nbsp;", RegexICMul) _
+                .ToArray
+
+            For Each l In lineBreaks
+                html.Replace(l, $"{span}&nbsp;")
+            Next
+
+            Call html.Replace($"&nbsp;{word}", $"&nbsp;{span}")
         Next
+
+        ' fix for lambda function
+        span = (<span class="keyword">Function</span>).ToString & "("
+        Call html.Replace("Function(", span)
+
+        Call html.Replace(vbLf, "<br />" & ASCII.LF)
+        Call html.Replace(vbCr, "")
 
         Return html.ToString
     End Function
