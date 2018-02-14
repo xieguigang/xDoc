@@ -6,6 +6,9 @@ Imports Microsoft.VisualBasic.Text.Xml
 
 Public Module HTMLRender
 
+    ''' <summary>
+    ''' The html CSS template
+    ''' </summary>
     ReadOnly CSS$ =
  _
         <style type="text/css">
@@ -37,6 +40,11 @@ Public Module HTMLRender
             }
         </style>
 
+    ''' <summary>
+    ''' Generate CSS style content from the theme model.
+    ''' </summary>
+    ''' <param name="theme"></param>
+    ''' <returns></returns>
     <Extension>
     Public Function CSSStyle(theme As Schema) As String
         With New ScriptBuilder(HTMLRender.CSS)
@@ -109,7 +117,9 @@ Public Module HTMLRender
             .ToArray
 
         For Each interpolate As String In xmlInterpolate
-            span = (<span class="xml_interpolate"><%= interpolate %></span>).ToString
+            span = (<span class="xml_interpolate"><%= interpolate %></span>) _
+                .ToString
+
             Call html.Replace(interpolate, span)
         Next
 
@@ -158,7 +168,8 @@ Public Module HTMLRender
         Next
 
         For Each word As String In keywords
-            span = (<span class="keyword"><%= word %></span>).ToString
+            span = (<span class="keyword"><%= word %></span>) _
+                .ToString
             html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
 
             Dim lineBreaks$() = html.Preview _
@@ -173,7 +184,9 @@ Public Module HTMLRender
         Next
 
         ' fix for lambda function
-        span = (<span class="keyword">Function</span>).ToString & "("
+        span = (<span class="keyword">Function</span>) _
+            .ToString & "("
+
         Call html.Replace("Function(", span)
 
         Call html.Replace(vbLf, "<br />" & ASCII.LF)
@@ -182,6 +195,12 @@ Public Module HTMLRender
         Return html.ToString
     End Function
 
+    ''' <summary>
+    ''' Rendering ``*.vb`` source file to html page with code syntax highlights.
+    ''' </summary>
+    ''' <param name="vb$">The file content of the vb source file.</param>
+    ''' <param name="schema">CSS color theme, By default is the VisualStudio theme.</param>
+    ''' <returns></returns>
     <Extension>
     Public Function Render(vb$, Optional schema As Schema = Nothing) As String
         Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
