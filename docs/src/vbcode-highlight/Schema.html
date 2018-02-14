@@ -1,0 +1,249 @@
+<html>
+  <head>
+    <title>Schema.vb</title>
+    <style type="text/css">
+                            
+            .vscode {
+                background-color: white;
+                font: normal 11px Consolas, Microsoft YaHei;   
+                color: black;
+            }
+            .keyword {
+                color: #0000ff !important;
+            }
+            .comment {
+                color: #008000 !important;
+            }
+            .type {
+                color: #2b91af !important;
+            }
+            .string {
+                color: #a31515 !important;
+            }   
+            .xml_comment {
+                color: #808080 !important;
+            }
+            .xml {
+                color: gray !important;
+            }
+            .xml_interpolate {
+                color: cyan !important;
+            }
+        
+                        </style>
+    <style type="text/css">                           
+                            .js-line-number {
+                                color: #2b91af;                                
+                                text-align: right;
+                                padding-right: 5px;
+                                border-right-style: inset;
+                            }
+
+                            .js-file-line .js-line-number {
+                                font: normal 11px Consolas, Microsoft YaHei;
+                            }
+
+                            .js-file-line {
+                                padding-left: 10px;
+                            }
+                        </style>
+  </head>
+  <body>
+    <div class="vscode">
+                            <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+  <tbody><tr>
+  <td id="L1" class="blob-num js-line-number" data-line-number="1">1</td>
+  <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;System.Drawing<br /></td>
+</tr>
+<tr>
+  <td id="L2" class="blob-num js-line-number" data-line-number="2">2</td>
+  <td id="LC2" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;System.Xml.Serialization<br /></td>
+</tr>
+<tr>
+  <td id="L3" class="blob-num js-line-number" data-line-number="3">3</td>
+  <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Imaging<br /></td>
+</tr>
+<tr>
+  <td id="L4" class="blob-num js-line-number" data-line-number="4">4</td>
+  <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Language.Default<br /></td>
+</tr>
+<tr>
+  <td id="L5" class="blob-num js-line-number" data-line-number="5">5</td>
+  <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.MIME.Markup.HTML.CSS<br /></td>
+</tr>
+<tr>
+  <td id="L6" class="blob-num js-line-number" data-line-number="6">6</td>
+  <td id="LC6" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L7" class="blob-num js-line-number" data-line-number="7">7</td>
+  <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="xml_comment">'''&nbsp;&lt;summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L8" class="blob-num js-line-number" data-line-number="8">8</td>
+  <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="xml_comment">'''&nbsp;The&nbsp;theme&nbsp;XML&nbsp;model&nbsp;of&nbsp;the&nbsp;code&nbsp;color&nbsp;schema</span><br /></td>
+</tr>
+<tr>
+  <td id="L9" class="blob-num js-line-number" data-line-number="9">9</td>
+  <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="xml_comment">'''&nbsp;&lt;/summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L10" class="blob-num js-line-number" data-line-number="10">10</td>
+  <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="keyword">Public</span>&nbsp;<span class="keyword">Class</span>&nbsp;Schema<br /></td>
+</tr>
+<tr>
+  <td id="L11" class="blob-num js-line-number" data-line-number="11">11</td>
+  <td id="LC11" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L12" class="blob-num js-line-number" data-line-number="12">12</td>
+  <td id="LC12" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;keyword&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L13" class="blob-num js-line-number" data-line-number="13">13</td>
+  <td id="LC13" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;identifier&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L14" class="blob-num js-line-number" data-line-number="14">14</td>
+  <td id="LC14" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;XmlComment&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L15" class="blob-num js-line-number" data-line-number="15">15</td>
+  <td id="LC15" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;Xml&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L16" class="blob-num js-line-number" data-line-number="16">16</td>
+  <td id="LC16" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;XmlInterpolate&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L17" class="blob-num js-line-number" data-line-number="17">17</td>
+  <td id="LC17" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;comments&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L18" class="blob-num js-line-number" data-line-number="18">18</td>
+  <td id="LC18" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;typeName&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L19" class="blob-num js-line-number" data-line-number="19">19</td>
+  <td id="LC19" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;background&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L20" class="blob-num js-line-number" data-line-number="20">20</td>
+  <td id="LC20" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;[string]&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L21" class="blob-num js-line-number" data-line-number="21">21</td>
+  <td id="LC21" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;font&nbsp;<span class="keyword">As</span>&nbsp;CSSFont<br /></td>
+</tr>
+<tr>
+  <td id="L22" class="blob-num js-line-number" data-line-number="22">22</td>
+  <td id="LC22" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L23" class="blob-num js-line-number" data-line-number="23">23</td>
+  <td id="LC23" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;XmlAttribute(<span class="string">"theme-name"</span>)&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L24" class="blob-num js-line-number" data-line-number="24">24</td>
+  <td id="LC24" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;ThemeName&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L25" class="blob-num js-line-number" data-line-number="25">25</td>
+  <td id="LC25" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L26" class="blob-num js-line-number" data-line-number="26">26</td>
+  <td id="LC26" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L27" class="blob-num js-line-number" data-line-number="27">27</td>
+  <td id="LC27" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;</span><br /></td>
+</tr>
+<tr>
+  <td id="L28" class="blob-num js-line-number" data-line-number="28">28</td>
+  <td id="LC28" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;/summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L29" class="blob-num js-line-number" data-line-number="29">29</td>
+  <td id="LC29" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;returns&gt;&lt;/returns&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L30" class="blob-num js-line-number" data-line-number="30">30</td>
+  <td id="LC30" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Shared</span>&nbsp;<span class="keyword">Function</span>&nbsp;VisualStudioDefault()&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">Default</span>Value(Of&nbsp;Schema)<br /></td>
+</tr>
+<tr>
+  <td id="L31" class="blob-num js-line-number" data-line-number="31">31</td>
+  <td id="LC31" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;<span class="keyword">New</span>&nbsp;Schema&nbsp;<span class="keyword">With</span>&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L32" class="blob-num js-line-number" data-line-number="32">32</td>
+  <td id="LC32" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.background&nbsp;=&nbsp;<span class="string">"white"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L33" class="blob-num js-line-number" data-line-number="33">33</td>
+  <td id="LC33" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.comments&nbsp;=&nbsp;<span class="string">"#008000"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L34" class="blob-num js-line-number" data-line-number="34">34</td>
+  <td id="LC34" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.XmlComment&nbsp;=&nbsp;<span class="string">"#808080"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L35" class="blob-num js-line-number" data-line-number="35">35</td>
+  <td id="LC35" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.identifier&nbsp;=&nbsp;<span class="string">"black"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L36" class="blob-num js-line-number" data-line-number="36">36</td>
+  <td id="LC36" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.typeName&nbsp;=&nbsp;<span class="string">"#2b91af"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L37" class="blob-num js-line-number" data-line-number="37">37</td>
+  <td id="LC37" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[string]&nbsp;=&nbsp;<span class="string">"#a31515"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L38" class="blob-num js-line-number" data-line-number="38">38</td>
+  <td id="LC38" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.keyword&nbsp;=&nbsp;<span class="string">"#0000ff"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L39" class="blob-num js-line-number" data-line-number="39">39</td>
+  <td id="LC39" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.XmlInterpolate&nbsp;=&nbsp;<span class="string">"cyan"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L40" class="blob-num js-line-number" data-line-number="40">40</td>
+  <td id="LC40" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Xml&nbsp;=&nbsp;<span class="string">"gray"</span>,<br /></td>
+</tr>
+<tr>
+  <td id="L41" class="blob-num js-line-number" data-line-number="41">41</td>
+  <td id="LC41" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.font&nbsp;=&nbsp;<span class="keyword">New</span>&nbsp;CSSFont&nbsp;<span class="keyword">With</span>&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L42" class="blob-num js-line-number" data-line-number="42">42</td>
+  <td id="LC42" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.family&nbsp;=&nbsp;FontFace.Consolas&nbsp;&amp;&nbsp;<span class="string">",&nbsp;"</span>&nbsp;&amp;&nbsp;FontFace.MicrosoftYaHei,<br /></td>
+</tr>
+<tr>
+  <td id="L43" class="blob-num js-line-number" data-line-number="43">43</td>
+  <td id="LC43" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.size&nbsp;=&nbsp;11,<br /></td>
+</tr>
+<tr>
+  <td id="L44" class="blob-num js-line-number" data-line-number="44">44</td>
+  <td id="LC44" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.style&nbsp;=&nbsp;FontStyle.Regular<br /></td>
+</tr>
+<tr>
+  <td id="L45" class="blob-num js-line-number" data-line-number="45">45</td>
+  <td id="LC45" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L46" class="blob-num js-line-number" data-line-number="46">46</td>
+  <td id="LC46" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L47" class="blob-num js-line-number" data-line-number="47">47</td>
+  <td id="LC47" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L48" class="blob-num js-line-number" data-line-number="48">48</td>
+  <td id="LC48" class="blob-code blob-code-inner js-file-line"><span class="keyword">End</span>&nbsp;<span class="keyword">Class</span><br /></td>
+</tr></tbody>
+</table>
+                        </div>
+  </body>
+</html>

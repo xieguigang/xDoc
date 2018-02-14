@@ -1,0 +1,969 @@
+<html>
+  <head>
+    <title>ProjectDocument.vb</title>
+    <style type="text/css">
+                            
+            .vscode {
+                background-color: white;
+                font: normal 11px Consolas, Microsoft YaHei;   
+                color: black;
+            }
+            .keyword {
+                color: #0000ff !important;
+            }
+            .comment {
+                color: #008000 !important;
+            }
+            .type {
+                color: #2b91af !important;
+            }
+            .string {
+                color: #a31515 !important;
+            }   
+            .xml_comment {
+                color: #808080 !important;
+            }
+            .xml {
+                color: gray !important;
+            }
+            .xml_interpolate {
+                color: cyan !important;
+            }
+        
+                        </style>
+    <style type="text/css">                           
+                            .js-line-number {
+                                color: #2b91af;                                
+                                text-align: right;
+                                padding-right: 5px;
+                                border-right-style: inset;
+                            }
+
+                            .js-file-line .js-line-number {
+                                font: normal 11px Consolas, Microsoft YaHei;
+                            }
+
+                            .js-file-line {
+                                padding-left: 10px;
+                            }
+                        </style>
+  </head>
+  <body>
+    <div class="vscode">
+                            <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+  <tbody><tr>
+  <td id="L1" class="blob-num js-line-number" data-line-number="1">1</td>
+  <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;System.Runtime.CompilerServices<br /></td>
+</tr>
+<tr>
+  <td id="L2" class="blob-num js-line-number" data-line-number="2">2</td>
+  <td id="LC2" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.ApplicationServices<br /></td>
+</tr>
+<tr>
+  <td id="L3" class="blob-num js-line-number" data-line-number="3">3</td>
+  <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.ApplicationServices.Development<br /></td>
+</tr>
+<tr>
+  <td id="L4" class="blob-num js-line-number" data-line-number="4">4</td>
+  <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio<br /></td>
+</tr>
+<tr>
+  <td id="L5" class="blob-num js-line-number" data-line-number="5">5</td>
+  <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.ComponentModel.Algorithm.base<br /></td>
+</tr>
+<tr>
+  <td id="L6" class="blob-num js-line-number" data-line-number="6">6</td>
+  <td id="LC6" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Imaging<br /></td>
+</tr>
+<tr>
+  <td id="L7" class="blob-num js-line-number" data-line-number="7">7</td>
+  <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Language<br /></td>
+</tr>
+<tr>
+  <td id="L8" class="blob-num js-line-number" data-line-number="8">8</td>
+  <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Linq<br /></td>
+</tr>
+<tr>
+  <td id="L9" class="blob-num js-line-number" data-line-number="9">9</td>
+  <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.MIME.Markup.HTML.CSS<br /></td>
+</tr>
+<tr>
+  <td id="L10" class="blob-num js-line-number" data-line-number="10">10</td>
+  <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Serialization.JSON<br /></td>
+</tr>
+<tr>
+  <td id="L11" class="blob-num js-line-number" data-line-number="11">11</td>
+  <td id="LC11" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Text<br /></td>
+</tr>
+<tr>
+  <td id="L12" class="blob-num js-line-number" data-line-number="12">12</td>
+  <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;Microsoft.VisualBasic.Text.Xml<br /></td>
+</tr>
+<tr>
+  <td id="L13" class="blob-num js-line-number" data-line-number="13">13</td>
+  <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="keyword">Imports</span>&nbsp;DevAssmInfo&nbsp;=&nbsp;Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo<br /></td>
+</tr>
+<tr>
+  <td id="L14" class="blob-num js-line-number" data-line-number="14">14</td>
+  <td id="LC14" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L15" class="blob-num js-line-number" data-line-number="15">15</td>
+  <td id="LC15" class="blob-code blob-code-inner js-file-line"><span class="keyword">Public</span>&nbsp;<span class="keyword">Module</span>&nbsp;ProjectDocument<br /></td>
+</tr>
+<tr>
+  <td id="L16" class="blob-num js-line-number" data-line-number="16">16</td>
+  <td id="LC16" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L17" class="blob-num js-line-number" data-line-number="17">17</td>
+  <td id="LC17" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Function</span>&nbsp;Build(vbproj$,&nbsp;EXPORT$,&nbsp;<span class="keyword">Optional</span>&nbsp;schema&nbsp;<span class="keyword">As</span>&nbsp;Schema&nbsp;=&nbsp;<span class="keyword">Nothing</span>)&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">Boolean</span><br /></td>
+</tr>
+<tr>
+  <td id="L18" class="blob-num js-line-number" data-line-number="18">18</td>
+  <td id="LC18" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;folder$&nbsp;=&nbsp;vbproj.ParentPath<br /></td>
+</tr>
+<tr>
+  <td id="L19" class="blob-num js-line-number" data-line-number="19">19</td>
+  <td id="LC19" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;css$<br /></td>
+</tr>
+<tr>
+  <td id="L20" class="blob-num js-line-number" data-line-number="20">20</td>
+  <td id="LC20" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;fontSize!<br /></td>
+</tr>
+<tr>
+  <td id="L21" class="blob-num js-line-number" data-line-number="21">21</td>
+  <td id="LC21" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;fontStyle$<br /></td>
+</tr>
+<tr>
+  <td id="L22" class="blob-num js-line-number" data-line-number="22">22</td>
+  <td id="LC22" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L23" class="blob-num js-line-number" data-line-number="23">23</td>
+  <td id="LC23" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">With</span>&nbsp;(schema&nbsp;<span class="keyword">Or</span>&nbsp;Schema.VisualStudioDefault)<br /></td>
+</tr>
+<tr>
+  <td id="L24" class="blob-num js-line-number" data-line-number="24">24</td>
+  <td id="LC24" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontSize&nbsp;=&nbsp;.font.size<br /></td>
+</tr>
+<tr>
+  <td id="L25" class="blob-num js-line-number" data-line-number="25">25</td>
+  <td id="LC25" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontStyle&nbsp;=&nbsp;.font.CSSInlineStyle<br /></td>
+</tr>
+<tr>
+  <td id="L26" class="blob-num js-line-number" data-line-number="26">26</td>
+  <td id="LC26" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css&nbsp;=&nbsp;.CSSStyle&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L27" class="blob-num js-line-number" data-line-number="27">27</td>
+  <td id="LC27" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Replace(<span class="string">".vscode&nbsp;&gt;&nbsp;"</span>,&nbsp;<span class="string">""</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L28" class="blob-num js-line-number" data-line-number="28">28</td>
+  <td id="LC28" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">With</span><br /></td>
+</tr>
+<tr>
+  <td id="L29" class="blob-num js-line-number" data-line-number="29">29</td>
+  <td id="LC29" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L30" class="blob-num js-line-number" data-line-number="30">30</td>
+  <td id="LC30" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">'&nbsp;index.html</span><br /></td>
+</tr>
+<tr>
+  <td id="L31" class="blob-num js-line-number" data-line-number="31">31</td>
+  <td id="LC31" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;vbproj.Summary.SaveTo($<span class="string">"{EXPORT}/index.html"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L32" class="blob-num js-line-number" data-line-number="32">32</td>
+  <td id="LC32" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L33" class="blob-num js-line-number" data-line-number="33">33</td>
+  <td id="LC33" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">With</span>&nbsp;App.GetAppSysTempFile(<span class="string">".zip"</span>,&nbsp;App.PID)<br /></td>
+</tr>
+<tr>
+  <td id="L34" class="blob-num js-line-number" data-line-number="34">34</td>
+  <td id="LC34" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;My.Resources.Folder_16x.SaveAs($<span class="string">"{EXPORT}/images/Folder_16x.png"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L35" class="blob-num js-line-number" data-line-number="35">35</td>
+  <td id="LC35" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;My.Resources.VB_16x.SaveAs($<span class="string">"{EXPORT}/images/VB_16x.png"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L36" class="blob-num js-line-number" data-line-number="36">36</td>
+  <td id="LC36" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;My.Resources.url.SaveTo($<span class="string">"{EXPORT}/lib/url.js"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L37" class="blob-num js-line-number" data-line-number="37">37</td>
+  <td id="LC37" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;My.Resources._lib.FlushStream(.ByRef)<br /></td>
+</tr>
+<tr>
+  <td id="L38" class="blob-num js-line-number" data-line-number="38">38</td>
+  <td id="LC38" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L39" class="blob-num js-line-number" data-line-number="39">39</td>
+  <td id="LC39" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;GZip.ImprovedExtractToDirectory(.ByRef,&nbsp;$<span class="string">"{EXPORT}/lib"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L40" class="blob-num js-line-number" data-line-number="40">40</td>
+  <td id="LC40" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">With</span><br /></td>
+</tr>
+<tr>
+  <td id="L41" class="blob-num js-line-number" data-line-number="41">41</td>
+  <td id="LC41" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L42" class="blob-num js-line-number" data-line-number="42">42</td>
+  <td id="LC42" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">'&nbsp;itemgroups\compiles</span><br /></td>
+</tr>
+<tr>
+  <td id="L43" class="blob-num js-line-number" data-line-number="43">43</td>
+  <td id="LC43" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">For</span>&nbsp;<span class="keyword">Each</span>&nbsp;file&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>&nbsp;<span class="keyword">In</span>&nbsp;vbproj.EnumerateSourceFiles<br /></td>
+</tr>
+<tr>
+  <td id="L44" class="blob-num js-line-number" data-line-number="44">44</td>
+  <td id="LC44" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;vb$&nbsp;=&nbsp;$<span class="string">"{folder}/{file}"</span>.ReadAllText<br /></td>
+</tr>
+<tr>
+  <td id="L45" class="blob-num js-line-number" data-line-number="45">45</td>
+  <td id="LC45" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;html$&nbsp;=&nbsp;vb&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L46" class="blob-num js-line-number" data-line-number="46">46</td>
+  <td id="LC46" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ToVBhtml&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L47" class="blob-num js-line-number" data-line-number="47">47</td>
+  <td id="LC47" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.jsfilelinecontainer<br /></td>
+</tr>
+<tr>
+  <td id="L48" class="blob-num js-line-number" data-line-number="48">48</td>
+  <td id="LC48" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L49" class="blob-num js-line-number" data-line-number="49">49</td>
+  <td id="LC49" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Call</span>&nbsp;sprintf(<br /></td>
+</tr>
+<tr>
+  <td id="L50" class="blob-num js-line-number" data-line-number="50">50</td>
+  <td id="LC50" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;html&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L51" class="blob-num js-line-number" data-line-number="51">51</td>
+  <td id="LC51" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L52" class="blob-num js-line-number" data-line-number="52">52</td>
+  <td id="LC52" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;%s&lt;/title&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L53" class="blob-num js-line-number" data-line-number="53">53</td>
+  <td id="LC53" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L54" class="blob-num js-line-number" data-line-number="54">54</td>
+  <td id="LC54" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&nbsp;type=<span class="string">"text/css"</span>&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L55" class="blob-num js-line-number" data-line-number="55">55</td>
+  <td id="LC55" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s<br /></td>
+</tr>
+<tr>
+  <td id="L56" class="blob-num js-line-number" data-line-number="56">56</td>
+  <td id="LC56" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L57" class="blob-num js-line-number" data-line-number="57">57</td>
+  <td id="LC57" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&nbsp;type=<span class="string">"text/css"</span>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></td>
+</tr>
+<tr>
+  <td id="L58" class="blob-num js-line-number" data-line-number="58">58</td>
+  <td id="LC58" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.js-line-number&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L59" class="blob-num js-line-number" data-line-number="59">59</td>
+  <td id="LC59" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#2b91af;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></td>
+</tr>
+<tr>
+  <td id="L60" class="blob-num js-line-number" data-line-number="60">60</td>
+  <td id="LC60" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align:&nbsp;right;<br /></td>
+</tr>
+<tr>
+  <td id="L61" class="blob-num js-line-number" data-line-number="61">61</td>
+  <td id="LC61" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding-right:&nbsp;5px;<br /></td>
+</tr>
+<tr>
+  <td id="L62" class="blob-num js-line-number" data-line-number="62">62</td>
+  <td id="LC62" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-right-style:&nbsp;inset;<br /></td>
+</tr>
+<tr>
+  <td id="L63" class="blob-num js-line-number" data-line-number="63">63</td>
+  <td id="LC63" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L64" class="blob-num js-line-number" data-line-number="64">64</td>
+  <td id="LC64" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L65" class="blob-num js-line-number" data-line-number="65">65</td>
+  <td id="LC65" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.js-file-line&nbsp;.js-line-number&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L66" class="blob-num js-line-number" data-line-number="66">66</td>
+  <td id="LC66" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font:&nbsp;&lt;%=&nbsp;fontStyle&nbsp;%&gt;;<br /></td>
+</tr>
+<tr>
+  <td id="L67" class="blob-num js-line-number" data-line-number="67">67</td>
+  <td id="LC67" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L68" class="blob-num js-line-number" data-line-number="68">68</td>
+  <td id="LC68" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L69" class="blob-num js-line-number" data-line-number="69">69</td>
+  <td id="LC69" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.js-file-line&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L70" class="blob-num js-line-number" data-line-number="70">70</td>
+  <td id="LC70" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding-left:&nbsp;10px;<br /></td>
+</tr>
+<tr>
+  <td id="L71" class="blob-num js-line-number" data-line-number="71">71</td>
+  <td id="LC71" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L72" class="blob-num js-line-number" data-line-number="72">72</td>
+  <td id="LC72" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L73" class="blob-num js-line-number" data-line-number="73">73</td>
+  <td id="LC73" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L74" class="blob-num js-line-number" data-line-number="74">74</td>
+  <td id="LC74" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L75" class="blob-num js-line-number" data-line-number="75">75</td>
+  <td id="LC75" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=<span class="string">"vscode"</span>&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L76" class="blob-num js-line-number" data-line-number="76">76</td>
+  <td id="LC76" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s<br /></td>
+</tr>
+<tr>
+  <td id="L77" class="blob-num js-line-number" data-line-number="77">77</td>
+  <td id="LC77" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L78" class="blob-num js-line-number" data-line-number="78">78</td>
+  <td id="LC78" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L79" class="blob-num js-line-number" data-line-number="79">79</td>
+  <td id="LC79" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;,&nbsp;file,&nbsp;css,&nbsp;html)&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L80" class="blob-num js-line-number" data-line-number="80">80</td>
+  <td id="LC80" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.SaveTo($<span class="string">"{EXPORT}/{file}"</span>.ChangeSuffix(<span class="string">"html"</span>))<br /></td>
+</tr>
+<tr>
+  <td id="L81" class="blob-num js-line-number" data-line-number="81">81</td>
+  <td id="LC81" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Next</span><br /></td>
+</tr>
+<tr>
+  <td id="L82" class="blob-num js-line-number" data-line-number="82">82</td>
+  <td id="LC82" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L83" class="blob-num js-line-number" data-line-number="83">83</td>
+  <td id="LC83" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;<span class="keyword">True</span><br /></td>
+</tr>
+<tr>
+  <td id="L84" class="blob-num js-line-number" data-line-number="84">84</td>
+  <td id="LC84" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L85" class="blob-num js-line-number" data-line-number="85">85</td>
+  <td id="LC85" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L86" class="blob-num js-line-number" data-line-number="86">86</td>
+  <td id="LC86" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L87" class="blob-num js-line-number" data-line-number="87">87</td>
+  <td id="LC87" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;javascript&nbsp;class&nbsp;define&nbsp;for&nbsp;``js-file-line-container``</span><br /></td>
+</tr>
+<tr>
+  <td id="L88" class="blob-num js-line-number" data-line-number="88">88</td>
+  <td id="LC88" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;/summary&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L89" class="blob-num js-line-number" data-line-number="89">89</td>
+  <td id="LC89" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;param&nbsp;name="highlights"&gt;&lt;/param&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L90" class="blob-num js-line-number" data-line-number="90">90</td>
+  <td id="LC90" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;&lt;returns&gt;&lt;/returns&gt;</span><br /></td>
+</tr>
+<tr>
+  <td id="L91" class="blob-num js-line-number" data-line-number="91">91</td>
+  <td id="LC91" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml_comment">'''&nbsp;</span><br /></td>
+</tr>
+<tr>
+  <td id="L92" class="blob-num js-line-number" data-line-number="92">92</td>
+  <td id="LC92" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Extension&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L93" class="blob-num js-line-number" data-line-number="93">93</td>
+  <td id="LC93" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Private</span>&nbsp;<span class="keyword">Function</span>&nbsp;jsfilelinecontainer(highlights&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>)&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L94" class="blob-num js-line-number" data-line-number="94">94</td>
+  <td id="LC94" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;lines$()&nbsp;=&nbsp;highlights.lTokens<br /></td>
+</tr>
+<tr>
+  <td id="L95" class="blob-num js-line-number" data-line-number="95">95</td>
+  <td id="LC95" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;tr$()&nbsp;=&nbsp;lines&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L96" class="blob-num js-line-number" data-line-number="96">96</td>
+  <td id="LC96" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Select(<span class="keyword">Function</span>(L,&nbsp;i)<br /></td>
+</tr>
+<tr>
+  <td id="L97" class="blob-num js-line-number" data-line-number="97">97</td>
+  <td id="LC97" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;num$&nbsp;=&nbsp;i&nbsp;+&nbsp;1<br /></td>
+</tr>
+<tr>
+  <td id="L98" class="blob-num js-line-number" data-line-number="98">98</td>
+  <td id="LC98" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L99" class="blob-num js-line-number" data-line-number="99">99</td>
+  <td id="LC99" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;sprintf(<br /></td>
+</tr>
+<tr>
+  <td id="L100" class="blob-num js-line-number" data-line-number="100">100</td>
+  <td id="LC100" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L101" class="blob-num js-line-number" data-line-number="101">101</td>
+  <td id="LC101" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;id=&lt;%=&nbsp;<span class="string">"L"</span>&nbsp;&amp;&nbsp;num&nbsp;%&gt;&nbsp;class=<span class="string">"blob-num&nbsp;js-line-number"</span>&nbsp;data-line-number=&lt;%=&nbsp;num&nbsp;%&gt;&gt;&lt;%=&nbsp;num&nbsp;%&gt;&lt;/td&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L102" class="blob-num js-line-number" data-line-number="102">102</td>
+  <td id="LC102" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;id=&lt;%=&nbsp;<span class="string">"LC"</span>&nbsp;&amp;&nbsp;num&nbsp;%&gt;&nbsp;class=<span class="string">"blob-code&nbsp;blob-code-inner&nbsp;js-file-line"</span>&gt;%s&lt;/td&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L103" class="blob-num js-line-number" data-line-number="103">103</td>
+  <td id="LC103" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;,&nbsp;L)<br /></td>
+</tr>
+<tr>
+  <td id="L104" class="blob-num js-line-number" data-line-number="104">104</td>
+  <td id="LC104" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span>)&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L105" class="blob-num js-line-number" data-line-number="105">105</td>
+  <td id="LC105" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ToArray<br /></td>
+</tr>
+<tr>
+  <td id="L106" class="blob-num js-line-number" data-line-number="106">106</td>
+  <td id="LC106" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L107" class="blob-num js-line-number" data-line-number="107">107</td>
+  <td id="LC107" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;sprintf(<br /></td>
+</tr>
+<tr>
+  <td id="L108" class="blob-num js-line-number" data-line-number="108">108</td>
+  <td id="LC108" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;class=<span class="string">"highlight&nbsp;tab-size&nbsp;js-file-line-container"</span>&nbsp;data-tab-size=<span class="string">"8"</span>&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L109" class="blob-num js-line-number" data-line-number="109">109</td>
+  <td id="LC109" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;%s&lt;/tbody&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L110" class="blob-num js-line-number" data-line-number="110">110</td>
+  <td id="LC110" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;,&nbsp;tr.JoinBy(ASCII.LF))<br /></td>
+</tr>
+<tr>
+  <td id="L111" class="blob-num js-line-number" data-line-number="111">111</td>
+  <td id="LC111" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L112" class="blob-num js-line-number" data-line-number="112">112</td>
+  <td id="LC112" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L113" class="blob-num js-line-number" data-line-number="113">113</td>
+  <td id="LC113" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Extension&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L114" class="blob-num js-line-number" data-line-number="114">114</td>
+  <td id="LC114" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Function</span>&nbsp;Summary(vbproj&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>)&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L115" class="blob-num js-line-number" data-line-number="115">115</td>
+  <td id="LC115" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;assmInfo&nbsp;<span class="keyword">As</span>&nbsp;DevAssmInfo&nbsp;=&nbsp;vbproj.GetAssemblyInfo<br /></td>
+</tr>
+<tr>
+  <td id="L116" class="blob-num js-line-number" data-line-number="116">116</td>
+  <td id="LC116" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;tree$,&nbsp;path$<br /></td>
+</tr>
+<tr>
+  <td id="L117" class="blob-num js-line-number" data-line-number="117">117</td>
+  <td id="LC117" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L118" class="blob-num js-line-number" data-line-number="118">118</td>
+  <td id="LC118" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">With</span>&nbsp;jstree(vbproj)<br /></td>
+</tr>
+<tr>
+  <td id="L119" class="blob-num js-line-number" data-line-number="119">119</td>
+  <td id="LC119" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;.path<br /></td>
+</tr>
+<tr>
+  <td id="L120" class="blob-num js-line-number" data-line-number="120">120</td>
+  <td id="LC120" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tree&nbsp;=&nbsp;.jstree<br /></td>
+</tr>
+<tr>
+  <td id="L121" class="blob-num js-line-number" data-line-number="121">121</td>
+  <td id="LC121" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">With</span><br /></td>
+</tr>
+<tr>
+  <td id="L122" class="blob-num js-line-number" data-line-number="122">122</td>
+  <td id="LC122" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L123" class="blob-num js-line-number" data-line-number="123">123</td>
+  <td id="LC123" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;sprintf(<br /></td>
+</tr>
+<tr>
+  <td id="L124" class="blob-num js-line-number" data-line-number="124">124</td>
+  <td id="LC124" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;html&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L125" class="blob-num js-line-number" data-line-number="125">125</td>
+  <td id="LC125" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L126" class="blob-num js-line-number" data-line-number="126">126</td>
+  <td id="LC126" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;&lt;%=&nbsp;assmInfo.AssemblyTitle&nbsp;%&gt;&lt;/title&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L127" class="blob-num js-line-number" data-line-number="127">127</td>
+  <td id="LC127" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L128" class="blob-num js-line-number" data-line-number="128">128</td>
+  <td id="LC128" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link&nbsp;rel=<span class="string">"stylesheet"</span>&nbsp;href=<span class="string">"lib/jstree/default/style.min.css"</span>/&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L129" class="blob-num js-line-number" data-line-number="129">129</td>
+  <td id="LC129" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L130" class="blob-num js-line-number" data-line-number="130">130</td>
+  <td id="LC130" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span>&nbsp;src=<span class="string">"lib/jquery.min.js"</span>&gt;&lt;/script&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L131" class="blob-num js-line-number" data-line-number="131">131</td>
+  <td id="LC131" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span>&nbsp;src=<span class="string">"lib/jstree/jstree.min.js"</span>&gt;&lt;/script&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L132" class="blob-num js-line-number" data-line-number="132">132</td>
+  <td id="LC132" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L133" class="blob-num js-line-number" data-line-number="133">133</td>
+  <td id="LC133" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span>&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L134" class="blob-num js-line-number" data-line-number="134">134</td>
+  <td id="LC134" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;nodePath&nbsp;=&nbsp;%s;<br /></td>
+</tr>
+<tr>
+  <td id="L135" class="blob-num js-line-number" data-line-number="135">135</td>
+  <td id="LC135" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L136" class="blob-num js-line-number" data-line-number="136">136</td>
+  <td id="LC136" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L137" class="blob-num js-line-number" data-line-number="137">137</td>
+  <td id="LC137" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span>&nbsp;src=<span class="string">"lib/url.js"</span>&gt;&lt;/script&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L138" class="blob-num js-line-number" data-line-number="138">138</td>
+  <td id="LC138" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L139" class="blob-num js-line-number" data-line-number="139">139</td>
+  <td id="LC139" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L140" class="blob-num js-line-number" data-line-number="140">140</td>
+  <td id="LC140" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L141" class="blob-num js-line-number" data-line-number="141">141</td>
+  <td id="LC141" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Project&nbsp;Files&lt;/h2&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L142" class="blob-num js-line-number" data-line-number="142">142</td>
+  <td id="LC142" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L143" class="blob-num js-line-number" data-line-number="143">143</td>
+  <td id="LC143" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;id=<span class="string">"vbproj-tree"</span>&gt;&lt;/div&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L144" class="blob-num js-line-number" data-line-number="144">144</td>
+  <td id="LC144" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L145" class="blob-num js-line-number" data-line-number="145">145</td>
+  <td id="LC145" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span>&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L146" class="blob-num js-line-number" data-line-number="146">146</td>
+  <td id="LC146" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="comment">'#vbproj-tree').jstree({&nbsp;</span><br /></td>
+</tr>
+<tr>
+  <td id="L147" class="blob-num js-line-number" data-line-number="147">147</td>
+  <td id="LC147" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">'core'&nbsp;:&nbsp;{</span><br /></td>
+</tr>
+<tr>
+  <td id="L148" class="blob-num js-line-number" data-line-number="148">148</td>
+  <td id="LC148" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">'data'&nbsp;:&nbsp;%s</span><br /></td>
+</tr>
+<tr>
+  <td id="L149" class="blob-num js-line-number" data-line-number="149">149</td>
+  <td id="LC149" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br /></td>
+</tr>
+<tr>
+  <td id="L150" class="blob-num js-line-number" data-line-number="150">150</td>
+  <td id="LC150" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br /></td>
+</tr>
+<tr>
+  <td id="L151" class="blob-num js-line-number" data-line-number="151">151</td>
+  <td id="LC151" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L152" class="blob-num js-line-number" data-line-number="152">152</td>
+  <td id="LC152" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#vbproj-tree').on(<span class="string">"changed.jstree"</span>,&nbsp;function&nbsp;(e,&nbsp;data)&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L153" class="blob-num js-line-number" data-line-number="153">153</td>
+  <td id="LC153" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;id&nbsp;&nbsp;=&nbsp;data.selected[0];<br /></td>
+</tr>
+<tr>
+  <td id="L154" class="blob-num js-line-number" data-line-number="154">154</td>
+  <td id="LC154" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;url&nbsp;=&nbsp;getUrl(id);<br /></td>
+</tr>
+<tr>
+  <td id="L155" class="blob-num js-line-number" data-line-number="155">155</td>
+  <td id="LC155" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L156" class="blob-num js-line-number" data-line-number="156">156</td>
+  <td id="LC156" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(url);<br /></td>
+</tr>
+<tr>
+  <td id="L157" class="blob-num js-line-number" data-line-number="157">157</td>
+  <td id="LC157" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openinnewTab(url);<br /></td>
+</tr>
+<tr>
+  <td id="L158" class="blob-num js-line-number" data-line-number="158">158</td>
+  <td id="LC158" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br /></td>
+</tr>
+<tr>
+  <td id="L159" class="blob-num js-line-number" data-line-number="159">159</td>
+  <td id="LC159" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L160" class="blob-num js-line-number" data-line-number="160">160</td>
+  <td id="LC160" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br /></td>
+</tr>
+<tr>
+  <td id="L161" class="blob-num js-line-number" data-line-number="161">161</td>
+  <td id="LC161" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;,&nbsp;path,&nbsp;tree)<br /></td>
+</tr>
+<tr>
+  <td id="L162" class="blob-num js-line-number" data-line-number="162">162</td>
+  <td id="LC162" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L163" class="blob-num js-line-number" data-line-number="163">163</td>
+  <td id="LC163" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L164" class="blob-num js-line-number" data-line-number="164">164</td>
+  <td id="LC164" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Function</span>&nbsp;jstree(vbproj&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>)&nbsp;<span class="keyword">As</span>&nbsp;(path$,&nbsp;jstree$)<br /></td>
+</tr>
+<tr>
+  <td id="L165" class="blob-num js-line-number" data-line-number="165">165</td>
+  <td id="LC165" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;files$()&nbsp;=&nbsp;vbproj&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L166" class="blob-num js-line-number" data-line-number="166">166</td>
+  <td id="LC166" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.EnumerateSourceFiles&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L167" class="blob-num js-line-number" data-line-number="167">167</td>
+  <td id="LC167" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ToArray<br /></td>
+</tr>
+<tr>
+  <td id="L168" class="blob-num js-line-number" data-line-number="168">168</td>
+  <td id="LC168" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;nodes&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">New</span>&nbsp;Dictionary(Of&nbsp;<span class="keyword">String</span>,&nbsp;jstreeNode)<br /></td>
+</tr>
+<tr>
+  <td id="L169" class="blob-num js-line-number" data-line-number="169">169</td>
+  <td id="LC169" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;pathList&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">New</span>&nbsp;Dictionary(Of&nbsp;<span class="keyword">String</span>,&nbsp;<span class="keyword">String</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L170" class="blob-num js-line-number" data-line-number="170">170</td>
+  <td id="LC170" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L171" class="blob-num js-line-number" data-line-number="171">171</td>
+  <td id="LC171" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes(<span class="string">"#"</span>)&nbsp;=&nbsp;<span class="keyword">New</span>&nbsp;jstreeNode&nbsp;<span class="keyword">With</span>&nbsp;{.id&nbsp;=&nbsp;<span class="string">"#"</span>}<br /></td>
+</tr>
+<tr>
+  <td id="L172" class="blob-num js-line-number" data-line-number="172">172</td>
+  <td id="LC172" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L173" class="blob-num js-line-number" data-line-number="173">173</td>
+  <td id="LC173" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">For</span>&nbsp;<span class="keyword">Each</span>&nbsp;path&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>&nbsp;<span class="keyword">In</span>&nbsp;files.OrderByDescending(<span class="keyword">Function</span>(l)&nbsp;l.Split(<span class="string">"\"</span>c).Length)<br /></td>
+</tr>
+<tr>
+  <td id="L174" class="blob-num js-line-number" data-line-number="174">174</td>
+  <td id="LC174" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;tokens$()&nbsp;=&nbsp;path.Split(<span class="string">"\"</span>c)<br /></td>
+</tr>
+<tr>
+  <td id="L175" class="blob-num js-line-number" data-line-number="175">175</td>
+  <td id="LC175" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;append&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">New</span>&nbsp;List(Of&nbsp;<span class="keyword">String</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L176" class="blob-num js-line-number" data-line-number="176">176</td>
+  <td id="LC176" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;parent$<br /></td>
+</tr>
+<tr>
+  <td id="L177" class="blob-num js-line-number" data-line-number="177">177</td>
+  <td id="LC177" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L178" class="blob-num js-line-number" data-line-number="178">178</td>
+  <td id="LC178" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">For</span>&nbsp;i&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">Integer</span>&nbsp;=&nbsp;0&nbsp;<span class="keyword">To</span>&nbsp;tokens.Length&nbsp;-&nbsp;1<br /></td>
+</tr>
+<tr>
+  <td id="L179" class="blob-num js-line-number" data-line-number="179">179</td>
+  <td id="LC179" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;=&nbsp;append.JoinBy(<span class="string">"\"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L180" class="blob-num js-line-number" data-line-number="180">180</td>
+  <td id="LC180" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;append&nbsp;+=&nbsp;tokens(i)<br /></td>
+</tr>
+<tr>
+  <td id="L181" class="blob-num js-line-number" data-line-number="181">181</td>
+  <td id="LC181" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;append.JoinBy(<span class="string">"\"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L182" class="blob-num js-line-number" data-line-number="182">182</td>
+  <td id="LC182" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L183" class="blob-num js-line-number" data-line-number="183">183</td>
+  <td id="LC183" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">If</span>&nbsp;i&nbsp;=&nbsp;0&nbsp;<span class="keyword">Then</span><br /></td>
+</tr>
+<tr>
+  <td id="L184" class="blob-num js-line-number" data-line-number="184">184</td>
+  <td id="LC184" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;=&nbsp;<span class="string">"#"</span><br /></td>
+</tr>
+<tr>
+  <td id="L185" class="blob-num js-line-number" data-line-number="185">185</td>
+  <td id="LC185" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">If</span><br /></td>
+</tr>
+<tr>
+  <td id="L186" class="blob-num js-line-number" data-line-number="186">186</td>
+  <td id="LC186" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L187" class="blob-num js-line-number" data-line-number="187">187</td>
+  <td id="LC187" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">If</span>&nbsp;<span class="keyword">Not</span>&nbsp;nodes.ContainsKey(path)&nbsp;<span class="keyword">Then</span><br /></td>
+</tr>
+<tr>
+  <td id="L188" class="blob-num js-line-number" data-line-number="188">188</td>
+  <td id="LC188" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes(path)&nbsp;=&nbsp;<span class="keyword">New</span>&nbsp;jstreeNode&nbsp;<span class="keyword">With</span>&nbsp;{<br /></td>
+</tr>
+<tr>
+  <td id="L189" class="blob-num js-line-number" data-line-number="189">189</td>
+  <td id="LC189" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.id&nbsp;=&nbsp;<span class="string">"n"</span>&nbsp;&amp;&nbsp;nodes.Count,<br /></td>
+</tr>
+<tr>
+  <td id="L190" class="blob-num js-line-number" data-line-number="190">190</td>
+  <td id="LC190" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.parent&nbsp;=&nbsp;nodes(parent).id,<br /></td>
+</tr>
+<tr>
+  <td id="L191" class="blob-num js-line-number" data-line-number="191">191</td>
+  <td id="LC191" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.text&nbsp;=&nbsp;tokens(i)<br /></td>
+</tr>
+<tr>
+  <td id="L192" class="blob-num js-line-number" data-line-number="192">192</td>
+  <td id="LC192" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /></td>
+</tr>
+<tr>
+  <td id="L193" class="blob-num js-line-number" data-line-number="193">193</td>
+  <td id="LC193" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L194" class="blob-num js-line-number" data-line-number="194">194</td>
+  <td id="LC194" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">If</span>&nbsp;i&nbsp;=&nbsp;tokens.Length&nbsp;-&nbsp;1&nbsp;<span class="keyword">Then</span><br /></td>
+</tr>
+<tr>
+  <td id="L195" class="blob-num js-line-number" data-line-number="195">195</td>
+  <td id="LC195" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes(path).icon&nbsp;=&nbsp;<span class="string">"images/VB_16x.png"</span><br /></td>
+</tr>
+<tr>
+  <td id="L196" class="blob-num js-line-number" data-line-number="196">196</td>
+  <td id="LC196" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Else</span><br /></td>
+</tr>
+<tr>
+  <td id="L197" class="blob-num js-line-number" data-line-number="197">197</td>
+  <td id="LC197" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes(path).icon&nbsp;=&nbsp;<span class="string">"images/Folder_16x.png"</span><br /></td>
+</tr>
+<tr>
+  <td id="L198" class="blob-num js-line-number" data-line-number="198">198</td>
+  <td id="LC198" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">If</span><br /></td>
+</tr>
+<tr>
+  <td id="L199" class="blob-num js-line-number" data-line-number="199">199</td>
+  <td id="LC199" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L200" class="blob-num js-line-number" data-line-number="200">200</td>
+  <td id="LC200" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathList(nodes(path).id)&nbsp;=&nbsp;path<br /></td>
+</tr>
+<tr>
+  <td id="L201" class="blob-num js-line-number" data-line-number="201">201</td>
+  <td id="LC201" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">If</span><br /></td>
+</tr>
+<tr>
+  <td id="L202" class="blob-num js-line-number" data-line-number="202">202</td>
+  <td id="LC202" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Next</span><br /></td>
+</tr>
+<tr>
+  <td id="L203" class="blob-num js-line-number" data-line-number="203">203</td>
+  <td id="LC203" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Next</span><br /></td>
+</tr>
+<tr>
+  <td id="L204" class="blob-num js-line-number" data-line-number="204">204</td>
+  <td id="LC204" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L205" class="blob-num js-line-number" data-line-number="205">205</td>
+  <td id="LC205" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes.Remove(<span class="string">"#"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L206" class="blob-num js-line-number" data-line-number="206">206</td>
+  <td id="LC206" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L207" class="blob-num js-line-number" data-line-number="207">207</td>
+  <td id="LC207" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;pathArray&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span>&nbsp;=&nbsp;pathList.GetJson.Replace(<span class="string">"\"</span>,&nbsp;<span class="string">"/"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L208" class="blob-num js-line-number" data-line-number="208">208</td>
+  <td id="LC208" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Dim</span>&nbsp;tree$&nbsp;=&nbsp;nodes&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L209" class="blob-num js-line-number" data-line-number="209">209</td>
+  <td id="LC209" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Values&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L210" class="blob-num js-line-number" data-line-number="210">210</td>
+  <td id="LC210" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ToArray&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L211" class="blob-num js-line-number" data-line-number="211">211</td>
+  <td id="LC211" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.GetJson(indent:=True)&nbsp;_<br /></td>
+</tr>
+<tr>
+  <td id="L212" class="blob-num js-line-number" data-line-number="212">212</td>
+  <td id="LC212" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Replace(<span class="string">"\"</span>,&nbsp;<span class="string">"/"</span>)<br /></td>
+</tr>
+<tr>
+  <td id="L213" class="blob-num js-line-number" data-line-number="213">213</td>
+  <td id="LC213" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L214" class="blob-num js-line-number" data-line-number="214">214</td>
+  <td id="LC214" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;(pathArray,&nbsp;tree)<br /></td>
+</tr>
+<tr>
+  <td id="L215" class="blob-num js-line-number" data-line-number="215">215</td>
+  <td id="LC215" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L216" class="blob-num js-line-number" data-line-number="216">216</td>
+  <td id="LC216" class="blob-code blob-code-inner js-file-line"><span class="keyword">End</span>&nbsp;<span class="keyword">Module</span><br /></td>
+</tr>
+<tr>
+  <td id="L217" class="blob-num js-line-number" data-line-number="217">217</td>
+  <td id="LC217" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L218" class="blob-num js-line-number" data-line-number="218">218</td>
+  <td id="LC218" class="blob-code blob-code-inner js-file-line"><span class="keyword">Public</span>&nbsp;<span class="keyword">Class</span>&nbsp;jstreeNode<br /></td>
+</tr>
+<tr>
+  <td id="L219" class="blob-num js-line-number" data-line-number="219">219</td>
+  <td id="LC219" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L220" class="blob-num js-line-number" data-line-number="220">220</td>
+  <td id="LC220" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;id&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L221" class="blob-num js-line-number" data-line-number="221">221</td>
+  <td id="LC221" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;parent&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L222" class="blob-num js-line-number" data-line-number="222">222</td>
+  <td id="LC222" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;text&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L223" class="blob-num js-line-number" data-line-number="223">223</td>
+  <td id="LC223" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Property</span>&nbsp;icon&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L224" class="blob-num js-line-number" data-line-number="224">224</td>
+  <td id="LC224" class="blob-code blob-code-inner js-file-line"><br /></td>
+</tr>
+<tr>
+  <td id="L225" class="blob-num js-line-number" data-line-number="225">225</td>
+  <td id="LC225" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Public</span>&nbsp;<span class="keyword">Overrides</span>&nbsp;<span class="keyword">Function</span>&nbsp;<span class="keyword">To</span>String()&nbsp;<span class="keyword">As</span>&nbsp;<span class="keyword">String</span><br /></td>
+</tr>
+<tr>
+  <td id="L226" class="blob-num js-line-number" data-line-number="226">226</td>
+  <td id="LC226" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">Return</span>&nbsp;<span class="keyword">Me</span>.GetJson<br /></td>
+</tr>
+<tr>
+  <td id="L227" class="blob-num js-line-number" data-line-number="227">227</td>
+  <td id="LC227" class="blob-code blob-code-inner js-file-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">End</span>&nbsp;<span class="keyword">Function</span><br /></td>
+</tr>
+<tr>
+  <td id="L228" class="blob-num js-line-number" data-line-number="228">228</td>
+  <td id="LC228" class="blob-code blob-code-inner js-file-line"><span class="keyword">End</span>&nbsp;<span class="keyword">Class</span></td>
+</tr></tbody>
+</table>
+                        </div>
+  </body>
+</html>

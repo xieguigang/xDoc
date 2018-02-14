@@ -133,6 +133,8 @@ Public Module ProjectDocument
                     <script type="text/javascript">
                         var nodePath = %s;
                     </script>
+
+                    <script type="text/javascript" src="lib/url.js"></script>
                 </head>
                 <body>
 
@@ -148,7 +150,11 @@ Public Module ProjectDocument
                         });
 
                         $('#vbproj-tree').on("changed.jstree", function (e, data) {
-                            console.log(data.selected);
+                            var id  = data.selected[0];
+                            var url = getUrl(id);
+
+                            console.log(url);
+                            openinnewTab(url);
                         });
                     </script>
                 </body>
