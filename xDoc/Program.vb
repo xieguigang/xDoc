@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports Dev.xDoc.Exports
 Imports Dev.xDoc.Markdown
+Imports Dev.xDoc.VBCode
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
@@ -70,5 +71,17 @@ Imports Microsoft.VisualBasic.Text
         Dim sitemap As sitemap = sitemap.ScanAllFiles(wwwroot, host,)
         Dim out$ = wwwroot & "/sitemap.xml"
         Return sitemap.Save(out, Encodings.UTF8).CLICode
+    End Function
+
+    <ExportAPI("/Build.vbproj.docs")>
+    <Usage("/Build.vbproj.docs /in <*.vbproj> [/schema <style.xml> /out <EXPORT.directory>]")>
+    Public Function BuildVbprojDocs(args As CommandLine) As Integer
+        Dim in$ = args("/in")
+        Dim schema = args("/schema").LoadJson(Of Schema)
+        Dim out$ = args("/out") Or $"{[in].TrimSuffix}/docs/"
+
+        Return ProjectDocument _
+            .Build(vbproj:=[in], EXPORT:=out, schema:=schema) _
+            .CLICode
     End Function
 End Module

@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HTMLRender.vb" />
+    <Compile Include="ProjectDocument.vb" />
     <Compile Include="Schema.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
