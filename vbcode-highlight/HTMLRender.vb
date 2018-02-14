@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports System.Text
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
 Imports Microsoft.VisualBasic.Text
@@ -86,10 +85,12 @@ Public Module HTMLRender
             .Matches("[""].*?[""]", RegexICSng) _
             .ToArray
 
-        For Each str As String In comments
-            span = (<span class="string"><%= str %></span>).ToString.Replace("&amp;", "&")
+        For Each str As String In strings
+            span = (<span class="string"><%= str %></span>).ToString.Replace("&amp;", "&").Replace("""", "{vb_string_quot}")
             html.Replace(str, span)
         Next
+
+        html.Replace("{vb_string_quot}", """")
 
         For Each [REM] As String In comments
             span = (<span class="comment"><%= [REM] %></span>).ToString.Replace("&amp;", "&")
@@ -131,7 +132,9 @@ Public Module HTMLRender
                 <style type="text/css">
                     %s
                 </style>
-                <div class="vscode">%s</div>
+                <div class="vscode">
+                    %s
+                </div>
             </div>, css, html)
     End Function
 End Module
