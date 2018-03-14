@@ -43,9 +43,8 @@ Public Module ProjectDocument
             Dim html$ = vb _
                 .ToVBhtml _
                 .jsfilelinecontainer
-            Dim urlPath$ = "./" & file
+            Dim urlPath$ = "./" & file.BaseName & ".html"
 
-            Call urlPath.SetValue(Mid(urlPath, 1, urlPath.Length - 3) & ".html")
             Call sprintf(
                 <html>
                     <head>
@@ -71,10 +70,10 @@ Public Module ProjectDocument
                                 padding-left: 10px;
                             }
 
-                                a:link { text-decoration: none;color: #2b91af}
-　　 a:active { text-decoration:blink}
-　　 a:hover { text-decoration:underline;color: #2b91af} 
-　　 a:visited { text-decoration: none;color: #2b91af}
+                            a:link { text-decoration: none;color: #2b91af}
+　　                         a:active { text-decoration:blink}
+　　                         a:hover { text-decoration:underline;color: #2b91af} 
+　　                         a:visited { text-decoration: none;color: #2b91af}
                         </style>
                     </head>
                     <body>
