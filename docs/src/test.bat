@@ -1,0 +1,1 @@
+"E:\repo\xDoc\App\xDoc.exe" /Build.vbproj.docs /in "E:\repo\xDoc\vbcode-highlight\vbcode-highlight.vbproj" /out "E:\repo\xDoc\docs\src\vbcode-highlight"

@@ -1,8 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ApplicationServices
-Imports Microsoft.VisualBasic.ApplicationServices.Development
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
-Imports Microsoft.VisualBasic.ComponentModel.Algorithm.base
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
@@ -45,7 +43,9 @@ Public Module ProjectDocument
             Dim html$ = vb _
                 .ToVBhtml _
                 .jsfilelinecontainer
+            Dim urlPath$ = "./" & file
 
+            Call urlPath.SetValue(Mid(urlPath, 1, urlPath.Length - 3) & ".html")
             Call sprintf(
                 <html>
                     <head>
@@ -59,7 +59,8 @@ Public Module ProjectDocument
                                 color: #2b91af;                                
                                 text-align: right;
                                 padding-right: 5px;
-                                border-right-style: inset;
+                                /* border-right-style: inset; 
+                                */
                             }
 
                             .js-file-line .js-line-number {
@@ -69,6 +70,11 @@ Public Module ProjectDocument
                             .js-file-line {
                                 padding-left: 10px;
                             }
+
+                                a:link { text-decoration: none;color: #2b91af}
+　　 a:active { text-decoration:blink}
+　　 a:hover { text-decoration:underline;color: #2b91af} 
+　　 a:visited { text-decoration: none;color: #2b91af}
                         </style>
                     </head>
                     <body>
@@ -76,11 +82,32 @@ Public Module ProjectDocument
                             %s
                         </div>
                     </body>
-                </html>, file, css, html) _
+                    <script type="text/javascript">
+                        var url_path = "%s";
+                                              
+	                    var lines = document.getElementsByClassName("js-line-number");
+	
+	                    for (var i = 0; i %s lines.length; i++) {
+		                    var line = lines[i];
+		                    var a = document.createElement("a");
+		                    var num = line.getAttribute("data-line-number");
+		                    var id = line.id;
+		
+		                    a.setAttribute("href", url_path + "#" + id);
+		                    a.setAttribute("target", "_self");
+                            a.innerText = num;
+
+		                    line.innerHTML = "";
+		                    line.appendChild(a);
+	                    }
+                        </script>
+                </html>, file, css, html, urlPath, "<") _
                 .SaveTo($"{EXPORT}/{file}".ChangeSuffix("html"))
 
             Call file.__DEBUG_ECHO
         Next
+
+        Call VBDebugger.WaitOutput()
 
         Return True
     End Function
