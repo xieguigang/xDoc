@@ -116,8 +116,8 @@ Global
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.GCModeller(UNIX-Release_X64)|x86.Build.0 = Release|Any CPU
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
-		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x64.ActiveCfg = Yilia-Release_x64|x64
-		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x64.Build.0 = Yilia-Release_x64|x64
+		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x64.Build.0 = installer_x64|x64
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x86.ActiveCfg = Yilia-Release_x64|Any CPU
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.installer_x64|x86.Build.0 = Yilia-Release_x64|Any CPU
 		{6561DAB5-596D-4BAE-9161-C27821B1B8F1}.mysqli_X64_release|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
@@ -272,8 +272,8 @@ Global
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.GCModeller(UNIX-Release_X64)|x86.Build.0 = GCModeller(UNIX-Release_X64)|x86
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
-		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x64.ActiveCfg = GCModeller(UNIX-Release_X64)|x64
-		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x64.Build.0 = GCModeller(UNIX-Release_X64)|x64
+		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x64.Build.0 = installer_x64|x64
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x86.ActiveCfg = Yilia-Release_x64|x86
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.installer_x64|x86.Build.0 = Yilia-Release_x64|x86
 		{FBFC1455-B232-4F16-AFC7-4054A8B864AB}.mysqli_X64_release|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
@@ -350,8 +350,8 @@ Global
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.GCModeller(UNIX-Release_X64)|x86.Build.0 = GCModeller(UNIX-Release_X64)|x86
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
-		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x64.ActiveCfg = GCModeller(UNIX-Release_X64)|x64
-		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x64.Build.0 = GCModeller(UNIX-Release_X64)|x64
+		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x64.Build.0 = installer_x64|x64
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x86.ActiveCfg = Yilia-Release_x64|x86
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.installer_x64|x86.Build.0 = Yilia-Release_x64|x86
 		{CE825E49-0386-4AB1-B452-B104ED3F7DEB}.mysqli_X64_release|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
@@ -428,8 +428,8 @@ Global
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.GCModeller(UNIX-Release_X64)|x86.Build.0 = GCModeller(UNIX-Release_X64)|Any CPU
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
-		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x64.ActiveCfg = GCModeller(UNIX-Release_X64)|x64
-		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x64.Build.0 = GCModeller(UNIX-Release_X64)|x64
+		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x64.Build.0 = installer_x64|x64
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x86.ActiveCfg = Yilia-Release_x64|Any CPU
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.installer_x64|x86.Build.0 = Yilia-Release_x64|Any CPU
 		{D0D2AFE0-547C-440E-B978-23E40B9C53EE}.mysqli_X64_release|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
@@ -506,8 +506,8 @@ Global
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.GCModeller(UNIX-Release_X64)|x86.Build.0 = Release|Any CPU
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|Any CPU.Build.0 = Yilia-Release_x64|Any CPU
-		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x64.ActiveCfg = Yilia-Release_x64|x64
-		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x64.Build.0 = Yilia-Release_x64|x64
+		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x64.Build.0 = installer_x64|x64
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x86.ActiveCfg = Yilia-Release_x64|Any CPU
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.installer_x64|x86.Build.0 = Yilia-Release_x64|Any CPU
 		{4B6D92DD-09AA-425B-ADE6-FBC92134B155}.mysqli_X64_release|Any CPU.ActiveCfg = Yilia-Release_x64|Any CPU
@@ -818,8 +818,8 @@ Global
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.GCModeller(UNIX-Release_X64)|x86.Build.0 = Release|Any CPU
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|Any CPU.ActiveCfg = Release|Any CPU
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|Any CPU.Build.0 = Release|Any CPU
-		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x64.ActiveCfg = Release|x64
-		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x64.Build.0 = Release|x64
+		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x64.Build.0 = installer_x64|x64
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x86.ActiveCfg = Release|Any CPU
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.installer_x64|x86.Build.0 = Release|Any CPU
 		{3A65D811-FC5C-4AD9-8456-8F720FF14C16}.mysqli_X64_release|Any CPU.ActiveCfg = Release|Any CPU
@@ -896,8 +896,8 @@ Global
 		{4A1D6588-3574-40B5-881A-2707846A7318}.GCModeller(UNIX-Release_X64)|x86.Build.0 = Release|Any CPU
 		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|Any CPU.Build.0 = Release|Any CPU
-		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x64.ActiveCfg = Release|x64
-		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x64.Build.0 = Release|x64
+		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x64.Build.0 = installer_x64|x64
 		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x86.ActiveCfg = Release|Any CPU
 		{4A1D6588-3574-40B5-881A-2707846A7318}.installer_x64|x86.Build.0 = Release|Any CPU
 		{4A1D6588-3574-40B5-881A-2707846A7318}.mysqli_X64_release|Any CPU.ActiveCfg = Release|Any CPU
