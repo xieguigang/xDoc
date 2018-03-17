@@ -1,11 +1,11 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports Dev.xDoc.VBCode.jstree
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
-Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
@@ -143,9 +143,12 @@ Public Module ProjectDocument
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
         Dim tree$, path$
 
-        With jstree(vbproj)
-            path = .path
-            tree = .jstree
+        With vbproj _
+            .EnumerateSourceFiles _
+            .jstree
+
+            path = .GetPathListJson
+            tree = .GetJavaScriptCode
         End With
 
         Return sprintf(
@@ -187,11 +190,5 @@ Public Module ProjectDocument
                     </script>
                 </body>
             </html>, path, tree)
-    End Function
-
-    Private Function jstree(vbproj As String)
-        Dim files$() = vbproj _
-            .EnumerateSourceFiles _
-            .ToArray
     End Function
 End Module
