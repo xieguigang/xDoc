@@ -1,6 +1,5 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Language
-Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace jstree
 
@@ -10,7 +9,7 @@ Namespace jstree
         Public Function jstree(files As IEnumerable(Of String),
                                Optional deli As Char = "\"c,
                                Optional folderIcon$ = "images/Folder_16x.png",
-                               Optional fileIcon$ = "images/VB_16x.png") As (path$, jstree$)
+                               Optional fileIcon$ = "images/VB_16x.png") As jstreeBuild
 
             Dim nodes As New Dictionary(Of String, jstreeNode)
             Dim pathList As New Dictionary(Of String, String)
@@ -53,14 +52,10 @@ Namespace jstree
 
             nodes.Remove("#")
 
-            Dim pathArray$ = pathList.GetJson.Replace("\", "/")
-            Dim tree$ = nodes _
-                .Values _
-                .ToArray _
-                .GetJson(indent:=True) _
-                .Replace("\", "/")
-
-            Return (pathArray, tree)
+            Return New jstreeBuild With {
+                .PathList = pathList,
+                .tree = nodes
+            }
         End Function
     End Module
 End Namespace
