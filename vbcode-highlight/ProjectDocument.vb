@@ -189,68 +189,9 @@ Public Module ProjectDocument
             </html>, path, tree)
     End Function
 
-    Public Function jstree(vbproj As String) As (path$, jstree$)
+    Private Function jstree(vbproj As String)
         Dim files$() = vbproj _
             .EnumerateSourceFiles _
             .ToArray
-        Dim nodes As New Dictionary(Of String, jstreeNode)
-        Dim pathList As New Dictionary(Of String, String)
-
-        nodes("#") = New jstreeNode With {.id = "#"}
-
-        For Each path As String In files.OrderByDescending(Function(l) l.Split("\"c).Length)
-            Dim tokens$() = path.Split("\"c)
-            Dim append As New List(Of String)
-            Dim parent$
-
-            For i As Integer = 0 To tokens.Length - 1
-                parent = append.JoinBy("\")
-                append += tokens(i)
-                path = append.JoinBy("\")
-
-                If i = 0 Then
-                    parent = "#"
-                End If
-
-                If Not nodes.ContainsKey(path) Then
-                    nodes(path) = New jstreeNode With {
-                        .id = "n" & nodes.Count,
-                        .parent = nodes(parent).id,
-                        .text = tokens(i)
-                    }
-
-                    If i = tokens.Length - 1 Then
-                        nodes(path).icon = "images/VB_16x.png"
-                    Else
-                        nodes(path).icon = "images/Folder_16x.png"
-                    End If
-
-                    pathList(nodes(path).id) = path
-                End If
-            Next
-        Next
-
-        nodes.Remove("#")
-
-        Dim pathArray As String = pathList.GetJson.Replace("\", "/")
-        Dim tree$ = nodes _
-            .Values _
-            .ToArray _
-            .GetJson(indent:=True) _
-            .Replace("\", "/")
-
-        Return (pathArray, tree)
     End Function
 End Module
-
-Public Class jstreeNode
-
-    Public Property id As String
-    Public Property parent As String
-    Public Property text As String
-    Public Property icon As String
-
-    Public Overrides Function ToString() As String
-        Return Me.GetJson
-    End Function
-End Class
