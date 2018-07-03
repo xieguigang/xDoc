@@ -119,7 +119,7 @@ Public Module ProjectDocument
     ''' 
     <Extension>
     Private Function jsfilelinecontainer(highlights As String) As String
-        Dim lines$() = highlights.lTokens
+        Dim lines$() = highlights.LineTokens
         Dim tr$() = lines _
             .Select(Function(L, i)
                         Dim num$ = i + 1

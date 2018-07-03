@@ -75,7 +75,7 @@ Namespace Markdown
             End If
 
             If Not member.Remarks.StringEmpty Then
-                For Each line As String In member.Remarks.lTokens
+                For Each line As String In member.Remarks.LineTokens
                     Call markdown.AppendLine("> " & line)
                 Next
             End If
@@ -126,7 +126,7 @@ Namespace Markdown
             Dim eventList$ = EventsMarkdown()
             Dim fieldList$ = FieldsMarkdown()
             Dim remarks$ = Me.Remarks _
-                .lTokens _
+                .LineTokens _
                 .Select(Function(line) "> " & line) _
                 .JoinBy(ASCII.LF)
             Dim summary$ = Me.Summary.CleanText

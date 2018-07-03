@@ -71,7 +71,7 @@ Namespace Exports
                     Return $"+ [{ns}]({If([lib] = Libraries.Hexo, $"N-{ns}{ext}", $"./{ns}/index.md")})"
                 End If
             ElseIf [lib] = Libraries.xDoc Then
-                Dim info$ = If(annotations.ContainsKey(ns), annotations(ns).lTokens.JoinBy("<br />"), "-")
+                Dim info$ = If(annotations.ContainsKey(ns), annotations(ns).LineTokens.JoinBy("<br />"), "-")
 
                 If html Then
                     Return (<tr>

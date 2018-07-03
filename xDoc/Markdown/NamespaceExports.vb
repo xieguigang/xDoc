@@ -23,7 +23,7 @@ Namespace Markdown
             Call typeList.AppendLine("|----|-------|")
 
             For Each pt As ProjectType In Types.OrderBy(Function(t) t.Name)
-                Dim summary$ = pt.Summary.lTokens.JoinBy("<br />")
+                Dim summary$ = pt.Summary.LineTokens.JoinBy("<br />")
                 Dim link As String = url.GetNamespaceTypeUrl(Me, pt)
 
                 Call typeList.AppendLine($"|[{pt.Name}]({link})|{summary}|")
@@ -47,7 +47,7 @@ Namespace Markdown
             Call typeList.AppendLine("<tbody>")
 
             For Each pt As ProjectType In Types.OrderBy(Function(t) t.Name)
-                Dim summary$ = pt.Summary.lTokens.JoinBy("<br />")
+                Dim summary$ = pt.Summary.LineTokens.JoinBy("<br />")
                 Dim link As String = url.GetNamespaceTypeUrl(Me, pt)
 
                 Call typeList.AppendLine(
