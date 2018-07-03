@@ -81,7 +81,41 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property splitter() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("splitter", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to function getUrl(id) {
+        '''    var path = nodePath[id];
+        '''
+        '''    if (!path || !(path.endsWith(&apos;.vb&apos;))) {
+        '''        return null;
+        '''    }
+        '''
+        '''    path = path.replace(/\.vb/, &quot;.html&quot;);
+        '''
+        '''    return path;
+        '''}
+        '''
+        '''function openinnewTab(url) {
+        '''    if (url) {
+        '''        var win = window.open(url, &apos;_blank&apos;);
+        '''        win.focus();
+        '''    }
+        '''}
+        '''
+        '''$(function() {
+        '''	var lines = document.getElementsByClassName(&quot;js-line-number&quot;);
+        '''	
+        '''	for (var i = 0; i &lt; lines.length; i++) {
+        '''		var line = lines[i];
+        '''		var a = document.createElement(&quot;a [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property url() As String
             Get

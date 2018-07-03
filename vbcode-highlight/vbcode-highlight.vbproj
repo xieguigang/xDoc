@@ -165,6 +165,7 @@
     <None Include="Resources\Folder_16x.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\splitter.zip" />
     <None Include="Resources\VB_16x.png" />
   </ItemGroup>
   <ItemGroup>
