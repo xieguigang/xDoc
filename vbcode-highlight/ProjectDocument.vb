@@ -38,13 +38,6 @@ Public Module ProjectDocument
             Call GZip.ImprovedExtractToDirectory(.ByRef, EXPORT)
         End With
 
-        ' index.html
-        Call vbproj _
-            .Summary(template:=$"{EXPORT}/index.html".ReadAllText,
-                     [default]:=defaultIndex
-            ) _
-            .SaveTo($"{EXPORT}/index.html")
-
         With App.GetAppSysTempFile(".zip", App.PID)
             Call My.Resources.Folder_16x.SaveAs($"{EXPORT}/images/Folder_16x.png")
             Call My.Resources.VB_16x.SaveAs($"{EXPORT}/images/VB_16x.png")
@@ -54,6 +47,8 @@ Public Module ProjectDocument
             Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
         End With
 
+        Dim links As New List(Of String)
+
         ' itemgroups\compiles
         For Each file As String In vbproj.EnumerateSourceFiles
             Dim vb$ = $"{folder}/{file}".ReadAllText
@@ -61,15 +56,21 @@ Public Module ProjectDocument
                 .ToVBhtml _
                 .jsfilelinecontainer
             Dim urlPath$ = "./" & file.BaseName & ".html"
+            Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html")
 
             Call sprintf(
                 <html>
                     <head>
+                        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                        <meta name="keywords" content="VisualBasic Programming"/>
+
                         <title>%s</title>
 
                         <style type="text/css">
                             %s
                         </style>
+
                         <style type="text/css">                           
                             .js-line-number {
                                 color: #2b91af;                                
@@ -88,9 +89,9 @@ Public Module ProjectDocument
                             }
 
                             a:link { text-decoration: none;color: #2b91af}
-　　                         a:active { text-decoration:blink}
-　　                         a:hover { text-decoration:underline;color: #2b91af} 
-　　                         a:visited { text-decoration: none;color: #2b91af}
+　　                        a:active { text-decoration:blink}
+　　                        a:hover { text-decoration:underline;color: #2b91af} 
+　　                        a:visited { text-decoration: none;color: #2b91af}
                         </style>
                     </head>
                     <body>
@@ -118,10 +119,19 @@ Public Module ProjectDocument
 	                    }
                         </script>
                 </html>, file, css, html, urlPath, "<") _
-                .SaveTo($"{EXPORT}/{file}".ChangeSuffix("html"))
+                .SaveTo(htmlPath, TextEncodings.UTF8WithoutBOM)
 
+            Call links.Add(htmlPath)
             Call file.__DEBUG_ECHO
         Next
+
+        ' index.html
+        Call vbproj _
+            .Summary(template:=$"{EXPORT}/index.html".ReadAllText,
+                     [default]:=defaultIndex,
+                     links:=links
+            ) _
+            .SaveTo($"{EXPORT}/index.html")
 
         Call VBDebugger.WaitOutput()
 
@@ -156,7 +166,7 @@ Public Module ProjectDocument
     End Function
 
     <Extension>
-    Public Function Summary(vbproj$, template$, default$) As String
+    Public Function Summary(vbproj$, template$, default$, links$()) As String
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
         Dim tree$, path$
 
@@ -196,6 +206,11 @@ Public Module ProjectDocument
                                     });
                                 </script>
                             </div>, "&nbsp;", tree)
+            !links = links _
+                .Select(Function(url)
+                            Return sprintf(<a href="%s" target="__blank"><%= url %></a>, url)
+                        End Function) _
+                .JoinBy(vbCrLf)
 
             Return .ToString
         End With
