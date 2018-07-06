@@ -6,24 +6,24 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title>{$title}</title>
 
   <script type="text/javascript" src="jquery-1.9.1.js"></script>
   <script type="text/javascript" src="jqwidgets/jqx-all.js"></script>
 
   <link rel="stylesheet" type="text/css" href="jqwidgets/jqx.base.css">
-  
-  <link rel="stylesheet" href="lib/jstree/default/style.min.css"/>
 
-	<script type="text/javascript" src="lib/jquery.min.js"></script>
-	<script type="text/javascript" src="lib/jstree/jstree.min.js"></script>
-	<script type="text/javascript" src="lib/url.js"></script>
+  <link rel="stylesheet" href="lib/jstree/default/style.min.css" />
 
-	<script type="text/javascript">
-                        var nodePath = {$node_path};
-                    </script>
-	
+  <script type="text/javascript" src="lib/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jstree/jstree.min.js"></script>
+  <script type="text/javascript" src="lib/url.js"></script>
+
+  <script type="text/javascript">
+    var nodePath = { $node_path };
+  </script>
+
   <style type="text/css">
     body {
       background: #fff;
@@ -40,7 +40,20 @@
           size: 200
         }]
       });
+
+      resizeLayout();
     });
+
+    function resizeLayout() {
+      var width = (window.innerWidth * 0.98) + "px;";
+      var height = (window.innerHeight * 0.98) + "px;";
+
+      $("#mainSplitter").attr("style", "width:" + width + "height: " + height);
+      $("#source-frame").attr("width", width);
+      $("#source-frame").attr("height", height);
+    }
+
+    window.addEventListener("resize", resizeLayout);
   </script>
 </head>
 
