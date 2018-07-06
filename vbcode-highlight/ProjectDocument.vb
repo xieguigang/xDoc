@@ -6,12 +6,20 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
+Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
 
 Public Module ProjectDocument
 
+    ''' <summary>
+    ''' 生成源代码高亮文档
+    ''' </summary>
+    ''' <param name="vbproj$"></param>
+    ''' <param name="EXPORT$"></param>
+    ''' <param name="schema"></param>
+    ''' <returns></returns>
     Public Function Build(vbproj$, EXPORT$, Optional schema As Schema = Nothing) As Boolean
         Dim folder$ = vbproj.ParentPath
         Dim css$
@@ -25,8 +33,15 @@ Public Module ProjectDocument
                 .Replace(".vscode > ", "")
         End With
 
+        With App.GetAppSysTempFile(".zip", App.PID)
+            Call My.Resources.splitter.FlushStream(.ByRef)
+            Call GZip.ImprovedExtractToDirectory(.ByRef, EXPORT)
+        End With
+
         ' index.html
-        Call vbproj.Summary.SaveTo($"{EXPORT}/index.html")
+        Call vbproj _
+            .Summary(template:=$"{EXPORT}/index.html".ReadAllText) _
+            .SaveTo($"{EXPORT}/index.html")
 
         With App.GetAppSysTempFile(".zip", App.PID)
             Call My.Resources.Folder_16x.SaveAs($"{EXPORT}/images/Folder_16x.png")
@@ -139,7 +154,7 @@ Public Module ProjectDocument
     End Function
 
     <Extension>
-    Public Function Summary(vbproj As String) As String
+    Public Function Summary(vbproj$, template$) As String
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
         Dim tree$, path$
 
@@ -151,44 +166,35 @@ Public Module ProjectDocument
             tree = .GetJavaScriptCode
         End With
 
-        Return sprintf(
-            <html>
-                <head>
-                    <title><%= assmInfo.AssemblyTitle %></title>
+        With New ScriptBuilder(template)
+            !title = assmInfo.AssemblyTitle
+            !node_path = path
+            !tree = sprintf(<div>
+                                <h2>Project Files</h2>
 
-                    <link rel="stylesheet" href="lib/jstree/default/style.min.css"/>
+                                <div id="vbproj-tree">
+                                </div>
 
-                    <script type="text/javascript" src="lib/jquery.min.js"></script>
-                    <script type="text/javascript" src="lib/jstree/jstree.min.js"></script>
+                                <script type="text/javascript">
+                                    $('#vbproj-tree').jstree({ 
+                                        'core' : {
+                                            'data' : %s
+                                        } 
+                                    });
 
-                    <script type="text/javascript">
-                        var nodePath = %s;
-                    </script>
+                                    $('#vbproj-tree').on("changed.jstree", function (e, data) {
+                                        var id  = data.selected[0];
+                                        var url = getUrl(id);
 
-                    <script type="text/javascript" src="lib/url.js"></script>
-                </head>
-                <body>
+                                        console.log(url);
+                                        
+                                        var iframe = document.getElementById("source-frame");
+                                        iframe.setAttribute("src", url);
+                                    });
+                                </script>
+                            </div>, tree)
 
-                    <h2>Project Files</h2>
-
-                    <div id="vbproj-tree"></div>
-
-                    <script type="text/javascript">
-                        $('#vbproj-tree').jstree({ 
-                            'core' : {
-                                'data' : %s
-                            } 
-                        });
-
-                        $('#vbproj-tree').on("changed.jstree", function (e, data) {
-                            var id  = data.selected[0];
-                            var url = getUrl(id);
-
-                            console.log(url);
-                            openinnewTab(url);
-                        });
-                    </script>
-                </body>
-            </html>, path, tree)
+            Return .ToString
+        End With
     End Function
 End Module
