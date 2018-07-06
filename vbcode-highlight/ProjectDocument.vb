@@ -26,6 +26,8 @@ Public Module ProjectDocument
         Dim fontSize!
         Dim fontStyle$
 
+        EXPORT = EXPORT.GetDirectoryFullPath
+
         With (schema Or Schema.VisualStudioDefault)
             fontSize = .font.size
             fontStyle = .font.CSSInlineStyle
@@ -56,7 +58,7 @@ Public Module ProjectDocument
                 .ToVBhtml _
                 .jsfilelinecontainer
             Dim urlPath$ = "./" & file.BaseName & ".html"
-            Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html")
+            Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html").GetFullPath
 
             Call sprintf(
                 <html>
@@ -121,7 +123,7 @@ Public Module ProjectDocument
                 </html>, file, css, html, urlPath, "<") _
                 .SaveTo(htmlPath, TextEncodings.UTF8WithoutBOM)
 
-            Call links.Add(htmlPath)
+            Call links.Add(htmlPath.Replace(EXPORT, ""))
             Call file.__DEBUG_ECHO
         Next
 
