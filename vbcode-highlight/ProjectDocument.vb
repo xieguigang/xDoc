@@ -54,9 +54,9 @@ Public Module ProjectDocument
         ' itemgroups\compiles
         For Each file As String In vbproj.EnumerateSourceFiles
             Dim vb$ = $"{folder}/{file}".ReadAllText
-            Dim html$ = vb _
-                .ToVBhtml _
-                .jsfilelinecontainer
+            Dim html$ = "" ' vb _
+            '    .ToVBhtml _
+            '    .jsfilelinecontainer
             Dim urlPath$ = "./" & file.BaseName & ".html"
             Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html").GetFullPath
 
