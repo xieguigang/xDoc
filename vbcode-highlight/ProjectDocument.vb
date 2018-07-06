@@ -170,7 +170,7 @@ Public Module ProjectDocument
             !title = assmInfo.AssemblyTitle
             !node_path = path
             !tree = sprintf(<div>
-                                <h2>Project Files</h2>
+                                <h2>%sProject Files</h2>
 
                                 <div id="vbproj-tree">
                                 </div>
@@ -192,7 +192,7 @@ Public Module ProjectDocument
                                         iframe.setAttribute("src", url);
                                     });
                                 </script>
-                            </div>, tree)
+                            </div>, "&nbsp;", tree)
 
             Return .ToString
         End With
