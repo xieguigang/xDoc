@@ -74,14 +74,19 @@ Imports Microsoft.VisualBasic.Text
     End Function
 
     <ExportAPI("/Build.vbproj.docs")>
-    <Usage("/Build.vbproj.docs /in <*.vbproj> [/schema <style.xml> /out <EXPORT.directory>]")>
+    <Usage("/Build.vbproj.docs /in <*.vbproj> [/schema <style.xml> /default <default.html> /out <EXPORT.directory>]")>
     Public Function BuildVbprojDocs(args As CommandLine) As Integer
         Dim in$ = args("/in")
         Dim schema = args("/schema").LoadJson(Of Schema)
         Dim out$ = args("/out") Or $"{[in].TrimSuffix}/docs/"
+        Dim defaultIndex$ = args("/default") Or "#"
 
         Return ProjectDocument _
-            .Build(vbproj:=[in], EXPORT:=out, schema:=schema) _
+            .Build(vbproj:=[in],
+                   EXPORT:=out,
+                   schema:=schema,
+                   defaultIndex:=defaultIndex
+            ) _
             .CLICode
     End Function
 End Module

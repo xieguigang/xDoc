@@ -20,7 +20,7 @@ Public Module ProjectDocument
     ''' <param name="EXPORT$"></param>
     ''' <param name="schema"></param>
     ''' <returns></returns>
-    Public Function Build(vbproj$, EXPORT$, Optional schema As Schema = Nothing) As Boolean
+    Public Function Build(vbproj$, EXPORT$, Optional schema As Schema = Nothing, Optional defaultIndex$ = "#") As Boolean
         Dim folder$ = vbproj.ParentPath
         Dim css$
         Dim fontSize!
@@ -40,7 +40,9 @@ Public Module ProjectDocument
 
         ' index.html
         Call vbproj _
-            .Summary(template:=$"{EXPORT}/index.html".ReadAllText) _
+            .Summary(template:=$"{EXPORT}/index.html".ReadAllText,
+                     [default]:=defaultIndex
+            ) _
             .SaveTo($"{EXPORT}/index.html")
 
         With App.GetAppSysTempFile(".zip", App.PID)
@@ -154,7 +156,7 @@ Public Module ProjectDocument
     End Function
 
     <Extension>
-    Public Function Summary(vbproj$, template$) As String
+    Public Function Summary(vbproj$, template$, default$) As String
         Dim assmInfo As DevAssmInfo = vbproj.GetAssemblyInfo
         Dim tree$, path$
 
@@ -169,6 +171,7 @@ Public Module ProjectDocument
         With New ScriptBuilder(template)
             !title = assmInfo.AssemblyTitle
             !node_path = path
+            !index = [default]
             !tree = sprintf(<div>
                                 <h2>%sProject Files</h2>
 
