@@ -37,7 +37,7 @@ Public Module ProjectDocument
 
         With App.GetAppSysTempFile(".zip", App.PID)
             Call My.Resources.splitter.FlushStream(.ByRef)
-            Call GZip.ImprovedExtractToDirectory(.ByRef, EXPORT)
+            Call ZipLib.ImprovedExtractToDirectory(.ByRef, EXPORT)
         End With
 
         With App.GetAppSysTempFile(".zip", App.PID)
@@ -46,7 +46,7 @@ Public Module ProjectDocument
             Call My.Resources.url.SaveTo($"{EXPORT}/lib/url.js")
             Call My.Resources._lib.FlushStream(.ByRef)
 
-            Call GZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
+            Call ZipLib.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
         End With
 
         Dim links As New List(Of String)

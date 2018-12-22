@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder
+Imports Microsoft.VisualBasic.Scripting.SymbolBuilder.VBLanguage
 Imports Microsoft.VisualBasic.Text
 Imports Microsoft.VisualBasic.Text.Xml
 
@@ -83,7 +84,7 @@ Public Module HTMLRender
     Public Function ToVBhtml(vb As String) As String
         Dim html As New ScriptBuilder(vb)
         Dim span$
-        Dim keywords$() = VBLanguage _
+        Dim keywords$() = KeywordProcessor _
             .VBKeywords _
             .Split("|"c) _
             .Where(Function(w)
@@ -153,9 +154,10 @@ Public Module HTMLRender
 
         ' As type
         ' 因为As是一个关键词，所以需要在keyword的前面发生替换
+        Dim objName$ = "As(&nbsp;)(New(&nbsp;))?(&nbsp;)+" & Patterns.Identifer
         Dim types$() = html _
             .Preview _
-            .Matches("As(&nbsp;)(New(&nbsp;))?(&nbsp;)+" & VBLanguage.IdentiferPattern, RegexICSng) _
+            .Matches(objName, RegexICSng) _
             .ToArray
 
         For Each type As String In types
