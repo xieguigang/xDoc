@@ -49,31 +49,50 @@ Public Module ProjectDocument
             Call ZipLib.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
         End With
 
-        Dim links As New List(Of String)
-
         ' itemgroups\compiles
-        For Each file As String In vbproj.EnumerateSourceFiles
-            Dim vb$ = $"{folder}/{file}".ReadAllText
-            Dim html$ = vb _
-                .ToVBhtml _
-                .jsfilelinecontainer
-            Dim urlPath$ = "./" & file.BaseName & ".html"
-            Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html").GetFullPath
+        Dim links As String() = vbproj.EnumerateSourceFiles _
+            .AsParallel _
+            .Select(Function(vb)
+                        Return vb.renderVBfileImpl(folder, EXPORT, fontStyle, css)
+                    End Function) _
+            .ToArray
 
-            Call sprintf(
-                <html>
-                    <head>
-                        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                        <meta name="keywords" content="VisualBasic Programming"/>
+        ' index.html
+        Call vbproj _
+            .Summary(template:=$"{EXPORT}/index.html".ReadAllText,
+                     [default]:=defaultIndex,
+                     links:=links
+            ) _
+            .SaveTo($"{EXPORT}/index.html")
 
-                        <title>%s</title>
+        Call VBDebugger.WaitOutput()
 
-                        <style type="text/css">
+        Return True
+    End Function
+
+    <Extension>
+    Private Function renderVBfileImpl(file$, folder$, EXPORT$, fontStyle$, css$) As String
+        Dim vb$ = $"{folder}/{file}".ReadAllText
+        Dim html$ = vb _
+            .ToVBhtml _
+            .jsfilelinecontainer
+        Dim urlPath$ = "./" & file.BaseName & ".html"
+        Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html").GetFullPath
+
+        Call sprintf(
+            <html>
+                <head>
+                    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="keywords" content="VisualBasic Programming"/>
+
+                    <title>%s</title>
+
+                    <style type="text/css">
                             %s
                         </style>
 
-                        <style type="text/css">                           
+                    <style type="text/css">                           
                             .js-line-number {
                                 color: #2b91af;                                
                                 text-align: right;
@@ -95,13 +114,13 @@ Public Module ProjectDocument
 　　                        a:hover { text-decoration:underline;color: #2b91af} 
 　　                        a:visited { text-decoration: none;color: #2b91af}
                         </style>
-                    </head>
-                    <body>
-                        <div class="vscode">
+                </head>
+                <body>
+                    <div class="vscode">
                             %s
                         </div>
-                    </body>
-                    <script type="text/javascript">
+                </body>
+                <script type="text/javascript">
                         var url_path = "%s";
                                               
 	                    var lines = document.getElementsByClassName("js-line-number");
@@ -120,24 +139,12 @@ Public Module ProjectDocument
 		                    line.appendChild(a);
 	                    }
                         </script>
-                </html>, file, css, html, urlPath, "<") _
-                .SaveTo(htmlPath, TextEncodings.UTF8WithoutBOM)
+            </html>, file, css, html, urlPath, "<") _
+            .SaveTo(htmlPath, TextEncodings.UTF8WithoutBOM)
 
-            Call links.Add(htmlPath.Replace(EXPORT, ""))
-            Call file.__DEBUG_ECHO
-        Next
+        Call file.__DEBUG_ECHO
 
-        ' index.html
-        Call vbproj _
-            .Summary(template:=$"{EXPORT}/index.html".ReadAllText,
-                     [default]:=defaultIndex,
-                     links:=links
-            ) _
-            .SaveTo($"{EXPORT}/index.html")
-
-        Call VBDebugger.WaitOutput()
-
-        Return True
+        Return htmlPath.Replace(EXPORT, "")
     End Function
 
     ''' <summary>

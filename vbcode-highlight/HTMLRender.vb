@@ -144,6 +144,7 @@ Public Module HTMLRender
         Call html.Replace(stringQuot, """")
         Call html.Replace(commentQuot, "'")
 
+        ' 如果comment数量很多的画，可能会在这里造成长时间的堵塞
         For Each [REM] As String In comments
             span = (<span class="comment"><%= [REM].TrimNewLine %></span>) _
                 .ToString _
