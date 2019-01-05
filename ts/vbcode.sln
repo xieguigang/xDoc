@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "search", "index_search\search.njsproj", "{95296614-51E0-46A7-AB1B-FA044E793DDE}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "vbcode", "vbcode\vbcode.njsproj", "{F771A120-A45B-4D51-95EF-CE74AD8138C8}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "vbcode", "NodejsConsoleApp1\vbcode.njsproj", "{F771A120-A45B-4D51-95EF-CE74AD8138C8}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Linq.ts", "Linq.ts\Linq.ts\Linq.ts.njsproj", "{E0AEC189-6D05-47E4-9F69-DAFE43AC8398}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{95296614-51E0-46A7-AB1B-FA044E793DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95296614-51E0-46A7-AB1B-FA044E793DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95296614-51E0-46A7-AB1B-FA044E793DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95296614-51E0-46A7-AB1B-FA044E793DDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F771A120-A45B-4D51-95EF-CE74AD8138C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F771A120-A45B-4D51-95EF-CE74AD8138C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F771A120-A45B-4D51-95EF-CE74AD8138C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F771A120-A45B-4D51-95EF-CE74AD8138C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0AEC189-6D05-47E4-9F69-DAFE43AC8398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AEC189-6D05-47E4-9F69-DAFE43AC8398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AEC189-6D05-47E4-9F69-DAFE43AC8398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AEC189-6D05-47E4-9F69-DAFE43AC8398}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E35A422E-3B36-4165-928F-0DA7473072E5}
+		SolutionGuid = {DFD6868C-EB31-4940-B415-BA3519674FA3}
 	EndGlobalSection
 EndGlobal
