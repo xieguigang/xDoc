@@ -1,3 +1,6 @@
 [submodule "Yilia"]
 	path = Yilia
 	url = https://github.com/xieguigang/Yilia.git
+[submodule "ts/Linq.ts"]
+	path = ts/Linq.ts
+	url = https://github.com/GCModeller-Cloud/data.ts.git
