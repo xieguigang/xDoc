@@ -1,1 +1,3 @@
-﻿console.log('Hello world');
+﻿function highlight(code: string, display: string) {
+
+}
