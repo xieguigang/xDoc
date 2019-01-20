@@ -1,5 +1,7 @@
 ﻿/// <reference path="../build/linq.d.ts" />
 
+$ts.FrameworkDebug = true;
+
 namespace vscode {
 
     /**
@@ -12,6 +14,10 @@ namespace vscode {
             .Unlist(s => s)
             .Where(s => !Strings.Empty(s))
             .ToArray();
+
+        if ($ts.FrameworkDebug) {
+            console.log(words);
+        }
 
         return words;
     })(
