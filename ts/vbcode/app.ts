@@ -71,15 +71,21 @@ namespace vscode {
         var token: string[] = [];
         var c: string;
         var endToken = function () {
-            // 结束当前的单词
-            var word: string = token.join("");
-
-            if (VBKeywords.indexOf(word) > -1) {
-                code.Append(render.keyword(word));
-            } else if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
-                code.Append(render.attribute(word));
+            if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
+                // 自定义属性需要一些额外的处理
+                // 不渲染符号，只渲染单词
+                code.Append(token[0]);
+                code.Append(render.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy("")));
+                code.Append(token[token.length - 1]);
             } else {
-                code.Append(word);
+                // 结束当前的单词
+                var word: string = token.join("");
+
+                if (VBKeywords.indexOf(word) > -1) {
+                    code.Append(render.keyword(word));
+                } else {
+                    code.Append(word);
+                }
             }
 
             token = [];
