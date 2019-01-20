@@ -13,5 +13,9 @@
         public keyword(token: string): string {
             return `<span class="keyword">${token}</span>`;
         }
+
+        public attribute(token: string): string {
+            return `<span class="attribute">${token}</span>`;
+        }
     }
 }

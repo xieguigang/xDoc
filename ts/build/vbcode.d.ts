@@ -22,5 +22,6 @@ declare namespace vscode {
         comment(token: string): string;
         string(token: string): string;
         keyword(token: string): string;
+        attribute(token: string): string;
     }
 }

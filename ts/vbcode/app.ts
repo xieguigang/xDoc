@@ -61,7 +61,7 @@ namespace vscode {
     }
 
     export function codeHtml(chars: Pointer<string>): string {
-        var code: StringBuilder = new StringBuilder("", "<br />");
+        var code: StringBuilder = new StringBuilder("", "<br />\n");
         var render: tokenStyler = new tokenStyler();
         var escapes = {
             string: false,
@@ -76,6 +76,8 @@ namespace vscode {
 
             if (VBKeywords.indexOf(word) > -1) {
                 code.Append(render.keyword(word));
+            } else if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
+                code.Append(render.attribute(word));
             } else {
                 code.Append(word);
             }

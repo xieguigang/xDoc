@@ -14,6 +14,7 @@ var vscode;
         $ts.select(".string").attr("style", "color: " + style.string + ";");
         $ts.select(".comment").attr("style", "color: " + style.comment + ";");
         $ts.select(".keyword").attr("style", "color: " + style.keyword);
+        $ts.select(".attribute").attr("style", "color: " + style.attribute);
     }
     vscode.applyStyle = applyStyle;
 })(vscode || (vscode = {}));
@@ -49,7 +50,7 @@ var vscode;
     }
     vscode.highlight = highlight;
     function codeHtml(chars) {
-        var code = new StringBuilder("", "<br />");
+        var code = new StringBuilder("", "<br />\n");
         var render = new vscode.tokenStyler();
         var escapes = {
             string: false,
@@ -63,6 +64,9 @@ var vscode;
             var word = token.join("");
             if (vscode.VBKeywords.indexOf(word) > -1) {
                 code.Append(render.keyword(word));
+            }
+            else if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
+                code.Append(render.attribute(word));
             }
             else {
                 code.Append(word);
@@ -149,6 +153,9 @@ var vscode;
         };
         tokenStyler.prototype.keyword = function (token) {
             return "<span class=\"keyword\">" + token + "</span>";
+        };
+        tokenStyler.prototype.attribute = function (token) {
+            return "<span class=\"attribute\">" + token + "</span>";
         };
         return tokenStyler;
     }());

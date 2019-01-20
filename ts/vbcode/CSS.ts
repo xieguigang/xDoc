@@ -20,5 +20,6 @@
         $ts.select(".string").attr("style", `color: ${style.string};`);
         $ts.select(".comment").attr("style", `color: ${style.comment};`);
         $ts.select(".keyword").attr("style", `color: ${style.keyword}`);
+        $ts.select(".attribute").attr("style", `color: ${style.attribute}`);
     }
 }
