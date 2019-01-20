@@ -48,8 +48,9 @@ namespace vscode {
         |Yield|
     `);
 
-    export function highlight(code: string, display: string) {
+    export function highlight(code: string, display: string, style: CSS = vscode.defaultStyle()) {
         $ts(display).display(codeHtml(new Pointer<string>(Strings.ToCharArray(code))));
+        vscode.applyStyle(display, style);
     }
 
     export function codeHtml(chars: Pointer<string>): string {
