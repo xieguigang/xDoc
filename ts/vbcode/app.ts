@@ -61,8 +61,7 @@ namespace vscode {
     }
 
     export function codeHtml(chars: Pointer<string>): string {
-        var code: StringBuilder = new StringBuilder("", "<br />\n");
-        var render: tokenStyler = new tokenStyler();
+        var code: tokenStyler = new tokenStyler();
         var escapes = {
             string: false,
             comment: false,
@@ -74,17 +73,17 @@ namespace vscode {
             if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
                 // 自定义属性需要一些额外的处理
                 // 不渲染符号，只渲染单词
-                code.Append(token[0]);
-                code.Append(render.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy("")));
-                code.Append(token[token.length - 1]);
+                code.append(token[0]);
+                code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
+                code.append(token[token.length - 1]);
             } else {
                 // 结束当前的单词
                 var word: string = token.join("");
 
                 if (VBKeywords.indexOf(word) > -1) {
-                    code.Append(render.keyword(word));
+                    code.keyword(word);
                 } else {
-                    code.Append(word);
+                    code.append(word);
                 }
             }
 
@@ -98,7 +97,7 @@ namespace vscode {
                 // 是一个换行符
                 if (escapes.comment) {
                     // vb之中注释只有单行注释，换行之后就结束了                    
-                    code.AppendLine(render.comment(token.join("")));
+                    code.comment(token.join(""));
                     escapes.comment = false;
                     token = [];
                 } else if (escapes.string) {
@@ -107,7 +106,7 @@ namespace vscode {
                 } else {
                     // 结束当前的token
                     endToken();
-                    code.AppendLine();
+                    code.appendLine();
                 }
             } else if (c == '"') {
                 // 可能是字符串的起始
@@ -119,7 +118,7 @@ namespace vscode {
                     // 是字符串的结束符号
                     escapes.string = false;
                     token.push(c);
-                    code.Append(render.string(token.join("")));
+                    code.string(token.join(""));
                     token = [];
                 }
             } else if (c == "'") {
@@ -135,7 +134,7 @@ namespace vscode {
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.Append("&nbsp;");
+                    code.append("&nbsp;");
                 } else {
                     token.push("&nbsp;")
                 }
@@ -146,7 +145,7 @@ namespace vscode {
             }
         }
 
-        return code.toString();
+        return code.Html;
     }
 }
 

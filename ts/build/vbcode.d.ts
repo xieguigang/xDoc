@@ -19,9 +19,14 @@ declare namespace vscode {
 }
 declare namespace vscode {
     class tokenStyler {
-        comment(token: string): string;
-        string(token: string): string;
-        keyword(token: string): string;
-        attribute(token: string): string;
+        private code;
+        readonly Html: string;
+        private static tagClass;
+        append(token: string): void;
+        appendLine(token?: string): void;
+        comment(token: string): void;
+        string(token: string): void;
+        keyword(token: string): void;
+        attribute(token: string): void;
     }
 }

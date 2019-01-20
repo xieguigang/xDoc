@@ -50,8 +50,7 @@ var vscode;
     }
     vscode.highlight = highlight;
     function codeHtml(chars) {
-        var code = new StringBuilder("", "<br />\n");
-        var render = new vscode.tokenStyler();
+        var code = new vscode.tokenStyler();
         var escapes = {
             string: false,
             comment: false,
@@ -63,18 +62,18 @@ var vscode;
             if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
                 // 自定义属性需要一些额外的处理
                 // 不渲染符号，只渲染单词
-                code.Append(token[0]);
-                code.Append(render.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy("")));
-                code.Append(token[token.length - 1]);
+                code.append(token[0]);
+                code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
+                code.append(token[token.length - 1]);
             }
             else {
                 // 结束当前的单词
                 var word = token.join("");
                 if (vscode.VBKeywords.indexOf(word) > -1) {
-                    code.Append(render.keyword(word));
+                    code.keyword(word);
                 }
                 else {
-                    code.Append(word);
+                    code.append(word);
                 }
             }
             token = [];
@@ -85,7 +84,7 @@ var vscode;
                 // 是一个换行符
                 if (escapes.comment) {
                     // vb之中注释只有单行注释，换行之后就结束了                    
-                    code.AppendLine(render.comment(token.join("")));
+                    code.comment(token.join(""));
                     escapes.comment = false;
                     token = [];
                 }
@@ -96,7 +95,7 @@ var vscode;
                 else {
                     // 结束当前的token
                     endToken();
-                    code.AppendLine();
+                    code.appendLine();
                 }
             }
             else if (c == '"') {
@@ -110,7 +109,7 @@ var vscode;
                     // 是字符串的结束符号
                     escapes.string = false;
                     token.push(c);
-                    code.Append(render.string(token.join("")));
+                    code.string(token.join(""));
                     token = [];
                 }
             }
@@ -129,7 +128,7 @@ var vscode;
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.Append("&nbsp;");
+                    code.append("&nbsp;");
                 }
                 else {
                     token.push("&nbsp;");
@@ -142,7 +141,7 @@ var vscode;
                 token.push(c);
             }
         }
-        return code.toString();
+        return code.Html;
     }
     vscode.codeHtml = codeHtml;
 })(vscode || (vscode = {}));
@@ -150,18 +149,36 @@ var vscode;
 (function (vscode) {
     var tokenStyler = /** @class */ (function () {
         function tokenStyler() {
+            this.code = new StringBuilder("", "<br />\n");
         }
+        Object.defineProperty(tokenStyler.prototype, "Html", {
+            get: function () {
+                return this.code.toString();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        tokenStyler.tagClass = function (token, cls) {
+            return "<span class=\"" + cls + "\">" + token + "</span>";
+        };
+        tokenStyler.prototype.append = function (token) {
+            this.code.Append(token);
+        };
+        tokenStyler.prototype.appendLine = function (token) {
+            if (token === void 0) { token = ""; }
+            this.code.AppendLine(token);
+        };
         tokenStyler.prototype.comment = function (token) {
-            return "<span class=\"comment\">" + token + "</span>";
+            this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
         };
         tokenStyler.prototype.string = function (token) {
-            return "<span class=\"string\">" + token + "</span>";
+            this.code.Append(tokenStyler.tagClass(token, "string"));
         };
         tokenStyler.prototype.keyword = function (token) {
-            return "<span class=\"keyword\">" + token + "</span>";
+            this.code.Append(tokenStyler.tagClass(token, "keyword"));
         };
         tokenStyler.prototype.attribute = function (token) {
-            return "<span class=\"attribute\">" + token + "</span>";
+            this.code.Append(tokenStyler.tagClass(token, "attribute"));
         };
         return tokenStyler;
     }());
