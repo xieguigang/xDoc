@@ -2,15 +2,15 @@ var vscode;
 (function (vscode) {
     function defaultStyle() {
         return {
-            string: "red",
-            comment: "green",
-            keyword: "blue",
-            attribute: "cyan"
+            string: "#a31515",
+            comment: "#008000",
+            keyword: "#0000ff",
+            attribute: "#2b91af"
         };
     }
     vscode.defaultStyle = defaultStyle;
     function applyStyle(div, style) {
-        if (style === void 0) { style = defaultStyle(); }
+        if (style === void 0) { style = vscode.VisualStudio; }
         $ts.select(".string").attr("style", "color: " + style.string + ";");
         $ts.select(".comment").attr("style", "color: " + style.comment + ";");
         $ts.select(".keyword").attr("style", "color: " + style.keyword);
@@ -18,11 +18,53 @@ var vscode;
     }
     vscode.applyStyle = applyStyle;
 })(vscode || (vscode = {}));
+var vscode;
+(function (vscode) {
+    var tokenStyler = /** @class */ (function () {
+        function tokenStyler() {
+            this.code = new StringBuilder("", "<br />\n");
+        }
+        Object.defineProperty(tokenStyler.prototype, "Html", {
+            get: function () {
+                return this.code.toString();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        tokenStyler.tagClass = function (token, cls) {
+            return "<span class=\"" + cls + "\">" + token + "</span>";
+        };
+        tokenStyler.prototype.append = function (token) {
+            this.code.Append(token);
+        };
+        tokenStyler.prototype.appendLine = function (token) {
+            if (token === void 0) { token = ""; }
+            this.code.AppendLine(token);
+        };
+        tokenStyler.prototype.comment = function (token) {
+            this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
+        };
+        tokenStyler.prototype.string = function (token) {
+            this.code.Append(tokenStyler.tagClass(token, "string"));
+        };
+        tokenStyler.prototype.keyword = function (token) {
+            this.code.Append(tokenStyler.tagClass(token, "keyword"));
+        };
+        tokenStyler.prototype.attribute = function (token) {
+            this.code.Append(tokenStyler.tagClass(token, "attribute"));
+        };
+        return tokenStyler;
+    }());
+    vscode.tokenStyler = tokenStyler;
+})(vscode || (vscode = {}));
 /// <reference path="../build/linq.d.ts" />
+/// <reference path="CSS.ts" />
+/// <reference path="tokenStyler.ts" />
 $ts.mode = Modes.debug;
 // $ts.mode = Modes.production;
 var vscode;
 (function (vscode) {
+    vscode.VisualStudio = vscode.defaultStyle();
     /**
      * List of VB.NET language keywords
     */
@@ -39,7 +81,7 @@ var vscode;
         return words;
     })("\n        |AddHandler|AddressOf|Alias|And|AndAlso|As|\n        |Boolean|ByRef|Byte|\n        |Call|Case|Catch|CBool|CByte|CChar|CDate|CDec|CDbl|Char|CInt|Class|CLng|CObj|Const|Continue|CSByte|CShort|CSng|CStr|CType|CUInt|CULng|CUShort|\n        |Date|Decimal|Declare|Default|Delegate|Dim|DirectCast|Do|Double|\n        |Each|Else|ElseIf|End|EndIf|Enum|Erase|Error|Event|Exit|\n        |False|Finally|For|Friend|Function|\n        |Get|GetType|GetXMLNamespace|Global|GoSub|GoTo|\n        |Handles|\n        |If|Implements|Imports|In|Inherits|Integer|Interface|Is|IsNot|\n        |Let|Lib|Like|Long|Loop|\n        |Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|\n        |Namespace|Narrowing|New|Next|Not|Nothing|NotInheritable|NotOverridable|NameOf|\n        |Object|Of|On|Operator|Option|Optional|Or|OrElse|Overloads|Overridable|Overrides|\n        |ParamArray|Partial|Private|Property|Protected|Public|\n        |RaiseEvent|ReadOnly|ReDim|REM|RemoveHandler|Resume|Return|\n        |SByte|Select|Set|Shadows|Shared|Short|Single|Static|Step|Stop|String|Structure|Sub|SyncLock|\n        |Then|Throw|To|True|Try|TryCast|TypeOf|\n        |Variant|\n        |Wend|\n        |UInteger|ULong|UShort|Using|\n        |When|While|Widening|With|WithEvents|WriteOnly|\n        |Xor|\n        |Yield|\n    ");
     function highlight(code, display, style) {
-        if (style === void 0) { style = vscode.defaultStyle(); }
+        if (style === void 0) { style = vscode.VisualStudio; }
         var pcode = new Pointer(Strings.ToCharArray(code));
         var html = vscode.codeHtml(pcode);
         $ts(display).display(html);
@@ -144,44 +186,5 @@ var vscode;
         return code.Html;
     }
     vscode.codeHtml = codeHtml;
-})(vscode || (vscode = {}));
-var vscode;
-(function (vscode) {
-    var tokenStyler = /** @class */ (function () {
-        function tokenStyler() {
-            this.code = new StringBuilder("", "<br />\n");
-        }
-        Object.defineProperty(tokenStyler.prototype, "Html", {
-            get: function () {
-                return this.code.toString();
-            },
-            enumerable: true,
-            configurable: true
-        });
-        tokenStyler.tagClass = function (token, cls) {
-            return "<span class=\"" + cls + "\">" + token + "</span>";
-        };
-        tokenStyler.prototype.append = function (token) {
-            this.code.Append(token);
-        };
-        tokenStyler.prototype.appendLine = function (token) {
-            if (token === void 0) { token = ""; }
-            this.code.AppendLine(token);
-        };
-        tokenStyler.prototype.comment = function (token) {
-            this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
-        };
-        tokenStyler.prototype.string = function (token) {
-            this.code.Append(tokenStyler.tagClass(token, "string"));
-        };
-        tokenStyler.prototype.keyword = function (token) {
-            this.code.Append(tokenStyler.tagClass(token, "keyword"));
-        };
-        tokenStyler.prototype.attribute = function (token) {
-            this.code.Append(tokenStyler.tagClass(token, "attribute"));
-        };
-        return tokenStyler;
-    }());
-    vscode.tokenStyler = tokenStyler;
 })(vscode || (vscode = {}));
 //# sourceMappingURL=vbcode.js.map

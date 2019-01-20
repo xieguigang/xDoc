@@ -1,9 +1,13 @@
 ﻿/// <reference path="../build/linq.d.ts" />
+/// <reference path="CSS.ts" />
+/// <reference path="tokenStyler.ts" />
 
 $ts.mode = Modes.debug;
 // $ts.mode = Modes.production;
 
 namespace vscode {
+
+    export const VisualStudio: CSS = vscode.defaultStyle();
 
     /**
      * List of VB.NET language keywords
@@ -48,7 +52,7 @@ namespace vscode {
         |Yield|
     `);
 
-    export function highlight(code: string, display: string, style: CSS = vscode.defaultStyle()) {
+    export function highlight(code: string, display: string, style: CSS = vscode.VisualStudio) {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
         var html: string = vscode.codeHtml(pcode);
 

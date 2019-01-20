@@ -10,14 +10,6 @@ declare namespace vscode {
     function applyStyle(div: string, style?: CSS): void;
 }
 declare namespace vscode {
-    /**
-     * List of VB.NET language keywords
-    */
-    const VBKeywords: string[];
-    function highlight(code: string, display: string, style?: CSS): void;
-    function codeHtml(chars: Pointer<string>): string;
-}
-declare namespace vscode {
     class tokenStyler {
         private code;
         readonly Html: string;
@@ -29,4 +21,13 @@ declare namespace vscode {
         keyword(token: string): void;
         attribute(token: string): void;
     }
+}
+declare namespace vscode {
+    const VisualStudio: CSS;
+    /**
+     * List of VB.NET language keywords
+    */
+    const VBKeywords: string[];
+    function highlight(code: string, display: string, style?: CSS): void;
+    function codeHtml(chars: Pointer<string>): string;
 }

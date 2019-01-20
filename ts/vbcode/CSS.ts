@@ -9,14 +9,14 @@
 
     export function defaultStyle(): CSS {
         return <CSS>{
-            string: "red",
-            comment: "green",
-            keyword: "blue",
-            attribute: "cyan"
+            string: "#a31515",
+            comment: "#008000",
+            keyword: "#0000ff",
+            attribute: "#2b91af"
         };
     }
 
-    export function applyStyle(div: string, style: CSS = defaultStyle()) {
+    export function applyStyle(div: string, style: CSS = vscode.VisualStudio) {
         $ts.select(".string").attr("style", `color: ${style.string};`);
         $ts.select(".comment").attr("style", `color: ${style.comment};`);
         $ts.select(".keyword").attr("style", `color: ${style.keyword}`);
