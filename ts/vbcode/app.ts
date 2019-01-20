@@ -83,11 +83,15 @@ namespace vscode {
                 code.append(token[0]);
                 code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
                 code.append(token[token.length - 1]);
+            } else if (code.LastNewLine && token[0] == "#") {
+                code.directive(token.join(""));
             } else {
                 // 结束当前的单词
                 var word: string = token.join("");
 
-                if (VBKeywords.indexOf(word) > -1) {
+                if (code.LastDirective) {
+                    code.directive(word);
+                } else if (VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
                 } else if (code.LastTypeKeyword) {
                     code.type(word);
@@ -153,13 +157,13 @@ namespace vscode {
                         token.push("&nbsp;");
                     }
                 }
-            } else if (c == ".") {
+            } else if (c == "." || c == "=" || c == ")") {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
                     code.append(c);
                 } else {
-                    token.push(".");
+                    token.push(c);
                 }
             } else if (c == "<" || c == "&") {
                 token.push(Strings.escapeXml(c));

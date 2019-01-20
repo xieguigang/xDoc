@@ -9,6 +9,7 @@ declare namespace vscode {
          * 用户类型的颜色样式值
         */
         type: string;
+        directive: string;
         globalFont: CanvasHelper.CSSFont;
     }
     function defaultStyle(): CSS;
@@ -18,14 +19,19 @@ declare namespace vscode {
     class tokenStyler {
         private code;
         private lastTypeKeyword;
+        private lastNewLine;
+        private lastDirective;
         readonly Html: string;
         /**
          * 上一个追加的单词是一个类型定义或者引用的关键词
         */
         readonly LastTypeKeyword: boolean;
+        readonly LastNewLine: boolean;
+        readonly LastDirective: boolean;
         private static tagClass;
         append(token: string): void;
         appendLine(token?: string): void;
+        directive(token: string): void;
         type(token: string): void;
         comment(token: string): void;
         string(token: string): void;

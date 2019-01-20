@@ -7,6 +7,7 @@ var vscode;
             keyword: "#0000ff",
             attribute: "#2b91af",
             type: "#2b91af",
+            directive: "grey",
             globalFont: {
                 fontName: "Consolas",
                 size: { pixel: 12 }
@@ -21,6 +22,7 @@ var vscode;
         $ts.select(".keyword").attr("style", "color: " + style.keyword);
         $ts.select(".attribute").attr("style", "color: " + style.attribute);
         $ts.select(".type").attr("style", "color: " + style.type);
+        $ts.select(".directive").attr("style", "color: " + style.directive);
         CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
     }
     vscode.applyStyle = applyStyle;
@@ -31,6 +33,8 @@ var vscode;
         function tokenStyler() {
             this.code = new StringBuilder("", "<br />\n");
             this.lastTypeKeyword = false;
+            this.lastNewLine = true;
+            this.lastDirective = false;
         }
         Object.defineProperty(tokenStyler.prototype, "Html", {
             get: function () {
@@ -45,6 +49,20 @@ var vscode;
             */
             get: function () {
                 return this.lastTypeKeyword;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(tokenStyler.prototype, "LastNewLine", {
+            get: function () {
+                return this.lastNewLine;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(tokenStyler.prototype, "LastDirective", {
+            get: function () {
+                return this.lastDirective;
             },
             enumerable: true,
             configurable: true
@@ -66,24 +84,40 @@ var vscode;
             else {
                 this.code.Append(token);
                 this.lastTypeKeyword = false;
+                this.lastDirective = false;
             }
+            this.lastNewLine = false;
         };
         tokenStyler.prototype.appendLine = function (token) {
             if (token === void 0) { token = ""; }
             this.code.AppendLine(token);
             this.lastTypeKeyword = false;
+            this.lastNewLine = true;
+            this.lastDirective = false;
+        };
+        tokenStyler.prototype.directive = function (token) {
+            this.code.Append(tokenStyler.tagClass(token, "directive"));
+            this.lastTypeKeyword = false;
+            this.lastNewLine = false;
+            this.lastDirective = true;
         };
         tokenStyler.prototype.type = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "type"));
             this.lastTypeKeyword = false;
+            this.lastNewLine = false;
+            this.lastDirective = false;
         };
         tokenStyler.prototype.comment = function (token) {
             this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
             this.lastTypeKeyword = false;
+            this.lastNewLine = true;
+            this.lastDirective = false;
         };
         tokenStyler.prototype.string = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "string"));
             this.lastTypeKeyword = false;
+            this.lastNewLine = false;
+            this.lastDirective = false;
         };
         tokenStyler.prototype.keyword = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "keyword"));
@@ -93,10 +127,14 @@ var vscode;
             else {
                 this.lastTypeKeyword = false;
             }
+            this.lastNewLine = false;
+            this.lastDirective = false;
         };
         tokenStyler.prototype.attribute = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "attribute"));
             this.lastTypeKeyword = false;
+            this.lastNewLine = false;
+            this.lastDirective = false;
         };
         return tokenStyler;
     }());
@@ -156,10 +194,16 @@ var vscode;
                 code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
                 code.append(token[token.length - 1]);
             }
+            else if (code.LastNewLine && token[0] == "#") {
+                code.directive(token.join(""));
+            }
             else {
                 // 结束当前的单词
                 var word = token.join("");
-                if (vscode.VBKeywords.indexOf(word) > -1) {
+                if (code.LastDirective) {
+                    code.directive(word);
+                }
+                else if (vscode.VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
                 }
                 else if (code.LastTypeKeyword) {
@@ -234,14 +278,14 @@ var vscode;
                     }
                 }
             }
-            else if (c == ".") {
+            else if (c == "." || c == "=" || c == ")") {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
                     code.append(c);
                 }
                 else {
-                    token.push(".");
+                    token.push(c);
                 }
             }
             else if (c == "<" || c == "&") {

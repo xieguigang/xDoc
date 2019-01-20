@@ -9,6 +9,7 @@
          * 用户类型的颜色样式值
         */
         type: string;
+        directive: string;
 
         globalFont: CanvasHelper.CSSFont;
     }
@@ -20,6 +21,7 @@
             keyword: "#0000ff",
             attribute: "#2b91af",
             type: "#2b91af",
+            directive: "grey",
             globalFont: {
                 fontName: "Consolas",
                 size: { pixel: 12 }
@@ -33,6 +35,7 @@
         $ts.select(".keyword").attr("style", `color: ${style.keyword}`);
         $ts.select(".attribute").attr("style", `color: ${style.attribute}`);
         $ts.select(".type").attr("style", `color: ${style.type}`);
+        $ts.select(".directive").attr("style", `color: ${style.directive}`);
 
         CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
     }
