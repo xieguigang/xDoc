@@ -2889,13 +2889,13 @@ var Internal;
             }
             HttpHelpers.Imports.doEval(script, callback);
         };
-        ts.loadText = function (id) {
+        ts.text = function (id) {
             var nodeID = Internal.Handlers.EnsureNodeId(id);
             var node = stringEval.doEval(nodeID, null, null);
             return node.innerText;
         };
         ts.loadJSON = function (id) {
-            return JSON.parse(this.loadText(id));
+            return JSON.parse(this.text(id));
         };
         // file path helpers
         ts.parseFileName = TsLinq.PathHelper.fileName;
