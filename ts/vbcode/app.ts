@@ -9,7 +9,7 @@ namespace vscode {
 
     export const VisualStudio: CSS = vscode.defaultStyle();
     export const TypeDefine: string[] = [
-        "As", "Class", "Structure"
+        "As", "Class", "Structure", "Module"
     ];
 
     /**
@@ -40,7 +40,7 @@ namespace vscode {
         |Handles|
         |If|Implements|Imports|In|Inherits|Integer|Interface|Is|IsNot|
         |Let|Lib|Like|Long|Loop|
-        |Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|
+        |Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|My|
         |Namespace|Narrowing|New|Next|Not|Nothing|NotInheritable|NotOverridable|NameOf|
         |Object|Of|On|Operator|Option|Optional|Or|OrElse|Overloads|Overridable|Overrides|
         |ParamArray|Partial|Private|Property|Protected|Public|
@@ -153,8 +153,23 @@ namespace vscode {
                         token.push("&nbsp;");
                     }
                 }
+            } else if (c == ".") {
+                // 也会使用小数点进行分词
+                if (!escapes.comment && !escapes.string) {
+                    endToken();
+                    code.append(c);
+                } else {
+                    token.push(".");
+                }
             } else if (c == "<" || c == "&") {
                 token.push(Strings.escapeXml(c));
+            } else if (c == "(") {
+                token.push("(");
+
+                // attribute
+                if (token[0] == "&lt;") {
+                    endToken();
+                }
             } else {
                 token.push(c);
             }
