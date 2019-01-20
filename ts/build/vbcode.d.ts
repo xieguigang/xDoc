@@ -17,14 +17,14 @@ declare namespace vscode {
 declare namespace vscode {
     class tokenStyler {
         private code;
-        private lastKeyword;
+        private lastTypeKeyword;
         readonly Html: string;
         /**
-         * 上一个追加的单词是一个关键词
+         * 上一个追加的单词是一个类型定义或者引用的关键词
         */
-        readonly LastKeyword: boolean;
+        readonly LastTypeKeyword: boolean;
         private static tagClass;
-        append(token: string): void;
+        append(token?: string): void;
         appendLine(token?: string): void;
         type(token: string): void;
         comment(token: string): void;

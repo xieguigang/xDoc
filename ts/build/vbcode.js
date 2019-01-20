@@ -30,7 +30,7 @@ var vscode;
     var tokenStyler = /** @class */ (function () {
         function tokenStyler() {
             this.code = new StringBuilder("", "<br />\n");
-            this.lastKeyword = false;
+            this.lastTypeKeyword = false;
         }
         Object.defineProperty(tokenStyler.prototype, "Html", {
             get: function () {
@@ -39,12 +39,12 @@ var vscode;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(tokenStyler.prototype, "LastKeyword", {
+        Object.defineProperty(tokenStyler.prototype, "LastTypeKeyword", {
             /**
-             * 上一个追加的单词是一个关键词
+             * 上一个追加的单词是一个类型定义或者引用的关键词
             */
             get: function () {
-                return this.lastKeyword;
+                return this.lastTypeKeyword;
             },
             enumerable: true,
             configurable: true
@@ -53,27 +53,41 @@ var vscode;
             return "<span class=\"" + cls + "\">" + token + "</span>";
         };
         tokenStyler.prototype.append = function (token) {
+            if (token === void 0) { token = "&nbsp;"; }
             this.code.Append(token);
+            if (token != "&nbsp;") {
+                this.lastTypeKeyword = false;
+            }
         };
         tokenStyler.prototype.appendLine = function (token) {
             if (token === void 0) { token = ""; }
             this.code.AppendLine(token);
+            this.lastTypeKeyword = false;
         };
         tokenStyler.prototype.type = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "type"));
+            this.lastTypeKeyword = false;
         };
         tokenStyler.prototype.comment = function (token) {
             this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
+            this.lastTypeKeyword = false;
         };
         tokenStyler.prototype.string = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "string"));
+            this.lastTypeKeyword = false;
         };
         tokenStyler.prototype.keyword = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "keyword"));
-            this.lastKeyword = true;
+            if (vscode.TypeDefine.indexOf(token) > -1) {
+                this.lastTypeKeyword = true;
+            }
+            else {
+                this.lastTypeKeyword = false;
+            }
         };
         tokenStyler.prototype.attribute = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "attribute"));
+            this.lastTypeKeyword = false;
         };
         return tokenStyler;
     }());
@@ -139,7 +153,7 @@ var vscode;
                 if (vscode.VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
                 }
-                else if (code.LastKeyword) {
+                else if (code.LastTypeKeyword) {
                     code.type(word);
                 }
                 else {
@@ -198,7 +212,7 @@ var vscode;
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.append("&nbsp;");
+                    code.append();
                 }
                 else {
                     token.push("&nbsp;");

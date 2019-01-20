@@ -89,7 +89,7 @@ namespace vscode {
 
                 if (VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
-                } else if (code.LastKeyword) {
+                } else if (code.LastTypeKeyword) {
                     code.type(word);
                 } else {
                     code.append(word);
@@ -143,7 +143,7 @@ namespace vscode {
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.append("&nbsp;");
+                    code.append();
                 } else {
                     token.push("&nbsp;")
                 }
