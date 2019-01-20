@@ -4,13 +4,15 @@
         string: string;
         comment: string;
         keyword: string;
+        attribute: string;
     }
 
     export function defaultStyle(): CSS {
         return <CSS>{
             string: "red",
             comment: "green",
-            keyword: "blue"
+            keyword: "blue",
+            attribute: "cyan"
         };
     }
 

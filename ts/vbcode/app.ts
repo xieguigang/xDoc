@@ -49,8 +49,15 @@ namespace vscode {
     `);
 
     export function highlight(code: string, display: string, style: CSS = vscode.defaultStyle()) {
-        $ts(display).display(codeHtml(new Pointer<string>(Strings.ToCharArray(code))));
+        var pcode = new Pointer<string>(Strings.ToCharArray(code));
+        var html: string = vscode.codeHtml(pcode);
+
+        $ts(display).display(html);
         vscode.applyStyle(display, style);
+
+        if (Internal.outputEverything()) {
+            console.log(html);
+        }
     }
 
     export function codeHtml(chars: Pointer<string>): string {
@@ -124,6 +131,8 @@ namespace vscode {
                 } else {
                     token.push("&nbsp;")
                 }
+            } else if (c == "<" || c == "&") {
+                token.push(Strings.escapeXml(c));
             } else {
                 token.push(c);
             }

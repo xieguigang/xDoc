@@ -480,6 +480,12 @@ declare module Strings {
     */
     function isNumericPattern(text: string): boolean;
     /**
+     * how to escape xml entities in javascript?
+     *
+     * > https://stackoverflow.com/questions/7918868/how-to-escape-xml-entities-in-javascript
+    */
+    function escapeXml(unsafe: string): string;
+    /**
      * 这个函数会将字符串起始的数字给匹配出来
      * 如果匹配失败会返回零
      *

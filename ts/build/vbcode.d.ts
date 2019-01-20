@@ -4,6 +4,7 @@ declare namespace vscode {
         string: string;
         comment: string;
         keyword: string;
+        attribute: string;
     }
     function defaultStyle(): CSS;
     function applyStyle(div: string, style?: CSS): void;
