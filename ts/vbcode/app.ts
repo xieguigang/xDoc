@@ -8,6 +8,9 @@ $ts.mode = Modes.debug;
 namespace vscode {
 
     export const VisualStudio: CSS = vscode.defaultStyle();
+    export const TypeDefine: string[] = [
+        "As", "Class", "Structure"
+    ];
 
     /**
      * List of VB.NET language keywords
@@ -86,6 +89,8 @@ namespace vscode {
 
                 if (VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
+                } else if (code.LastKeyword) {
+                    code.type(word);
                 } else {
                     code.append(word);
                 }

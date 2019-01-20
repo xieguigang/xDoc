@@ -6,6 +6,7 @@ var vscode;
             comment: "#008000",
             keyword: "#0000ff",
             attribute: "#2b91af",
+            type: "#2b91af",
             globalFont: {
                 fontName: "Consolas",
                 size: { pixel: 12 }
@@ -19,6 +20,7 @@ var vscode;
         $ts.select(".comment").attr("style", "color: " + style.comment + ";");
         $ts.select(".keyword").attr("style", "color: " + style.keyword);
         $ts.select(".attribute").attr("style", "color: " + style.attribute);
+        $ts.select(".type").attr("style", "color: " + style.type);
         CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
     }
     vscode.applyStyle = applyStyle;
@@ -28,10 +30,21 @@ var vscode;
     var tokenStyler = /** @class */ (function () {
         function tokenStyler() {
             this.code = new StringBuilder("", "<br />\n");
+            this.lastKeyword = false;
         }
         Object.defineProperty(tokenStyler.prototype, "Html", {
             get: function () {
                 return this.code.toString();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(tokenStyler.prototype, "LastKeyword", {
+            /**
+             * 上一个追加的单词是一个关键词
+            */
+            get: function () {
+                return this.lastKeyword;
             },
             enumerable: true,
             configurable: true
@@ -46,6 +59,9 @@ var vscode;
             if (token === void 0) { token = ""; }
             this.code.AppendLine(token);
         };
+        tokenStyler.prototype.type = function (token) {
+            this.code.Append(tokenStyler.tagClass(token, "type"));
+        };
         tokenStyler.prototype.comment = function (token) {
             this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
         };
@@ -54,6 +70,7 @@ var vscode;
         };
         tokenStyler.prototype.keyword = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "keyword"));
+            this.lastKeyword = true;
         };
         tokenStyler.prototype.attribute = function (token) {
             this.code.Append(tokenStyler.tagClass(token, "attribute"));
@@ -70,6 +87,9 @@ $ts.mode = Modes.debug;
 var vscode;
 (function (vscode) {
     vscode.VisualStudio = vscode.defaultStyle();
+    vscode.TypeDefine = [
+        "As", "Class", "Structure"
+    ];
     /**
      * List of VB.NET language keywords
     */
@@ -118,6 +138,9 @@ var vscode;
                 var word = token.join("");
                 if (vscode.VBKeywords.indexOf(word) > -1) {
                     code.keyword(word);
+                }
+                else if (code.LastKeyword) {
+                    code.type(word);
                 }
                 else {
                     code.append(word);

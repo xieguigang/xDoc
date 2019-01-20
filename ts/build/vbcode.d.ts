@@ -5,6 +5,10 @@ declare namespace vscode {
         comment: string;
         keyword: string;
         attribute: string;
+        /**
+         * 用户类型的颜色样式值
+        */
+        type: string;
         globalFont: CanvasHelper.CSSFont;
     }
     function defaultStyle(): CSS;
@@ -13,10 +17,16 @@ declare namespace vscode {
 declare namespace vscode {
     class tokenStyler {
         private code;
+        private lastKeyword;
         readonly Html: string;
+        /**
+         * 上一个追加的单词是一个关键词
+        */
+        readonly LastKeyword: boolean;
         private static tagClass;
         append(token: string): void;
         appendLine(token?: string): void;
+        type(token: string): void;
         comment(token: string): void;
         string(token: string): void;
         keyword(token: string): void;
@@ -25,6 +35,7 @@ declare namespace vscode {
 }
 declare namespace vscode {
     const VisualStudio: CSS;
+    const TypeDefine: string[];
     /**
      * List of VB.NET language keywords
     */
