@@ -116,6 +116,45 @@ interface IPopulated<T> {
     done: boolean;
 }
 /**
+ * The linq pipline implements at here. (在这个模块之中实现具体的数据序列算法)
+*/
+declare module Enumerable {
+    /**
+     * 进行数据序列的投影操作
+     *
+    */
+    function Select<T, TOut>(source: T[], project: (e: T, i: number) => TOut): IEnumerator<TOut>;
+    /**
+     * 进行数据序列的排序操作
+     *
+    */
+    function OrderBy<T>(source: T[], key: (e: T) => number): IEnumerator<T>;
+    function OrderByDescending<T>(source: T[], key: (e: T) => number): IEnumerator<T>;
+    function Take<T>(source: T[], n: number): IEnumerator<T>;
+    function Skip<T>(source: T[], n: number): IEnumerator<T>;
+    function TakeWhile<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
+    function Where<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
+    function SkipWhile<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
+    function All<T>(source: T[], predicate: (e: T) => boolean): boolean;
+    function Any<T>(source: T[], predicate: (e: T) => boolean): boolean;
+    /**
+     * Implements a ``group by`` operation by binary tree data structure.
+    */
+    function GroupBy<T, TKey>(source: T[], getKey: (e: T) => TKey, compares: (a: TKey, b: TKey) => number): IEnumerator<Group<TKey, T>>;
+    function AllKeys<T>(sequence: T[]): string[];
+    class JoinHelper<T, U> {
+        private xset;
+        private yset;
+        private keysT;
+        private keysU;
+        constructor(x: T[], y: U[]);
+        JoinProject<V>(x: T, y: U): V;
+        Union<K, V>(tKey: (x: T) => K, uKey: (x: U) => K, compare: (a: K, b: K) => number, project?: (x: T, y: U) => V): IEnumerator<V>;
+        private buildUtree;
+        LeftJoin<K, V>(tKey: (x: T) => K, uKey: (x: U) => K, compare: (a: K, b: K) => number, project?: (x: T, y: U) => V): IEnumerator<V>;
+    }
+}
+/**
  * Provides a set of static (Shared in Visual Basic) methods for querying
  * objects that implement ``System.Collections.Generic.IEnumerable<T>``.
  *
@@ -461,6 +500,52 @@ declare module DataExtensions {
     function AsNumeric<T>(obj: T): (x: T) => number;
 }
 /**
+ * 描述了一个键值对集合
+*/
+declare class MapTuple<K, V> {
+    /**
+     * 键名称，一般是字符串
+    */
+    key: K;
+    /**
+     * 目标键名所映射的值
+    */
+    value: V;
+    /**
+     * 创建一个新的键值对集合
+     *
+    */
+    constructor(key?: K, value?: V);
+    valueOf(): V;
+    ToArray(): any[];
+    toString(): string;
+}
+/**
+ * 描述了一个带有名字属性的变量值
+*/
+declare class NamedValue<T> {
+    /**
+     * 变量值的名字属性
+    */
+    name: string;
+    /**
+     * 这个变量值
+    */
+    value: T;
+    constructor(name?: string, val?: T);
+    /**
+     * 获取得到变量值的类型定义信息
+    */
+    readonly TypeOfValue: TypeInfo;
+    /**
+     * 这个之对象是否是空的？
+    */
+    readonly IsEmpty: boolean;
+    valueOf(): T;
+    ToArray(): any[];
+    toString(): string;
+}
+/**
  * TypeScript string helpers.
  * (这个模块之中的大部分的字符串处理函数的行为是和VisualBasic之中的字符串函数的行为是相似的)
 */
@@ -794,6 +879,13 @@ declare namespace Internal {
         */
         imports(jsURL: string | string[], callback?: () => void, onErrorResumeNext?: boolean, echo?: boolean): void;
         /**
+         * 将函数注入给定id编号的iframe之中
+         *
+         * @param iframe ``#xxx``编号查询表达式
+         * @param fun 目标函数，请注意，这个函数应该是尽量不引用依赖其他对象的
+        */
+        inject(iframe: string, fun: Delegate.Func): void;
+        /**
          * 动态加载脚本
          *
          * @param script 脚本的文本内容
@@ -841,9 +933,10 @@ declare namespace Internal {
         */
         upload<T>(url: string, file: File, callback?: ((response: IMsg<T>) => void)): void;
         /**
-         * 获取当前的页面的URL字符串解析模型
+         * Get the url location of current window page.
+         * (获取当前的页面的URL字符串解析模型)
         */
-        windowLocation(): TsLinq.URL;
+        readonly location: IURL;
         /**
          * 解析一个给定的URL字符串
         */
@@ -886,6 +979,18 @@ declare namespace Internal {
         */
         withExtensionName(path: string, ext: string): boolean;
         doubleRange(x: number[] | IEnumerator<number>): data.NumericRange;
+    }
+    interface IURL {
+        /**
+         * 获取得到GET参数
+        */
+        (arg: string, caseSensitive?: boolean, Default?: string): string;
+        readonly path: string;
+        readonly fileName: string;
+        /**
+         * 获取当前的url之中的hash值，这个返回来的哈希值是不带``#``符号前缀的
+        */
+        hash(): string;
     }
     interface GotoOptions {
         currentFrame?: boolean;
@@ -956,6 +1061,78 @@ declare namespace Internal {
         "data-target"?: string;
         "aria-hidden"?: boolean;
     }
+}
+declare namespace TsLinq {
+    /**
+     * 程序的堆栈追踪信息
+     *
+     * 这个对象是调用堆栈``StackFrame``片段对象的序列集合
+    */
+    class StackTrace extends IEnumerator<StackFrame> {
+        constructor(frames: IEnumerator<StackFrame> | StackFrame[]);
+        /**
+         * 导出当前的程序运行位置的调用堆栈信息
+        */
+        static Dump(): StackTrace;
+        /**
+         * 获取函数调用者的名称的帮助函数
+        */
+        static GetCallerMember(): StackFrame;
+        toString(): string;
+    }
+}
+/**
+ * 键值对映射哈希表
+ *
+ * ```
+ * IEnumerator<MapTuple<string, V>>
+ * ```
+*/
+declare class Dictionary<V> extends IEnumerator<MapTuple<string, V>> {
+    private maps;
+    /**
+     * 返回一个被复制的当前的map对象
+    */
+    readonly Object: object;
+    /**
+     * 如果键名称是空值的话，那么这个函数会自动使用caller的函数名称作为键名进行值的获取
+     *
+     * https://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript
+     *
+     * @param key 键名或者序列的索引号
+    */
+    Item(key?: string | number): V;
+    /**
+     * 获取这个字典对象之中的所有的键名
+    */
+    readonly Keys: IEnumerator<string>;
+    /**
+     * 获取这个字典对象之中的所有的键值
+    */
+    readonly Values: IEnumerator<V>;
+    /**
+     * 将目标对象转换为一个类型约束的映射序列集合
+    */
+    constructor(maps?: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>);
+    static FromMaps<V>(maps: MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): Dictionary<V>;
+    static FromNamedValues<V>(values: NamedValue<V>[] | IEnumerator<NamedValue<V>>): Dictionary<V>;
+    static MapSequence<V>(maps: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): IEnumerator<MapTuple<string, V>>;
+    /**
+     * 将目标对象转换为一个类型约束的映射序列集合
+    */
+    static ObjectMaps<V>(maps: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): MapTuple<string, V>[];
+    /**
+     * 查看这个字典集合之中是否存在所给定的键名
+    */
+    ContainsKey(key: string): boolean;
+    /**
+     * 向这个字典对象之中添加一个键值对，请注意，如果key已经存在这个字典对象中了，这个函数会自动覆盖掉key所对应的原来的值
+    */
+    Add(key: string, value: V): Dictionary<V>;
+    /**
+     * 删除一个给定键名所指定的键值对
+    */
+    Delete(key: string): Dictionary<V>;
 }
 declare namespace TsLinq {
     module URLPatterns {
@@ -1316,52 +1493,6 @@ declare function $image(query: string, args?: Internal.TypeScriptArgument): IHTM
 */
 declare function $input(query: string, args?: Internal.TypeScriptArgument): IHTMLInputElement;
 declare function $link(query: string, args?: Internal.TypeScriptArgument): IHTMLLinkElement;
-/**
- * 描述了一个键值对集合
-*/
-declare class MapTuple<K, V> {
-    /**
-     * 键名称，一般是字符串
-    */
-    key: K;
-    /**
-     * 目标键名所映射的值
-    */
-    value: V;
-    /**
-     * 创建一个新的键值对集合
-     *
-    */
-    constructor(key?: K, value?: V);
-    valueOf(): V;
-    ToArray(): any[];
-    toString(): string;
-}
-/**
- * 描述了一个带有名字属性的变量值
-*/
-declare class NamedValue<T> {
-    /**
-     * 变量值的名字属性
-    */
-    name: string;
-    /**
-     * 这个变量值
-    */
-    value: T;
-    constructor(name?: string, val?: T);
-    /**
-     * 获取得到变量值的类型定义信息
-    */
-    readonly TypeOfValue: TypeInfo;
-    /**
-     * 这个之对象是否是空的？
-    */
-    readonly IsEmpty: boolean;
-    valueOf(): T;
-    ToArray(): any[];
-    toString(): string;
-}
 declare namespace TypeExtensions {
     const objectIsNothing: string;
     /**
@@ -1369,78 +1500,6 @@ declare namespace TypeExtensions {
     */
     const DictionaryMap: string;
     function ensureNumeric(x: number | string): number;
-}
-declare namespace TsLinq {
-    /**
-     * 程序的堆栈追踪信息
-     *
-     * 这个对象是调用堆栈``StackFrame``片段对象的序列集合
-    */
-    class StackTrace extends IEnumerator<StackFrame> {
-        constructor(frames: IEnumerator<StackFrame> | StackFrame[]);
-        /**
-         * 导出当前的程序运行位置的调用堆栈信息
-        */
-        static Dump(): StackTrace;
-        /**
-         * 获取函数调用者的名称的帮助函数
-        */
-        static GetCallerMember(): StackFrame;
-        toString(): string;
-    }
-}
-/**
- * 键值对映射哈希表
- *
- * ```
- * IEnumerator<MapTuple<string, V>>
- * ```
-*/
-declare class Dictionary<V> extends IEnumerator<MapTuple<string, V>> {
-    private maps;
-    /**
-     * 返回一个被复制的当前的map对象
-    */
-    readonly Object: object;
-    /**
-     * 如果键名称是空值的话，那么这个函数会自动使用caller的函数名称作为键名进行值的获取
-     *
-     * https://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript
-     *
-     * @param key 键名或者序列的索引号
-    */
-    Item(key?: string | number): V;
-    /**
-     * 获取这个字典对象之中的所有的键名
-    */
-    readonly Keys: IEnumerator<string>;
-    /**
-     * 获取这个字典对象之中的所有的键值
-    */
-    readonly Values: IEnumerator<V>;
-    /**
-     * 将目标对象转换为一个类型约束的映射序列集合
-    */
-    constructor(maps?: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>);
-    static FromMaps<V>(maps: MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): Dictionary<V>;
-    static FromNamedValues<V>(values: NamedValue<V>[] | IEnumerator<NamedValue<V>>): Dictionary<V>;
-    static MapSequence<V>(maps: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): IEnumerator<MapTuple<string, V>>;
-    /**
-     * 将目标对象转换为一个类型约束的映射序列集合
-    */
-    static ObjectMaps<V>(maps: object | MapTuple<string, V>[] | IEnumerator<MapTuple<string, V>>): MapTuple<string, V>[];
-    /**
-     * 查看这个字典集合之中是否存在所给定的键名
-    */
-    ContainsKey(key: string): boolean;
-    /**
-     * 向这个字典对象之中添加一个键值对，请注意，如果key已经存在这个字典对象中了，这个函数会自动覆盖掉key所对应的原来的值
-    */
-    Add(key: string, value: V): Dictionary<V>;
-    /**
-     * 删除一个给定键名所指定的键值对
-    */
-    Delete(key: string): Dictionary<V>;
 }
 /**
  * 按照某一个键值进行分组的集合对象
@@ -2062,45 +2121,6 @@ declare module Cookies {
      * 将cookie设置为过期，进行cookie的删除操作
     */
     function delCookie(name: string): void;
-}
-/**
- * The linq pipline implements at here. (在这个模块之中实现具体的数据序列算法)
-*/
-declare module Enumerable {
-    /**
-     * 进行数据序列的投影操作
-     *
-    */
-    function Select<T, TOut>(source: T[], project: (e: T, i: number) => TOut): IEnumerator<TOut>;
-    /**
-     * 进行数据序列的排序操作
-     *
-    */
-    function OrderBy<T>(source: T[], key: (e: T) => number): IEnumerator<T>;
-    function OrderByDescending<T>(source: T[], key: (e: T) => number): IEnumerator<T>;
-    function Take<T>(source: T[], n: number): IEnumerator<T>;
-    function Skip<T>(source: T[], n: number): IEnumerator<T>;
-    function TakeWhile<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
-    function Where<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
-    function SkipWhile<T>(source: T[], predicate: (e: T) => boolean): IEnumerator<T>;
-    function All<T>(source: T[], predicate: (e: T) => boolean): boolean;
-    function Any<T>(source: T[], predicate: (e: T) => boolean): boolean;
-    /**
-     * Implements a ``group by`` operation by binary tree data structure.
-    */
-    function GroupBy<T, TKey>(source: T[], getKey: (e: T) => TKey, compares: (a: TKey, b: TKey) => number): IEnumerator<Group<TKey, T>>;
-    function AllKeys<T>(sequence: T[]): string[];
-    class JoinHelper<T, U> {
-        private xset;
-        private yset;
-        private keysT;
-        private keysU;
-        constructor(x: T[], y: U[]);
-        JoinProject<V>(x: T, y: U): V;
-        Union<K, V>(tKey: (x: T) => K, uKey: (x: U) => K, compare: (a: K, b: K) => number, project?: (x: T, y: U) => V): IEnumerator<V>;
-        private buildUtree;
-        LeftJoin<K, V>(tKey: (x: T) => K, uKey: (x: U) => K, compare: (a: K, b: K) => number, project?: (x: T, y: U) => V): IEnumerator<V>;
-    }
 }
 /**
  * Binary tree implements
