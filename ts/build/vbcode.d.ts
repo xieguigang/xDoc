@@ -24,7 +24,7 @@ declare namespace vscode {
         */
         readonly LastTypeKeyword: boolean;
         private static tagClass;
-        append(token?: string): void;
+        append(token: string): void;
         appendLine(token?: string): void;
         type(token: string): void;
         comment(token: string): void;

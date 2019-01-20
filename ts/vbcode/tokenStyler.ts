@@ -20,10 +20,17 @@
             return `<span class="${cls}">${token}</span>`;
         }
 
-        public append(token: string = "&nbsp;") {
-            this.code.Append(token);
-
-            if (token != "&nbsp;") {
+        public append(token: string) {
+            if (token == " ") {
+                this.code.Append("&nbsp;");
+            } else if (token == "\t") {
+                // 是一个TAB
+                // 则插入4个空格
+                for (var i: number = 0; i < 4; i++) {
+                    this.code.Append("&nbsp;");
+                }
+            } else {
+                this.code.Append(token);
                 this.lastTypeKeyword = false;
             }
         }

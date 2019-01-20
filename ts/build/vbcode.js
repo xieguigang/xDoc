@@ -53,9 +53,18 @@ var vscode;
             return "<span class=\"" + cls + "\">" + token + "</span>";
         };
         tokenStyler.prototype.append = function (token) {
-            if (token === void 0) { token = "&nbsp;"; }
-            this.code.Append(token);
-            if (token != "&nbsp;") {
+            if (token == " ") {
+                this.code.Append("&nbsp;");
+            }
+            else if (token == "\t") {
+                // 是一个TAB
+                // 则插入4个空格
+                for (var i = 0; i < 4; i++) {
+                    this.code.Append("&nbsp;");
+                }
+            }
+            else {
+                this.code.Append(token);
                 this.lastTypeKeyword = false;
             }
         };
@@ -208,14 +217,21 @@ var vscode;
                     token.push(c);
                 }
             }
-            else if (c == " ") {
+            else if (c == " " || c == "\t") {
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.append();
+                    code.append(c);
+                }
+                else if (c == " ") {
+                    token.push("&nbsp;");
                 }
                 else {
-                    token.push("&nbsp;");
+                    // 是一个TAB
+                    // 则插入4个空格
+                    for (var i = 0; i < 4; i++) {
+                        token.push("&nbsp;");
+                    }
                 }
             }
             else if (c == "<" || c == "&") {

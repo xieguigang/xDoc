@@ -139,13 +139,19 @@ namespace vscode {
                 } else {
                     token.push(c);
                 }
-            } else if (c == " ") {
+            } else if (c == " " || c == "\t") {
                 // 使用空格进行分词
                 if (!escapes.comment && !escapes.string) {
                     endToken();
-                    code.append();
+                    code.append(c);
+                } else if (c == " ") {
+                    token.push("&nbsp;");
                 } else {
-                    token.push("&nbsp;")
+                    // 是一个TAB
+                    // 则插入4个空格
+                    for (var i: number = 0; i < 4; i++) {
+                        token.push("&nbsp;");
+                    }
                 }
             } else if (c == "<" || c == "&") {
                 token.push(Strings.escapeXml(c));
