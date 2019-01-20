@@ -11,6 +11,8 @@ var vscode;
     function applyStyle(div, style) {
         if (style === void 0) { style = defaultStyle(); }
         $ts.select(".string").attr("style", "color: " + style.string + ";");
+        $ts.select(".comment").attr("style", "color: " + style.comment + ";");
+        $ts.select(".keyword").attr("style", "color: " + style.keyword);
     }
     vscode.applyStyle = applyStyle;
 })(vscode || (vscode = {}));
