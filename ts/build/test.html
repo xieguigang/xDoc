@@ -1,0 +1,15 @@
+<script src="linq.js"></script>
+<script src="vbcode.js"></script>
+
+<script>
+var code = `Public Function HelloWorld() As String
+    Return "xieguigang";
+End Function
+`;
+
+$ts(function() {
+	vscode.highlight(code, "#preview");
+})
+</script>
+
+<div id="preview"></div>

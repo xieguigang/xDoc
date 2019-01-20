@@ -1542,7 +1542,7 @@ var Strings;
     */
     function Blank(str, stringAsFactor) {
         if (stringAsFactor === void 0) { stringAsFactor = false; }
-        if (!str) {
+        if (!str || IsPattern(str, /\s+/g)) {
             return true;
         }
         else if (str == undefined || typeof str == "undefined") {

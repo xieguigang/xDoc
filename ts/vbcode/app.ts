@@ -1,6 +1,7 @@
 ﻿/// <reference path="../build/linq.d.ts" />
 
-$ts.FrameworkDebug = true;
+$ts.mode = Modes.debug;
+// $ts.mode = Modes.production;
 
 namespace vscode {
 
@@ -12,10 +13,10 @@ namespace vscode {
         var words: string[] = $ts(lines)
             .Select(s => s.split("|"))
             .Unlist(s => s)
-            .Where(s => !Strings.Empty(s))
+            .Where(s => !Strings.Empty(s) && !Strings.Blank(s))
             .ToArray();
 
-        if ($ts.FrameworkDebug) {
+        if (Internal.outputEverything()) {
             console.log(words);
         }
 
