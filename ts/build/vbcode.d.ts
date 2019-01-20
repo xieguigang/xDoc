@@ -5,6 +5,7 @@ declare namespace vscode {
         comment: string;
         keyword: string;
         attribute: string;
+        globalFont: CanvasHelper.CSSFont;
     }
     function defaultStyle(): CSS;
     function applyStyle(div: string, style?: CSS): void;

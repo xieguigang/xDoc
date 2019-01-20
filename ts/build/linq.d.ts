@@ -2409,11 +2409,19 @@ declare namespace CanvasHelper {
     function createCanvas(size: [number, number], id: string, title: string, display?: string): HTMLCanvasElement;
     function supportsText(ctx: CanvasRenderingContext2D): boolean;
     class fontSize {
-        point: number;
-        pixel: number;
-        em: number;
-        percent: number;
+        point?: number;
+        pixel?: number;
+        em?: number;
+        percent?: number;
         readonly sizes: fontSize[];
+        toString(): string;
+        static css(size: fontSize): string;
+    }
+    class CSSFont {
+        fontName: string;
+        size: fontSize;
+        apply(node: HTMLElement): void;
+        static applyCSS(node: HTMLElement, font: CSSFont): void;
     }
 }
 declare namespace CanvasHelper.saveSvgAsPng {

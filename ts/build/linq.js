@@ -5974,9 +5974,39 @@ var CanvasHelper;
         function fontSize() {
             this.sizes = [];
         }
+        fontSize.prototype.toString = function () {
+            return fontSize.css(this);
+        };
+        fontSize.css = function (size) {
+            if (size.point) {
+                return size.point + "pt";
+            }
+            else if (size.percent) {
+                return size.percent + "%";
+            }
+            else if (size.em) {
+                return size.em + "em";
+            }
+            else {
+                return size.pixel.toString();
+            }
+        };
         return fontSize;
     }());
     CanvasHelper.fontSize = fontSize;
+    var CSSFont = /** @class */ (function () {
+        function CSSFont() {
+        }
+        CSSFont.prototype.apply = function (node) {
+            CSSFont.applyCSS(node, this);
+        };
+        CSSFont.applyCSS = function (node, font) {
+            node.style.fontFamily = font.fontName;
+            node.style.fontSize = fontSize.css(font.size);
+        };
+        return CSSFont;
+    }());
+    CanvasHelper.CSSFont = CSSFont;
 })(CanvasHelper || (CanvasHelper = {}));
 var CanvasHelper;
 (function (CanvasHelper) {
