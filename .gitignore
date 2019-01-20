@@ -254,3 +254,5 @@ paket-files/
 /test/App
 /test/docs/Microsoft/VisualBasic
 /vbcode-highlight/Resources/splitter.zip
+/ts/build/linq.js
+/ts/build/vbcode.js
