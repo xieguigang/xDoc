@@ -5667,6 +5667,7 @@ var StringBuilder = /** @class */ (function () {
         return this;
     };
     StringBuilder.prototype.AppendLine = function (text) {
+        if (text === void 0) { text = ""; }
         return this.Append(text + this.newLine);
     };
     StringBuilder.prototype.toString = function () {

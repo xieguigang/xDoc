@@ -22,7 +22,8 @@ namespace vscode {
 
         return words;
     })(
-        `|AddHandler|AddressOf|Alias|And|AndAlso|As|
+        `
+        |AddHandler|AddressOf|Alias|And|AndAlso|As|
         |Boolean|ByRef|Byte|
         |Call|Case|Catch|CBool|CByte|CChar|CDate|CDec|CDbl|Char|CInt|Class|CLng|CObj|Const|Continue|CSByte|CShort|CSng|CStr|CType|CUInt|CULng|CUShort|
         |Date|Decimal|Declare|Default|Delegate|Dim|DirectCast|Do|Double|
@@ -44,14 +45,90 @@ namespace vscode {
         |UInteger|ULong|UShort|Using|
         |When|While|Widening|With|WithEvents|WriteOnly|
         |Xor|
-        |Yield|`);
+        |Yield|
+    `);
 
     export function highlight(code: string, display: string) {
-        $ts(display).display(codeHtml(code));
+        $ts(display).display(codeHtml(new Pointer<string>(Strings.ToCharArray(code))));
     }
 
-    export function codeHtml(code: string): string {
-        return code;
+    export function codeHtml(chars: Pointer<string>): string {
+        var code: StringBuilder = new StringBuilder("", "<br />");
+        var render: tokenStyler = new tokenStyler();
+        var escapes = {
+            string: false,
+            comment: false,
+            keyword: false // VB之中使用[]进行关键词的转义操作
+        };
+        var token: string[] = [];
+        var c: string;
+        var endToken = function () {
+            // 结束当前的单词
+            var word: string = token.join("");
+
+            if (VBKeywords.indexOf(word) > -1) {
+                code.Append(render.keyword(word));
+            } else {
+                code.Append(word);
+            }
+
+            token = [];
+        }
+
+        while (!chars.EndRead) {
+            c = chars.Next;
+
+            if (c == "\n") {
+                // 是一个换行符
+                if (escapes.comment) {
+                    // vb之中注释只有单行注释，换行之后就结束了                    
+                    code.AppendLine(render.comment(token.join("")));
+                    escapes.comment = false;
+                    token = [];
+                } else if (escapes.string) {
+                    // vb之中支持多行文本字符串，所以继续添加
+                    token.push("<br />");
+                } else {
+                    // 结束当前的token
+                    endToken();
+                    code.AppendLine();
+                }
+            } else if (c == '"') {
+                // 可能是字符串的起始
+                if (!escapes.comment && !escapes.string) {
+                    escapes.string = true;
+                    endToken();
+                    token.push(c);
+                } else if (!escapes.comment && escapes.string) {
+                    // 是字符串的结束符号
+                    escapes.string = false;
+                    token.push(c);
+                    code.Append(render.string(token.join("")));
+                    token = [];
+                }
+            } else if (c == "'") {
+                if (!escapes.comment && !escapes.string) {
+                    // 是注释的起始
+                    escapes.comment = true;
+                    endToken();
+                    token.push(c);
+                } else {
+                    token.push(c);
+                }
+            } else if (c == " ") {
+                // 使用空格进行分词
+                if (!escapes.comment && !escapes.string) {
+                    endToken();
+                    code.Append("&nbsp;");
+                } else {
+                    token.push("&nbsp;")
+                }
+            } else {
+                token.push(c);
+            }
+        }
+
+        return code.toString();
     }
 }
 

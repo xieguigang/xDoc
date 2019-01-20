@@ -2238,7 +2238,7 @@ declare class StringBuilder {
     readonly Length: number;
     constructor(str?: string | StringBuilder, newLine?: string);
     Append(text: string): StringBuilder;
-    AppendLine(text: string): StringBuilder;
+    AppendLine(text?: string): StringBuilder;
     toString(): string;
 }
 /**
