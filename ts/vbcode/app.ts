@@ -17,6 +17,7 @@ namespace vscode {
 
     const delimiterSymbols = {
         ".": true,
+        ",": true,
         "=": true,
         "(": true,
         ")": true,
@@ -80,7 +81,7 @@ namespace vscode {
     }
 
     function peekNextToken(chars: Pointer<string>, allowNewLine: boolean = false): string {
-        var i: number = 1;
+        var i: number = 0;
         var c: string = null;
 
         while ((c = chars.Peek(i++)) == " " || c == "\n") {

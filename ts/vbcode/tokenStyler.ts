@@ -49,7 +49,7 @@
                 for (var i: number = 0; i < 4; i++) {
                     this.code.Append("&nbsp;");
                 }
-            } else if (token == "(" || token == "{") {
+            } else if (token == "(" || token == "{" || token == ",") {
                 this.code.Append(token);
             } else {
                 // 不计算空格
