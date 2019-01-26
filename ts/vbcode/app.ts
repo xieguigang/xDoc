@@ -8,9 +8,21 @@ $ts.mode = Modes.debug;
 namespace vscode {
 
     export const VisualStudio: CSS = vscode.defaultStyle();
+    /**
+     * All of the VB keywords that following type names
+    */
     export const TypeDefine: string[] = [
-        "As", "Class", "Structure", "Module"
+        "As", "Class", "Structure", "Module", "Imports", "Of"
     ];
+
+    const delimiterSymbols = {
+        ".": true,
+        "=": true,
+        "(": true,
+        ")": true,
+        "{": true,
+        "}": true
+    }
 
     /**
      * List of VB.NET language keywords
@@ -67,6 +79,19 @@ namespace vscode {
         }
     }
 
+    function peekNextToken(chars: Pointer<string>, allowNewLine: boolean = false): string {
+        var i: number = 1;
+        var c: string = null;
+
+        while ((c = chars.Peek(i++)) == " " || c == "\n") {
+            if ((c == "\n") && !allowNewLine) {
+                break;
+            }
+        }
+
+        return c;
+    }
+
     export function codeHtml(chars: Pointer<string>): string {
         var code: tokenStyler = new tokenStyler();
         var escapes = {
@@ -76,8 +101,12 @@ namespace vscode {
         };
         var token: string[] = [];
         var c: string;
+        var isAttribute = function () {
+            var haveTagEnd = token[token.length - 1] == ">" || token[token.length - 1] == "(";
+            return token[0] == "&lt;" && haveTagEnd;
+        }
         var endToken = function () {
-            if (token[0] == "&lt;" && (token[token.length - 1] == ">" || token[token.length - 1] == "(")) {
+            if (isAttribute()) {
                 // 自定义属性需要一些额外的处理
                 // 不渲染符号，只渲染单词
                 code.append(token[0]);
@@ -92,9 +121,19 @@ namespace vscode {
                 if (code.LastDirective) {
                     code.directive(word);
                 } else if (VBKeywords.indexOf(word) > -1) {
+                    // 当前的单词是一个关键词
                     code.keyword(word);
                 } else if (code.LastTypeKeyword) {
-                    code.type(word);
+                    if (code.LastAddedToken == "Imports") {
+                        // Imports xxx = yyyy
+                        if (peekNextToken(chars) == "=") {
+                            code.type(word);
+                        } else {
+                            code.append(word);
+                        }
+                    } else {
+                        code.type(word);
+                    }
                 } else {
                     code.append(word);
                 }
@@ -157,23 +196,21 @@ namespace vscode {
                         token.push("&nbsp;");
                     }
                 }
-            } else if (c == "." || c == "=" || c == ")") {
+            } else if (c in delimiterSymbols) {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
-                    endToken();
-                    code.append(c);
+                    if (c == "(") {
+                        token.push("(");
+                        endToken();
+                    } else {
+                        endToken();
+                        code.append(c);
+                    }
                 } else {
                     token.push(c);
                 }
             } else if (c == "<" || c == "&") {
                 token.push(Strings.escapeXml(c));
-            } else if (c == "(") {
-                token.push("(");
-
-                // attribute
-                if (token[0] == "&lt;") {
-                    endToken();
-                }
             } else {
                 token.push(c);
             }

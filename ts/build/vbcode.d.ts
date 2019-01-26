@@ -21,14 +21,16 @@ declare namespace vscode {
         private lastTypeKeyword;
         private lastNewLine;
         private lastDirective;
+        private lastToken;
         readonly Html: string;
+        readonly LastAddedToken: string;
         /**
          * 上一个追加的单词是一个类型定义或者引用的关键词
         */
         readonly LastTypeKeyword: boolean;
         readonly LastNewLine: boolean;
         readonly LastDirective: boolean;
-        private static tagClass;
+        private tagClass;
         append(token: string): void;
         appendLine(token?: string): void;
         directive(token: string): void;
@@ -41,6 +43,9 @@ declare namespace vscode {
 }
 declare namespace vscode {
     const VisualStudio: CSS;
+    /**
+     * All of the VB keywords that following type names
+    */
     const TypeDefine: string[];
     /**
      * List of VB.NET language keywords

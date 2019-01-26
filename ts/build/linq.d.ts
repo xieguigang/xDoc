@@ -1568,6 +1568,10 @@ declare class Pointer<T> extends IEnumerator<T> {
      * returns current pointer object.
     */
     MoveNext(): Pointer<T>;
+    /**
+     * 以当前的位置为基础，得到偏移后的位置的值，但不会改变现有的指针的位置值
+    */
+    Peek(offset: number): T;
 }
 /**
  * 序列之中的对某一个区域的滑窗操作结果对象

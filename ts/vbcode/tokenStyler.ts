@@ -6,9 +6,16 @@
         private lastTypeKeyword: boolean = false;
         private lastNewLine: boolean = true;
         private lastDirective: boolean = false;
+        private lastToken: string = null;
+
+        //#region "status"
 
         public get Html(): string {
             return this.code.toString();
+        }
+
+        public get LastAddedToken(): string {
+            return this.lastToken;
         }
 
         /**
@@ -26,7 +33,10 @@
             return this.lastDirective;
         }
 
-        private static tagClass(token: string, cls: string): string {
+        //#endregion
+
+        private tagClass(token: string, cls: string): string {
+            this.lastToken = token;
             return `<span class="${cls}">${token}</span>`;
         }
 
@@ -40,9 +50,11 @@
                     this.code.Append("&nbsp;");
                 }
             } else {
+                // 不计算空格
                 this.code.Append(token);
                 this.lastTypeKeyword = false;
                 this.lastDirective = false;
+                this.lastToken = token;
             }
 
             this.lastNewLine = false;
@@ -53,38 +65,39 @@
             this.lastTypeKeyword = false;
             this.lastNewLine = true;
             this.lastDirective = false;
+            this.lastToken = token;
         }
 
         public directive(token: string) {
-            this.code.Append(tokenStyler.tagClass(token, "directive"));
+            this.code.Append(this.tagClass(token, "directive"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = true;
         }
 
         public type(token: string) {
-            this.code.Append(tokenStyler.tagClass(token, "type"));
+            this.code.Append(this.tagClass(token, "type"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
         }
 
         public comment(token: string) {
-            this.code.AppendLine(tokenStyler.tagClass(token, "comment"));
+            this.code.AppendLine(this.tagClass(token, "comment"));
             this.lastTypeKeyword = false;
             this.lastNewLine = true;
             this.lastDirective = false;
         }
 
         public string(token: string) {
-            this.code.Append(tokenStyler.tagClass(token, "string"));
+            this.code.Append(this.tagClass(token, "string"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
         }
 
         public keyword(token: string) {
-            this.code.Append(tokenStyler.tagClass(token, "keyword"));
+            this.code.Append(this.tagClass(token, "keyword"));
 
             if (TypeDefine.indexOf(token) > -1) {
                 this.lastTypeKeyword = true;
@@ -97,7 +110,7 @@
         }
 
         public attribute(token: string) {
-            this.code.Append(tokenStyler.tagClass(token, "attribute"));
+            this.code.Append(this.tagClass(token, "attribute"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
