@@ -12,7 +12,7 @@ namespace vscode {
      * All of the VB keywords that following type names
     */
     export const TypeDefine: string[] = [
-        "As", "Class", "Structure", "Module", "Imports", "Of"
+        "As", "Class", "Structure", "Module", "Imports", "Of", "New"
     ];
 
     const delimiterSymbols = {
@@ -99,8 +99,11 @@ namespace vscode {
             comment: false,
             keyword: false // VB之中使用[]进行关键词的转义操作
         };
-        var token: string[] = [];
         var c: string;
+        var token: string[] = [];
+        var isKeyWord = function () {
+            return VBKeywords.indexOf(token.join("")) > -1;
+        }
         var isAttribute = function () {
             var haveTagEnd = token[token.length - 1] == ">" || token[token.length - 1] == "(";
             return token[0] == "&lt;" && haveTagEnd;
@@ -200,8 +203,14 @@ namespace vscode {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
                     if (c == "(") {
-                        token.push("(");
-                        endToken();
+                        if (isKeyWord()) {
+                            endToken();
+                            token.push("(");
+                            endToken();
+                        } else {
+                            token.push("(");
+                            endToken();
+                        }
                     } else {
                         endToken();
                         code.append(c);

@@ -378,7 +378,7 @@ declare class DOMEnumerator<T extends HTMLElement> extends IEnumerator<T> {
      *
      * @param value 如果需要批量清除节点之中的值的话，需要传递一个空字符串，而非空值
     */
-    val(value?: string | string[] | IEnumerator<string>): IEnumerator<string>;
+    val(value?: number | string | string[] | IEnumerator<string>): IEnumerator<string>;
     private static setVal;
     private static getVal;
     /**
