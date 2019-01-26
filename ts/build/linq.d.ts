@@ -884,7 +884,7 @@ declare namespace Internal {
          * @param iframe ``#xxx``编号查询表达式
          * @param fun 目标函数，请注意，这个函数应该是尽量不引用依赖其他对象的
         */
-        inject(iframe: string, fun: Delegate.Func): void;
+        inject(iframe: string, fun: (Delegate.Func | string)[] | string | Delegate.Func): void;
         /**
          * 动态加载脚本
          *
@@ -2556,6 +2556,10 @@ declare namespace HttpHelpers {
          * @param context 默认是添加在当前文档窗口环境之中
         */
         static doEval(script: string, callback?: () => void, context?: Window): void;
+        /**
+         * 得到相对于当前路径而言的目标脚本全路径
+        */
+        static getFullPath(url: string): string;
     }
 }
 /**
