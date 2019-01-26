@@ -12,7 +12,7 @@ namespace vscode {
      * All of the VB keywords that following type names
     */
     export const TypeDefine: string[] = [
-        "As", "Class", "Structure", "Module", "Imports", "Of", "New"
+        "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType"
     ];
 
     const delimiterSymbols = {
@@ -134,6 +134,8 @@ namespace vscode {
                         } else {
                             code.append(word);
                         }
+                    } else if (word == "(") {
+                        code.append(word);
                     } else {
                         code.type(word);
                     }
