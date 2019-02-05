@@ -1,17 +1,10 @@
-  <iframe id="vbcode" width="1024"
-            height="840"
-            frameborder="no"
-            border="0"
-            marginwidth="0"
-            marginheight="0"
-            scrolling="yes"
-            allowtransparency="yes"
-            src="test.html">
-	</iframe>
-	
-	<script src="linq.js"></script>
-	
-	<script type="text/javascript">
+<iframe id="vbcode" width="1024" height="840" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"
+ allowtransparency="yes" src="test.html">
+</iframe>
+
+<script src="linq.js"></script>
+
+<script type="text/javascript">
 	var script2 = HttpHelpers.Imports.getFullPath("/vbcode.js");
 	var script1 = HttpHelpers.Imports.getFullPath("/linq.js");
 	var runScript = `
@@ -27,11 +20,10 @@
 		});
 		});
 	`
-	
+
 	console.log(runScript)
-	
+
 	$ts.mode = Modes.debug;
 	$ts.inject("#vbcode", [HttpHelpers.GetAsyn, runScript]);
 	
-	
-	</script>
+</script>
