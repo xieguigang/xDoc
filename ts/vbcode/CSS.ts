@@ -29,7 +29,7 @@
         };
     }
 
-    export function applyStyle(div: string, style: CSS = vscode.VisualStudio) {
+    export function applyStyle(div: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
         $ts.select(".string").attr("style", `color: ${style.string};`);
         $ts.select(".comment").attr("style", `color: ${style.comment};`);
         $ts.select(".keyword").attr("style", `color: ${style.keyword}`);
@@ -37,6 +37,10 @@
         $ts.select(".type").attr("style", `color: ${style.type}`);
         $ts.select(".directive").attr("style", `color: ${style.directive}`);
 
-        CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
+        if (typeof div == "string") {
+            CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
+        } else {
+            CanvasHelper.CSSFont.applyCSS(div, style.globalFont);
+        }
     }
 }

@@ -69,9 +69,20 @@ namespace vscode {
     `);
 
     /** 
+     * <pre class="vbnet">
+    */
+    export function highlightVB(style: CSS = vscode.VisualStudio) {
+        var codeList = $ts.select(".vbnet");
+
+        for(let code of codeList.ToArray()) {
+            vscode.highlight(code.innerText, <any>code, style);
+        }
+    }
+
+    /** 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    export function highlight(code: string, display: string, style: CSS = vscode.VisualStudio) {
+    export function highlight(code: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
         var html: tokenStyler = vscode.codeHtml(pcode);
 
@@ -82,7 +93,12 @@ namespace vscode {
             container.append(row);
         }
 
-        $ts(display).display(preview);
+        if (typeof display == "string") {
+            $ts(display).display(preview);
+        } else {
+            display.clear();
+            display.display(preview);
+        }
 
         if (style) {
             vscode.applyStyle(display, style);
