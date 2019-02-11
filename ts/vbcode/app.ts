@@ -73,16 +73,23 @@ namespace vscode {
     */
     export function highlight(code: string, display: string, style: CSS = vscode.VisualStudio) {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
-        var html: string = vscode.codeHtml(pcode);
+        var html: tokenStyler = vscode.codeHtml(pcode);
 
-        $ts(display).display(html);
+        var container = $ts("<tbody>");
+        var preview = $ts("<table>", {class:"pre"}).display(container);
+
+        for(let row of html.rows) {
+            container.append(row);
+        }
+
+        $ts(display).display(preview);
 
         if (style) {
             vscode.applyStyle(display, style);
         }
 
         if (Internal.outputEverything()) {
-            console.log(html);
+            console.log(html.rows);
         }
     }
 
@@ -99,7 +106,7 @@ namespace vscode {
         return c;
     }
 
-    export function codeHtml(chars: Pointer<string>): string {
+    export function codeHtml(chars: Pointer<string>): tokenStyler {
         var code: tokenStyler = new tokenStyler();
         var escapes = {
             string: false,
@@ -234,7 +241,7 @@ namespace vscode {
             }
         }
 
-        return code.Html;
+        return code;
     }
 }
 

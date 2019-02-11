@@ -1,8 +1,13 @@
 ﻿namespace vscode {
 
+    /** 
+     * 输出的是一个``table``对象的html文本
+    */
     export class tokenStyler {
 
         private code: StringBuilder = new StringBuilder("", "<br />\n");
+        private rowList: HTMLTableRowElement[] = [];
+
         private lastTypeKeyword: boolean = false;
         private lastNewLine: boolean = true;
         private lastDirective: boolean = false;
@@ -10,8 +15,8 @@
 
         //#region "status"
 
-        public get Html(): string {
-            return this.code.toString();
+        public get rows(): HTMLTableRowElement[] {
+            return this.rowList;
         }
 
         public get LastAddedToken(): string {
@@ -62,12 +67,25 @@
             this.lastNewLine = false;
         }
 
+        /** 
+         * 生成一个新的table的行对象
+        */
         public appendLine(token: string = "") {
             this.code.AppendLine(token);
             this.lastTypeKeyword = false;
             this.lastNewLine = true;
             this.lastDirective = false;
             this.lastToken = token;
+
+            // 构建新的row对象，然后将原来的代码字符串缓存清空
+            var line = $ts("<span>", {class: "line"}).display(`${this.rowList.length + 1}: `);
+            var snippet = $ts("<td>",{class:"snippet"}).display(this.code.toString());
+            var tr = $ts("<tr>").asExtends
+                .append($ts("<td>", {class: "lines"}).display(line))
+                .append(snippet);
+
+            this.rowList.push(<any>tr.HTMLElement);
+            this.code = new StringBuilder("", "<br />\n");
         }
 
         public directive(token: string) {
