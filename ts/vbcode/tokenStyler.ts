@@ -77,6 +77,10 @@
             this.lastDirective = false;
             this.lastToken = token;
 
+            this.appendNewRow();
+        }
+
+        private appendNewRow() {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
             var line = $ts("<span>", {class: "line"}).display(`${this.rowList.length + 1}: `);
             var snippet = $ts("<td>",{class:"snippet"}).display(this.code.toString());
@@ -107,6 +111,8 @@
             this.lastTypeKeyword = false;
             this.lastNewLine = true;
             this.lastDirective = false;
+
+            this.appendNewRow();
         }
 
         public string(token: string) {
