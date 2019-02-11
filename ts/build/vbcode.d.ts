@@ -13,7 +13,7 @@ declare namespace vscode {
         globalFont: CanvasHelper.CSSFont;
     }
     function defaultStyle(): CSS;
-    function applyStyle(div: string, style?: CSS): void;
+    function applyStyle(div: string | IHTMLElement, style?: CSS): void;
 }
 declare namespace vscode {
     /**
@@ -60,8 +60,12 @@ declare namespace vscode {
     */
     const VBKeywords: string[];
     /**
+     * <pre class="vbnet">
+    */
+    function highlightVB(style?: CSS): void;
+    /**
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    function highlight(code: string, display: string, style?: CSS): void;
+    function highlight(code: string, display: string | IHTMLElement, style?: CSS): void;
     function codeHtml(chars: Pointer<string>): tokenStyler;
 }

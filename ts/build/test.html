@@ -1,6 +1,6 @@
 <link type="text/css" rel="stylesheet" href="./style.css" />
-
-<script type="plain/text" id="demo-vb-code">
+<code>
+<pre class="vbnet">
 #Region "Microsoft.VisualBasic::2f4c1c505273b6bc3da50be367a111b3, MetaDNA\KEGG_MetaDNA\Program.vb"
 
     ' Author:
@@ -137,15 +137,17 @@ Module Program
         Return rda.FileLength > 0
     End Function
 End Module
-</script>
-
+    </pre>
+</code>
 <script src="linq.js"></script>
 <script src="vbcode.js"></script>
 
 <script>
-$ts(function() {
+/*$ts(function() {
 	vscode.highlight($ts.text("#demo-vb-code"), "#preview");
-})
+})*/
+
+vscode.highlightVB();
 </script>
 
 <div id="preview"></div>
