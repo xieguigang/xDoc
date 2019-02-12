@@ -16,6 +16,21 @@ declare namespace vscode {
     function applyStyle(div: string | IHTMLElement, style?: CSS): void;
 }
 declare namespace vscode {
+    class VBParser {
+        private chars;
+        private code;
+        private escapes;
+        private token;
+        constructor(chars: Pointer<string>);
+        GetTokens(): tokenStyler;
+        private static peekNextToken;
+        private isKeyWord;
+        private isAttribute;
+        private endToken;
+        private walkChar;
+    }
+}
+declare namespace vscode {
     /**
      * 输出的是一个``table``对象的html文本
     */
@@ -55,6 +70,15 @@ declare namespace vscode {
      * All of the VB keywords that following type names
     */
     const TypeDefine: string[];
+    const delimiterSymbols: {
+        ".": boolean;
+        ",": boolean;
+        "=": boolean;
+        "(": boolean;
+        ")": boolean;
+        "{": boolean;
+        "}": boolean;
+    };
     /**
      * List of VB.NET language keywords
     */
@@ -68,7 +92,6 @@ declare namespace vscode {
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
     function highlight(code: string, display: string | IHTMLElement, style?: CSS): void;
-    function codeHtml(chars: Pointer<string>): tokenStyler;
 }
 declare namespace vscode.github {
     class raw {
