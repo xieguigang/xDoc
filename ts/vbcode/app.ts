@@ -80,7 +80,7 @@ namespace vscode {
     }
 
     export function highlightGithub(github: github.raw, filename: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
-        $ts.get(github.fileURL(filename), code => vscode.highlight(<any>code, display, style));
+        HttpHelpers.GetAsyn(github.fileURL(filename), code => vscode.highlight(code, display, style));
     }
  
     /** 
