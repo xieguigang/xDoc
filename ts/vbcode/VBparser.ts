@@ -40,6 +40,7 @@ namespace vscode {
         private isAttribute() {
             var token = this.token;
             var haveTagEnd = token[token.length - 1] == ">" || token[token.length - 1] == "(";
+
             return token[0] == "&lt;" && haveTagEnd;
         }
         private endToken() {
@@ -80,23 +81,23 @@ namespace vscode {
                 }
             }
 
-            token = [];
+            this.token = [];
         }
 
         private walkChar(c: string): void {
             var escapes = this.escapes;
-            var code = this.code, token = this.token;
+            var code = this.code;
 
             if (c == "\n") {
                 // 是一个换行符
                 if (escapes.comment) {
                     // vb之中注释只有单行注释，换行之后就结束了                    
-                    code.comment(token.join(""));
+                    code.comment(this.token.join(""));
                     escapes.comment = false;
-                    token = [];
+                    this.token = [];
                 } else if (escapes.string) {
                     // vb之中支持多行文本字符串，所以继续添加
-                    token.push("<br />");
+                    this.token.push("<br />");
                 } else {
                     // 结束当前的token
                     this.endToken();
@@ -107,22 +108,22 @@ namespace vscode {
                 if (!escapes.comment && !escapes.string) {
                     escapes.string = true;
                     this.endToken();
-                    token.push(c);
+                    this.token.push(c);
                 } else if (!escapes.comment && escapes.string) {
                     // 是字符串的结束符号
                     escapes.string = false;
-                    token.push(c);
-                    code.string(token.join(""));
-                    token = [];
+                    this.token.push(c);
+                    code.string(this.token.join(""));
+                    this.token = [];
                 }
             } else if (c == "'") {
                 if (!escapes.comment && !escapes.string) {
                     // 是注释的起始
                     escapes.comment = true;
                     this.endToken();
-                    token.push(c);
+                    this.token.push(c);
                 } else {
-                    token.push(c);
+                    this.token.push(c);
                 }
             } else if (c == " " || c == "\t") {
                 // 使用空格进行分词
@@ -130,12 +131,12 @@ namespace vscode {
                     this.endToken();
                     code.append(c);
                 } else if (c == " ") {
-                    token.push("&nbsp;");
+                    this.token.push("&nbsp;");
                 } else {
                     // 是一个TAB
                     // 则插入4个空格
                     for (var i: number = 0; i < 4; i++) {
-                        token.push("&nbsp;");
+                        this.token.push("&nbsp;");
                     }
                 }
             } else if (c in delimiterSymbols) {
@@ -144,10 +145,10 @@ namespace vscode {
                     if (c == "(") {
                         if (this.isKeyWord()) {
                             this.endToken();
-                            token.push("(");
+                            this.token.push("(");
                             this.endToken();
                         } else {
-                            token.push("(");
+                            this.token.push("(");
                             this.endToken();
                         }
                     } else {
@@ -155,12 +156,12 @@ namespace vscode {
                         code.append(c);
                     }
                 } else {
-                    token.push(c);
+                    this.token.push(c);
                 }
             } else if (c == "<" || c == "&") {
-                token.push(Strings.escapeXml(c));
+                this.token.push(Strings.escapeXml(c));
             } else {
-                token.push(c);
+                this.token.push(c);
             }
         }
     }

@@ -30,6 +30,8 @@
     }
 
     export function applyStyle(div: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
+        var preview: HTMLElement = typeof div == "string" ? $ts(div) : div;
+
         $ts.select(".string").attr("style", `color: ${style.string};`);
         $ts.select(".comment").attr("style", `color: ${style.comment};`);
         $ts.select(".keyword").attr("style", `color: ${style.keyword}`);
@@ -38,10 +40,6 @@
         $ts.select(".directive").attr("style", `color: ${style.directive}`);
         $ts.select(".line-hash").attr("style", `color: #3c3e3e; text-decoration: none;`);
 
-        if (typeof div == "string") {
-            CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
-        } else {
-            CanvasHelper.CSSFont.applyCSS(div, style.globalFont);
-        }
+        CanvasHelper.CSSFont.applyCSS(preview, style.globalFont);
     }
 }
