@@ -82,10 +82,12 @@
 
         private appendNewRow() {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
-            var line = $ts("<span>", {class: "line"}).display(`${this.rowList.length + 1}: `);
-            var snippet = $ts("<td>",{class:"snippet"}).display(this.code.toString());
+            var L = this.rowList.length + 1;
+            var line = $ts("<span>", { class: "line" }).display(`${L}: `);
+            var hash = $ts("<a>", { id: `L${L}`, href: `#L${L}`, class: "line-hash" }).display(line);
+            var snippet = $ts("<td>", { class: "snippet" }).display(this.code.toString());
             var tr = $ts("<tr>").asExtends
-                .append($ts("<td>", {class: "lines"}).display(line))
+                .append($ts("<td>", { class: "lines" }).display(hash))
                 .append(snippet);
 
             this.rowList.push(<any>tr.HTMLElement);

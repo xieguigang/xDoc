@@ -36,6 +36,7 @@
         $ts.select(".attribute").attr("style", `color: ${style.attribute}`);
         $ts.select(".type").attr("style", `color: ${style.type}`);
         $ts.select(".directive").attr("style", `color: ${style.directive}`);
+        $ts.select(".line-hash").attr("style", `color: #3c3e3e; text-decoration: none;`);
 
         if (typeof div == "string") {
             CanvasHelper.CSSFont.applyCSS($ts(div), style.globalFont);
