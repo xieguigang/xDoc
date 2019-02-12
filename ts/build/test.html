@@ -1,4 +1,5 @@
 <link type="text/css" rel="stylesheet" href="./style.css" />
+<!--
 <code>
 <pre class="vbnet">
 #Region "Microsoft.VisualBasic::2f4c1c505273b6bc3da50be367a111b3, MetaDNA\KEGG_MetaDNA\Program.vb"
@@ -139,15 +140,20 @@ Module Program
 End Module
     </pre>
 </code>
+
+-->
 <script src="linq.js"></script>
 <script src="vbcode.js"></script>
 
 <script>
-/*$ts(function() {
-	vscode.highlight($ts.text("#demo-vb-code"), "#preview");
-})*/
+var github = new vscode.github.raw("xieguigang", "sciBASIC");
 
-vscode.highlightVB();
+$ts(function() {
+    // vscode.highlight($ts.text("#demo-vb-code"), "#preview");
+    github.highlightCode("Microsoft.VisualBasic.Core/CommandLine/CommandLine.vb", "#preview");
+})
+
+// vscode.highlightVB();
 </script>
 
 <div id="preview"></div>

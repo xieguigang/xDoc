@@ -75,6 +75,8 @@ declare namespace vscode.github {
         username: string;
         repo: string;
         commit: string;
+        constructor(user: string, repo: string, commit?: string);
         fileURL(path: string): string;
+        highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS): void;
     }
 }
