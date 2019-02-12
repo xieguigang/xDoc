@@ -1,6 +1,7 @@
 ﻿/// <reference path="../build/linq.d.ts" />
 /// <reference path="CSS.ts" />
 /// <reference path="tokenStyler.ts" />
+/// <reference path="VBparser.ts" />
 
 $ts.mode = Modes.debug;
 // $ts.mode = Modes.production;
@@ -88,7 +89,7 @@ namespace vscode {
     */
     export function highlight(code: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
-        var html: tokenStyler = vscode.codeHtml(pcode);
+        var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
 
         var container = $ts("<tbody>");
         var preview = $ts("<table>", {class:"pre"}).display(container);
