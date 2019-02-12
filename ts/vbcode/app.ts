@@ -79,6 +79,10 @@ namespace vscode {
         }
     }
 
+    export function highlightGithub(github: github.raw, filename: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
+        $ts.get(github.fileURL(filename), code => vscode.highlight(<any>code, display, style));
+    }
+ 
     /** 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */

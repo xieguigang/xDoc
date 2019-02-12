@@ -63,9 +63,18 @@ declare namespace vscode {
      * <pre class="vbnet">
     */
     function highlightVB(style?: CSS): void;
+    function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS): void;
     /**
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
     function highlight(code: string, display: string | IHTMLElement, style?: CSS): void;
     function codeHtml(chars: Pointer<string>): tokenStyler;
+}
+declare namespace vscode.github {
+    class raw {
+        username: string;
+        repo: string;
+        commit: string;
+        fileURL(path: string): string;
+    }
 }
