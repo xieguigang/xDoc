@@ -101,6 +101,10 @@ namespace vscode {
         if (typeof display == "string") {
             $ts(display).display(preview);
         } else {
+            if (display.tagName == "pre") {
+                preview.className = "";
+            }
+
             display.clear();
             display.display(preview);
         }
