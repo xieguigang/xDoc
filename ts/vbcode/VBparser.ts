@@ -1,5 +1,8 @@
 namespace vscode {
 
+    /** 
+     * The VB code syntax token generator
+    */
     export class VBParser {
 
         private code: tokenStyler = new tokenStyler();
@@ -10,6 +13,9 @@ namespace vscode {
         };
         private token: string[] = [];
 
+        /** 
+         * @param chars A chars enumerator
+        */
         public constructor(private chars: Pointer<string>) {
         }
 
