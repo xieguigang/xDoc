@@ -96,43 +96,63 @@ namespace vscode {
             this.token = [];
         }
 
+        /** 
+         * 处理当前的这个换行符
+        */
+        private walkNewLine() {
+            // 是一个换行符
+            if (this.escapes.comment) {
+                // vb之中注释只有单行注释，换行之后就结束了                    
+                this.code.comment(this.token.join(""));
+                this.escapes.comment = false;
+                this.token = [];
+            } else if (this.escapes.string) {
+                // vb之中支持多行文本字符串，所以继续添加
+                // this.token.push("<br />");
+                this.code.string(this.token.join(""));
+                this.code.appendLine();
+                this.token = [];
+            } else {
+                // 结束当前的token
+                this.endToken();
+                this.code.appendLine();
+            }
+        }
+
+        private walkStringQuot() {
+            // 可能是字符串的起始
+            if (!this.escapes.string) {
+                this.escapes.string = true;
+                this.endToken();
+                this.token.push('"');
+            } else if (this.escapes.string) {
+                // 是字符串的结束符号
+                this.escapes.string = false;
+                this.token.push('"');
+                this.code.string(this.token.join(""));
+                this.token = [];
+            }
+        }
+
         private walkChar(c: string): void {
             var escapes = this.escapes;
             var code = this.code;
 
             if (c == "\n") {
-                // 是一个换行符
-                if (escapes.comment) {
-                    // vb之中注释只有单行注释，换行之后就结束了                    
-                    code.comment(this.token.join(""));
-                    escapes.comment = false;
-                    this.token = [];
-                } else if (escapes.string) {
-                    // vb之中支持多行文本字符串，所以继续添加
-                    // this.token.push("<br />");
-                    code.string(this.token.join(""));
-                    code.appendLine();
-                    this.token = [];
-                } else {
-                    // 结束当前的token
-                    this.endToken();
-                    code.appendLine();
-                }
+                this.walkNewLine();
+
+            } else if (this.escapes.comment) {
+                // 当前的内容是注释的一部分，则直接添加内容
+                this.token.push('"');
+            
+            // 下面的所有代码都是处理的非注释部分的内容了
+            // 代码注释部分的内容已经在处理换行符和上面的代码之中完成了处理操作
+
             } else if (c == '"') {
-                // 可能是字符串的起始
-                if (!escapes.comment && !escapes.string) {
-                    escapes.string = true;
-                    this.endToken();
-                    this.token.push(c);
-                } else if (!escapes.comment && escapes.string) {
-                    // 是字符串的结束符号
-                    escapes.string = false;
-                    this.token.push(c);
-                    code.string(this.token.join(""));
-                    this.token = [];
-                }
+                this.walkStringQuot();
+                
             } else if (c == "'") {
-                if (!escapes.comment && !escapes.string) {
+                if (!escapes.string) {
                     // 是注释的起始
                     escapes.comment = true;
                     this.endToken();
@@ -142,9 +162,11 @@ namespace vscode {
                 }
             } else if (c == " " || c == "\t") {
                 // 使用空格进行分词
-                if (!escapes.comment && !escapes.string) {
+                if (!escapes.string) {
                     this.endToken();
                     code.append(c);
+
+                // 是字符串的一部分
                 } else if (c == " ") {
                     this.token.push("&nbsp;");
                 } else {
@@ -156,7 +178,7 @@ namespace vscode {
                 }
             } else if (c in delimiterSymbols) {
                 // 也会使用小数点进行分词
-                if (!escapes.comment && !escapes.string) {
+                if (!escapes.string) {
                     if (c == "(") {
                         //if (this.isKeyWord) {
                             this.endToken();

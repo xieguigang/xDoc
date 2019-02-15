@@ -33,6 +33,11 @@ declare namespace vscode {
         private readonly isKeyWord;
         private readonly isAttribute;
         private endToken;
+        /**
+         * 处理当前的这个换行符
+        */
+        private walkNewLine;
+        private walkStringQuot;
         private walkChar;
     }
 }
