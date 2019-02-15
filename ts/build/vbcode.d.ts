@@ -16,16 +16,22 @@ declare namespace vscode {
     function applyStyle(div: string | IHTMLElement, style?: CSS): void;
 }
 declare namespace vscode {
+    /**
+     * The VB code syntax token generator
+    */
     class VBParser {
         private chars;
         private code;
         private escapes;
         private token;
+        /**
+         * @param chars A chars enumerator
+        */
         constructor(chars: Pointer<string>);
         GetTokens(): tokenStyler;
         private static peekNextToken;
         private readonly isKeyWord;
-        private isAttribute;
+        private readonly isAttribute;
         private endToken;
         private walkChar;
     }

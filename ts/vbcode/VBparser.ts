@@ -43,7 +43,7 @@ namespace vscode {
         private get isKeyWord(): boolean {
             return VBKeywords.indexOf(this.token.join("")) > -1;
         }
-        private isAttribute() {
+        private get isAttribute(): boolean {
             var token = this.token;
             var haveTagEnd = token[token.length - 1] == ">" || token[token.length - 1] == "(";
 
@@ -52,7 +52,7 @@ namespace vscode {
         private endToken() {
             var code = this.code, token = this.token;
 
-            if (this.isAttribute()) {
+            if (this.isAttribute) {
                 // 自定义属性需要一些额外的处理
                 // 不渲染符号，只渲染单词
                 code.append(token[0]);

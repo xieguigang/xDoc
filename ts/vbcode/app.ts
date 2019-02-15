@@ -76,7 +76,7 @@ namespace vscode {
         var codeList = $ts.select(".vbnet");
 
         for(let code of codeList.ToArray()) {
-            vscode.highlight(code.innerHTML, <any>code, style);
+            vscode.highlight(code.innerText, <any>code, style);
         }
     }
 
