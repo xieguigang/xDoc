@@ -45,7 +45,7 @@ namespace vscode {
         }
         private get isAttribute(): boolean {
             var token = this.token;
-            var haveTagEnd = token[token.length - 1] == ">" || token[token.length - 1] == "(";
+            var haveTagEnd = token[token.length - 1] == ">" || this.chars.Peek(-1) == "("; // token[token.length - 1] == "(";
 
             return token[0] == "&lt;" && haveTagEnd;
         }
@@ -56,8 +56,14 @@ namespace vscode {
                 // 自定义属性需要一些额外的处理
                 // 不渲染符号，只渲染单词
                 code.append(token[0]);
-                code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
-                code.append(token[token.length - 1]);
+
+                if (token[token.length - 1] == ">") {
+                    code.attribute($ts(token).Skip(1).Take(token.length - 2).JoinBy(""));
+                    code.append(token[token.length - 1]);
+                } else {
+                    code.attribute($ts(token).Skip(1).Take(token.length - 1).JoinBy(""));
+                }
+
             } else if (code.LastNewLine && token[0] == "#") {
                 code.directive(token.join(""));
             } else {
@@ -152,14 +158,15 @@ namespace vscode {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
                     if (c == "(") {
-                        if (this.isKeyWord) {
+                        //if (this.isKeyWord) {
                             this.endToken();
                             this.token.push("(");
                             this.endToken();
-                        } else {
-                            this.token.push("(");
-                            this.endToken();
-                        }
+                        //} else {
+                        //    this.endToken();
+                        //    this.token.push("(");
+                        //    this.endToken();
+                        //}
                     } else {
                         this.endToken();
                         code.append(c);
