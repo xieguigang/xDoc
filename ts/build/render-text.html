@@ -1,6 +1,5 @@
 <link type="text/css" rel="stylesheet" href="./style.css" />
-<!--
-<code>
+
 <pre class="vbnet">
 #Region "Microsoft.VisualBasic::2f4c1c505273b6bc3da50be367a111b3, MetaDNA\KEGG_MetaDNA\Program.vb"
 
@@ -60,38 +59,38 @@ Imports VisualBasic = Microsoft.VisualBasic.Language.Runtime
 
 Module Program
 
-    ''' <summary>
+    ''' &lt;summary>
     ''' 生成MetaDNA进行计算所需要的数据包
-    ''' </summary>
+    ''' &lt;/summary>
     Public Function Main() As Integer
         Return GetType(Program).RunCLI(App.CommandLine)
     End Function
 
-    ''' <summary>
+    ''' &lt;summary>
     ''' 这个结构所产生的数据库是MetaDNA R程序包所需要的data数据
-    ''' </summary>
-    ''' <param name="args"></param>
-    ''' <returns></returns>
-    <ExportAPI("/compile")>
-    <Usage("/compile /br08201 <reactions.repo.directory> /KEGG_cpd <compounds.repo.directory> [/out <default=metaDNA_kegg.rda>]")>
-    <Description("Compile the kegg reaction/compound database as MetaDNA network database into RDA format.")>
-    <Argument("/br08201", False, CLITypes.File,
+    ''' &lt;/summary>
+    ''' &lt;param name="args">&lt;/param>
+    ''' &lt;returns>&lt;/returns>
+    &lt;ExportAPI("/compile")>
+    &lt;Usage("/compile /br08201 &lt;reactions.repo.directory> /KEGG_cpd &lt;compounds.repo.directory> [/out &lt;default=metaDNA_kegg.rda>]")>
+    &lt;Description("Compile the kegg reaction/compound database as MetaDNA network database into RDA format.")>
+    &lt;Argument("/br08201", False, CLITypes.File,
               AcceptTypes:={GetType(Reaction)},
               Description:="The kegg reaction xml data model database repository directory.")>
-    <Argument("/KEGG_cpd", False, CLITypes.File,
+    &lt;Argument("/KEGG_cpd", False, CLITypes.File,
               AcceptTypes:={GetType(Compound)},
               Description:="The kegg compound xml data model database repository directory.")>
-    <Argument("/out", True, CLITypes.File, Description:="The file save location of the rda database file.")>
+    &lt;Argument("/out", True, CLITypes.File, Description:="The file save location of the rda database file.")>
     Public Function Compiler(args As CommandLine) As Integer
-        Return (args <= "/br08201", args <= "/KEGG_cpd") _
+        Return (args &lt;= "/br08201", args &lt;= "/KEGG_cpd") _
             .BuildNetwork(args("/out") Or $"metaDNA_kegg.rda") _
             .CLICode
     End Function
 
     ReadOnly NA As New DefaultValue(Of String)("NA", Function(exp) CStr(exp) = "NULL")
 
-    <Extension> Private Function BuildNetwork(repository As (reaction$, compound$), rda$) As Boolean
-        Dim reactions = (ls - l - r - "*.Xml" <= repository.reaction) _
+    &lt;Extension> Private Function BuildNetwork(repository As (reaction$, compound$), rda$) As Boolean
+        Dim reactions = (ls - l - r - "*.Xml" &lt;= repository.reaction) _
             .Select(Function(path)
                         Return path.LoadXml(Of Reaction)(stripInvalidsCharacter:=True)
                     End Function)
@@ -105,7 +104,7 @@ Module Program
         SyncLock R_server.R
             With R_server.R
 
-                ' network <- list(rxnID, define, reactants, products);
+                ' network &lt;- list(rxnID, define, reactants, products);
                 ' reactants和products都是KEGG的代谢物编号
                 Dim network$ = Rbase.list()
 
@@ -139,21 +138,10 @@ Module Program
     End Function
 End Module
     </pre>
-</code>
 
--->
 <script src="linq.js"></script>
 <script src="vbcode.js"></script>
 
 <script>
-var github = new vscode.github.raw("xieguigang", "sciBASIC");
-
-$ts(function() {
-    // vscode.highlight($ts.text("#demo-vb-code"), "#preview");
-    github.highlightCode("gr/Microsoft.VisualBasic.Imaging/Drawing2D/Text/ASCIIArt/CharSet.vb", "#preview");
-})
-
-// vscode.highlightVB();
+    vscode.highlightVB();
 </script>
-
-<div id="preview"></div>

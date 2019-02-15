@@ -1,0 +1,13 @@
+<link type="text/css" rel="stylesheet" href="./style.css" />
+
+<script src="linq.js"></script>
+<script src="vbcode.js"></script>
+
+<div id="preview"></div>
+
+<script>
+    var github = new vscode.github.raw("xieguigang", "sciBASIC");
+    var file = "gr/Microsoft.VisualBasic.Imaging/Drawing2D/Text/ASCIIArt/CharSet.vb";
+
+    github.highlightCode(file, "#preview");
+</script>
