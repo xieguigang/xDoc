@@ -34,7 +34,7 @@ namespace vscode {
             return c;
         }
 
-        private isKeyWord() {
+        private get isKeyWord(): boolean {
             return VBKeywords.indexOf(this.token.join("")) > -1;
         }
         private isAttribute() {
@@ -97,7 +97,10 @@ namespace vscode {
                     this.token = [];
                 } else if (escapes.string) {
                     // vb之中支持多行文本字符串，所以继续添加
-                    this.token.push("<br />");
+                    // this.token.push("<br />");
+                    code.string(this.token.join(""));
+                    code.appendLine();
+                    this.token = [];
                 } else {
                     // 结束当前的token
                     this.endToken();
@@ -143,7 +146,7 @@ namespace vscode {
                 // 也会使用小数点进行分词
                 if (!escapes.comment && !escapes.string) {
                     if (c == "(") {
-                        if (this.isKeyWord()) {
+                        if (this.isKeyWord) {
                             this.endToken();
                             this.token.push("(");
                             this.endToken();

@@ -24,7 +24,7 @@ declare namespace vscode {
         constructor(chars: Pointer<string>);
         GetTokens(): tokenStyler;
         private static peekNextToken;
-        private isKeyWord;
+        private readonly isKeyWord;
         private isAttribute;
         private endToken;
         private walkChar;
