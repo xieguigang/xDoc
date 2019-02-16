@@ -565,6 +565,14 @@ declare module Strings {
     */
     function isNumericPattern(text: string): boolean;
     /**
+     * 对bytes数值进行格式自动优化显示
+     *
+     * @param bytes
+     *
+     * @return 经过自动格式优化过后的大小显示字符串
+    */
+    function Lanudry(bytes: number): string;
+    /**
      * how to escape xml entities in javascript?
      *
      * > https://stackoverflow.com/questions/7918868/how-to-escape-xml-entities-in-javascript
@@ -941,7 +949,7 @@ declare namespace Internal {
         /**
          * 解析一个给定的URL字符串
         */
-        parseURL(url: string): TsLinq.URL;
+        parseURL(url: string): TypeScript.URL;
         /**
          * 从当前页面跳转到给定的链接页面
          *
@@ -1135,10 +1143,11 @@ declare class Dictionary<V> extends IEnumerator<MapTuple<string, V>> {
     */
     Delete(key: string): Dictionary<V>;
 }
-declare namespace TsLinq {
+declare namespace TypeScript {
     module URLPatterns {
         const hostNamePattern: RegExp;
         const uriPattern: RegExp;
+        const urlPattern: RegExp;
     }
     /**
      * URL组成字符串解析模块
@@ -1182,20 +1191,16 @@ declare namespace TsLinq {
          * 获取得到当前的url
         */
         static WindowLocation(): URL;
-        /**
-         * 对bytes数值进行格式自动优化显示
-         *
-         * @param bytes
-         *
-         * @return 经过自动格式优化过后的大小显示字符串
-        */
-        static Lanudry(bytes: number): string;
         toString(): string;
         static Refresh(url: string): string;
         /**
          * 获取所给定的URL之中的host名称字符串，如果解析失败会返回空值
         */
         static getHostName(url: string): string;
+        /**
+         * 将目标文本之中的所有的url字符串匹配出来
+        */
+        static ParseAllUrlStrings(text: string): string[];
         static IsWellFormedUriString(uri: string): boolean;
     }
 }

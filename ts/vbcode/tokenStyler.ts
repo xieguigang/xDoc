@@ -117,7 +117,18 @@
             this.appendNewRow();
         }
 
+        /** 
+         * 可能会存在url
+        */
         public string(token: string) {
+            var urls: string[] = TypeScript.URL.ParseAllUrlStrings(token);
+            var a: string;
+
+            for(let url of urls) {
+                a = `<a href="${url}">${url}</a>`;
+                token = token.replace(url, a);
+            }
+
             this.code.Append(this.tagClass(token, "string"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
