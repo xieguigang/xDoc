@@ -70,6 +70,7 @@ declare namespace vscode {
         directive(token: string): void;
         type(token: string): void;
         comment(token: string): void;
+        private static highlightURLs;
         /**
          * 可能会存在url
         */
