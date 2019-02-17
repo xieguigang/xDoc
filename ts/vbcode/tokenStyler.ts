@@ -109,7 +109,7 @@
         }
 
         public comment(token: string) {
-            this.code.AppendLine(this.tagClass(token, "comment"));
+            this.code.AppendLine(this.tagClass(tokenStyler.highlightURLs(token), "comment"));
             this.lastTypeKeyword = false;
             this.lastNewLine = true;
             this.lastDirective = false;
@@ -117,10 +117,7 @@
             this.appendNewRow();
         }
 
-        /** 
-         * 可能会存在url
-        */
-        public string(token: string) {
+        private static highlightURLs(token: string) : string {
             var urls: string[] = TypeScript.URL.ParseAllUrlStrings(token);
             var a: string;
 
@@ -133,7 +130,14 @@
                 token = token.replace(url, a);
             }
 
-            this.code.Append(this.tagClass(token, "string"));
+            return token;
+        }
+
+        /** 
+         * 可能会存在url
+        */
+        public string(token: string) {
+            this.code.Append(this.tagClass(tokenStyler.highlightURLs(token), "string"));
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
