@@ -624,6 +624,7 @@ declare module Strings {
      * @param tag 分割name和value的分隔符，默认是一个空白符号
     */
     function GetTagValue(str: string, tag?: string): NamedValue<string>;
+    function getAllMatches(text: string, pattern: string | RegExp): RegExpExecArray[];
     /**
      * Removes the given chars from the begining of the given
      * string and the end of the given string.

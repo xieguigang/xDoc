@@ -124,6 +124,10 @@
             var urls: string[] = TypeScript.URL.ParseAllUrlStrings(token);
             var a: string;
 
+            if (Internal.outputEverything()) {
+                console.log(urls);
+            }
+
             for(let url of urls) {
                 a = `<a href="${url}">${url}</a>`;
                 token = token.replace(url, a);
