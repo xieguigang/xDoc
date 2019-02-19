@@ -117,7 +117,7 @@
             this.appendNewRow();
         }
 
-        private static highlightURLs(token: string) : string {
+        private static highlightURLs(token: string): string {
             var urls: string[] = TypeScript.URL.ParseAllUrlStrings(token);
             var a: string;
 
@@ -125,7 +125,7 @@
                 console.log(urls);
             }
 
-            for(let url of urls) {
+            for (let url of urls) {
                 a = `<a href="${url}">${url}</a>`;
                 token = token.replace(url, a);
             }

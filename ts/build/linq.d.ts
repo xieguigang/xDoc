@@ -589,12 +589,16 @@ declare module Strings {
     */
     function parseInt(text: string): number;
     /**
+     * Create new string value by repeats a given char n times.
+     *
      * @param c A single char
      * @param n n chars
     */
     function New(c: string, n: number): string;
     /**
-     * 默认是保留3位有效数字的
+     * Round the number value or number text in given decimals.
+     *
+     * @param decimals 默认是保留3位有效数字的
     */
     function round(x: number | string, decimals?: number): number | false;
     /**
@@ -624,6 +628,9 @@ declare module Strings {
      * @param tag 分割name和value的分隔符，默认是一个空白符号
     */
     function GetTagValue(str: string, tag?: string): NamedValue<string>;
+    /**
+     * Get all regex pattern matches in target text value.
+    */
     function getAllMatches(text: string, pattern: string | RegExp): RegExpExecArray[];
     /**
      * Removes the given chars from the begining of the given
@@ -1147,7 +1154,13 @@ declare class Dictionary<V> extends IEnumerator<MapTuple<string, V>> {
 declare namespace TypeScript {
     module URLPatterns {
         const hostNamePattern: RegExp;
+        /**
+         * Regexp pattern for data uri string
+        */
         const uriPattern: RegExp;
+        /**
+         * Regexp pattern for web browser url string
+        */
         const urlPattern: RegExp;
     }
     /**

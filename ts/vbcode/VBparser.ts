@@ -144,13 +144,13 @@ namespace vscode {
             } else if (this.escapes.comment) {
                 // 当前的内容是注释的一部分，则直接添加内容
                 this.token.push(c);
-            
-            // 下面的所有代码都是处理的非注释部分的内容了
-            // 代码注释部分的内容已经在处理换行符和上面的代码之中完成了处理操作
+
+                // 下面的所有代码都是处理的非注释部分的内容了
+                // 代码注释部分的内容已经在处理换行符和上面的代码之中完成了处理操作
 
             } else if (c == '"') {
                 this.walkStringQuot();
-                
+
             } else if (c == "'") {
                 if (!escapes.string) {
                     // 是注释的起始
@@ -166,7 +166,7 @@ namespace vscode {
                     this.endToken();
                     code.append(c);
 
-                // 是字符串的一部分
+                    // 是字符串的一部分
                 } else if (c == " ") {
                     this.token.push("&nbsp;");
                 } else {
@@ -181,9 +181,9 @@ namespace vscode {
                 if (!escapes.string) {
                     if (c == "(") {
                         //if (this.isKeyWord) {
-                            this.endToken();
-                            this.token.push("(");
-                            this.endToken();
+                        this.endToken();
+                        this.token.push("(");
+                        this.endToken();
                         //} else {
                         //    this.endToken();
                         //    this.token.push("(");

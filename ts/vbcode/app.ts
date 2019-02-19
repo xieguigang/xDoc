@@ -75,26 +75,26 @@ namespace vscode {
     export function highlightVB(style: CSS = vscode.VisualStudio) {
         var codeList = $ts.select(".vbnet");
 
-        for(let code of codeList.ToArray()) {
+        for (let code of codeList.ToArray()) {
             vscode.highlight(code.innerText, <any>code, style);
         }
     }
 
-    export function highlightGithub(github: github.raw, filename: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
+    export function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
         HttpHelpers.GetAsyn(github.fileURL(filename), code => vscode.highlight(code, display, style));
     }
- 
+
     /** 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    export function highlight(code: string, display: string|IHTMLElement, style: CSS = vscode.VisualStudio) {
+    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
         var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
 
         var container = $ts("<tbody>");
-        var preview = $ts("<table>", {class:"pre"}).display(container);
+        var preview = $ts("<table>", { class: "pre" }).display(container);
 
-        for(let row of html.rows) {
+        for (let row of html.rows) {
             container.append(row);
         }
 

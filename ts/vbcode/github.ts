@@ -7,7 +7,7 @@ namespace vscode.github {
         public repo: string;
         public commit: string = "master";
 
-        public constructor(user:string, repo: string, commit: string = "master") {
+        public constructor(user: string, repo: string, commit: string = "master") {
             this.username = user;
             this.repo = repo;
             this.commit = commit;
@@ -17,7 +17,7 @@ namespace vscode.github {
             return `https://raw.githubusercontent.com/${this.username}/${this.repo}/${this.commit}/${path}`
         }
 
-        public highlightCode(fileName: string, display: string| IHTMLElement, style: CSS = vscode.VisualStudio) {
+        public highlightCode(fileName: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
             vscode.highlightGithub(this, fileName, display, style);
         }
     }
