@@ -103,7 +103,7 @@ namespace vscode {
             // 是一个换行符
             if (this.escapes.comment) {
                 // vb之中注释只有单行注释，换行之后就结束了                    
-                this.code.comment(this.token.join(""));
+                this.code.comment(this.token.join("").replace("<", "&lt;"));
                 this.escapes.comment = false;
                 this.token = [];
             } else if (this.escapes.string) {
