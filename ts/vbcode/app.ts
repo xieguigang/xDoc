@@ -70,13 +70,18 @@ namespace vscode {
     `);
 
     /** 
-     * <pre class="vbnet">
+     * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
     export function highlightVB(style: CSS = vscode.VisualStudio) {
         var codeList = $ts.select(".vbnet");
 
         for (let code of codeList.ToArray()) {
             vscode.highlight(code.innerText, <any>code, style);
+
+            if (code.tagName.toLowerCase() == "pre") {
+                code.style.border = "none";
+                code.style.padding = "0px";
+            }
         }
     }
 
@@ -91,11 +96,11 @@ namespace vscode {
         var pcode = new Pointer<string>(Strings.ToCharArray(code));
         var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
 
-        var container = $ts("<tbody>");
+        var container: HTMLElement = $ts("<tbody>");
         var preview = $ts("<table>", { class: "pre" }).display(container);
 
         for (let row of html.rows) {
-            container.append(row);
+            container.appendChild(row);
         }
 
         if (typeof display == "string") {

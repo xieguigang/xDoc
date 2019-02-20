@@ -99,7 +99,7 @@ declare namespace vscode {
     */
     const VBKeywords: string[];
     /**
-     * <pre class="vbnet">
+     * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
     function highlightVB(style?: CSS): void;
     function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS): void;
