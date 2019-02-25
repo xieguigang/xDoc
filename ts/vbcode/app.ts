@@ -119,7 +119,9 @@ namespace vscode {
         }
 
         if (!Strings.Empty($ts.location.hash())) {
-            $ts.goto($ts.location.hash(false));
+            setTimeout(function () {
+                $ts.goto($ts.location.hash(false));
+            }, 300);
         }
 
         if (Internal.outputEverything()) {
