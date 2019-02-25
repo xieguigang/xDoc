@@ -118,6 +118,10 @@ namespace vscode {
             vscode.applyStyle(display, style);
         }
 
+        if (!Strings.Empty($ts.location.hash())) {
+            $ts.goto($ts.location.hash(false));
+        }
+
         if (Internal.outputEverything()) {
             console.log(html.rows);
         }

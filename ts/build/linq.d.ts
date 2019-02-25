@@ -961,7 +961,7 @@ declare namespace Internal {
         /**
          * 从当前页面跳转到给定的链接页面
          *
-         * @param url 链接，也支持meta查询表达式
+         * @param url 链接，也支持meta查询表达式，如果是以``#``起始的文档节点id表达式，则会在文档内跳转到目标节点位置
          * @param currentFrame 如果当前页面为iframe的话，则只跳转iframe的显示，当这个参数为真的话；
          *      如果这个参数为false，则从父页面进行跳转
         */
@@ -1005,9 +1005,11 @@ declare namespace Internal {
         readonly path: string;
         readonly fileName: string;
         /**
-         * 获取当前的url之中的hash值，这个返回来的哈希值是不带``#``符号前缀的
+         * 获取当前的url之中的hash值，这个返回来的哈希标签是默认不带``#``符号前缀的
+         *
+         * @returns 这个函数不会返回空值或者undefined，只会返回空字符串或者hash标签值
         */
-        hash(): string;
+        hash(trimprefix?: boolean): string;
     }
     interface GotoOptions {
         currentFrame?: boolean;
@@ -1201,6 +1203,12 @@ declare namespace TypeScript {
          * 将URL之中的query部分解析为字典对象
         */
         static UrlQuery(args: string): object;
+        /**
+         * 跳转到url之中的hash编号的文档位置处
+         *
+         * @param hash ``#xxx``文档节点编号表达式
+        */
+        static JumpToHash(hash: string): void;
         /**
          * 获取得到当前的url
         */
