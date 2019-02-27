@@ -24,12 +24,12 @@
             directive: "grey",
             globalFont: {
                 fontName: "Consolas",
-                size: { pixel: 12 }
+                size: { pixel: 11 }
             }
         };
     }
 
-    export function applyStyle(div: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
+    export function applyStyle(div: string | IHTMLElement, style: CSS = vscode.VisualStudio): void {
         var preview: HTMLElement = typeof div == "string" ? $ts(div) : div;
 
         $ts.select(".string").attr("style", `color: ${style.string};`);
@@ -41,5 +41,8 @@
         $ts.select(".line-hash").attr("style", `color: #3c3e3e; text-decoration: none;`);
 
         CanvasHelper.CSSFont.applyCSS(preview, style.globalFont);
+
+        // set additional styles.
+        preview.style.lineHeight = "1.125em;";
     }
 }
