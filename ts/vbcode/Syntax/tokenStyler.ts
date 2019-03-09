@@ -27,6 +27,10 @@
             return this.lastToken;
         }
 
+        public get CodeSummary(): TOC.Summary {
+            return this.summary;
+        }
+
         /**
          * 上一个追加的单词是一个类型定义或者引用的关键词
         */

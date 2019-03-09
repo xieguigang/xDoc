@@ -135,6 +135,7 @@ namespace vscode {
 
         if (Internal.outputEverything()) {
             console.log(html.rows);
+            console.log(html.CodeSummary.Declares);
         }
     }
 }

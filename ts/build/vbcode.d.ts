@@ -32,6 +32,7 @@ declare namespace vscode {
         private summary;
         readonly rows: HTMLTableRowElement[];
         readonly LastAddedToken: string;
+        readonly CodeSummary: TOC.Summary;
         /**
          * 上一个追加的单词是一个类型定义或者引用的关键词
         */
@@ -176,6 +177,11 @@ declare namespace vscode.TOC {
         */
         type: string;
         constructor(symbol: string, type: string, line: number);
+        addField(symbol: string, line: number): void;
+        addProperty(symbol: string, line: number): void;
+        addSub(symbol: string, line: number): void;
+        addFunction(symbol: string, line: number): void;
+        addOperator(symbol: string, line: number): void;
     }
 }
 /**
@@ -191,6 +197,7 @@ declare namespace vscode.TOC {
     const operatorDeclare: string;
     const functionDeclare: string;
     const subroutineDeclare: string;
+    const endStack: string;
     enum symbolTypes {
         /**
          * 普通符号
@@ -201,13 +208,29 @@ declare namespace vscode.TOC {
         */
         keyword = 1
     }
+    enum declares {
+        NA = 0,
+        type = 1,
+        field = 2,
+        property = 3,
+        operator = 4,
+        function = 5,
+        sub = 6
+    }
     /**
      * 源代码文档概览
     */
     class Summary {
         private types;
-        private currentStack;
+        private typeStack;
+        private current;
+        private lastDeclare;
+        private lastType;
+        private endStack;
+        readonly Declares: VBType[];
         insertSymbol(symbol: string, type: symbolTypes, line: number): void;
+        private symbolRoutine;
+        private keywordRoutine;
         /**
          * 生成当前源代码的大纲目录
         */
