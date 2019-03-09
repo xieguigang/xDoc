@@ -12,6 +12,7 @@ namespace vscode.TOC {
     export const operatorDeclare: string = "Operator";
     export const functionDeclare: string = "Function";
     export const subroutineDeclare: string = "Sub";
+    export const endStack: string = "End";
 
     export enum symbolTypes {
         /**
@@ -24,33 +25,117 @@ namespace vscode.TOC {
         keyword = 1
     }
 
+    export enum declares {
+        NA = 0,
+        type,
+        field,
+        property,
+        operator,
+        function,
+        sub
+    }
+
     /**
      * 源代码文档概览
     */
     export class Summary {
 
         private types: VBType[] = [];
-        private currentStack: VBType;
+        private typeStack: VBType[] = [];
+        private current: VBType;
+        private lastDeclare: declares = declares.NA;
+        private lastType: string;
+        private endStack: boolean = false;
+
+        public get Declares(): VBType[] {
+            return this.types;
+        }
 
         public insertSymbol(symbol: string, type: symbolTypes, line: number) {
             if (type == symbolTypes.keyword) {
-                if (symbol in typeDeclares) {
-                    // 新的类型声明
-                } else if (symbol in fieldDeclares) {
-                    // 当前类型之中的字段成员声明
-                } else if (symbol == propertyDeclare) {
-                    // 当前类型之中的属性成员声明
-                } else if (symbol == operatorDeclare) {
-                    // 当前类型之中的操作符成员声明
-                } else if (symbol == functionDeclare) {
-                    // 当前类型之中的函数成员声明
-                } else if (symbol == subroutineDeclare) {
-                    // 当前类型之中的子过程成员声明
-                } else {
-                    // 什么也不是，略过当前的符号
-                }
+                this.keywordRoutine(symbol);
             } else {
                 // 是一个普通的符号
+                if (this.lastDeclare != declares.NA) {
+                    this.symbolRoutine(symbol, line);
+                }
+            }
+        }
+
+        private symbolRoutine(symbol: string, line: number) {
+            // 如果上一个符号是申明符号，则可以构建出一个新的类型或者成员
+            switch (this.lastDeclare) {
+                case declares.field:
+                    this.current.addField(symbol, line);
+                    break;
+                case declares.function:
+                    this.current.addFunction(symbol, line);
+                    break;
+                case declares.operator:
+                    this.current.addOperator(symbol, line);
+                    break;
+                case declares.property:
+                    this.current.addProperty(symbol, line);
+                    break;
+                case declares.sub:
+                    this.current.addSub(symbol, line);
+                    break;
+                case declares.type:
+                    if (isNullOrUndefined(this.current)) {
+                        // 当前的类型数据为空的，则不是内部类型的声明
+                        this.current = new VBType(symbol, this.lastType, line);
+                    } else {
+                        // 当前的类型数据不为空，则是当前的类型内的内部类型
+                        let inner = new VBType(symbol, this.lastType, line);
+
+                        this.typeStack.push(this.current);
+                        this.current.innerType.push(inner);
+                        this.current = inner;
+                    }
+                    break;
+                default:
+                // do nothing
+            }
+        }
+
+        private keywordRoutine(symbol: string) {
+            if (symbol in typeDeclares) {
+                if (this.endStack) {
+                    // 前面一个符号为结束符
+                    if (this.typeStack.length == 0) {
+                        // 不是内部类，则直接添加
+                        this.types.push(this.current);
+                    } else {
+                        this.typeStack.pop();
+                    }
+
+                    this.current = null;
+                    this.endStack = false;
+                } else {
+                    // 新的类型声明
+                    this.lastDeclare = declares.type;
+                    this.lastType = symbol;
+                }
+            } else if (symbol in fieldDeclares) {
+                // 当前类型之中的字段成员声明
+                this.lastDeclare = declares.field;
+            } else if (symbol == propertyDeclare) {
+                // 当前类型之中的属性成员声明
+                this.lastDeclare = declares.property;
+            } else if (symbol == operatorDeclare) {
+                // 当前类型之中的操作符成员声明
+                this.lastDeclare = declares.operator;
+            } else if (symbol == functionDeclare) {
+                // 当前类型之中的函数成员声明
+                this.lastDeclare = declares.function;
+            } else if (symbol == subroutineDeclare) {
+                // 当前类型之中的子过程成员声明
+                this.lastDeclare = declares.sub;
+            } else if (symbol == endStack) {
+                this.endStack = true;
+            } else {
+                // 什么也不是，重置
+                this.lastDeclare = declares.NA;
             }
         }
 

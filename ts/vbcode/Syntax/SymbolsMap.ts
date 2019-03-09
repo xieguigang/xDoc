@@ -41,5 +41,29 @@
 
             this.type = type;
         }
+
+        //#region "add methods"
+
+        public addField(symbol: string, line: number) {
+            this.fields.push(new CodeMap(symbol, line));
+        }
+
+        public addProperty(symbol: string, line: number) {
+            this.properties.push(new CodeMap(symbol, line));
+        }
+
+        public addSub(symbol: string, line: number) {
+            this.subs.push(new CodeMap(symbol, line));
+        }
+
+        public addFunction(symbol: string, line: number) {
+            this.functions.push(new CodeMap(symbol, line));
+        }
+
+        public addOperator(symbol: string, line: number) {
+            this.operators.push(new CodeMap(symbol, line));
+        }
+
+        //#endregion
     }
 }
