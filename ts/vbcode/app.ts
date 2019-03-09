@@ -93,7 +93,7 @@ namespace vscode {
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
     export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
-        var pcode = new Pointer<string>(Strings.ToCharArray(code));
+        var pcode = new Pointer<string>(<string[]>Strings.ToCharArray(code));
         var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
 
         var container: HTMLElement = $ts("<tbody>");
