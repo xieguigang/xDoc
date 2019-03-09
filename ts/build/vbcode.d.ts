@@ -185,8 +185,8 @@ declare namespace vscode.TOC {
     /**
      * 在VB之中用于类型申明的关键词
     */
-    const typeDeclares: string[];
-    const fieldDeclares: string[];
+    const typeDeclares: {};
+    const fieldDeclares: {};
     const propertyDeclare: string;
     const operatorDeclare: string;
     const functionDeclare: string;

@@ -2,12 +2,12 @@
  * VB.NET源代码文档摘要
 */
 namespace vscode.TOC {
-       
+
     /**
      * 在VB之中用于类型申明的关键词
     */
-    export const typeDeclares: string[] = ["Class", "Structure", "Enum", "Module"];
-    export const fieldDeclares: string[] = ["Dim", "Public", "Private", "Friend", "Protected"];
+    export const typeDeclares: {} = TypeInfo.EmptyObject(["Class", "Structure", "Enum", "Module"], true);
+    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected"], true);
     export const propertyDeclare: string = "Property";
     export const operatorDeclare: string = "Operator";
     export const functionDeclare: string = "Function";
