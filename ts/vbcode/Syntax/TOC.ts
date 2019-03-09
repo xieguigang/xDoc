@@ -132,7 +132,7 @@ namespace vscode.TOC {
                     this.scope = scopes.type;
                 }
             } else if (symbol in fieldDeclares) {
-                if (this.scope = scopes.type) {
+                if (this.scope == scopes.type) {
                     // 当前类型之中的字段成员声明
                     this.lastDeclare = declares.field;
                 } else {
@@ -148,17 +148,21 @@ namespace vscode.TOC {
                 if (this.endStack) {
                     this.scope = scopes.type;
                 } else {
-                    // 当前类型之中的函数成员声明
-                    this.lastDeclare = declares.function;
-                    this.scope = scopes.method;
+                    if (this.scope == scopes.type) {
+                        // 当前类型之中的函数成员声明
+                        this.lastDeclare = declares.function;
+                        this.scope = scopes.method;
+                    }
                 }
             } else if (symbol == subroutineDeclare) {
                 if (this.endStack) {
                     this.scope = scopes.type;
                 } else {
-                    // 当前类型之中的子过程成员声明
-                    this.lastDeclare = declares.sub;
-                    this.scope = scopes.method;
+                    if (this.scope == scopes.type) {
+                        // 当前类型之中的子过程成员声明
+                        this.lastDeclare = declares.sub;
+                        this.scope = scopes.method;
+                    }
                 }
             } else if (symbol == endStack) {
                 this.endStack = true;
