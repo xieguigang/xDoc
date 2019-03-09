@@ -20,16 +20,16 @@
     */
     export class VBType extends CodeMap {
 
-        fields: CodeMap[];
-        properties: CodeMap[];
-        subs: CodeMap[];
-        functions: CodeMap[];
-        operators: CodeMap[];
+        fields: CodeMap[] = [];
+        properties: CodeMap[] = [];
+        subs: CodeMap[] = [];
+        functions: CodeMap[] = [];
+        operators: CodeMap[] = [];
 
         /**
          * 在当前类型之中定义的类型
         */
-        innerType: VBType[];
+        innerType: VBType[] = [];
 
         /**
          * 类，结构体或者枚举？
@@ -39,6 +39,7 @@
         public constructor(symbol: string, type: string, line: number) {
             super(symbol, line);
 
+            // 获取得到类型声明的类型
             this.type = type;
         }
 
