@@ -1,6 +1,11 @@
 ﻿namespace vscode.TOC {
 
     /**
+     * 在VB之中用于类型申明的关键词
+    */
+    export const TypeDeclares: string[] = ["Class", "Structure", "Enum", "Module"];
+
+    /**
      * 源代码文档概览
     */
     export class Summary {

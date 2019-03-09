@@ -8,6 +8,9 @@
         private code: StringBuilder = new StringBuilder("", "<br />\n");
         private rowList: HTMLTableRowElement[] = [];
 
+        /**
+         * 上一个追加的单词是一个类型定义或者引用的关键词
+        */
         private lastTypeKeyword: boolean = false;
         private lastNewLine: boolean = true;
         private lastDirective: boolean = false;
