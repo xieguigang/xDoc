@@ -227,6 +227,10 @@ declare namespace vscode.TOC {
         private lastDeclare;
         private lastType;
         private endStack;
+        /**
+         * 获取得到当前的源代码文档之中的类型定义信息
+         * 这个列表是最外面的一层类型定义的列表
+        */
         readonly Declares: VBType[];
         insertSymbol(symbol: string, type: symbolTypes, line: number): void;
         private symbolRoutine;
