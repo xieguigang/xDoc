@@ -64,7 +64,6 @@ namespace vscode.TOC {
                 this.keywordRoutine(symbol);
             } else {
                 // 是一个普通的符号
-                console.log(this.lastDeclare);
                 if (this.lastDeclare != declares.NA) {
                     this.symbolRoutine(symbol, line);
                 }
@@ -73,7 +72,6 @@ namespace vscode.TOC {
 
         private symbolRoutine(symbol: string, line: number) {
             // 如果上一个符号是申明符号，则可以构建出一个新的类型或者成员
-            console.log(this.lastDeclare);
             switch (this.lastDeclare) {
                 case declares.field:
                     this.current.addField(symbol, line);
@@ -118,7 +116,6 @@ namespace vscode.TOC {
                     } else {
                         this.typeStack.pop();
                     }
-                    console.log(this.current);
                     this.current = null;
                     this.endStack = false;
                 } else {
@@ -128,7 +125,6 @@ namespace vscode.TOC {
                 }
             } else if (symbol in fieldDeclares) {
                 // 当前类型之中的字段成员声明
-                console.log(this.current);
                 this.lastDeclare = declares.field;
             } else if (symbol == propertyDeclare) {
                 // 当前类型之中的属性成员声明
