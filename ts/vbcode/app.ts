@@ -8,6 +8,9 @@ $ts.mode = Modes.debug;
 
 namespace vscode {
 
+    /**
+     * Visual Studio的默认代码渲染样式
+    */
     export const VisualStudio: CSS = vscode.defaultStyle();
     /**
      * All of the VB keywords that following type names
@@ -16,6 +19,9 @@ namespace vscode {
         "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType"
     ];
 
+    /**
+     * 在VB.NET之中，单词与单词之间的分隔符列表
+    */
     export const delimiterSymbols = {
         ".": true,
         ",": true,
@@ -90,6 +96,9 @@ namespace vscode {
     }
 
     /** 
+     * 解析所给定的VB.NET源代码文件为带格式的高亮HTML文本字符串，然后将HTML文件渲染到指定的id的标签之中
+     * 
+     * @param code VB.NET source code in plain text. 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
     export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {

@@ -19,6 +19,9 @@ namespace vscode {
         public constructor(private chars: Pointer<string>) {
         }
 
+        /**
+         * Get source file document highlight result
+        */
         public GetTokens(): tokenStyler {
             while (!this.chars.EndRead) {
                 this.walkChar(this.chars.Next);
