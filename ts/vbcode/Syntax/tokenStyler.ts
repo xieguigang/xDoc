@@ -23,6 +23,10 @@
             return this.rowList;
         }
 
+        public get lineNumber(): number {
+            return this.rowList.length + 1;
+        }
+
         public get LastAddedToken(): string {
             return this.lastToken;
         }
@@ -70,7 +74,7 @@
                 this.lastTypeKeyword = false;
                 this.lastDirective = false;
                 this.lastToken = token;
-                this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.rowList.length + 1);
+                this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
             }
 
             this.lastNewLine = false;
@@ -91,7 +95,7 @@
 
         private appendNewRow() {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
-            var L = this.rowList.length + 1;
+            var L: number = this.lineNumber;
             var line = $ts("<span>", { class: "line" }).display(`${L}: `);
             var hash = $ts("<a>", { id: `L${L}`, href: `#L${L}`, class: "line-hash" }).display(line);
             var snippet = $ts("<td>", { class: "snippet" }).display(this.code.toString());
@@ -115,6 +119,7 @@
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
+            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
         }
 
         public comment(token: string) {
@@ -157,7 +162,7 @@
 
             if (TypeDefine.indexOf(token) > -1) {
                 this.lastTypeKeyword = true;
-                this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.rowList.length + 1);
+                this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
             } else {
                 this.lastTypeKeyword = false;
             }

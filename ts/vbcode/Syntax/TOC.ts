@@ -56,6 +56,7 @@ namespace vscode.TOC {
         }
 
         public insertSymbol(symbol: string, type: symbolTypes, line: number) {
+            console.log(`[${symbol}]`);
             if (type == symbolTypes.keyword) {
                 this.keywordRoutine(symbol);
             } else {
@@ -112,7 +113,7 @@ namespace vscode.TOC {
                     } else {
                         this.typeStack.pop();
                     }
-
+                    console.log(this.current);
                     this.current = null;
                     this.endStack = false;
                 } else {

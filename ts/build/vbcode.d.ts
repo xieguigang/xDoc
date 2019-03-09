@@ -31,6 +31,7 @@ declare namespace vscode {
         private lastToken;
         private summary;
         readonly rows: HTMLTableRowElement[];
+        readonly lineNumber: number;
         readonly LastAddedToken: string;
         readonly CodeSummary: TOC.Summary;
         /**
