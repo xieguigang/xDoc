@@ -1,7 +1,7 @@
 ﻿/// <reference path="../build/linq.d.ts" />
 /// <reference path="CSS.ts" />
-/// <reference path="tokenStyler.ts" />
-/// <reference path="VBparser.ts" />
+/// <reference path="Syntax/tokenStyler.ts" />
+/// <reference path="Syntax/VBparser.ts" />
 
 $ts.mode = Modes.debug;
 // $ts.mode = Modes.production;

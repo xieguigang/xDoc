@@ -15,6 +15,48 @@ declare namespace vscode {
     function defaultStyle(): CSS;
     function applyStyle(div: string | IHTMLElement, style?: CSS): void;
 }
+declare namespace vscode.TOC {
+    /**
+     * 源代码文档概览
+    */
+    class Summary {
+        types: VBType[];
+        constructor(types: VBType[]);
+        /**
+         * 生成当前源代码的大纲目录
+        */
+        TOC(): HTMLElement;
+    }
+    /**
+     * 符号映射
+    */
+    class CodeMap {
+        symbol: string;
+        line: number;
+        /**
+         * 构建出一个符号映射
+         *
+         * @param symbol 对象符号字符串，例如类型名称，属性，函数名称等
+         * @param line 目标符号对象在代码源文本之中所处的行编号
+        */
+        constructor(symbol: string, line: number);
+    }
+    /**
+     * class/structure/enum
+    */
+    class VBType extends CodeMap {
+        fields: CodeMap[];
+        properties: CodeMap[];
+        subs: CodeMap[];
+        functions: CodeMap[];
+        operators: CodeMap[];
+        /**
+         * 在当前类型之中定义的类型
+        */
+        innerType: VBType[];
+        constructor(symbol: string, line: number);
+    }
+}
 declare namespace vscode {
     /**
      * The VB code syntax token generator
