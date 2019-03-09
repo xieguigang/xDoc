@@ -47,6 +47,10 @@ namespace vscode.TOC {
         private lastType: string;
         private endStack: boolean = false;
 
+        /**
+         * 获取得到当前的源代码文档之中的类型定义信息
+         * 这个列表是最外面的一层类型定义的列表
+        */
         public get Declares(): VBType[] {
             return this.types;
         }
