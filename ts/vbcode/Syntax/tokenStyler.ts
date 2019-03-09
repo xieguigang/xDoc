@@ -15,6 +15,7 @@
         private lastNewLine: boolean = true;
         private lastDirective: boolean = false;
         private lastToken: string = null;
+        private summary: TOC.Summary = new TOC.Summary();
 
         //#region "status"
 
@@ -65,6 +66,7 @@
                 this.lastTypeKeyword = false;
                 this.lastDirective = false;
                 this.lastToken = token;
+                this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.rowList.length + 1);
             }
 
             this.lastNewLine = false;
@@ -151,6 +153,7 @@
 
             if (TypeDefine.indexOf(token) > -1) {
                 this.lastTypeKeyword = true;
+                this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.rowList.length + 1);
             } else {
                 this.lastTypeKeyword = false;
             }

@@ -53,6 +53,9 @@
     <TypeScriptCompile Include="Syntax\TOC.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Syntax\SymbolsMap.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Syntax\VBparser.ts" />
   </ItemGroup>
   <ItemGroup>
