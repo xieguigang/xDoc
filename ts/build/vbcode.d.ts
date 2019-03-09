@@ -15,46 +15,46 @@ declare namespace vscode {
     function defaultStyle(): CSS;
     function applyStyle(div: string | IHTMLElement, style?: CSS): void;
 }
-declare namespace vscode.TOC {
+declare namespace vscode {
     /**
-     * 源代码文档概览
+     * 输出的是一个``table``对象的html文本
     */
-    class Summary {
-        types: VBType[];
-        constructor(types: VBType[]);
+    class tokenStyler {
+        private code;
+        private rowList;
         /**
-         * 生成当前源代码的大纲目录
+         * 上一个追加的单词是一个类型定义或者引用的关键词
         */
-        TOC(): HTMLElement;
-    }
-    /**
-     * 符号映射
-    */
-    class CodeMap {
-        symbol: string;
-        line: number;
+        private lastTypeKeyword;
+        private lastNewLine;
+        private lastDirective;
+        private lastToken;
+        private summary;
+        readonly rows: HTMLTableRowElement[];
+        readonly LastAddedToken: string;
         /**
-         * 构建出一个符号映射
-         *
-         * @param symbol 对象符号字符串，例如类型名称，属性，函数名称等
-         * @param line 目标符号对象在代码源文本之中所处的行编号
+         * 上一个追加的单词是一个类型定义或者引用的关键词
         */
-        constructor(symbol: string, line: number);
-    }
-    /**
-     * class/structure/enum
-    */
-    class VBType extends CodeMap {
-        fields: CodeMap[];
-        properties: CodeMap[];
-        subs: CodeMap[];
-        functions: CodeMap[];
-        operators: CodeMap[];
+        readonly LastTypeKeyword: boolean;
+        readonly LastNewLine: boolean;
+        readonly LastDirective: boolean;
+        private tagClass;
+        append(token: string): void;
         /**
-         * 在当前类型之中定义的类型
+         * 生成一个新的table的行对象
         */
-        innerType: VBType[];
-        constructor(symbol: string, line: number);
+        appendLine(token?: string): void;
+        private appendNewRow;
+        directive(token: string): void;
+        type(token: string): void;
+        comment(token: string): void;
+        private static highlightURLs;
+        /**
+         * 可能会存在url
+        */
+        string(token: string): void;
+        keyword(token: string): void;
+        attribute(token: string): void;
     }
 }
 declare namespace vscode {
@@ -84,44 +84,6 @@ declare namespace vscode {
         private walkNewLine;
         private walkStringQuot;
         private walkChar;
-    }
-}
-declare namespace vscode {
-    /**
-     * 输出的是一个``table``对象的html文本
-    */
-    class tokenStyler {
-        private code;
-        private rowList;
-        private lastTypeKeyword;
-        private lastNewLine;
-        private lastDirective;
-        private lastToken;
-        readonly rows: HTMLTableRowElement[];
-        readonly LastAddedToken: string;
-        /**
-         * 上一个追加的单词是一个类型定义或者引用的关键词
-        */
-        readonly LastTypeKeyword: boolean;
-        readonly LastNewLine: boolean;
-        readonly LastDirective: boolean;
-        private tagClass;
-        append(token: string): void;
-        /**
-         * 生成一个新的table的行对象
-        */
-        appendLine(token?: string): void;
-        private appendNewRow;
-        directive(token: string): void;
-        type(token: string): void;
-        comment(token: string): void;
-        private static highlightURLs;
-        /**
-         * 可能会存在url
-        */
-        string(token: string): void;
-        keyword(token: string): void;
-        attribute(token: string): void;
     }
 }
 declare namespace vscode {
@@ -179,5 +141,70 @@ declare namespace vscode.github {
         */
         fileURL(path: string): string;
         highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS): void;
+    }
+}
+declare namespace vscode.TOC {
+    /**
+     * 符号映射
+    */
+    class CodeMap {
+        symbol: string;
+        line: number;
+        /**
+         * 构建出一个符号映射
+         *
+         * @param symbol 对象符号字符串，例如类型名称，属性，函数名称等
+         * @param line 目标符号对象在代码源文本之中所处的行编号
+        */
+        constructor(symbol: string, line: number);
+    }
+    /**
+     * class/structure/enum
+    */
+    class VBType extends CodeMap {
+        fields: CodeMap[];
+        properties: CodeMap[];
+        subs: CodeMap[];
+        functions: CodeMap[];
+        operators: CodeMap[];
+        /**
+         * 在当前类型之中定义的类型
+        */
+        innerType: VBType[];
+        /**
+         * 类，结构体或者枚举？
+        */
+        type: string;
+        constructor(symbol: string, type: string, line: number);
+    }
+}
+/**
+ * VB.NET源代码文档摘要
+*/
+declare namespace vscode.TOC {
+    /**
+     * 在VB之中用于类型申明的关键词
+    */
+    const typeDeclares: string[];
+    const fieldDeclares: string[];
+    const propertyDeclare: string;
+    const operatorDeclare: string;
+    const functionDeclare: string;
+    const subroutineDeclare: string;
+    enum symbolTypes {
+        keyword = 1,
+        symbol = 2
+    }
+    /**
+     * 源代码文档概览
+    */
+    class Summary {
+        private types;
+        private currentStack;
+        insertSymbol(symbol: string, type: symbolTypes, line: number): void;
+        /**
+         * 生成当前源代码的大纲目录
+        */
+        TOC(): HTMLElement;
     }
 }
