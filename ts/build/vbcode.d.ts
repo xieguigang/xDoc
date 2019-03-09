@@ -192,8 +192,14 @@ declare namespace vscode.TOC {
     const functionDeclare: string;
     const subroutineDeclare: string;
     enum symbolTypes {
-        keyword = 1,
-        symbol = 2
+        /**
+         * 普通符号
+        */
+        symbol = 2,
+        /**
+         * VB之中的关键词符号
+        */
+        keyword = 1
     }
     /**
      * 源代码文档概览
