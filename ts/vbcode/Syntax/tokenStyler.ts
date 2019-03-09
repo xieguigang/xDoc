@@ -119,7 +119,7 @@
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
-            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
+            this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
         }
 
         public comment(token: string) {
