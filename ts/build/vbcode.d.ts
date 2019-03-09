@@ -218,6 +218,10 @@ declare namespace vscode.TOC {
         function = 5,
         sub = 6
     }
+    enum scopes {
+        type = 0,
+        method = 1
+    }
     /**
      * 源代码文档概览
     */
@@ -228,6 +232,7 @@ declare namespace vscode.TOC {
         private lastDeclare;
         private lastType;
         private endStack;
+        private scope;
         /**
          * 获取得到当前的源代码文档之中的类型定义信息
          * 这个列表是最外面的一层类型定义的列表

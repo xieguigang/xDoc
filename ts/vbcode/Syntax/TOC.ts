@@ -35,6 +35,11 @@ namespace vscode.TOC {
         sub
     }
 
+    export enum scopes {
+        type,
+        method
+    }
+
     /**
      * 源代码文档概览
     */
@@ -46,6 +51,7 @@ namespace vscode.TOC {
         private lastDeclare: declares = declares.NA;
         private lastType: string;
         private endStack: boolean = false;
+        private scope: scopes;
 
         /**
          * 获取得到当前的源代码文档之中的类型定义信息
@@ -123,10 +129,15 @@ namespace vscode.TOC {
                     // 新的类型声明
                     this.lastDeclare = declares.type;
                     this.lastType = symbol;
+                    this.scope = scopes.type;
                 }
             } else if (symbol in fieldDeclares) {
-                // 当前类型之中的字段成员声明
-                this.lastDeclare = declares.field;
+                if (this.scope = scopes.type) {
+                    // 当前类型之中的字段成员声明
+                    this.lastDeclare = declares.field;
+                } else {
+                    this.lastDeclare = declares.NA;
+                }
             } else if (symbol == propertyDeclare) {
                 // 当前类型之中的属性成员声明
                 this.lastDeclare = declares.property;
@@ -134,11 +145,21 @@ namespace vscode.TOC {
                 // 当前类型之中的操作符成员声明
                 this.lastDeclare = declares.operator;
             } else if (symbol == functionDeclare) {
-                // 当前类型之中的函数成员声明
-                this.lastDeclare = declares.function;
+                if (this.endStack) {
+                    this.scope = scopes.type;
+                } else {
+                    // 当前类型之中的函数成员声明
+                    this.lastDeclare = declares.function;
+                    this.scope = scopes.method;
+                }
             } else if (symbol == subroutineDeclare) {
-                // 当前类型之中的子过程成员声明
-                this.lastDeclare = declares.sub;
+                if (this.endStack) {
+                    this.scope = scopes.type;
+                } else {
+                    // 当前类型之中的子过程成员声明
+                    this.lastDeclare = declares.sub;
+                    this.scope = scopes.method;
+                }
             } else if (symbol == endStack) {
                 this.endStack = true;
             } else {
