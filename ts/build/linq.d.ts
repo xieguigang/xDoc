@@ -119,6 +119,8 @@ interface IPopulated<T> {
  * The linq pipline implements at here. (在这个模块之中实现具体的数据序列算法)
 */
 declare module Enumerable {
+    function Range(from: number, to: number, steps?: number): number[];
+    function Min(...v: number[]): number;
     /**
      * 进行数据序列的投影操作
      *
@@ -498,6 +500,10 @@ declare module DataExtensions {
      * 所以在这里，函数会需要一个实例对象来取得类型值
     */
     function AsNumeric<T>(obj: T): (x: T) => number;
+    /**
+     * @param fill 进行向量填充的初始值，可能不适用于引用类型，推荐应用于初始的基元类型
+    */
+    function Dim<T>(len: number, fill?: T): T[];
 }
 /**
  * 描述了一个键值对集合
@@ -673,10 +679,12 @@ declare module Strings {
      * @description > https://jsperf.com/convert-string-to-char-code-array/9
      *    经过测试，使用数组push的效率最高
      *
+     * @param charCode 返回来的数组是否应该是一组字符的ASCII值而非字符本身？默认是返回字符数组的。
+     *
      * @returns A character array, all of the string element in the array
      *      is one character length.
     */
-    function ToCharArray(str: string): string[];
+    function ToCharArray(str: string, charCode?: boolean): string[] | number[];
     /**
      * Measure the string length, a null string value or ``undefined``
      * variable will be measured as ZERO length.
@@ -900,7 +908,7 @@ declare namespace Internal {
          * @param iframe ``#xxx``编号查询表达式
          * @param fun 目标函数，请注意，这个函数应该是尽量不引用依赖其他对象的
         */
-        inject(iframe: string, fun: (Delegate.Func | string)[] | string | Delegate.Func): void;
+        inject(iframe: string, fun: (Delegate.Func<any> | string)[] | string | Delegate.Func<any>): void;
         /**
          * 动态加载脚本
          *
@@ -1569,6 +1577,19 @@ declare class List<T> extends IEnumerator<T> {
     */
     Pop(): T;
 }
+declare class Matrix<T> extends IEnumerator<T[]> {
+    readonly rows: number;
+    readonly columns: number;
+    /**
+     * [m, n], m列n行
+    */
+    constructor(m: number, n: number, fill?: T);
+    private static emptyMatrix;
+    M(i: number, j: number, val?: T): T;
+    column(i: number, set?: T[] | IEnumerator<T>): T[];
+    row(i: number, set?: T[] | IEnumerator<T>): T[];
+    toString(): string;
+}
 /**
  * A data sequence object with a internal index pointer.
 */
@@ -1998,6 +2019,14 @@ declare namespace TsLinq {
         private static getFileName;
     }
 }
+declare namespace Levenshtein {
+    interface IScoreFunc {
+        insert(c: string | number): number;
+        delete(c: string | number): number;
+        substitute(s: string | number, t: string | number): number;
+    }
+    function DistanceMatrix(source: string, target: string, score?: IScoreFunc): number[][];
+}
 declare class StringBuilder {
     private buffer;
     private newLine;
@@ -2096,25 +2125,25 @@ declare namespace Delegate {
     /**
      * 不带参数的函数指针
     */
-    interface Func {
+    interface Func<V> {
         <V>(): V;
     }
     /**
      * 带有一个函数参数的函数指针
     */
-    interface Func {
+    interface Func<V> {
         <T, V>(arg: T): V;
     }
-    interface Func {
+    interface Func<V> {
         <T1, T2, V>(arg1: T1, arg2: T2): V;
     }
-    interface Func {
+    interface Func<V> {
         <T1, T2, T3, V>(arg1: T1, arg2: T2, arg3: T3): V;
     }
-    interface Func {
+    interface Func<V> {
         <T1, T2, T3, T4, V>(arg1: T1, arg2: T2, arg3: T3, arg4: T4): V;
     }
-    interface Func {
+    interface Func<V> {
         <T1, T2, T3, T4, T5, V>(arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5): V;
     }
 }

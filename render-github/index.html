@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="ResourceLoaderDynamicStyles" content="" />
+	<meta name="generator" content="MediaWiki 1.30.0" />
+
+	<title>Building Blender/Windows - Blender Developer Wiki</title>
+	
+	<link rel="stylesheet" href="style.css" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Blender Developer Wiki (en)" />
+	<link rel="EditURI" type="application/rsd+xml" href="https://wiki.blender.org/w/api.php?action=rsd" />
+	<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" />
+	<link rel="alternate" type="application/atom+xml" title="Blender Developer Wiki Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+
+</head>
+
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Building_Blender_Windows rootpage-Building_Blender skin-bootstrap action-view">
+	<nav class="navbar navbar-expand flex-column flex-md-row bd-navbar">
+		<a href="/wiki/Main_Page" class="navbar-brand" title="Visit the main page"><img src="/w/images/BlenderWiki.png"
+			 height="30" alt="Portal logo" /></a> <button class="navbar-toggler" type="button" data-toggle="collapse"
+		 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			</ul>
+			<div>
+
+				<ul class="navbar-nav">
+					<li id="ca-view" class="nav-item"><a href="/wiki/Building_Blender/Windows" redundant="1" class="nav-link">View</a></li>
+					<li id="ca-viewsource" class="nav-item"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=edit"
+						 title="This page is protected.&#10;You can view its source [e]" accesskey="e" class="nav-link">View source</a></li>
+					<li id="ca-history" class="nav-item"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=history"
+						 title="Past revisions of this page [h]" accesskey="h" class="nav-link">History</a></li>
+					<li class="nav-item">
+					<li class="nav-item dropdown" id="p-personal"><a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Personal
+							tools</a>
+						<div class="dropdown-menu dropdown-menu-right"><span id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Building+Blender%2FWindows"
+								 title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o" class="dropdown-item">Log
+									in</a></span></div>
+					</li>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="mw-wrapper" class="container-fluid">
+		<div class="row flex-xl-nowrap">
+			<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+				<form action="/w/index.php" role="search" class="bd-search d-flex align-items-center" id="p-search"><input type="hidden"
+					 value="Special:Search" name="title" /><input type="search" name="search" placeholder="Search..." title="Search Blender Developer Wiki [f]"
+					 accesskey="f" id="searchInput" class="form-control ds-input" autocomplete="off" /></form>
+				<div id="p-Building_Blender">
+					<h5>Building Blender</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Windows"><a href="/wiki/Building_Blender/Windows">Windows</a></li>
+						<li id="n-macOS"><a href="/wiki/Building_Blender/Mac">macOS</a></li>
+						<li id="n-Linux"><a href="/wiki/Building_Blender/Linux">Linux</a></li>
+					</ul>
+				</div>
+				<div id="p-Develop">
+					<h5>Develop</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Getting-Started"><a href="/wiki/Developer_Intro">Getting Started</a></li>
+						<li id="n-Code-Documentation"><a href="/wiki/Source">Code Documentation</a></li>
+						<li id="n-Style-Guide"><a href="/wiki/Style_Guide">Style Guide</a></li>
+						<li id="n-Release-Notes"><a href="/wiki/Reference/Release_Notes">Release Notes</a></li>
+					</ul>
+				</div>
+				<div id="p-Tools">
+					<h5>Tools</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Git"><a href="/wiki/Tools/Git">Git</a></li>
+						<li id="n-CMake"><a href="/wiki/Tools/CMake">CMake</a></li>
+						<li id="n-IDEs-and-more-Tools"><a href="/wiki/Developer_Intro/Environment">IDEs and more Tools</a></li>
+					</ul>
+				</div>
+				<div id="p-Process">
+					<h5>Process</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Communication"><a href="/wiki/Contact">Communication</a></li>
+						<li id="n-Module-Owners"><a href="/wiki/Process/Module_Owners">Module Owners</a></li>
+						<li id="n-Bug-Tracker"><a href="/wiki/Process/Bug_Reports">Bug Tracker</a></li>
+						<li id="n-Code-Review"><a href="/wiki/Tools/CodeReview">Code Review</a></li>
+					</ul>
+				</div>
+				<div id="p-More">
+					<h5>More</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Google-Summer-of-Code"><a href="/wiki/GSoC">Google Summer of Code</a></li>
+						<li id="n-Python"><a href="/wiki/Python">Python</a></li>
+						<li id="n-FAQ"><a href="/wiki/FAQ">FAQ</a></li>
+					</ul>
+				</div>
+				<div id="p-External_Links">
+					<h5>External Links</h5>
+					<!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<ul>
+						<li id="n-Development-Portal"><a href="https://developer.blender.org" rel="nofollow">Development Portal</a></li>
+						<li id="n-Development-Forum"><a href="https://devtalk.blender.org" rel="nofollow">Development Forum</a></li>
+						<li id="n-Code-Blog"><a href="https://code.blender.org" rel="nofollow">Code Blog</a></li>
+						<li id="n-Get-Involved"><a href="https://blender.org/get-involved/" rel="nofollow">Get Involved</a></li>
+						<li id="n-User-Manual"><a href="https://docs.blender.org/manual/" rel="nofollow">User Manual</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="d-none d-xl-block col-xl-2 bd-toc">
+				<div id="toc" class="toc">
+					<div class="toctitle">
+						<h2>Contents</h2>
+					</div>
+					<ul>
+						<li class="toclevel-1 tocsection-1"><a href="#Building_Blender_on_Windows"><span class="tocnumber">1</span> <span
+								 class="toctext">Building Blender on Windows</span></a>
+							<ul>
+								<li class="toclevel-2 tocsection-2"><a href="#Quick_Setup"><span class="tocnumber">1.1</span> <span class="toctext">Quick
+											Setup</span></a>
+									<ul>
+										<li class="toclevel-3 tocsection-3"><a href="#Install_Development_Tools"><span class="tocnumber">1.1.1</span>
+												<span class="toctext">Install Development Tools</span></a></li>
+										<li class="toclevel-3 tocsection-4"><a href="#Download_Sources_and_Libraries"><span class="tocnumber">1.1.2</span>
+												<span class="toctext">Download Sources and Libraries</span></a></li>
+										<li class="toclevel-3 tocsection-5"><a href="#Compile_Blender"><span class="tocnumber">1.1.3</span> <span
+												 class="toctext">Compile Blender</span></a></li>
+									</ul>
+								</li>
+								<li class="toclevel-2 tocsection-6"><a href="#Advanced_Setup"><span class="tocnumber">1.2</span> <span class="toctext">Advanced
+											Setup</span></a>
+									<ul>
+										<li class="toclevel-3 tocsection-7"><a href="#Development_Tools"><span class="tocnumber">1.2.1</span> <span
+												 class="toctext">Development Tools</span></a>
+											<ul>
+												<li class="toclevel-4 tocsection-8"><a href="#Visual_Studio"><span class="tocnumber">1.2.1.1</span> <span
+														 class="toctext">Visual Studio</span></a></li>
+												<li class="toclevel-4 tocsection-9"><a href="#Subversion"><span class="tocnumber">1.2.1.2</span> <span
+														 class="toctext">Subversion</span></a></li>
+												<li class="toclevel-4 tocsection-10"><a href="#Git"><span class="tocnumber">1.2.1.3</span> <span class="toctext">Git</span></a></li>
+											</ul>
+										</li>
+										<li class="toclevel-3 tocsection-11"><a href="#Download_Sources_and_Libraries_2"><span class="tocnumber">1.2.2</span>
+												<span class="toctext">Download Sources and Libraries</span></a></li>
+										<li class="toclevel-3 tocsection-12"><a href="#Compile_Blender_2"><span class="tocnumber">1.2.3</span> <span
+												 class="toctext">Compile Blender</span></a>
+											<ul>
+												<li class="toclevel-4 tocsection-13"><a href="#Automatic_CMake_Setup"><span class="tocnumber">1.2.3.1</span>
+														<span class="toctext">Automatic CMake Setup</span></a></li>
+												<li class="toclevel-4 tocsection-14"><a href="#Building_from_within_the_Visual_Studio_IDE"><span class="tocnumber">1.2.3.2</span>
+														<span class="toctext">Building from within the Visual Studio IDE</span></a></li>
+												<li class="toclevel-4 tocsection-15"><a href="#Manual_CMake_Setup"><span class="tocnumber">1.2.3.3</span>
+														<span class="toctext">Manual CMake Setup</span></a>
+													<ul>
+														<li class="toclevel-5 tocsection-16"><a href="#Create_Project_Files"><span class="tocnumber">1.2.3.3.1</span>
+																<span class="toctext">Create Project Files</span></a></li>
+														<li class="toclevel-5 tocsection-17"><a href="#Compile_from_MSVC_.28graphical_user_interface.29"><span
+																 class="tocnumber">1.2.3.3.2</span> <span class="toctext">Compile from MSVC (graphical user interface)</span></a></li>
+														<li class="toclevel-5 tocsection-18"><a href="#Compile_from_MSVC_.28command_line.29"><span class="tocnumber">1.2.3.3.3</span>
+																<span class="toctext">Compile from MSVC (command line)</span></a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+				<div class="mw-indicators mw-body-content">
+				</div>
+				<h1 class="firstHeading">Building Blender/Windows</h1>
+				<div class="mw-body-content">
+					<div id="contentSub">
+						<p><span class="subpages">&lt; <a href="/wiki/Building_Blender" title="Building Blender">Building Blender</a></span></p>
+						<p></p>
+					</div>
+					<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">
+						<div class="mw-parser-output">
+
+							<h1><span class="mw-headline" id="Building_Blender_on_Windows">Building Blender on Windows</span></h1>
+							<p>These are instructions to build Blender for Windows, with Microsoft Visual Studio. We officially support
+								building with Visual Studio version 2015 and 2017, older versions do not work.
+							</p>
+							<h2><span class="mw-headline" id="Quick_Setup">Quick Setup</span></h2>
+							<p>Building Blender is not as hard as most people would think. For beginners, easiest is to follow these steps
+								carefully. For more details and alternative ways to set up a build environment, see below.
+							</p>
+							<h3><span class="mw-headline" id="Install_Development_Tools">Install Development Tools</span></h3>
+							<p>Subversion, Git, CMake and Visual Studio <b>must all be installed</b>.
+							</p>
+							<ul>
+								<li> Install <a rel="nofollow" class="external text" href="https://visualstudio.microsoft.com">Visual Studio
+										2017 Community Edition</a> (free)</li>
+								<li> Install <a rel="nofollow" class="external text" href="http://www.sliksvn.com/en/download">Subversion for
+										Windows</a> (SlikSVN)</li>
+								<li> Install <a rel="nofollow" class="external text" href="https://gitforwindows.org/">Git for Windows</a>
+									<ul>
+										<li> In the installer, choose to <b>add Git to your PATH</b> to ensure the Git version is in the splash
+											screen.</li>
+									</ul>
+								</li>
+								<li> Install <a rel="nofollow" class="external text" href="http://cmake.org">CMake</a>
+									<ul>
+										<li> In the installer set the system path option to <b>Add CMake to the system PATH for all users</b>.</li>
+									</ul>
+								</li>
+								<li> Optional for NVIDIA GPUs: install <a rel="nofollow" class="external text" href="https://developer.nvidia.com/cuda-downloads">CUDA
+										9.1</a> (exact version, newer versions may not work) for CUDA support in Cycles.</li>
+							</ul>
+							<h3><span class="mw-headline" id="Download_Sources_and_Libraries">Download Sources and Libraries</span></h3>
+							<p>Create a folder to store your copy of the Blender source code. This guide will assume your chosen folder is
+								<code>C:\blender-git</code>.
+							</p>
+							<p>Then open the command prompt window by hitting Windows+R, and then typing cmd, or by searching for it in the
+								start menu. Then type the following commands.
+							</p>
+							<p>For 64-bit Windows, check out the precompiled libraries with Subversion like this:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git
+svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14  lib/win64_vc14</pre>
+							</div>
+							<p>For 32-bit Windows, use this command instead:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git
+svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14</pre>
+							</div>
+							<p>Download the Blender source code:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git
+git clone git://git.blender.org/blender.git
+cd blender
+git submodule update --init --recursive
+git submodule foreach git checkout master
+git submodule foreach git pull --rebase origin master</pre>
+							</div>
+							<h3><span class="mw-headline" id="Compile_Blender">Compile Blender</span></h3>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git\blender
+make full</pre>
+							</div>
+							<p>Once the build finishes you'll get a message like this, pointing to the freshly built Blender:
+							</p>
+							<pre>Blender successfully built, run from: C:\blender-git\build_windows_Full_x64_vc14_Release\bin\Release
+</pre>
+							<p>To update to the latest changes afterwards, run:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git\blender
+make update
+make full</pre>
+							</div>
+							<h2><span class="mw-headline" id="Advanced_Setup">Advanced Setup</span></h2>
+							<h3><span class="mw-headline" id="Development_Tools">Development Tools</span></h3>
+							<h4><span class="mw-headline" id="Visual_Studio">Visual Studio</span></h4>
+							<p>We support Visual Studio 2015 (Update 3) and 2017, older versions will not work. Generally newer builds will
+								result in better Blender performance, so when installing a new version it is recommended to use 2017. The
+								Visual Studio Community editions are free for open source development and have all the features needed for
+								building and developing Blender. Professional editions work fine as well.
+							</p>
+							<h4><span class="mw-headline" id="Subversion">Subversion</span></h4>
+							<p>Subversion is required for accessing precompiled libraries. The command line <a rel="nofollow" class="external text"
+								 href="http://www.sliksvn.com/en/download">SlikSVN</a> is sufficient, but alternatively <a rel="nofollow" class="external text"
+								 href="https://tortoisesvn.net/">TortoiseSvn</a> can be used for an easy to use GUI, with Windows Explorer
+								integration.
+							</p>
+							<h4><span class="mw-headline" id="Git">Git</span></h4>
+							<p>Git is required for accessing the Blender source code. <a rel="nofollow" class="external text" href="https://gitforwindows.org/">Git
+									for Windows</a> command line utilities are sufficient, but more user friendly user interfaces exist. For
+								example <a rel="nofollow" class="external text" href="http://tortoisegit.org/">TortoiseGit</a> is the
+								equivalent of ToroiseSvn with a GUI and Window explorer integration.
+							</p>
+							<p><i>For additional information on using Git with Blender's sources, see: <a href="/wiki/Tools/Git" title="Tools/Git">Tools/Git</a></i>
+							</p>
+							<h3><span class="mw-headline" id="Download_Sources_and_Libraries_2">Download Sources and Libraries</span></h3>
+							<p>The easiest method is to follow the quick command line steps above, to ensure everything is downloaded
+								exactly as needed.
+							</p>
+							<p>Alternatively GUI tools may be used to checkout and update the repositories manually. The Blender build
+								system expects the following layout within a folder:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>blender/           # Blender source code from Git, git://git.blender.org/blender.git
+lib/windows_vc14   # Precompiled 32-bit libraries from Subversion, https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14
+lib/win64_vc14     # Precompiled 64-bit libraries from Subversion, https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14</pre>
+							</div>
+							<p><b>Under no circumstances</b> should you set the SVN repository for the <code>C:\blender-git</code> folder,
+								because it could cause major conflicts with the git repository. If you want to update each precompiled library
+								folder with the explorer context menu, you can do so by clicking on the requisite folders under <i>lib/</i> and
+								going to SVN checkout. After the checkout finishes you will see a revision and are able to close the dialog
+								out.
+							</p>
+							<h3><span class="mw-headline" id="Compile_Blender_2">Compile Blender</span></h3>
+							<h4><span class="mw-headline" id="Automatic_CMake_Setup">Automatic CMake Setup</span></h4>
+							<p>If you're not interested in manually setting up CMake build directory, configuring, building and installing
+								in separate steps, we provide a convenience batch file in Blender's source directory which sets up CMake for
+								you.
+							</p>
+							<p>To update to the latest version and build, use:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git\blender
+make full</pre>
+							</div>
+							<p><i>(this requires git and svn to be in your systems PATH).</i>
+							</p>
+							<p>There are other predefined build targets:
+							</p>
+							<ul>
+								<li> <tt><b>make</b></tt> - some are turned off by default because they can be difficult to correctly configure
+									for newer developers and aren't essential to use &amp; develop Blender in most cases.</li>
+								<li> <tt><b>make lite</b></tt> - the quickest way to get a Blender build up &amp; running, can also help to
+									avoid installing a lot of dependencies if you don't need video-codecs, physics-sim &amp; cycles rendering.</li>
+								<li> <tt><b>make full</b></tt> - this makes a complete build with all options enabled but without the CUDA
+									kernels.</li>
+								<li> <tt><b>make release</b></tt> - this makes a complete build with all options enabled including CUDA
+									kernels, matching the releases on <b>blender.org</b>.</li>
+							</ul>
+							<p>For a full list of the optional targets type...
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>make help</pre>
+							</div>
+							<h4><span class="mw-headline" id="Building_from_within_the_Visual_Studio_IDE">Building from within the Visual
+									Studio IDE</span></h4>
+							<p>If you want to work within the visual studio IDE instead of building from the command prompt.
+							</p>
+							<p>We provide a convenience batch file in Blender's source directory which can generate a visual studio project
+								for you
+							</p>
+							<p>From the command line, run:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>cd C:\blender-git\blender
+make full nobuild</pre>
+							</div>
+							<p>if you want to customize your build, (ie select a visual studio version, platform architecture, of blender
+								feature set) you can get a list of customizable options by typing
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>make help</pre>
+							</div>
+							<p>Once the batch file finishes it should tell you where the project files have been written, for example:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre>-- Build files have been written to: c:/blender-git/build_windows_Full_x64_vc14_Release</pre>
+							</div>
+							<p>In that folder you should now find a blender.sln which you can open with the visual studio IDE.
+							</p>
+							<p>Once opened it's very important the following steps are taken:
+							</p>
+							<ul>
+								<li> 1) In the solution explorer find the 'Blender' project (it's not the top node, should be somewhere 3/4th
+									down the projects list) , right click it and select 'Set As StartUp Project'</li>
+								<li> 2) In the solution explorer find the 'INSTALL' project, right click it and select 'Build' this will copy
+									all the required files the the blender output folder. NOTE: This needs to be done atleast *once* for every
+									solution configuration, ie: if you switch from Debug to Release configuration you need to redo this step. </li>
+							</ul>
+							<p>Once these settings are done, you can work with the code as usual in visual studio.
+							</p>
+							<h4><span class="mw-headline" id="Manual_CMake_Setup">Manual CMake Setup</span></h4>
+							<p>If you want to have more control over your build configuration or have multiple build directories for a
+								single source directory.
+								You can follow these steps.
+							</p>
+							<h5><span class="mw-headline" id="Create_Project_Files">Create Project Files</span></h5>
+							<p>This step you only have to do once when first setting up the build.
+							</p>
+							<p>Install CMake and run the CMake application, you will have to point its source path to the location you
+								downloaded blenders GIT source to.
+							</p>
+							<p>You will need to select a <b>Build Path</b> outside the source directory.
+							</p>
+							<p>Press Configure, then Generate.
+							</p>
+							<p><i>Note. any changes to the build-system will re-generate project files automatically from within MSVC when
+									building.</i>
+							</p>
+							<h5><span class="mw-headline" id="Compile_from_MSVC_.28graphical_user_interface.29">Compile from MSVC (graphical
+									user interface)</span></h5>
+							<p><i>Note that if you are already familier with MSVC, Then the following steps are are much the same as
+									building any other project file (nothing Blender specific here).</i>
+							</p>
+							<ul>
+								<li> From MSVC you need to load the project file <b>Blender.sln</b> from the <b>Build Path</b>,</li>
+								<li> Select the menu item: Build -&gt; Build Solution <i>(this will take some minutes)</i></li>
+							</ul>
+							<ul>
+								<li> Build the <b>INSTALL</b> target listed in the <b>Solution Explorer</b>.<br />Note: the <b>INSTALL</b>
+									copies DLL's and files used by Blender to the build directory so <tt>blender.exe</tt> can start.<br />If you
+									skip this step running <tt>blender.exe</tt> will fail to start, reporting missing DLL files.<br />You wont
+									have to run this target every build, but do it after updating SVN libraries, otherwise you risk not having the
+									correct libraries to run blender.</li>
+							</ul>
+							<h5><span class="mw-headline" id="Compile_from_MSVC_.28command_line.29">Compile from MSVC (command line)</span></h5>
+							<p>You can also compile from the command line.
+								In the following command just substitute [TARGET] with one of the following options:<br /><tt>Debug, Release,
+									RelWithDebInfo, MinSizeRel</tt>.
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre> devenv Blender.sln /Build [TARGET] /Project INSTALL</pre>
+							</div>
+							<p>If you only have VC 2013 express, you have no devenv. You can then use MSBuild:
+							</p>
+							<div class="mw-highlight mw-content-ltr" dir="ltr">
+								<pre> MSBuild INSTALL.vcxproj /p:Configuration=[TARGET] /t:Build /m</pre>
+							</div>
+
+							<!-- 
+NewPP limit report
+Cached time: 20181230183113
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.092 seconds
+Real time usage: 0.065 seconds
+Preprocessor visited node count: 175/1000000
+Preprocessor generated node count: 336/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+							<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+						</div>
+						<!-- Saved in parser cache with key mw_wiki-mediawiki_:pcache:idhash:95-0!canonical and timestamp 20181230183113 and revision id 2927
+ -->
+					</div>
+					<div class="clearfix"></div>
+					<div class="printfooter">Retrieved from "<a dir="ltr" href="https://wiki.blender.org/w/index.php?title=Building_Blender/Windows&amp;oldid=2927">https://wiki.blender.org/w/index.php?title=Building_Blender/Windows&amp;oldid=2927</a>"</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer pt-4">
+
+		<!-- Footer Links -->
+		<div class="container-fluid text-md-left">
+
+			<!-- Grid row -->
+			<div class="row">
+				<div class="col-md-3 mt-md-0 mt-3">
+					<h5 class="text-uppercase">info</h5>
+					<p id="footer-info-lastmod"> This page was last edited on 18 September 2018, at 08:22.</p>
+					<p id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
+							Commons Attribution-ShareAlike</a> unless otherwise noted.</p>
+				</div>
+				<div class="col-md-3 mt-md-0 mt-3">
+					<h5 class="text-uppercase">places</h5>
+					<ul id="footer-places" role="contentinfo">
+						<li id="footer-places-privacy"><a href="/wiki/Blender_Developer_Wiki:Privacy_policy" title="Blender Developer Wiki:Privacy policy">Privacy
+								policy</a></li>
+						<li id="footer-places-about"><a href="/wiki/Blender_Developer_Wiki:About" title="Blender Developer Wiki:About">About
+								Blender Developer Wiki</a></li>
+						<li id="footer-places-disclaimer"><a href="/wiki/Blender_Developer_Wiki:General_disclaimer" title="Blender Developer Wiki:General disclaimer">Disclaimers</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 mt-md-0 mt-3">
+					<h5 class="text-uppercase">Utilities</h5>
+					<ul id="p-tb">
+						<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Building_Blender/Windows" title="A list of all wiki pages that link here [j]"
+							 accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Building_Blender/Windows" rel="nofollow"
+							 title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+						<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special
+								pages</a></li>
+						<li id="t-print"><a href="/w/index.php?title=Building_Blender/Windows&amp;printable=yes" rel="alternate" title="Printable version of this page [p]"
+							 accesskey="p">Printable version</a></li>
+						<li id="t-permalink"><a href="/w/index.php?title=Building_Blender/Windows&amp;oldid=2927" title="Permanent link to this revision of the page">Permanent
+								link</a></li>
+						<li id="t-info"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=info" title="More information about this page">Page
+								information</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 mt-md-0 mt-3">
+					<h5 class="text-uppercase">Navigation</h5>
+					<ul id="p-navigation">
+						<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+						<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]"
+							 accesskey="r">Recent changes</a></li>
+						<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+						<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- Grid row -->
+
+			<!-- Grid row -->
+			<div class="row pt-4 pb-4">
+				<div class="col">
+					<!-- Copyright -->
+					<div class="text-center">Creative freedom starts with Blender – The Free and Open Source 3D Creation Suite
+					</div>
+					<!-- Copyright -->
+				</div>
+			</div>
+			<!-- Grid row -->
+
+		</div>
+		<!-- Footer Links -->
+	</footer>
+	<!-- Footer -->
+</body>
+
+</html>
