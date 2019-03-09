@@ -162,11 +162,11 @@
 
             if (TypeDefine.indexOf(token) > -1) {
                 this.lastTypeKeyword = true;
-                this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
             } else {
                 this.lastTypeKeyword = false;
             }
 
+            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
             this.lastNewLine = false;
             this.lastDirective = false;
         }
