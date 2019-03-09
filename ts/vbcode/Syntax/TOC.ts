@@ -7,7 +7,7 @@ namespace vscode.TOC {
      * 在VB之中用于类型申明的关键词
     */
     export const typeDeclares: {} = TypeInfo.EmptyObject(["Class", "Structure", "Enum", "Module"], true);
-    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected"], true);
+    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected", "ReadOnly"], true);
     export const propertyDeclare: string = "Property";
     export const operatorDeclare: string = "Operator";
     export const functionDeclare: string = "Function";
@@ -66,6 +66,7 @@ namespace vscode.TOC {
                 // 是一个普通的符号
                 if (this.lastDeclare != declares.NA) {
                     this.symbolRoutine(symbol, line);
+                    this.lastDeclare = declares.NA;
                 }
             }
         }
