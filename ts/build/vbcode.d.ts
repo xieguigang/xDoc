@@ -28,6 +28,9 @@ declare namespace vscode {
          * @param chars A chars enumerator
         */
         constructor(chars: Pointer<string>);
+        /**
+         * Get source file document highlight result
+        */
         GetTokens(): tokenStyler;
         private static peekNextToken;
         private readonly isKeyWord;
@@ -80,11 +83,17 @@ declare namespace vscode {
     }
 }
 declare namespace vscode {
+    /**
+     * Visual Studio的默认代码渲染样式
+    */
     const VisualStudio: CSS;
     /**
      * All of the VB keywords that following type names
     */
     const TypeDefine: string[];
+    /**
+     * 在VB.NET之中，单词与单词之间的分隔符列表
+    */
     const delimiterSymbols: {
         ".": boolean;
         ",": boolean;
@@ -104,16 +113,28 @@ declare namespace vscode {
     function highlightVB(style?: CSS): void;
     function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS): void;
     /**
+     * 解析所给定的VB.NET源代码文件为带格式的高亮HTML文本字符串，然后将HTML文件渲染到指定的id的标签之中
+     *
+     * @param code VB.NET source code in plain text.
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
     function highlight(code: string, display: string | IHTMLElement, style?: CSS): void;
 }
 declare namespace vscode.github {
+    /**
+     * Github 源文件请求帮助模块
+    */
     class raw {
         username: string;
         repo: string;
+        /**
+         * 代码库的版本编号
+        */
         commit: string;
         constructor(user: string, repo: string, commit?: string);
+        /**
+         * 构建生成目标源文件在github上面的位置链接url
+        */
         fileURL(path: string): string;
         highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS): void;
     }
