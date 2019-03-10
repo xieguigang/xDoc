@@ -635,6 +635,10 @@ declare module Strings {
     */
     function GetTagValue(str: string, tag?: string): NamedValue<string>;
     /**
+     * 取出大文本之中指定的前n行文本
+    */
+    function PeekLines(text: string, n: number): string[];
+    /**
      * Get all regex pattern matches in target text value.
     */
     function getAllMatches(text: string, pattern: string | RegExp): RegExpExecArray[];
@@ -959,7 +963,7 @@ declare namespace Internal {
         upload<T>(url: string, file: File, callback?: ((response: IMsg<T>) => void)): void;
         /**
          * Get the url location of current window page.
-         * (获取当前的页面的URL字符串解析模型)
+         * (获取当前的页面的URL字符串解析模型，这个只读属性可以接受一个变量名参数来获取得到对应的GET参数值)
         */
         readonly location: IURL;
         /**
@@ -1065,6 +1069,10 @@ declare namespace Internal {
         class?: string | string[];
         type?: string;
         href?: string;
+        /**
+         * 应用于``<a>``标签进行文件下载重命名文件所使用的
+        */
+        download?: string;
         target?: string;
         src?: string;
         width?: string | number;
@@ -1083,7 +1091,7 @@ declare namespace Internal {
         /**
          * 处理HTML节点对象的点击事件，这个属性值应该是一个无参数的函数来的
         */
-        onclick?: () => void;
+        onclick?: Delegate.Sub | string;
         "data-toggle"?: string;
         "data-target"?: string;
         "aria-hidden"?: boolean;
@@ -1805,7 +1813,7 @@ declare class HTMLTsElement {
      * @param html 当这个参数为一个无参数的函数的时候，主要是用于生成一个比较复杂的文档节点而使用的;
      *    如果为字符串文本类型，则是直接将文本当作为HTML代码赋值给当前的这个节点对象的innerHTML属性;
     */
-    display(html: string | HTMLElement | HTMLTsElement | (() => HTMLElement)): HTMLTsElement;
+    display(html: string | number | boolean | HTMLElement | HTMLTsElement | (() => HTMLElement)): HTMLTsElement;
     /**
      * Clear all of the contents in current html element node.
     */
@@ -2502,6 +2510,9 @@ declare namespace HttpHelpers {
         */
         www: string;
     };
+    interface httpCallback {
+        (response: string, code: number, contentType: string): void;
+    }
     function measureContentType(obj: any): string;
     /**
      * 这个函数只会返回200成功代码的响应内容，对于其他的状态代码都会返回null
@@ -2513,7 +2524,7 @@ declare namespace HttpHelpers {
      *
      * @param callback ``callback(http.responseText, http.status)``
     */
-    function GetAsyn(url: string, callback: (response: string, code: number) => void): void;
+    function GetAsyn(url: string, callback: httpCallback): void;
     function POST(url: string, postData: PostData, callback: (response: string, code: number) => void): void;
     /**
      * 使用multipart form类型的数据进行文件数据的上传操作
@@ -2608,7 +2619,7 @@ declare namespace csv {
          *                 如果这个参数不是空值，则以异步的方式工作，此时函数会返回空值
          * @param parseText 如果url返回来的数据之中还包含有其他的信息，则会需要这个参数来进行csv文本数据的解析
         */
-        static Load(url: string, callback?: (csv: dataframe) => void, parseText?: (response: string) => content): dataframe;
+        static Load(url: string, callback?: (csv: dataframe) => void, parseText?: (response: string, contentType?: string) => content): dataframe;
         private static defaultContent;
         /**
          * 将所给定的文本文档内容解析为数据框对象
