@@ -13,6 +13,10 @@
         */
         public constructor(public symbol: string, public line: number) {
         }
+
+        public toString(): string {
+            return `${this.symbol} at line ${this.line}`;
+        }
     }
 
     /**
@@ -66,5 +70,9 @@
         }
 
         //#endregion
+
+        public toString(): string {
+            return `${this.type} ${this.symbol} at line ${this.line}`;
+        }
     }
 }

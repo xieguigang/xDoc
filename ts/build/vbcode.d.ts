@@ -174,6 +174,7 @@ declare namespace vscode.TOC {
          * @param line 目标符号对象在代码源文本之中所处的行编号
         */
         constructor(symbol: string, line: number);
+        toString(): string;
     }
     /**
      * class/structure/enum
@@ -198,6 +199,7 @@ declare namespace vscode.TOC {
         addSub(symbol: string, line: number): void;
         addFunction(symbol: string, line: number): void;
         addOperator(symbol: string, line: number): void;
+        toString(): string;
     }
 }
 /**
