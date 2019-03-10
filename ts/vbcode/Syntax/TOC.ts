@@ -148,6 +148,7 @@ namespace vscode.TOC {
             } else if (symbol == functionDeclare) {
                 if (this.endStack) {
                     this.scope = scopes.type;
+                    this.endStack = false;
                 } else {
                     if (this.scope == scopes.type) {
                         // 当前类型之中的函数成员声明
@@ -158,6 +159,7 @@ namespace vscode.TOC {
             } else if (symbol == subroutineDeclare) {
                 if (this.endStack) {
                     this.scope = scopes.type;
+                    this.endStack = false;
                 } else {
                     if (this.scope == scopes.type) {
                         // 当前类型之中的子过程成员声明
