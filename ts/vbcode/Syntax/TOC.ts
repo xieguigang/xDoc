@@ -176,7 +176,7 @@ namespace vscode.TOC {
          * 生成当前源代码的大纲目录
         */
         public TOC(): HTMLElement {
-            throw "";
+            return Tree.BuildTOC(this);
         }
     }
 }

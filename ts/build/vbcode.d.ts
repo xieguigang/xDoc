@@ -266,3 +266,6 @@ declare namespace vscode.TOC {
         TOC(): HTMLElement;
     }
 }
+declare namespace vscode.TOC.Tree {
+    function BuildTOC(summary: Summary): HTMLElement;
+}
