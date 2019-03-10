@@ -11,9 +11,9 @@
         return root;
     }
 
-    function codeMapAnchor(symbol: CodeMap): HTMLElement {
+    function codeMapAnchor(symbol: CodeMap, className: string): HTMLElement {
         let title: HTMLElement = $ts("<a>", {
-            class: "",
+            class: className,
             href: `#L${symbol.line}`
         }).display(symbol.symbol);
         let item: HTMLElement = $ts("<li>").display(title);
@@ -41,23 +41,23 @@
         }
 
         // append members
-        codeMapGroup(root, type.fields, "Fields:");
-        codeMapGroup(root, type.properties, "Properties:");
-        codeMapGroup(root, type.functions, "Functions:");
-        codeMapGroup(root, type.subs, "Sub Programs:");
-        codeMapGroup(root, type.operators, "Operators:");
+        codeMapGroup(root, type.fields, "Fields:", "field");
+        codeMapGroup(root, type.properties, "Properties:", "property");
+        codeMapGroup(root, type.functions, "Functions:", "function");
+        codeMapGroup(root, type.subs, "Sub Programs:", "sub");
+        codeMapGroup(root, type.operators, "Operators:", "operator");
 
         return root;
     }
 
-    function codeMapGroup(root: HTMLElement, symbols: CodeMap[], title: string) {
+    function codeMapGroup(root: HTMLElement, symbols: CodeMap[], title: string, className: string) {
         if (!IsNullOrEmpty(symbols)) {
             root.append($ts("<p>").display(title));
 
             let inner: IHTMLElement = $ts("<ul>");
 
             for (let node of symbols) {
-                inner.append(codeMapAnchor(node));
+                inner.append(codeMapAnchor(node, className));
             }
 
             root.append(inner);
