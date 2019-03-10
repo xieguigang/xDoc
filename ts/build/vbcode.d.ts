@@ -31,14 +31,29 @@ declare namespace vscode {
         private lastToken;
         private summary;
         readonly rows: HTMLTableRowElement[];
+        /**
+         * 获取当前的符号所处的行号
+        */
         readonly lineNumber: number;
+        /**
+         * 获取上一次添加的符号
+        */
         readonly LastAddedToken: string;
+        /**
+         * 获取得到代码源文件的大纲概览结构信息
+        */
         readonly CodeSummary: TOC.Summary;
         /**
          * 上一个追加的单词是一个类型定义或者引用的关键词
         */
         readonly LastTypeKeyword: boolean;
+        /**
+         * 上一次添加的符号是一个换行符
+        */
         readonly LastNewLine: boolean;
+        /**
+         * 上一次添加的符号是一个预处理符号
+        */
         readonly LastDirective: boolean;
         private tagClass;
         append(token: string): void;
@@ -238,7 +253,7 @@ declare namespace vscode.TOC {
          * 这个列表是最外面的一层类型定义的列表
         */
         readonly Declares: VBType[];
-        insertSymbol(symbol: string, type: symbolTypes, line: number): void;
+        insertSymbol(symbol: string, type: symbolTypes, line?: number): void;
         private symbolRoutine;
         private keywordRoutine;
         /**

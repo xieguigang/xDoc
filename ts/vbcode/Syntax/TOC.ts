@@ -61,7 +61,7 @@ namespace vscode.TOC {
             return this.types;
         }
 
-        public insertSymbol(symbol: string, type: symbolTypes, line: number) {
+        public insertSymbol(symbol: string, type: symbolTypes, line: number = null) {
             if (symbol == "") {
                 return;
             }
@@ -120,10 +120,11 @@ namespace vscode.TOC {
                     if (this.typeStack.length == 0) {
                         // 不是内部类，则直接添加
                         this.types.push(this.current);
+                        this.current = null;
                     } else {
-                        this.typeStack.pop();
+                        this.current = this.typeStack.pop();
                     }
-                    this.current = null;
+
                     this.endStack = false;
                 } else {
                     // 新的类型声明

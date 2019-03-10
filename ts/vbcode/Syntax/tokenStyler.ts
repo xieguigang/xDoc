@@ -23,14 +23,23 @@
             return this.rowList;
         }
 
+        /**
+         * 获取当前的符号所处的行号 
+        */
         public get lineNumber(): number {
             return this.rowList.length + 1;
         }
 
+        /**
+         * 获取上一次添加的符号
+        */
         public get LastAddedToken(): string {
             return this.lastToken;
         }
 
+        /**
+         * 获取得到代码源文件的大纲概览结构信息
+        */
         public get CodeSummary(): TOC.Summary {
             return this.summary;
         }
@@ -42,10 +51,16 @@
             return this.lastTypeKeyword;
         }
 
+        /**
+         * 上一次添加的符号是一个换行符
+        */
         public get LastNewLine(): boolean {
             return this.lastNewLine;
         }
 
+        /**
+         * 上一次添加的符号是一个预处理符号
+        */
         public get LastDirective(): boolean {
             return this.lastDirective;
         }
@@ -166,7 +181,7 @@
                 this.lastTypeKeyword = false;
             }
 
-            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
+            this.summary.insertSymbol(token, TOC.symbolTypes.keyword);
             this.lastNewLine = false;
             this.lastDirective = false;
         }
