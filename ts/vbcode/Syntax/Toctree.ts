@@ -5,7 +5,7 @@
         let root: IHTMLElement = $ts("<ul>");
 
         for (let node of modules) {
-            root.append(treeNode(node));
+            root.append(treeNode(node, false));
         }
 
         return root;
@@ -21,11 +21,23 @@
         return item;
     }
 
-    function treeNode(type: VBType): HTMLElement {
-        let title: IHTMLElement = $ts("<a>", {
+    function displayTitle(type: VBType, isInner: boolean): HTMLElement {
+        let title: HTMLElement;
+
+        if (isInner) {
+            title = $ts("<div>").display(`${type.type} ${type.symbol}`);
+        } else {
+            title = $ts("<strong>").display(`${type.type} ${type.symbol}`);
+        }
+
+        return $ts("<a>", {
             class: "type",
             href: `#L${type.line}`
-        }).display(`${type.type} ${type.symbol}`);
+        }).display(title);
+    }
+
+    function treeNode(type: VBType, isInner: boolean = true): HTMLElement {
+        let title: HTMLElement = displayTitle(type, isInner);
         let root: IHTMLElement = $ts("<li>").display(title);
 
         if (!IsNullOrEmpty(type.innerType)) {
