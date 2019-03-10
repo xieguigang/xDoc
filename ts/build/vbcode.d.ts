@@ -258,6 +258,7 @@ declare namespace vscode.TOC {
         readonly Declares: VBType[];
         insertSymbol(symbol: string, type: symbolTypes, line: number): void;
         private symbolRoutine;
+        private typeDeclare;
         private keywordRoutine;
         private memberMethodStackRoutine;
         /**

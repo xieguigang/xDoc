@@ -79,38 +79,61 @@ namespace vscode.TOC {
         }
 
         private symbolRoutine(symbol: string, line: number) {
-            // 如果上一个符号是申明符号，则可以构建出一个新的类型或者成员
-            switch (this.lastDeclare) {
-                case declares.field:
-                    this.current.addField(symbol, line);
-                    break;
-                case declares.function:
-                    this.current.addFunction(symbol, line);
-                    break;
-                case declares.operator:
-                    this.current.addOperator(symbol, line);
-                    break;
-                case declares.property:
-                    this.current.addProperty(symbol, line);
-                    break;
-                case declares.sub:
-                    this.current.addSub(symbol, line);
-                    break;
-                case declares.type:
-                    if (isNullOrUndefined(this.current)) {
-                        // 当前的类型数据为空的，则不是内部类型的声明
-                        this.current = new VBType(symbol, this.lastType, line);
-                    } else {
-                        // 当前的类型数据不为空，则是当前的类型内的内部类型
-                        let inner = new VBType(symbol, this.lastType, line);
+            // 枚举类型的成员都是字段
+            if (!isNullOrUndefined(this.current) && this.lastType == "Enum") {
+                this.current.addField(symbol, line);
+            } else {
+                // 如果上一个符号是申明符号，则可以构建出一个新的类型或者成员
+                switch (this.lastDeclare) {
+                    case declares.field:
+                        this.current.addField(symbol, line);
+                        break;
+                    case declares.function:
+                        this.current.addFunction(symbol, line);
+                        break;
+                    case declares.operator:
+                        this.current.addOperator(symbol, line);
+                        break;
+                    case declares.property:
+                        this.current.addProperty(symbol, line);
+                        break;
+                    case declares.sub:
+                        this.current.addSub(symbol, line);
+                        break;
+                    case declares.type:
+                        this.typeDeclare(new VBType(symbol, this.lastType, line));
+                        break;
+                    default:
+                    // do nothing
+                }
+            }
+        }
 
-                        this.typeStack.push(this.current);
-                        this.current.innerType.push(inner);
-                        this.current = inner;
-                    }
-                    break;
-                default:
-                // do nothing
+        private typeDeclare(type: VBType) {
+            if (isNullOrUndefined(this.current)) {
+                if (this.lastType == "Delegate") {
+                    // delegate类型没有内部成员，所以stack不需要变化
+                    this.lastDeclare = declares.NA;
+                    this.endStack = false;
+                    this.current = null;
+                    this.types.push(type);
+                } else {
+                    // 当前的类型数据为空的，则不是内部类型的声明
+                    this.current = type;
+                }
+            } else {
+                // 当前的类型数据不为空，则是当前的类型内的内部类型
+                this.current.innerType.push(type);
+
+                if (this.lastType == "Delegate") {
+                    // delegate类型没有内部成员，所以stack不需要变化
+                    this.lastDeclare = declares.NA;
+                    this.endStack = false;
+                    this.current = null;
+                } else {
+                    this.typeStack.push(this.current);
+                    this.current = type;
+                }
             }
         }
 
@@ -145,9 +168,19 @@ namespace vscode.TOC {
             } else if (symbol == operatorDeclare) {
                 this.memberMethodStackRoutine(declares.operator);
             } else if (symbol == functionDeclare) {
-                this.memberMethodStackRoutine(declares.function);
+                // delegate function
+                if (this.lastDeclare == declares.type && this.lastType == "Delegate") {
+                    // do nothing
+                } else {
+                    this.memberMethodStackRoutine(declares.function);
+                }
             } else if (symbol == subroutineDeclare) {
-                this.memberMethodStackRoutine(declares.sub);
+                // delegate function
+                if (this.lastDeclare == declares.type && this.lastType == "Delegate") {
+                    // do nothing
+                } else {
+                    this.memberMethodStackRoutine(declares.sub);
+                }
             } else if (symbol == endStack) {
                 this.endStack = true;
             } else if (symbol in operatorKeywords) {
