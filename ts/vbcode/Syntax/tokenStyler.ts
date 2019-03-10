@@ -181,7 +181,7 @@
                 this.lastTypeKeyword = false;
             }
 
-            this.summary.insertSymbol(token, TOC.symbolTypes.keyword);
+            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
             this.lastNewLine = false;
             this.lastDirective = false;
         }

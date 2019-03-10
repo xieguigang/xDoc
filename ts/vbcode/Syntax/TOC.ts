@@ -13,6 +13,7 @@ namespace vscode.TOC {
     export const functionDeclare: string = "Function";
     export const subroutineDeclare: string = "Sub";
     export const endStack: string = "End";
+    export const operatorKeywords: {} = TypeInfo.EmptyObject(["And", "Or", "Not", "AndAlso", "OrElse", "Xor", "IsTrue", "IsFalse", "CType", "Like"], true);
 
     export enum symbolTypes {
         /**
@@ -61,13 +62,13 @@ namespace vscode.TOC {
             return this.types;
         }
 
-        public insertSymbol(symbol: string, type: symbolTypes, line: number = null) {
+        public insertSymbol(symbol: string, type: symbolTypes, line: number) {
             if (symbol == "") {
                 return;
             }
 
             if (type == symbolTypes.keyword) {
-                this.keywordRoutine(symbol);
+                this.keywordRoutine(symbol, line);
             } else {
                 // 是一个普通的符号
                 if (this.lastDeclare != declares.NA) {
@@ -113,7 +114,7 @@ namespace vscode.TOC {
             }
         }
 
-        private keywordRoutine(symbol: string) {
+        private keywordRoutine(symbol: string, line: number) {
             if (symbol in typeDeclares) {
                 if (this.endStack) {
                     // 前面一个符号为结束符
@@ -144,7 +145,16 @@ namespace vscode.TOC {
                 this.lastDeclare = declares.property;
             } else if (symbol == operatorDeclare) {
                 // 当前类型之中的操作符成员声明
-                this.lastDeclare = declares.operator;
+                if (this.endStack) {
+                    this.scope = scopes.type;
+                    this.endStack = false;
+                } else {
+                    if (this.scope == scopes.type) {
+                        // 当前类型之中的函数成员声明
+                        this.lastDeclare = declares.operator;
+                        this.scope = scopes.method;
+                    }
+                }
             } else if (symbol == functionDeclare) {
                 if (this.endStack) {
                     this.scope = scopes.type;
@@ -169,6 +179,8 @@ namespace vscode.TOC {
                 }
             } else if (symbol == endStack) {
                 this.endStack = true;
+            } else if (symbol in operatorKeywords) {
+                this.current.addOperator(symbol, line);
             } else {
                 // 什么也不是，重置
                 this.lastDeclare = declares.NA;

@@ -216,6 +216,7 @@ declare namespace vscode.TOC {
     const functionDeclare: string;
     const subroutineDeclare: string;
     const endStack: string;
+    const operatorKeywords: {};
     enum symbolTypes {
         /**
          * 普通符号
@@ -255,7 +256,7 @@ declare namespace vscode.TOC {
          * 这个列表是最外面的一层类型定义的列表
         */
         readonly Declares: VBType[];
-        insertSymbol(symbol: string, type: symbolTypes, line?: number): void;
+        insertSymbol(symbol: string, type: symbolTypes, line: number): void;
         private symbolRoutine;
         private keywordRoutine;
         /**
