@@ -1,6 +1,6 @@
 <link type="text/css" rel="stylesheet" href="./style.css" />
 
-<pre class="vbnet">
+<script type="plain/text" id="script">
 Public Class Program
 
   Public Structure Inner1
@@ -49,11 +49,19 @@ Public Class Program
   End Function
     
 End Class
-    </pre>
+    </script>
 
 <script src="linq.js"></script>
 <script src="vbcode.js"></script>
 
+<div id="code"></div>
+<div id="menu"></div>
+
 <script>
-    vscode.highlightVB();
+    var codeSummary = vscode.highlight($ts.text("#script"), "#code");
+	var toc = codeSummary.TOC();
+	
+	console.log(codeSummary);
+	
+	$ts("#menu").display(toc);
 </script>

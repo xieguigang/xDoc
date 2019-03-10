@@ -139,7 +139,7 @@ declare namespace vscode {
      * @param code VB.NET source code in plain text.
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    function highlight(code: string, display: string | IHTMLElement, style?: CSS): void;
+    function highlight(code: string, display: string | IHTMLElement, style?: CSS): TOC.Summary;
 }
 declare namespace vscode.github {
     /**

@@ -3,8 +3,8 @@
 /// <reference path="Syntax/tokenStyler.ts" />
 /// <reference path="Syntax/VBparser.ts" />
 
-$ts.mode = Modes.debug;
-// $ts.mode = Modes.production;
+// $ts.mode = Modes.debug;
+$ts.mode = Modes.production;
 
 namespace vscode {
 
@@ -101,7 +101,7 @@ namespace vscode {
      * @param code VB.NET source code in plain text. 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
+    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio): TOC.Summary {
         var pcode = new Pointer<string>(<string[]>Strings.ToCharArray(code));
         var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
 
@@ -137,6 +137,8 @@ namespace vscode {
             console.log(html.rows);
             console.log(html.CodeSummary.Declares);
         }
+
+        return html.CodeSummary;
     }
 }
 
