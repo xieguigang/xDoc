@@ -8,6 +8,14 @@ Public Class Program
   Public Function ToString()
   End Function
   
+  ' overloads test
+  Public Function ToString(format As Format)
+  End Function
+  
+    ' generic test
+  Public Function ToString(Of T)(format As Format)
+  End Function
+  
   Public test As Object
   Public Sub GG()
   End Sub
@@ -36,6 +44,10 @@ Public Class Program
   Public Operator +()
   End Operator
   
+  ' overloads test
+  Public Function ABC(format As Format)
+  End Function
+    
 End Class
     </pre>
 
