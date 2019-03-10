@@ -7,7 +7,7 @@ namespace vscode.TOC {
      * 在VB之中用于类型申明的关键词
     */
     export const typeDeclares: {} = TypeInfo.EmptyObject(["Class", "Structure", "Enum", "Module"], true);
-    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected", "ReadOnly"], true);
+    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected", "ReadOnly", "Const", "Shared"], true);
     export const propertyDeclare: string = "Property";
     export const operatorDeclare: string = "Operator";
     export const functionDeclare: string = "Function";
