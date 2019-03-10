@@ -259,6 +259,7 @@ declare namespace vscode.TOC {
         insertSymbol(symbol: string, type: symbolTypes, line: number): void;
         private symbolRoutine;
         private keywordRoutine;
+        private memberMethodStackRoutine;
         /**
          * 生成当前源代码的大纲目录
         */

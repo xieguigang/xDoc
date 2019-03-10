@@ -141,51 +141,13 @@ namespace vscode.TOC {
                     this.lastDeclare = declares.NA;
                 }
             } else if (symbol == propertyDeclare) {
-                // 当前类型之中的操作符成员声明
-                if (this.endStack) {
-                    this.scope = scopes.type;
-                    this.endStack = false;
-                } else {
-                    if (this.scope == scopes.type) {
-                        // 当前类型之中的函数成员声明
-                        this.lastDeclare = declares.property;
-                        this.scope = scopes.method;
-                    }
-                }
+                this.memberMethodStackRoutine(declares.property);
             } else if (symbol == operatorDeclare) {
-                // 当前类型之中的操作符成员声明
-                if (this.endStack) {
-                    this.scope = scopes.type;
-                    this.endStack = false;
-                } else {
-                    if (this.scope == scopes.type) {
-                        // 当前类型之中的函数成员声明
-                        this.lastDeclare = declares.operator;
-                        this.scope = scopes.method;
-                    }
-                }
+                this.memberMethodStackRoutine(declares.operator);
             } else if (symbol == functionDeclare) {
-                if (this.endStack) {
-                    this.scope = scopes.type;
-                    this.endStack = false;
-                } else {
-                    if (this.scope == scopes.type) {
-                        // 当前类型之中的函数成员声明
-                        this.lastDeclare = declares.function;
-                        this.scope = scopes.method;
-                    }
-                }
+                this.memberMethodStackRoutine(declares.function);
             } else if (symbol == subroutineDeclare) {
-                if (this.endStack) {
-                    this.scope = scopes.type;
-                    this.endStack = false;
-                } else {
-                    if (this.scope == scopes.type) {
-                        // 当前类型之中的子过程成员声明
-                        this.lastDeclare = declares.sub;
-                        this.scope = scopes.method;
-                    }
-                }
+                this.memberMethodStackRoutine(declares.sub);
             } else if (symbol == endStack) {
                 this.endStack = true;
             } else if (symbol in operatorKeywords) {
@@ -194,6 +156,19 @@ namespace vscode.TOC {
             } else {
                 // 什么也不是，重置
                 this.lastDeclare = declares.NA;
+            }
+        }
+
+        private memberMethodStackRoutine(declareAs: declares) {
+            if (this.endStack) {
+                this.scope = scopes.type;
+                this.endStack = false;
+            } else {
+                if (this.scope == scopes.type) {
+                    // 当前类型之中的子过程成员声明
+                    this.lastDeclare = declareAs;
+                    this.scope = scopes.method;
+                }
             }
         }
 
