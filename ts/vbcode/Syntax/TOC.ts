@@ -181,6 +181,7 @@ namespace vscode.TOC {
                 this.endStack = true;
             } else if (symbol in operatorKeywords) {
                 this.current.addOperator(symbol, line);
+                this.lastDeclare = declares.NA;
             } else {
                 // 什么也不是，重置
                 this.lastDeclare = declares.NA;
