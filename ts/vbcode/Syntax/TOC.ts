@@ -141,8 +141,17 @@ namespace vscode.TOC {
                     this.lastDeclare = declares.NA;
                 }
             } else if (symbol == propertyDeclare) {
-                // 当前类型之中的属性成员声明
-                this.lastDeclare = declares.property;
+                // 当前类型之中的操作符成员声明
+                if (this.endStack) {
+                    this.scope = scopes.type;
+                    this.endStack = false;
+                } else {
+                    if (this.scope == scopes.type) {
+                        // 当前类型之中的函数成员声明
+                        this.lastDeclare = declares.property;
+                        this.scope = scopes.method;
+                    }
+                }
             } else if (symbol == operatorDeclare) {
                 // 当前类型之中的操作符成员声明
                 if (this.endStack) {
