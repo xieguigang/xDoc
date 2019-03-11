@@ -1,4 +1,4 @@
-﻿namespace vscode.TOC.Tree {
+﻿namespace vscode.TOC.View {
 
     export function BuildTOC(summary: Summary): HTMLElement {
         let modules: VBType[] = summary.Declares;
