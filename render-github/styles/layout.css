@@ -652,13 +652,13 @@ div.mw-hightlight {
             text-decoration: underline dotted
         }
     }
-
+/*
     span.comment {
         font-style: italic;
         unicode-bidi: -moz-isolate;
         unicode-bidi: isolate
     }
-
+*/
     #editform, #toolbar, #wpTextbox1 {
         clear: both
     }
@@ -1355,11 +1355,11 @@ div.mw-hightlight {
     svg:not(:root) {
         overflow: hidden
     }
-
+/*
     table {
         border-collapse: collapse
     }
-
+*/
     caption {
         padding-top: .75rem;
         padding-bottom: .75rem;
@@ -1368,9 +1368,9 @@ div.mw-hightlight {
         caption-side: bottom
     }
 
-    th {
+    /*th {
         text-align: inherit
-    }
+    }*/
 
     label {
         display: inline-block;
@@ -10126,6 +10126,7 @@ div.mw-hightlight {
     }
 
     @media print {
+		
         *, ::after, ::before {
             text-shadow: none !important;
             box-shadow: none !important
@@ -10348,7 +10349,7 @@ div.mw-hightlight {
                 border: 0
             }
     }
-
+/*
     .bd-content table > tbody > tr > td, .bd-content table > tbody > tr > th, .bd-content table > tfoot > tr > td, .bd-content table > tfoot > tr > th, .bd-content table > thead > tr > td, .bd-content table > thead > tr > th {
         padding: .75rem;
         vertical-align: top;
@@ -10367,7 +10368,7 @@ div.mw-hightlight {
         border: transparent;
         padding: .1em
     }
-
+*/
     .bd-content h3 {
         margin-top: 1.5rem
     }
