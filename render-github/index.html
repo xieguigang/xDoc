@@ -15,6 +15,13 @@
 	<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" />
 	<link rel="alternate" type="application/atom+xml" title="Blender Developer Wiki Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
 
+	<script type="text/javascript" src="javascript/linq.js"></script>
+	<script type="text/javascript" src="javascript/vbcode.js"></script>
+	<script type="text/javascript" src="javascript/jquery.min.js"></script>
+	<script type="text/javascript" src="javascript/jstree/jstree.min.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="./style.css" />
+	<link type="text/css" rel="stylesheet" href="javascript/jstree/default/style.min.css" />
 </head>
 
 <body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Building_Blender_Windows rootpage-Building_Blender skin-bootstrap action-view">
@@ -125,6 +132,9 @@
 					<div class="toctitle">
 						<h2>Contents</h2>
 					</div>
+					
+					<div id="vbproj-tree" style="font-size: 0.9em;"></div>
+					
 					<ul>
 						<li class="toclevel-1 tocsection-1"><a href="#Building_Blender_on_Windows"><span class="tocnumber">1</span> <span
 								 class="toctext">Building Blender on Windows</span></a>
@@ -187,6 +197,26 @@
 				<div class="mw-indicators mw-body-content">
 				</div>
 				<h1 class="firstHeading">Building Blender/Windows</h1>
+				
+				<div id="vbcode"></div>
+				
+				<script type="text/javascript">
+				var github = new vscode.github.raw("xieguigang", "sciBASIC");
+				var file = "Microsoft.VisualBasic.Core/ComponentModel/Ranges/RangeList.vb";
+
+				github.highlightCode(file, "#vbcode", null, function(toc) {
+				var hash = toc.hashSet;
+				
+				$('#vbproj-tree').jstree(toc);
+	$('#vbproj-tree').on("changed.jstree", function (e, data) {
+                                        var id  = data.selected[0];
+                                        var url = hash[id];
+
+                                        $ts.goto(url);
+                                    });
+				});
+				</script>
+				
 				<div class="mw-body-content">
 					<div id="contentSub">
 						<p><span class="subpages">&lt; <a href="/wiki/Building_Blender" title="Building Blender">Building Blender</a></span></p>

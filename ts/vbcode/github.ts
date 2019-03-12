@@ -26,8 +26,8 @@ namespace vscode.github {
             return `https://raw.githubusercontent.com/${this.username}/${this.repo}/${this.commit}/${path}`
         }
 
-        public highlightCode(fileName: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
-            vscode.highlightGithub(this, fileName, display, style);
+        public highlightCode(fileName: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, TOC: (toc: TOC.Summary) => void = null) {
+            vscode.highlightGithub(this, fileName, display, style, TOC);
         }
     }
 }
