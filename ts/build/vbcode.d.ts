@@ -273,6 +273,13 @@ declare namespace vscode.TOC.View {
 }
 declare namespace vscode.TOC.View {
     function jsTree(summary: Summary): JSTreeStaticDefaults;
+    interface treeNode {
+        icon: string;
+        id: string;
+        parent: string;
+        text: string;
+        hashLine: string;
+    }
 }
 /**
  * Visual Studio Icons
