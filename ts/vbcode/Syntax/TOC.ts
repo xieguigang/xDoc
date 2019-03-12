@@ -53,6 +53,7 @@ namespace vscode.TOC {
         private lastType: string;
         private endStack: boolean = false;
         private scope: scopes;
+        private lastSymbol: string;
 
         /**
          * 获取得到当前的源代码文档之中的类型定义信息
@@ -80,6 +81,8 @@ namespace vscode.TOC {
                     this.lastDeclare = declares.NA;
                 }
             }
+
+            this.lastSymbol = symbol;
         }
 
         private symbolRoutine(symbol: string, line: number) {
@@ -168,7 +171,13 @@ namespace vscode.TOC {
                     this.lastDeclare = declares.NA;
                 }
             } else if (symbol == propertyDeclare) {
-                this.memberMethodStackRoutine(declares.property);
+                if (this.lastSymbol in fieldDeclares) {
+                    // 当前类型之中的子过程成员声明
+                    this.lastDeclare = declares.property;
+                    this.scope = scopes.method;
+                } else {
+                    this.memberMethodStackRoutine(declares.property);
+                }
             } else if (symbol == operatorDeclare) {
                 this.memberMethodStackRoutine(declares.operator);
             } else if (symbol == functionDeclare) {

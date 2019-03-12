@@ -769,6 +769,7 @@ var vscode;
                         this.lastDeclare = declares.NA;
                     }
                 }
+                this.lastSymbol = symbol;
             };
             Summary.prototype.symbolRoutine = function (symbol, line) {
                 // 枚举类型的成员都是字段
@@ -861,7 +862,14 @@ var vscode;
                     }
                 }
                 else if (symbol == TOC.propertyDeclare) {
-                    this.memberMethodStackRoutine(declares.property);
+                    if (this.lastSymbol in TOC.fieldDeclares) {
+                        // 当前类型之中的子过程成员声明
+                        this.lastDeclare = declares.property;
+                        this.scope = scopes.method;
+                    }
+                    else {
+                        this.memberMethodStackRoutine(declares.property);
+                    }
                 }
                 else if (symbol == TOC.operatorDeclare) {
                     this.memberMethodStackRoutine(declares.operator);
