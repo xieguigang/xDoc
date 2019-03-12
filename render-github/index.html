@@ -88,18 +88,18 @@
 				
 				<script type="text/javascript">
 				var github = new vscode.github.raw("xieguigang", "sciBASIC");
-				var file = "Microsoft.VisualBasic.Core/ComponentModel/Ranges/RangeList.vb";
+				var file = "Microsoft.VisualBasic.Core/ApplicationServices/App.vb";
 
-				github.highlightCode(file, "#vbcode", null, function(toc) {
-				var hash = toc.hashSet;
-				
-				$('#vbproj-tree').jstree(toc);
-	$('#vbproj-tree').on("changed.jstree", function (e, data) {
-                                        var id  = data.selected[0];
-                                        var url = hash[id];
-
-                                        $ts.goto(url);
-                                    });
+				github.highlightCode(file, "#vbcode", vscode.VisualStudio, function(toc) {
+					var hash = toc.hashSet;
+					var click = function (e, data) {												
+						$ts.goto(hash[data.selected[0]]);
+					}
+					
+					console.log(hash);
+					
+					$('#vbproj-tree').jstree(toc);
+					$('#vbproj-tree').on("changed.jstree", click);
 				});
 				</script>
 						
