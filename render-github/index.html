@@ -90,7 +90,8 @@
 				var github = new vscode.github.raw("xieguigang", "sciBASIC");
 				var file = "Microsoft.VisualBasic.Core/ApplicationServices/App.vb";
 
-				github.highlightCode(file, "#vbcode", vscode.VisualStudio, function(toc) {
+				github.highlightCode(file, "#vbcode", vscode.VisualStudio, function(summary) {
+					var toc = summary.jsTree();
 					var hash = toc.hashSet;
 					var click = function (e, data) {												
 						$ts.goto(hash[data.selected[0]]);

@@ -747,6 +747,9 @@ var vscode;
                  * 这个列表是最外面的一层类型定义的列表
                 */
                 get: function () {
+                    if (IsNullOrEmpty(this.types) && !isNullOrUndefined(this.current)) {
+                        this.types.push(this.current);
+                    }
                     return this.types;
                 },
                 enumerable: true,

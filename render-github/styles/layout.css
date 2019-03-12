@@ -10502,7 +10502,7 @@ div.mw-hightlight {
             .bd-toc ul li.toclevel-3, .bd-toc ul li.toclevel-4, .bd-toc ul li.toclevel-5 {
                 display: none
             }
-
+/*
     .bd-toc a {
         display: block;
         padding: .125rem 1.5rem;
@@ -10513,7 +10513,7 @@ div.mw-hightlight {
             color: #777;
             text-decoration: none
         }
-
+*/
     .bd-sidebar {
         -ms-flex-order: 0;
         order: 0;
