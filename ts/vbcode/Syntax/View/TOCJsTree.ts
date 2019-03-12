@@ -26,6 +26,7 @@
             case "Interface": return Icons.vbinterface;
             case "Delegate": return Icons.vbdelegate;
             case "Namespace": return Icons.vbnamespace;
+            case "Structure": return Icons.vbstructure;
 
             default:
                 return Icons.vbclass;

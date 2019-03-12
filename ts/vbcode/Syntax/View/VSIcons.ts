@@ -79,6 +79,9 @@ namespace vscode.TOC.View.Icons {
                                            uFBgqukotCu+SQSwVMyZO1B59lUyuqHUI6zIAneVHBu0DQYRDj5hQu50QrqB1COoIKlnhVavDQJZLL6J
                                            5RoFoXw6AYgmSM9wcPYZvgS2IeIQAAAABJRU5ErkJggg==`);
 
-
+    export const vbstructure: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
+                                            7EAAAOxAGVKw4bAAAAWUlEQVR4XtVT7QrAIAjM8I89YrCnG+wR86fRYDAa9CVRO1CQQ7njEETEaGCNEp
+                                            gaMw/JICLAZ3DH1bUcTq+2sMkBfHmaogDuKuCTQq6oxtuGrP+eQo1f/40RbSkZGavw6UEAAAAASUVORK
+                                            5CYII=`);
 
 }
