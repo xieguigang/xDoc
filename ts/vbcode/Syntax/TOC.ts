@@ -211,5 +211,9 @@ namespace vscode.TOC {
         public TOC(): HTMLElement {
             return View.BuildTOC(this);
         }
+
+        public jsTree(): JSTreeStaticDefaults {
+            return View.jsTree(this);
+        }
     }
 }

@@ -266,6 +266,7 @@ declare namespace vscode.TOC {
          * 生成当前源代码的大纲目录
         */
         TOC(): HTMLElement;
+        jsTree(): JSTreeStaticDefaults;
     }
 }
 declare namespace vscode.TOC.View {

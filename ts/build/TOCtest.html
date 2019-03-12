@@ -1,5 +1,6 @@
 <link type="text/css" rel="stylesheet" href="./style.css" />
-
+ <link rel="stylesheet" href="lib/jstree/default/style.min.css" />
+ 
 <script type="plain/text" id="script">
 Public Class Program
 
@@ -66,15 +67,24 @@ End Enum
 
 <script src="linq.js"></script>
 <script src="vbcode.js"></script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/jstree/jstree.min.js"></script>
 
 <div id="code"></div>
-<div id="menu"></div>
+<div id="vbproj-tree"></div>
 
 <script>
     var codeSummary = vscode.highlight($ts.text("#script"), "#code");
-	var toc = codeSummary.TOC();
+	var toc = codeSummary.jsTree();
+	var hash = toc.hashSet;
 	
-	console.log(codeSummary);
+	console.log(toc);
 	
-	$ts("#menu").display(toc);
+	$('#vbproj-tree').jstree(toc);
+	$('#vbproj-tree').on("changed.jstree", function (e, data) {
+                                        var id  = data.selected[0];
+                                        var url = hash[id];
+
+                                        $ts.goto(url);
+                                    });
 </script>

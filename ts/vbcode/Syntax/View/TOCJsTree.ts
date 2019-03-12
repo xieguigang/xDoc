@@ -2,13 +2,19 @@
 
     export function jsTree(summary: Summary): JSTreeStaticDefaults {
         var treeData: treeNode[] = [];
+        var hashTable: {} = {};
 
         typeNodes(summary.Declares, "#", treeData);
 
-        return <JSTreeStaticDefaults>{
+        for (let node of treeData) {
+            hashTable[node.id] = node.hashLine;
+        }
+
+        return <any>{
             core: <JSTreeStaticDefaultsCore>{
                 data: treeData
-            }
+            },
+            hashSet: hashTable
         };
     }
 
