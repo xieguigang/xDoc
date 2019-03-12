@@ -91,8 +91,16 @@ namespace vscode {
         }
     }
 
-    export function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio) {
-        HttpHelpers.GetAsyn(github.fileURL(filename), code => vscode.highlight(code, display, style));
+    export function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, TOC: (toc: TOC.Summary) => void = null) {
+        let highlight = function (code: string) {
+            var toc = vscode.highlight(code, display, style);
+
+            if (!isNullOrUndefined(toc)) {
+                TOC(toc);
+            }
+        }
+
+        HttpHelpers.GetAsyn(github.fileURL(filename), code => highlight(code));
     }
 
     /** 
