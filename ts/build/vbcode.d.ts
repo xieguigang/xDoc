@@ -1,4 +1,5 @@
 /// <reference path="linq.d.ts" />
+/// <reference types="jstree" />
 declare namespace vscode {
     interface CSS {
         string: string;
@@ -267,6 +268,23 @@ declare namespace vscode.TOC {
         TOC(): HTMLElement;
     }
 }
-declare namespace vscode.TOC.Tree {
+declare namespace vscode.TOC.View {
     function BuildTOC(summary: Summary): HTMLElement;
+}
+declare namespace vscode.TOC.View {
+    function jsTree(summary: Summary): JSTreeStaticDefaults;
+}
+/**
+ * Visual Studio Icons
+*/
+declare namespace vscode.TOC.View.Icons {
+    const vbclass: string;
+    const vbnamespace: string;
+    const vbinterface: string;
+    const vbmodule: string;
+    const vbmethod: string;
+    const vbfield: string;
+    const vbproperty: string;
+    const vboperator: string;
+    const vbdelegate: string;
 }
