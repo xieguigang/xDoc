@@ -84,4 +84,11 @@ namespace vscode.TOC.View.Icons {
                                             gaMw/JICLAZ3DH1bUcTq+2sMkBfHmaogDuKuCTQq6oxtuGrP+eQo1f/40RbSkZGavw6UEAAAAASUVORK
                                             5CYII=`);
 
+    export const vbIcon: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
+                                       7DAAAOwwHHb6hkAAAA6UlEQVR4Xu1SvQ4BQRC+N+ANeALxBN5ApaXWKERLoVJoTn2RSCSikis0rqFQKe
+                                       QaiZJoFCQn2fsp18xkjRE5ejHJ5L6d++abn13rRyyOY/3wKIpGgG3EH9wOgiD7ImBVhjpXn2ql1AHOfq
+                                       E1w9ibZ2pj7Xg7EmEBqLoq9xZE2J8u+ny9ETYxcm975HOpM9eYIwWaoEpE/AosBTCRcMNZYwcuCyRJkp
+                                       dVq4MlYYiljcAdsJm5kYC7oGpmNywmO6J/0kCx23d9JgAmkhyhPdmkC4RhWIQFMgEwkr6PIM1cISUyFi
+                                       7fyvMd/O0On1xdHoEvwbIAAAAASUVORK5CYII=`);
+
 }

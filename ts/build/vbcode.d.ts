@@ -296,4 +296,5 @@ declare namespace vscode.TOC.View.Icons {
     const vboperator: string;
     const vbdelegate: string;
     const vbstructure: string;
+    const vbIcon: string;
 }
