@@ -65,4 +65,20 @@ namespace vscode.TOC.View.Icons {
                                            oFeDjIy3GCIPhzzjdW94qXdV0HQvMmGr4Bf2K7Xdftwqqqgud5cpV8C8ZZZ62drMlFUYCmafIxMQo2DA
                                            OyLJOJey9RwsMw3FzXvVmWtRT+4zmaAyEc4YNIfhNJX/8ZPB6ASYNvhAiYFBMzPgn2gp2gmSiEr3BQPw
                                            BwoN8BzQiLAAAAAElFTkSuQmCC`);
+
+    export const vboperator: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
+                                           7EAAAOxAGVKw4bAAAAyklEQVR4Xr1TMQoCQQzMHoJyhYogNoovsBT8w1UWNoKFINjZ+gb9gSBYCDYW2v
+                                           gHwVJ/oI0I4lkExWLFhTm4VLcrOrBLSJgkk+wqZtb0BVKfy+8snMg8b5MnnbdpiyyABF9KQGVpVwdrCv
+                                           klu0IsniDfW4Ic2UpFMTcJWtvNANX+O0RPrDB2AMzjMA6Mv5hNiy0kaH8/Cqhc8Kk72dLl/rST0KxXDP
+                                           l0ZVrtjuIdCAmyo1IuQ7N+w5Brww1CySWcwwf8P3rK+FWueAMBAUSsTmsB9QAAAABJRU5ErkJggg==`);
+
+    export const vbdelegate: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
+                                           7EAAAOxAGVKw4bAAAA7klEQVR4Xu2SsYrCQBCGZ3MYuKB9iryCdmInYhPxFeSKFIKdhfgUNlceaSyCr6
+                                           CxOcTWzt4uFlpYmRUiZm/m2IUQWYho6Qc/YSfz/dUwyME5b+EnwDi5XxHmy7KsVVYw4J7AH4XOsOFDNj
+                                           STxXo45yyOuehXv0W0Owh8/+e4P9FMvSt5ycYsMKkUsstCM0ulYzOSf2fbzvxnA9fkBkUomR/QHdSh3a
+                                           uFBgqukotCu+SQSwVMyZO1B59lUyuqHUI6zIAneVHBu0DQYRDj5hQu50QrqB1COoIKlnhVavDQJZLL6J
+                                           5RoFoXw6AYgmSM9wcPYZvgS2IeIQAAAABJRU5ErkJggg==`);
+
+
+
 }
