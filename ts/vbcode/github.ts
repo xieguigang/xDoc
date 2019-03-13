@@ -22,8 +22,16 @@ namespace vscode.github {
         /**
          * 构建生成目标源文件在github上面的位置链接url
         */
-        public fileURL(path: string): string {
+        public RawfileURL(path: string): string {
             return `https://raw.githubusercontent.com/${this.username}/${this.repo}/${this.commit}/${path}`
+        }
+
+        public blame(path: string): string {
+            return `https://github.com/${this.username}/${this.repo}/blame/${this.commit}/${path}`
+        }
+
+        public commitHistory(path: string): string {
+            return `https://github.com/${this.username}/${this.repo}/commits/${this.commit}/${path}`
         }
 
         public highlightCode(fileName: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, TOC: (toc: TOC.Summary) => void = null) {

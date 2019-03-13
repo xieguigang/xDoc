@@ -158,7 +158,9 @@ declare namespace vscode.github {
         /**
          * 构建生成目标源文件在github上面的位置链接url
         */
-        fileURL(path: string): string;
+        RawfileURL(path: string): string;
+        blame(path: string): string;
+        commitHistory(path: string): string;
         highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void): void;
     }
 }

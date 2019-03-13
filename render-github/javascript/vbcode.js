@@ -873,7 +873,7 @@ var vscode;
                     if (this.lastSymbol in TOC.fieldDeclares) {
                         // 当前类型之中的子过程成员声明
                         this.lastDeclare = declares.property;
-                        this.scope = scopes.method;
+                        this.scope = scopes.type;
                     }
                     else {
                         this.memberMethodStackRoutine(declares.property);

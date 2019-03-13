@@ -100,7 +100,7 @@ namespace vscode {
             }
         }
 
-        HttpHelpers.GetAsyn(github.fileURL(filename), code => highlight(code));
+        HttpHelpers.GetAsyn(github.RawfileURL(filename), code => highlight(code));
     }
 
     /** 
