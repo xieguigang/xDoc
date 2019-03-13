@@ -137,6 +137,20 @@ namespace vscode {
             }
         }
 
+        private addToken(c: string) {
+            if (c == " ") {
+                this.token.push("&nbsp;");
+            } else if (c == "\t") {
+                // 是一个TAB
+                // 则插入4个空格
+                for (var i: number = 0; i < 4; i++) {
+                    this.token.push("&nbsp;");
+                }
+            } else {
+                this.token.push(c);
+            }
+        }
+
         private walkChar(c: string): void {
             var escapes = this.escapes;
             var code = this.code;
@@ -146,7 +160,7 @@ namespace vscode {
 
             } else if (this.escapes.comment) {
                 // 当前的内容是注释的一部分，则直接添加内容
-                this.token.push(c);
+                this.addToken(c);
 
                 // 下面的所有代码都是处理的非注释部分的内容了
                 // 代码注释部分的内容已经在处理换行符和上面的代码之中完成了处理操作
@@ -163,21 +177,16 @@ namespace vscode {
                 } else {
                     this.token.push(c);
                 }
-            } else if (c == " " || c == "\t") {
-                // 使用空格进行分词
+            } else if (c == " " || c == "\t") {                
                 if (!escapes.string) {
+
+                    // 使用空格进行分词
                     this.endToken();
                     code.append(c);
-
-                    // 是字符串的一部分
-                } else if (c == " ") {
-                    this.token.push("&nbsp;");
+                    
                 } else {
-                    // 是一个TAB
-                    // 则插入4个空格
-                    for (var i: number = 0; i < 4; i++) {
-                        this.token.push("&nbsp;");
-                    }
+                    // 是字符串的一部分
+                    this.addToken(c);
                 }
             } else if (c in delimiterSymbols) {
                 // 也会使用小数点进行分词

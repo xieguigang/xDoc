@@ -101,6 +101,7 @@ declare namespace vscode {
         */
         private walkNewLine;
         private walkStringQuot;
+        private addToken;
         private walkChar;
     }
 }

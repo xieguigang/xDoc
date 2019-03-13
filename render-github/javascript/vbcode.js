@@ -391,6 +391,21 @@ var vscode;
                 this.token = [];
             }
         };
+        VBParser.prototype.addToken = function (c) {
+            if (c == " ") {
+                this.token.push("&nbsp;");
+            }
+            else if (c == "\t") {
+                // 是一个TAB
+                // 则插入4个空格
+                for (var i = 0; i < 4; i++) {
+                    this.token.push("&nbsp;");
+                }
+            }
+            else {
+                this.token.push(c);
+            }
+        };
         VBParser.prototype.walkChar = function (c) {
             var escapes = this.escapes;
             var code = this.code;
@@ -399,7 +414,7 @@ var vscode;
             }
             else if (this.escapes.comment) {
                 // 当前的内容是注释的一部分，则直接添加内容
-                this.token.push(c);
+                this.addToken(c);
                 // 下面的所有代码都是处理的非注释部分的内容了
                 // 代码注释部分的内容已经在处理换行符和上面的代码之中完成了处理操作
             }
@@ -418,21 +433,14 @@ var vscode;
                 }
             }
             else if (c == " " || c == "\t") {
-                // 使用空格进行分词
                 if (!escapes.string) {
+                    // 使用空格进行分词
                     this.endToken();
                     code.append(c);
-                    // 是字符串的一部分
-                }
-                else if (c == " ") {
-                    this.token.push("&nbsp;");
                 }
                 else {
-                    // 是一个TAB
-                    // 则插入4个空格
-                    for (var i = 0; i < 4; i++) {
-                        this.token.push("&nbsp;");
-                    }
+                    // 是字符串的一部分
+                    this.addToken(c);
                 }
             }
             else if (c in vscode.delimiterSymbols) {
