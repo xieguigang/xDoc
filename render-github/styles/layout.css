@@ -9363,7 +9363,7 @@ div.mw-hightlight {
         }
 
         .pl-md-5, .px-md-5 {
-            padding-left: 3rem !important
+            padding-left: 1rem !important
         }
 
         .m-md-auto {
@@ -10559,7 +10559,8 @@ div.mw-hightlight {
 
     .bd-sidebar li {
         list-style-type: none;
-        font-size: 0.9em;
+        /* font-size: 0.9em; */
+		font-size: 12px;
         margin-bottom: 3px
     }
 
