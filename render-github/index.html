@@ -38,20 +38,13 @@
 			</ul>
 			<div>
 
-				<ul class="navbar-nav">
-					<li id="ca-view" class="nav-item"><a href="/wiki/Building_Blender/Windows" redundant="1" class="nav-link">View</a></li>
+				<ul class="navbar-nav">					
 					<li id="ca-viewsource" class="nav-item"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=edit"
 						 title="This page is protected.&#10;You can view its source [e]" accesskey="e" class="nav-link">View source</a></li>
 					<li id="ca-history" class="nav-item"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=history"
 						 title="Past revisions of this page [h]" accesskey="h" class="nav-link">History</a></li>
-					<li class="nav-item">
-					<li class="nav-item dropdown" id="p-personal"><a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Personal
-							tools</a>
-						<div class="dropdown-menu dropdown-menu-right"><span id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Building+Blender%2FWindows"
-								 title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o" class="dropdown-item">Log
-									in</a></span></div>
-					</li>
-					</li>
+					<li id="ca-history" class="nav-item"><a href="/w/index.php?title=Building_Blender/Windows&amp;action=history"
+						 title="Past revisions of this page [h]" accesskey="h" class="nav-link">Git Blame</a></li>
 				</ul>
 			</div>
 		</div>
@@ -93,8 +86,16 @@
 				github.highlightCode(file, "#vbcode", vscode.VisualStudio, function(summary) {
 					var toc = summary.jsTree();
 					var hash = toc.hashSet;
-					var click = function (e, data) {												
-						$ts.goto(hash[data.selected[0]]);
+					var click = function (e, data) {
+						
+						console.log(hash[data.selected[0]]);
+						//$ts.goto(hash[data.selected[0]]);
+						// window.location.hash = hash[data.selected[0]];
+						
+						var offset = $ts(hash[data.selected[0]]).offsetTop;
+						
+						console.log(offset)
+						window.scrollTo(0, offset);
 					}
 					
 					console.log(hash);
