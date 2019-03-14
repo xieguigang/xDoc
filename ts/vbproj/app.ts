@@ -20,8 +20,8 @@ function highLightVBfile(file: string) {
 
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
-    let tree = data["tree"];
-    let vbprojfiles = data["pathList"];
+    let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
+    let vbprojfiles = data["path"];
 
     $('#vbproj-tree').jstree({
         core: {
