@@ -2,12 +2,15 @@
 Imports Dev.xDoc.Exports
 Imports Dev.xDoc.Markdown
 Imports Dev.xDoc.VBCode
+Imports Dev.xDoc.VBCode.jstree
+Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
 Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.Text
+Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
 
 ''' <summary>
 ''' VB.NET 开发工具包，使用这个程序将会从Assembly的XML注释文档之中导出makrdown文档，然后可以配合Yilia工具生成静态的html帮助文档
@@ -88,5 +91,24 @@ Imports Microsoft.VisualBasic.Text
                    defaultIndex:=defaultIndex
             ) _
             .CLICode
+    End Function
+
+    <ExportAPI("/vbproj.jstree")>
+    <Usage("/vbproj.jstree /in <*.vbproj> [/out <tree.json>]")>
+    Public Function VBProjJsTree(args As CommandLine) As Integer
+        Dim in$ = args <= "/in"
+        Dim out$ = args("/out") Or $"{[in].TrimSuffix}.jstree.json"
+        Dim assmInfo As DevAssmInfo = [in].GetAssemblyInfo
+        Dim tree$, path$
+
+        With [in] _
+            .EnumerateSourceFiles _
+            .jstree
+
+            path = .GetPathListJson
+            tree = .GetJavaScriptCode
+        End With
+
+        Return tree.SaveTo(out).CLICode
     End Function
 End Module
