@@ -95,17 +95,21 @@ Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.Asse
     End Function
 
     <ExportAPI("/vbproj.jstree")>
-    <Usage("/vbproj.jstree /in <*.vbproj> [/out <tree.json>]")>
+    <Usage("/vbproj.jstree /in <*.vbproj> [/relFolder <directory> /out <tree.json>]")>
     Public Function VBProjJsTree(args As CommandLine) As Integer
         Dim in$ = args <= "/in"
         Dim out$ = args("/out") Or $"{[in].TrimSuffix}.jstree.json"
         Dim assmInfo As DevAssmInfo = [in].GetAssemblyInfo
         Dim tree As jstreeBuild = [in] _
             .EnumerateSourceFiles _
-            .jstree
+            .jstree(args <= "/relFolder")
 
         tree.assembly = assmInfo
 
-        Return tree.Getjson.SaveTo(out).CLICode
+        Return tree.GetJson(indent:=True) _
+            .Replace("\/", "/") _
+            .Replace("\\", "/") _
+            .SaveTo(out) _
+            .CLICode
     End Function
 End Module

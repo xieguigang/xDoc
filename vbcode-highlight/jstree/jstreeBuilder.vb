@@ -7,6 +7,7 @@ Namespace jstree
 
         <Extension>
         Public Function jstree(files As IEnumerable(Of String),
+                               Optional relFolder$ = "",
                                Optional deli As Char = "\"c,
                                Optional folderIcon$ = "images/Folder_16x.png",
                                Optional fileIcon$ = "images/VB_16x.png") As jstreeBuild
@@ -36,7 +37,7 @@ Namespace jstree
                         nodes(path) = New jstreeNode With {
                             .id = "n" & nodes.Count,
                             .parent = nodes(parent).id,
-                            .text = tokens(i)
+                            .text = tokens(i).Replace("\", "/")
                         }
 
                         If i = tokens.Length - 1 Then
@@ -47,7 +48,7 @@ Namespace jstree
                             nodes(path).type = "folder"
                         End If
 
-                        pathList(nodes(path).id) = path
+                        pathList(nodes(path).id) = $"{relFolder}/{path.Replace("\", "/")}"
                     End If
                 Next
             Next
@@ -55,7 +56,7 @@ Namespace jstree
             nodes.Remove("#")
 
             Return New jstreeBuild With {
-                .pathList = pathList,
+                .path = pathList,
                 .tree = nodes
             }
         End Function

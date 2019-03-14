@@ -23,13 +23,13 @@ Namespace jstree
 
     Public Class jstreeBuild
 
-        Public Property pathList As Dictionary(Of String, String)
+        Public Property path As Dictionary(Of String, String)
         Public Property tree As Dictionary(Of String, jstreeNode)
         Public Property assembly As AssemblyInfo
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Function GetPathListJson() As String
-            Return pathList.GetJson.Replace("\", "/")
+            Return path.GetJson.Replace("\", "/")
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
