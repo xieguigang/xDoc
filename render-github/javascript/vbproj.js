@@ -17,6 +17,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
     var vbprojfiles = data["path"];
+    console.log(tree);
     $('#vbproj-tree').jstree({
         core: {
             data: tree
