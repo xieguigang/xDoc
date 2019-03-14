@@ -12,6 +12,9 @@ function highLightVBfile(file) {
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
+        $ts("#ca-viewsource").href = github.RawfileURL(file);
+        $ts("#ca-history").href = github.commitHistory(file);
+        $ts("#ca-blame").href = github.blame(file);
     });
 }
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {

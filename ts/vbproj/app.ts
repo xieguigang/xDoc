@@ -16,6 +16,10 @@ function highLightVBfile(file: string) {
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
+
+        (<HTMLAnchorElement><any>$ts("#ca-viewsource")).href = github.RawfileURL(file);
+        (<HTMLAnchorElement><any>$ts("#ca-history")).href = github.commitHistory(file);
+        (<HTMLAnchorElement><any>$ts("#ca-blame")).href = github.blame(file);
     });
 }
 
