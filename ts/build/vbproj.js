@@ -9,6 +9,7 @@ function highLightVBfile(file) {
             console.log(hash[data.selected[0]]);
         };
         console.log(hash);
+        $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
     });

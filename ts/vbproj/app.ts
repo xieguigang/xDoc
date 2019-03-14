@@ -13,6 +13,7 @@ function highLightVBfile(file: string) {
 
         console.log(hash);
 
+        $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
     });
