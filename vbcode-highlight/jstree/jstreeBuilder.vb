@@ -41,8 +41,10 @@ Namespace jstree
 
                         If i = tokens.Length - 1 Then
                             nodes(path).icon = fileIcon
+                            nodes(path).type = "file"
                         Else
                             nodes(path).icon = folderIcon
+                            nodes(path).type = "folder"
                         End If
 
                         pathList(nodes(path).id) = path

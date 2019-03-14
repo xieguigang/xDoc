@@ -9,6 +9,11 @@ Namespace jstree
         Public Property parent As String
         Public Property text As String
         Public Property icon As String
+        ''' <summary>
+        ''' project/file/folder
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property type As String
 
         Public Overrides Function ToString() As String
             Return Me.GetJson
