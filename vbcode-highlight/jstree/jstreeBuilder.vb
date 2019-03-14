@@ -55,7 +55,7 @@ Namespace jstree
             nodes.Remove("#")
 
             Return New jstreeBuild With {
-                .PathList = pathList,
+                .pathList = pathList,
                 .tree = nodes
             }
         End Function

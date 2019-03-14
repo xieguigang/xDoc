@@ -9,6 +9,7 @@ Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Net.Http
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
 Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.AssemblyInfo
 
@@ -80,7 +81,7 @@ Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.Asse
     <Usage("/Build.vbproj.docs /in <*.vbproj> [/schema <style.xml> /default <default.html> /out <EXPORT.directory>]")>
     Public Function BuildVbprojDocs(args As CommandLine) As Integer
         Dim in$ = args("/in")
-        Dim schema = args("/schema").LoadJson(Of Schema)
+        Dim schema = args("/schema").LoadJson(Of VBCode.Schema)
         Dim out$ = args("/out") Or $"{[in].TrimSuffix}/docs/"
         Dim defaultIndex$ = args("/default") Or "#"
 
@@ -99,16 +100,12 @@ Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.Asse
         Dim in$ = args <= "/in"
         Dim out$ = args("/out") Or $"{[in].TrimSuffix}.jstree.json"
         Dim assmInfo As DevAssmInfo = [in].GetAssemblyInfo
-        Dim tree$, path$
-
-        With [in] _
+        Dim tree As jstreeBuild = [in] _
             .EnumerateSourceFiles _
             .jstree
 
-            path = .GetPathListJson
-            tree = .GetJavaScriptCode
-        End With
+        tree.assembly = assmInfo
 
-        Return tree.SaveTo(out).CLICode
+        Return tree.Getjson.SaveTo(out).CLICode
     End Function
 End Module

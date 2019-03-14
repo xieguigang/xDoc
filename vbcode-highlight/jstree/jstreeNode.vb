@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.ApplicationServices.Development
 Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace jstree
@@ -22,12 +23,13 @@ Namespace jstree
 
     Public Class jstreeBuild
 
-        Public Property PathList As Dictionary(Of String, String)
+        Public Property pathList As Dictionary(Of String, String)
         Public Property tree As Dictionary(Of String, jstreeNode)
+        Public Property assembly As AssemblyInfo
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Function GetPathListJson() As String
-            Return PathList.GetJson.Replace("\", "/")
+            Return pathList.GetJson.Replace("\", "/")
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
