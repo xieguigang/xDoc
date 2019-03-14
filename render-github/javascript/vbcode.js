@@ -606,10 +606,19 @@ var vscode;
                  * 代码库的版本编号
                 */
                 this.commit = "master";
-                this.username = user;
-                this.repo = repo;
-                this.commit = commit;
+                this.username = raw.readValue(user);
+                this.repo = raw.readValue(repo);
+                this.commit = raw.readValue(commit);
             }
+            raw.readValue = function (data) {
+                if (data.charAt(0) == "@") {
+                    // read data from <meta> tag content
+                    return $ts(data);
+                }
+                else {
+                    return data;
+                }
+            };
             /**
              * 构建生成目标源文件在github上面的位置链接url
             */

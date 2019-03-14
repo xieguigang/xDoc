@@ -1,12 +1,16 @@
 {
-  "name": "vbproj",
+  "name": "nodejs-console-app1",
   "version": "0.0.0",
-  "description": "vbproj",
+  "description": "NodejsConsoleApp1",
   "main": "app.js",
   "author": {
     "name": ""
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.29",
     "@types/node": "^8.0.14"
+  },
+  "dependencies": {
+    "@types/jstree": "^3.3.37"
   }
 }

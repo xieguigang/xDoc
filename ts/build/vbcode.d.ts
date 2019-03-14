@@ -155,6 +155,7 @@ declare namespace vscode.github {
         */
         commit: string;
         constructor(user: string, repo: string, commit?: string);
+        private static readValue;
         /**
          * 构建生成目标源文件在github上面的位置链接url
         */
