@@ -91,34 +91,7 @@
 
 							<div id="vbcode"></div>
 
-							<script type="text/javascript">
-								var github = new vscode.github.raw("xieguigang", "GCModeller");
-								var file = "src/GCModeller/core/Bio.Assembly/Assembly/Uniprot/XML/Model/Data.vb";
-
-								github.highlightCode(file, "#vbcode", vscode.VisualStudio, function (summary) {
-									var toc = summary.jsTree();
-									var hash = toc.hashSet;
-									var click = function (e, data) {
-
-										console.log(hash[data.selected[0]]);
-										//$ts.goto(hash[data.selected[0]]);
-										// window.location.hash = hash[data.selected[0]];
-
-										var offset = $ts(hash[data.selected[0]]).offsetTop;
-
-										console.log(offset)
-										window.scrollTo(0, offset);
-									}
-
-									console.log(hash);
-
-									$('#vbproj-tree').jstree(toc);
-									$('#vbproj-tree').on("changed.jstree", click);
-								});
-							</script>
-
 						</div>
-
 					</div>
 					<div class="clearfix"></div>
 					<div class="printfooter">Retrieved from "<a dir="ltr"
