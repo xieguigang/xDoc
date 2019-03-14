@@ -547,7 +547,7 @@ var vscode;
                 TOC(toc);
             }
         };
-        HttpHelpers.GetAsyn(github.fileURL(filename), function (code) { return highlight(code); });
+        HttpHelpers.GetAsyn(github.RawfileURL(filename), function (code) { return highlight(code); });
     }
     vscode.highlightGithub = highlightGithub;
     /**
@@ -613,8 +613,14 @@ var vscode;
             /**
              * 构建生成目标源文件在github上面的位置链接url
             */
-            raw.prototype.fileURL = function (path) {
+            raw.prototype.RawfileURL = function (path) {
                 return "https://raw.githubusercontent.com/" + this.username + "/" + this.repo + "/" + this.commit + "/" + path;
+            };
+            raw.prototype.blame = function (path) {
+                return "https://github.com/" + this.username + "/" + this.repo + "/blame/" + this.commit + "/" + path;
+            };
+            raw.prototype.commitHistory = function (path) {
+                return "https://github.com/" + this.username + "/" + this.repo + "/commits/" + this.commit + "/" + path;
             };
             raw.prototype.highlightCode = function (fileName, display, style, TOC) {
                 if (style === void 0) { style = vscode.VisualStudio; }

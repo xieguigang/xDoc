@@ -14,9 +14,18 @@ namespace vscode.github {
         public commit: string = "master";
 
         public constructor(user: string, repo: string, commit: string = "master") {
-            this.username = user;
-            this.repo = repo;
-            this.commit = commit;
+            this.username = raw.readValue(user);
+            this.repo = raw.readValue(repo);
+            this.commit = raw.readValue(commit);
+        }
+
+        private static readValue(data: string): string {
+            if (data.charAt(0) == "@") {
+                // read data from <meta> tag content
+                return <any>$ts(data);
+            } else {
+                return data;
+            }
         }
 
         /**
