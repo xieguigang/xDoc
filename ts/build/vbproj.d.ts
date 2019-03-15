@@ -7,6 +7,7 @@ declare module Navigate {
         line: number;
     }
     function Do(): void;
+    function JumpToLine(line: number): void;
 }
 declare let github: vscode.github.raw;
 declare function highLightVBfile(file: string): void;

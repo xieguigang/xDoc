@@ -2851,6 +2851,17 @@ var TypeScript;
             window.scrollTo(0, $ts(hash).offsetTop);
         };
         /**
+         * Set url hash without url jump in document
+        */
+        URL.SetHash = function (hash) {
+            if (history.pushState) {
+                history.pushState(null, null, hash);
+            }
+            else {
+                location.hash = hash;
+            }
+        };
+        /**
          * 获取得到当前的url
         */
         URL.WindowLocation = function () {
@@ -3430,14 +3441,33 @@ var Internal;
         };
         location.path = url.path || "/";
         location.fileName = url.fileName;
-        location.hash = function (trimprefix) {
-            if (trimprefix === void 0) { trimprefix = true; }
-            var tag = window.location.hash;
-            if (tag && trimprefix && (tag.length > 1)) {
-                return tag.substr(1);
+        location.hash = function (arg, urlhash) {
+            if (arg === void 0) { arg = { trimprefix: true, doJump: false }; }
+            if (urlhash === void 0) { urlhash = null; }
+            if (!isNullOrUndefined(urlhash)) {
+                if (((typeof arg == "boolean") && (arg === true)) || arg.doJump) {
+                    window.location.hash = urlhash;
+                }
+                else {
+                    TypeScript.URL.SetHash(urlhash);
+                }
             }
             else {
-                return isNullOrUndefined(tag) ? "" : tag;
+                // 获取当前url字符串之中hash标签值
+                var tag = window.location.hash;
+                var trimprefix;
+                if (typeof arg == "boolean") {
+                    trimprefix = arg;
+                }
+                else {
+                    trimprefix = arg.trimprefix;
+                }
+                if (tag && trimprefix && (tag.length > 1)) {
+                    return tag.substr(1);
+                }
+                else {
+                    return isNullOrUndefined(tag) ? "" : tag;
+                }
             }
         };
         return location;

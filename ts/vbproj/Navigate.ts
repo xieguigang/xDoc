@@ -31,4 +31,8 @@
             highLightVBfile(input.fileName);
         }
     }
+
+    export function JumpToLine(line: number) {
+        window.scrollTo(0, 13 * line);
+    }
 }

@@ -8,11 +8,12 @@ function highLightVBfile(file: string) {
         var toc = <any>summary.jsTree();
         var hash = toc.hashSet;
         var click = function (e, data) {
-            let line = hash[data.selected[0]];
-            let n: number = parseInt(/\d+/.exec(line)[0]) - 8;
-            let jump = `#L${n <= 0 ? 1 : n}`;
+            let line: string = hash[data.selected[0]];
+            let jump = `#/${file}${line}`
+            let n: number = parseInt(/\d+/.exec(line)[0]);
 
-            window.location.hash = jump;
+            $ts.location.hash(false, jump);
+            Navigate.JumpToLine(n);
         }
 
         window.location.hash = `#/${file}`;

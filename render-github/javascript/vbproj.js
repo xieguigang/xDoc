@@ -26,6 +26,10 @@ var Navigate;
         }
     }
     Navigate.Do = Do;
+    function JumpToLine(line) {
+        window.scrollTo(0, 13 * line);
+    }
+    Navigate.JumpToLine = JumpToLine;
 })(Navigate || (Navigate = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
@@ -36,9 +40,10 @@ function highLightVBfile(file) {
         var hash = toc.hashSet;
         var click = function (e, data) {
             var line = hash[data.selected[0]];
-            var n = parseInt(/\d+/.exec(line)[0]) - 8;
-            var jump = "#L" + (n <= 0 ? 1 : n);
-            window.location.hash = jump;
+            var jump = "#/" + file + line;
+            var n = parseInt(/\d+/.exec(line)[0]);
+            $ts.location.hash(false, jump);
+            Navigate.JumpToLine(n);
         };
         window.location.hash = "#/" + file;
         $('#toc-tree').jstree("destroy").empty();
