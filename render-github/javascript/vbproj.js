@@ -6,7 +6,10 @@ function highLightVBfile(file) {
         var toc = summary.jsTree();
         var hash = toc.hashSet;
         var click = function (e, data) {
-            console.log(hash[data.selected[0]]);
+            var line = hash[data.selected[0]];
+            var n = parseInt(/\d+/.exec(line)[0]) - 8;
+            var jump = "#L" + (n <= 0 ? 1 : n);
+            window.location.hash = jump;
         };
         console.log(hash);
         $('#toc-tree').jstree("destroy").empty();
