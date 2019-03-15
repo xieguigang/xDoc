@@ -5165,6 +5165,12 @@ var TypeScript;
             enumerable: true,
             configurable: true
         });
+        logging.log = function (obj, color) {
+            if (color === void 0) { color = "black"; }
+            if (this.outputEverything) {
+                console.log(obj);
+            }
+        };
         return logging;
     }());
     TypeScript.logging = logging;

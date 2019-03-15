@@ -2087,6 +2087,7 @@ declare namespace TypeScript {
          * 生产模式：只会输出错误信息
         */
         static readonly outputError: boolean;
+        static log(obj: any, color?: string): void;
     }
 }
 /**

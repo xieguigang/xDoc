@@ -7,7 +7,8 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let vbprojfiles = data["path"];
     let line = Navigate.HashParser().line;
 
-    console.log(tree);
+    TypeScript.logging.log(tree);
+    TypeScript.logging.log(assembly);
 
     $('#vbproj-tree').jstree({
         core: {
