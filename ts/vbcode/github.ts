@@ -43,8 +43,15 @@ namespace vscode.github {
             return `https://github.com/${this.username}/${this.repo}/commits/${this.commit}/${path}`
         }
 
-        public highlightCode(fileName: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, TOC: (toc: TOC.Summary) => void = null) {
-            vscode.highlightGithub(this, fileName, display, style, TOC);
+        /**
+         * @param hashHandler 这个函数接受一个参数，行号
+        */
+        public highlightCode(fileName: string, display: string | IHTMLElement,
+            style: CSS = vscode.VisualStudio,
+            TOC: (toc: TOC.Summary) => void = null,
+            hashHandler: Delegate.Sub = null) {
+
+            vscode.highlightGithub(this, fileName, display, style, TOC, hashHandler);
         }
     }
 }

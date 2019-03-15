@@ -50,7 +50,9 @@ var vscode;
      * 输出的是一个``table``对象的html文本
     */
     var tokenStyler = /** @class */ (function () {
-        function tokenStyler() {
+        //#endregion
+        function tokenStyler(hashHandler) {
+            this.hashHandler = hashHandler;
             this.code = new StringBuilder("", "<br />\n");
             this.rowList = [];
             /**
@@ -130,7 +132,6 @@ var vscode;
             enumerable: true,
             configurable: true
         });
-        //#endregion
         tokenStyler.prototype.tagClass = function (token, cls) {
             this.lastToken = token;
             return "<span class=\"" + cls + "\">" + token + "</span>";
@@ -171,11 +172,31 @@ var vscode;
             this.lastToken = token;
             this.appendNewRow();
         };
+        tokenStyler.prototype.buildHashLink = function (L) {
+            var vm = this;
+            if (this.hashHandler) {
+                // 使用用户自定义的页面内跳转处理过程
+                return $ts("<a>", {
+                    id: "L" + L,
+                    href: executeJavaScript,
+                    class: "line-hash",
+                    onclick: function () {
+                        vm.hashHandler(L);
+                    }
+                });
+            }
+            else {
+                // 使用链接默认的页面内跳转功能
+                return $ts("<a>", {
+                    id: "L" + L, href: "#L" + L, class: "line-hash"
+                });
+            }
+        };
         tokenStyler.prototype.appendNewRow = function () {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
             var L = this.lineNumber;
             var line = $ts("<span>", { class: "line" }).display(L + ": ");
-            var hash = $ts("<a>", { id: "L" + L, href: "#L" + L, class: "line-hash" }).display(line);
+            var hash = this.buildHashLink(L).display(line);
             var snippet = $ts("<td>", { class: "snippet" }).display(this.code.toString());
             var tr = $ts("<tr>").asExtends
                 .append($ts("<td>", { class: "lines" }).display(hash))
@@ -256,15 +277,15 @@ var vscode;
         /**
          * @param chars A chars enumerator
         */
-        function VBParser(chars) {
+        function VBParser(hashHandler, chars) {
             this.chars = chars;
-            this.code = new vscode.tokenStyler();
             this.escapes = {
                 string: false,
                 comment: false,
                 keyword: false // VB之中使用[]进行关键词的转义操作
             };
             this.token = [];
+            this.code = new vscode.tokenStyler(hashHandler);
         }
         /**
          * Get source file document highlight result
@@ -538,11 +559,12 @@ var vscode;
         }
     }
     vscode.highlightVB = highlightVB;
-    function highlightGithub(github, filename, display, style, TOC) {
+    function highlightGithub(github, filename, display, style, TOC, hashHandler) {
         if (style === void 0) { style = vscode.VisualStudio; }
         if (TOC === void 0) { TOC = null; }
+        if (hashHandler === void 0) { hashHandler = null; }
         var highlight = function (code) {
-            var toc = vscode.highlight(code, display, style);
+            var toc = vscode.highlight(code, display, style, hashHandler);
             if (!isNullOrUndefined(toc)) {
                 TOC(toc);
             }
@@ -556,10 +578,11 @@ var vscode;
      * @param code VB.NET source code in plain text.
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    function highlight(code, display, style) {
+    function highlight(code, display, style, hashhandler) {
         if (style === void 0) { style = vscode.VisualStudio; }
+        if (hashhandler === void 0) { hashhandler = null; }
         var pcode = new Pointer(Strings.ToCharArray(code));
-        var html = new vscode.VBParser(pcode).GetTokens();
+        var html = new vscode.VBParser(hashhandler, pcode).GetTokens();
         var container = $ts("<tbody>");
         var preview = $ts("<table>", { class: "pre" }).display(container);
         for (var _i = 0, _a = html.rows; _i < _a.length; _i++) {
@@ -626,10 +649,14 @@ var vscode;
             raw.prototype.commitHistory = function (path) {
                 return "https://github.com/" + this.username + "/" + this.repo + "/commits/" + this.commit + "/" + path;
             };
-            raw.prototype.highlightCode = function (fileName, display, style, TOC) {
+            /**
+             * @param hashHandler 这个函数接受一个参数，行号
+            */
+            raw.prototype.highlightCode = function (fileName, display, style, TOC, hashHandler) {
                 if (style === void 0) { style = vscode.VisualStudio; }
                 if (TOC === void 0) { TOC = null; }
-                vscode.highlightGithub(this, fileName, display, style, TOC);
+                if (hashHandler === void 0) { hashHandler = null; }
+                vscode.highlightGithub(this, fileName, display, style, TOC, hashHandler);
             };
             return raw;
         }());

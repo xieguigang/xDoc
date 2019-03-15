@@ -4,7 +4,7 @@
 let github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
 
 function highLightVBfile(file: string, callback: Delegate.Sub = null) {
-    github.highlightCode(file, "#vbcode", vscode.VisualStudio, function (summary) {
+    let handleTOC = function (summary: vscode.TOC.Summary): void {
         var toc = <any>summary.jsTree();
         var hash = toc.hashSet;
         var click = function (e, data) {
@@ -22,14 +22,20 @@ function highLightVBfile(file: string, callback: Delegate.Sub = null) {
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
 
-        (<HTMLAnchorElement><any>$ts("#ca-viewsource")).href = github.RawfileURL(file);
-        (<HTMLAnchorElement><any>$ts("#ca-history")).href = github.commitHistory(file);
-        (<HTMLAnchorElement><any>$ts("#ca-blame")).href = github.blame(file);
-
         if (!isNullOrUndefined(callback)) {
             callback();
         }
-    });
+    }
+    let handleHash: Delegate.Sub = <any>function (L: number): void {
+        $ts.location.hash(false, `#/${file}#L${L}`);
+        Navigate.JumpToLine(L);
+    }
+
+    github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);
+
+    (<HTMLAnchorElement><any>$ts("#ca-viewsource")).href = github.RawfileURL(file);
+    (<HTMLAnchorElement><any>$ts("#ca-history")).href = github.commitHistory(file);
+    (<HTMLAnchorElement><any>$ts("#ca-blame")).href = github.blame(file);
 }
 
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {

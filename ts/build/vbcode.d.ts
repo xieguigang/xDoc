@@ -21,6 +21,7 @@ declare namespace vscode {
      * 输出的是一个``table``对象的html文本
     */
     class tokenStyler {
+        private hashHandler;
         private code;
         private rowList;
         /**
@@ -56,12 +57,14 @@ declare namespace vscode {
          * 上一次添加的符号是一个预处理符号
         */
         readonly LastDirective: boolean;
+        constructor(hashHandler: Delegate.Sub);
         private tagClass;
         append(token: string): void;
         /**
          * 生成一个新的table的行对象
         */
         appendLine(token?: string): void;
+        private buildHashLink;
         private appendNewRow;
         directive(token: string): void;
         type(token: string): void;
@@ -87,7 +90,7 @@ declare namespace vscode {
         /**
          * @param chars A chars enumerator
         */
-        constructor(chars: Pointer<string>);
+        constructor(hashHandler: Delegate.Sub, chars: Pointer<string>);
         /**
          * Get source file document highlight result
         */
@@ -134,14 +137,14 @@ declare namespace vscode {
      * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
     function highlightVB(style?: CSS): void;
-    function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void): void;
+    function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void, hashHandler?: Delegate.Sub): void;
     /**
      * 解析所给定的VB.NET源代码文件为带格式的高亮HTML文本字符串，然后将HTML文件渲染到指定的id的标签之中
      *
      * @param code VB.NET source code in plain text.
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    function highlight(code: string, display: string | IHTMLElement, style?: CSS): TOC.Summary;
+    function highlight(code: string, display: string | IHTMLElement, style?: CSS, hashhandler?: Delegate.Sub): TOC.Summary;
 }
 declare namespace vscode.github {
     /**
@@ -162,7 +165,10 @@ declare namespace vscode.github {
         RawfileURL(path: string): string;
         blame(path: string): string;
         commitHistory(path: string): string;
-        highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void): void;
+        /**
+         * @param hashHandler 这个函数接受一个参数，行号
+        */
+        highlightCode(fileName: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void, hashHandler?: Delegate.Sub): void;
     }
 }
 declare namespace vscode.TOC {

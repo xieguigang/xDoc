@@ -5,7 +5,7 @@ namespace vscode {
     */
     export class VBParser {
 
-        private code: tokenStyler = new tokenStyler();
+        private code: tokenStyler;
         private escapes = {
             string: false,
             comment: false,
@@ -16,7 +16,8 @@ namespace vscode {
         /** 
          * @param chars A chars enumerator
         */
-        public constructor(private chars: Pointer<string>) {
+        public constructor(hashHandler: Delegate.Sub, private chars: Pointer<string>) {
+            this.code = new tokenStyler(hashHandler);
         }
 
         /**
@@ -177,13 +178,13 @@ namespace vscode {
                 } else {
                     this.token.push(c);
                 }
-            } else if (c == " " || c == "\t") {                
+            } else if (c == " " || c == "\t") {
                 if (!escapes.string) {
 
                     // 使用空格进行分词
                     this.endToken();
                     code.append(c);
-                    
+
                 } else {
                     // 是字符串的一部分
                     this.addToken(c);

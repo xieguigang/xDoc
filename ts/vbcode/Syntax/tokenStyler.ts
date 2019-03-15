@@ -67,6 +67,9 @@
 
         //#endregion
 
+        public constructor(private hashHandler: Delegate.Sub) {
+        }
+
         private tagClass(token: string, cls: string): string {
             this.lastToken = token;
             return `<span class="${cls}">${token}</span>`;
@@ -108,11 +111,32 @@
             this.appendNewRow();
         }
 
+        private buildHashLink(L: number) {
+            let vm = this;
+
+            if (this.hashHandler) {
+                // 使用用户自定义的页面内跳转处理过程
+                return $ts("<a>", {
+                    id: `L${L}`,
+                    href: executeJavaScript,
+                    class: "line-hash",
+                    onclick: function () {
+                        vm.hashHandler(L);
+                    }
+                });
+            } else {
+                // 使用链接默认的页面内跳转功能
+                return $ts("<a>", {
+                    id: `L${L}`, href: `#L${L}`, class: "line-hash"
+                });
+            }
+        }
+
         private appendNewRow() {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
             var L: number = this.lineNumber;
             var line = $ts("<span>", { class: "line" }).display(`${L}: `);
-            var hash = $ts("<a>", { id: `L${L}`, href: `#L${L}`, class: "line-hash" }).display(line);
+            var hash: IHTMLElement = this.buildHashLink(L).display(line);
             var snippet = $ts("<td>", { class: "snippet" }).display(this.code.toString());
             var tr = $ts("<tr>").asExtends
                 .append($ts("<td>", { class: "lines" }).display(hash))

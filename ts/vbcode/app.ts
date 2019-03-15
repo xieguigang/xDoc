@@ -91,9 +91,13 @@ namespace vscode {
         }
     }
 
-    export function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, TOC: (toc: TOC.Summary) => void = null) {
+    export function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement,
+        style: CSS = vscode.VisualStudio,
+        TOC: (toc: TOC.Summary) => void = null,
+        hashHandler: Delegate.Sub = null) {
+
         let highlight = function (code: string) {
-            var toc = vscode.highlight(code, display, style);
+            var toc = vscode.highlight(code, display, style, hashHandler);
 
             if (!isNullOrUndefined(toc)) {
                 TOC(toc);
@@ -109,9 +113,9 @@ namespace vscode {
      * @param code VB.NET source code in plain text. 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio): TOC.Summary {
+    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, hashhandler: Delegate.Sub = null): TOC.Summary {
         var pcode = new Pointer<string>(<string[]>Strings.ToCharArray(code));
-        var html: tokenStyler = new vscode.VBParser(pcode).GetTokens();
+        var html: tokenStyler = new vscode.VBParser(hashhandler, pcode).GetTokens();
 
         var container: HTMLElement = $ts("<tbody>");
         var preview = $ts("<table>", { class: "pre" }).display(container);
