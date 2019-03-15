@@ -3,7 +3,7 @@
 
 let github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
 
-function highLightVBfile(file: string) {
+function highLightVBfile(file: string, callback: Delegate.Sub = null) {
     github.highlightCode(file, "#vbcode", vscode.VisualStudio, function (summary) {
         var toc = <any>summary.jsTree();
         var hash = toc.hashSet;
@@ -25,6 +25,10 @@ function highLightVBfile(file: string) {
         (<HTMLAnchorElement><any>$ts("#ca-viewsource")).href = github.RawfileURL(file);
         (<HTMLAnchorElement><any>$ts("#ca-history")).href = github.commitHistory(file);
         (<HTMLAnchorElement><any>$ts("#ca-blame")).href = github.blame(file);
+
+        if (!isNullOrUndefined(callback)) {
+            callback();
+        }
     });
 }
 

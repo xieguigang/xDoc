@@ -28,7 +28,12 @@
         let input = Navigate.HashParser();
 
         if (!isNullOrUndefined(input)) {
-            highLightVBfile(input.fileName);
+            highLightVBfile(input.fileName, function () {
+                if (input.line > 1) {
+                    $ts.location.hash(false, `#/${input.fileName}${input.line}`);
+                    JumpToLine(input.line);
+                }
+            });
         }
     }
 
