@@ -36,4 +36,5 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         highLightVBfile(file.replace("\\", "/"));
     });
 });
+console.log(window.location.hash);
 //# sourceMappingURL=vbproj.js.map

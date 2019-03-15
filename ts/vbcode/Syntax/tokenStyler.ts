@@ -150,7 +150,7 @@
             var urls: string[] = TypeScript.URL.ParseAllUrlStrings(token);
             var a: string;
 
-            if (urls.length > 0 && Internal.outputEverything()) {
+            if (urls.length > 0 && TypeScript.logging.outputEverything) {
                 console.log(urls);
             }
 

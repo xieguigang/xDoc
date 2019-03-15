@@ -47,3 +47,4 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     });
 });
 
+console.log(window.location.hash);

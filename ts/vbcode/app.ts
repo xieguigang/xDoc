@@ -43,7 +43,7 @@ namespace vscode {
             .Where(s => !Strings.Empty(s) && !Strings.Blank(s))
             .ToArray();
 
-        if (Internal.outputEverything()) {
+        if (TypeScript.logging.outputEverything) {
             console.log(words);
         }
 
@@ -141,7 +141,7 @@ namespace vscode {
             }, 300);
         }
 
-        if (Internal.outputEverything()) {
+        if (TypeScript.logging.outputEverything) {
             console.log(html.rows);
             console.log(html.CodeSummary.Declares);
         }
