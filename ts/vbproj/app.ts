@@ -15,7 +15,7 @@ function highLightVBfile(file: string) {
             window.location.hash = jump;
         }
 
-        console.log(hash);
+        window.location.hash = `#/${file}`;
 
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
@@ -43,7 +43,6 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         let nodeID: string = data.selected[0];
         let file: string = vbprojfiles[nodeID];
 
-        console.log(file);
         highLightVBfile(file.replace("\\", "/"));
     });
 });

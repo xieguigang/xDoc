@@ -11,7 +11,7 @@ function highLightVBfile(file) {
             var jump = "#L" + (n <= 0 ? 1 : n);
             window.location.hash = jump;
         };
-        console.log(hash);
+        window.location.hash = "#/" + file;
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);
@@ -33,7 +33,6 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     $('#vbproj-tree').on("changed.jstree", function (e, data) {
         var nodeID = data.selected[0];
         var file = vbprojfiles[nodeID];
-        console.log(file);
         highLightVBfile(file.replace("\\", "/"));
     });
 });
