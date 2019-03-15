@@ -5,7 +5,7 @@
             return null;
         } else {
             let tokens: string[] = hash.substr(1).split("#");
-            let line: number = 1;
+            let line: number = -1;
             let path: string = tokens[0];
 
             if (tokens.length > 1) {
@@ -28,8 +28,8 @@
         let input = Navigate.HashParser();
 
         if (!isNullOrUndefined(input)) {
-            highLightVBfile(input.fileName, function () {
-                if (input.line > 1) {
+            CodeEditor.highLightVBfile(input.fileName, function () {
+                if (input.line > 0) {
                     $ts.location.hash(false, `#/${input.fileName}#L${input.line}`);
                     JumpToLine(input.line);
                 }
