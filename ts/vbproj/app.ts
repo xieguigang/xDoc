@@ -45,12 +45,11 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
 
         highLightVBfile(file.replace("\\", "/"));
     });
+
+    Navigate.Do();
 });
 
-let input = Navigate.HashParser();
+window.onhashchange = Navigate.Do;
 
-if (!isNullOrUndefined(input)) {
-    highLightVBfile(input.fileName);
-}
 
 

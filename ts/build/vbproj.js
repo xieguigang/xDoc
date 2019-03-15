@@ -8,16 +8,24 @@ var Navigate;
         else {
             var tokens = hash.substr(1).split("#");
             var line = 1;
+            var path = tokens[0];
             if (tokens.length > 1) {
                 line = parseInt(/\d+/.exec(tokens[1])[0]);
             }
-            return {
-                fileName: tokens[0],
-                line: line
-            };
+            if (path.charAt(0) == "/") {
+                path = path.substr(1);
+            }
+            return { fileName: path, line: line };
         }
     }
     Navigate.HashParser = HashParser;
+    function Do() {
+        var input = Navigate.HashParser();
+        if (!isNullOrUndefined(input)) {
+            highLightVBfile(input.fileName);
+        }
+    }
+    Navigate.Do = Do;
 })(Navigate || (Navigate = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
@@ -56,9 +64,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         var file = vbprojfiles[nodeID];
         highLightVBfile(file.replace("\\", "/"));
     });
+    Navigate.Do();
 });
-var input = Navigate.HashParser();
-if (!isNullOrUndefined(input)) {
-    highLightVBfile(input.fileName);
-}
+window.onhashchange = Navigate.Do;
 //# sourceMappingURL=vbproj.js.map

@@ -6,7 +6,7 @@ declare module Navigate {
         fileName: string;
         line: number;
     }
+    function Do(): void;
 }
 declare let github: vscode.github.raw;
 declare function highLightVBfile(file: string): void;
-declare let input: Navigate.Reference;
