@@ -2,6 +2,7 @@
 /// <reference path="../build/vbcode.d.ts" />
 
 let github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
+let previousHighlight: HTMLElement = null;
 
 function highLightVBfile(file: string, callback: Delegate.Sub = null) {
     let handleTOC = function (summary: vscode.TOC.Summary): void {
@@ -27,8 +28,17 @@ function highLightVBfile(file: string, callback: Delegate.Sub = null) {
         }
     }
     let handleHash: Delegate.Sub = <any>function (L: number): void {
+        let line: HTMLElement = $ts(`#L${L}`).parentElement.parentElement;
+
         $ts.location.hash(false, `#/${file}#L${L}`);
+        line.style.backgroundColor = "#FFD801";
         Navigate.JumpToLine(L);
+
+        if (previousHighlight) {
+            previousHighlight.style.backgroundColor = null;
+        }
+
+        previousHighlight = line;
     }
 
     github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);

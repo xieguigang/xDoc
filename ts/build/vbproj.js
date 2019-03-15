@@ -39,6 +39,7 @@ var Navigate;
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
 var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
+var previousHighlight = null;
 function highLightVBfile(file, callback) {
     if (callback === void 0) { callback = null; }
     var handleTOC = function (summary) {
@@ -60,8 +61,14 @@ function highLightVBfile(file, callback) {
         }
     };
     var handleHash = function (L) {
+        var line = $ts("#L" + L).parentElement.parentElement;
         $ts.location.hash(false, "#/" + file + "#L" + L);
+        line.style.backgroundColor = "#FFD801";
         Navigate.JumpToLine(L);
+        if (previousHighlight) {
+            previousHighlight.style.backgroundColor = null;
+        }
+        previousHighlight = line;
     };
     github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);
     $ts("#ca-viewsource").href = github.RawfileURL(file);

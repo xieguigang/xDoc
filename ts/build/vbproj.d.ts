@@ -10,4 +10,5 @@ declare module Navigate {
     function JumpToLine(line: number): void;
 }
 declare let github: vscode.github.raw;
+declare let previousHighlight: HTMLElement;
 declare function highLightVBfile(file: string, callback?: Delegate.Sub): void;
