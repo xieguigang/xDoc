@@ -38,6 +38,6 @@
     }
 
     export function JumpToLine(line: number) {
-        window.scrollTo(0, 20 * line);
+        window.scrollTo(0, 16 * line);
     }
 }
