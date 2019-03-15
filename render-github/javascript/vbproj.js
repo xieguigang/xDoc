@@ -24,7 +24,7 @@ var Navigate;
         if (!isNullOrUndefined(input)) {
             highLightVBfile(input.fileName, function () {
                 if (input.line > 1) {
-                    $ts.location.hash(false, "#/" + input.fileName + "#" + input.line);
+                    $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
                     JumpToLine(input.line);
                 }
             });
@@ -51,7 +51,7 @@ function highLightVBfile(file, callback) {
             $ts.location.hash(false, jump);
             Navigate.JumpToLine(n);
         };
-        window.location.hash = "#/" + file;
+        $ts.location.hash(false, "#/" + file);
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
         $('#toc-tree').on("changed.jstree", click);

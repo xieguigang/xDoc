@@ -30,7 +30,7 @@
         if (!isNullOrUndefined(input)) {
             highLightVBfile(input.fileName, function () {
                 if (input.line > 1) {
-                    $ts.location.hash(false, `#/${input.fileName}#${input.line}`);
+                    $ts.location.hash(false, `#/${input.fileName}#L${input.line}`);
                     JumpToLine(input.line);
                 }
             });

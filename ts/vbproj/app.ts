@@ -16,7 +16,7 @@ function highLightVBfile(file: string, callback: Delegate.Sub = null) {
             Navigate.JumpToLine(n);
         }
 
-        window.location.hash = `#/${file}`;
+        $ts.location.hash(false, `#/${file}`);
 
         $('#toc-tree').jstree("destroy").empty();
         $('#toc-tree').jstree(toc);
