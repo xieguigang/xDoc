@@ -27,7 +27,7 @@ var Navigate;
     }
     Navigate.Do = Do;
     function JumpToLine(line) {
-        window.scrollTo(0, 13 * line);
+        window.scrollTo(0, 15 * line);
     }
     Navigate.JumpToLine = JumpToLine;
 })(Navigate || (Navigate = {}));

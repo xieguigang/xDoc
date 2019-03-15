@@ -135,12 +135,6 @@ namespace vscode {
             vscode.applyStyle(display, style);
         }
 
-        if (!Strings.Empty($ts.location.hash())) {
-            setTimeout(function () {
-                $ts.goto($ts.location.hash(false));
-            }, 300);
-        }
-
         if (TypeScript.logging.outputEverything) {
             console.log(html.rows);
             console.log(html.CodeSummary.Declares);
