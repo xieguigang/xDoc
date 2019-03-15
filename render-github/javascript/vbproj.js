@@ -91,7 +91,6 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
     var vbprojfiles = data["path"];
-    var line = Navigate.HashParser().line;
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
     $('#vbproj-tree').jstree({
@@ -105,8 +104,9 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         CodeEditor.highLightVBfile(file.replace("\\", "/"));
     });
     Navigate.Do(function () {
-        if (line > 0) {
-            CodeEditor.doLineHighlight(line);
+        var line = Navigate.HashParser();
+        if (line && line.line > 0) {
+            CodeEditor.doLineHighlight(line.line);
         }
     });
 });

@@ -5,7 +5,6 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
     let vbprojfiles = data["path"];
-    let line = Navigate.HashParser().line;
 
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
@@ -23,8 +22,10 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     });
 
     Navigate.Do(function () {
-        if (line > 0) {
-            CodeEditor.doLineHighlight(line);
+        let line = Navigate.HashParser();
+
+        if (line && line.line > 0) {
+            CodeEditor.doLineHighlight(line.line);
         }
     });
 });
