@@ -206,7 +206,7 @@ var vscode;
         tokenStyler.highlightURLs = function (token) {
             var urls = TypeScript.URL.ParseAllUrlStrings(token);
             var a;
-            if (urls.length > 0 && Internal.outputEverything()) {
+            if (urls.length > 0 && TypeScript.logging.outputEverything) {
                 console.log(urls);
             }
             for (var _i = 0, urls_1 = urls; _i < urls_1.length; _i++) {
@@ -517,7 +517,7 @@ var vscode;
             .Unlist(function (s) { return s; })
             .Where(function (s) { return !Strings.Empty(s) && !Strings.Blank(s); })
             .ToArray();
-        if (Internal.outputEverything()) {
+        if (TypeScript.logging.outputEverything) {
             console.log(words);
         }
         return words;
@@ -584,7 +584,7 @@ var vscode;
                 $ts.goto($ts.location.hash(false));
             }, 300);
         }
-        if (Internal.outputEverything()) {
+        if (TypeScript.logging.outputEverything) {
             console.log(html.rows);
             console.log(html.CodeSummary.Declares);
         }
