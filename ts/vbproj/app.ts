@@ -47,6 +47,10 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     });
 });
 
-console.log(window.location.hash);
+let input = Navigate.HashParser();
 
-// #file#L000
+if (!isNullOrUndefined(input)) {
+    highLightVBfile(input.fileName);
+}
+
+

@@ -1,3 +1,24 @@
+var Navigate;
+(function (Navigate) {
+    function HashParser(hash) {
+        if (hash === void 0) { hash = window.location.hash; }
+        if (Strings.Empty(hash, true)) {
+            return null;
+        }
+        else {
+            var tokens = hash.substr(1).split("#");
+            var line = 1;
+            if (tokens.length > 1) {
+                line = parseInt(/\d+/.exec(tokens[1])[0]);
+            }
+            return {
+                fileName: tokens[0],
+                line: line
+            };
+        }
+    }
+    Navigate.HashParser = HashParser;
+})(Navigate || (Navigate = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
 var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
@@ -36,5 +57,8 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         highLightVBfile(file.replace("\\", "/"));
     });
 });
-console.log(window.location.hash);
+var input = Navigate.HashParser();
+if (!isNullOrUndefined(input)) {
+    highLightVBfile(input.fileName);
+}
 //# sourceMappingURL=vbproj.js.map
