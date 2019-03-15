@@ -64,13 +64,17 @@ var Navigate;
         }
     }
     Navigate.HashParser = HashParser;
-    function Do() {
+    function Do(callback) {
+        if (callback === void 0) { callback = null; }
         var input = Navigate.HashParser();
         if (!isNullOrUndefined(input)) {
             CodeEditor.highLightVBfile(input.fileName, function () {
                 if (input.line > 0) {
                     $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
                     JumpToLine(input.line);
+                }
+                if (callback) {
+                    callback();
                 }
             });
         }
@@ -99,10 +103,11 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         var file = vbprojfiles[nodeID];
         CodeEditor.highLightVBfile(file.replace("\\", "/"));
     });
-    Navigate.Do();
-    if (line > 0) {
-        CodeEditor.doLineHighlight(line);
-    }
+    Navigate.Do(function () {
+        if (line > 0) {
+            CodeEditor.doLineHighlight(line);
+        }
+    });
 });
 window.onhashchange = Navigate.Do;
 //# sourceMappingURL=vbproj.js.map

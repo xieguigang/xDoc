@@ -21,14 +21,14 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         CodeEditor.highLightVBfile(file.replace("\\", "/"));
     });
 
-    Navigate.Do();
-
-    if (line > 0) {
-        CodeEditor.doLineHighlight(line);
-    }
+    Navigate.Do(function () {
+        if (line > 0) {
+            CodeEditor.doLineHighlight(line);
+        }
+    });
 });
 
-window.onhashchange = Navigate.Do;
+window.onhashchange = <any>Navigate.Do;
 
 
 

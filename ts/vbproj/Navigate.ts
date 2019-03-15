@@ -24,7 +24,7 @@
         line: number;
     }
 
-    export function Do(): void {
+    export function Do(callback: Delegate.Sub = null): void {
         let input = Navigate.HashParser();
 
         if (!isNullOrUndefined(input)) {
@@ -32,6 +32,10 @@
                 if (input.line > 0) {
                     $ts.location.hash(false, `#/${input.fileName}#L${input.line}`);
                     JumpToLine(input.line);
+                }
+
+                if (callback) {
+                    callback();
                 }
             });
         }

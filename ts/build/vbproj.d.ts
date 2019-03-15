@@ -10,6 +10,6 @@ declare module Navigate {
         fileName: string;
         line: number;
     }
-    function Do(): void;
+    function Do(callback?: Delegate.Sub): void;
     function JumpToLine(line: number): void;
 }
