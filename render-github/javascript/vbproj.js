@@ -115,6 +115,10 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         // 首页，则显示assembly信息
         var info = $ts("#md-text");
         for (var name in assembly) {
+            var row = $ts("<p>");
+            row.append($ts("<span>").display(name + ": "));
+            row.append($ts("<span>").display(assembly[name]));
+            info.appendChild(row);
         }
     }
 });

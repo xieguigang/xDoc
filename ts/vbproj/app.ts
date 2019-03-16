@@ -33,12 +33,13 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         let info = $ts("#md-text");
 
         for (var name in assembly) {
+            let row = $ts("<p>");
 
+            row.append($ts("<span>").display(`${name}: `));
+            row.append($ts("<span>").display(assembly[name]));
+            info.appendChild(row)
         }
     }
 });
 
 window.onhashchange = <any>Navigate.Do;
-
-
-
