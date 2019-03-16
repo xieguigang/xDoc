@@ -1,5 +1,5 @@
-/// <reference path="linq.d.ts" />
-/// <reference path="vbcode.d.ts" />
+/// <reference path="../../ts/build/linq.d.ts" />
+/// <reference path="../../ts/build/vbcode.d.ts" />
 declare module CodeEditor {
     function highLightVBfile(file: string, callback?: Delegate.Sub): void;
     function doLineHighlight(L: number): void;

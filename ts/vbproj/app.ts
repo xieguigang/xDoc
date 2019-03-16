@@ -5,6 +5,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
     let vbprojfiles = data["path"];
+    let line = Navigate.HashParser();
 
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
@@ -21,13 +22,20 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         CodeEditor.highLightVBfile(file.replace("\\", "/"));
     });
 
-    Navigate.Do(function () {
-        let line = Navigate.HashParser();
+    if (!isNullOrUndefined(line)) {
+        Navigate.Do(function () {
+            if (line && line.line > 0) {
+                CodeEditor.doLineHighlight(line.line);
+            }
+        });
+    } else {
+        // 首页，则显示assembly信息
+        let info = $ts("#md-text");
 
-        if (line && line.line > 0) {
-            CodeEditor.doLineHighlight(line.line);
+        for (var name in assembly) {
+
         }
-    });
+    }
 });
 
 window.onhashchange = <any>Navigate.Do;
