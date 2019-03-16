@@ -34,6 +34,8 @@
 
         github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);
 
+        $ts("#md-text").hide();
+
         (<HTMLAnchorElement><any>$ts("#ca-viewsource")).href = github.RawfileURL(file);
         (<HTMLAnchorElement><any>$ts("#ca-history")).href = github.commitHistory(file);
         (<HTMLAnchorElement><any>$ts("#ca-blame")).href = github.blame(file);

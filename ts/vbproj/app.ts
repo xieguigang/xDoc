@@ -27,6 +27,8 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
             if (line && line.line > 0) {
                 CodeEditor.doLineHighlight(line.line);
             }
+
+            $ts("#md-text").hide();
         });
     } else {
         // 首页，则显示assembly信息

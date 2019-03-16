@@ -28,6 +28,7 @@ var CodeEditor;
             doLineHighlight(L);
         };
         github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);
+        $ts("#md-text").hide();
         $ts("#ca-viewsource").href = github.RawfileURL(file);
         $ts("#ca-history").href = github.commitHistory(file);
         $ts("#ca-blame").href = github.blame(file);
@@ -109,6 +110,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
             if (line && line.line > 0) {
                 CodeEditor.doLineHighlight(line.line);
             }
+            $ts("#md-text").hide();
         });
     }
     else {
