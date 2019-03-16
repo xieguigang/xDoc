@@ -1,37 +1,3 @@
-/// <reference path="../build/linq.d.ts" />
-/// <reference path="../build/vbcode.d.ts" />
-$ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
-    var assembly = data["assembly"];
-    var tree = new Dictionary(data["tree"]).Values.ToArray(false);
-    var vbprojfiles = data["path"];
-    var line = Navigate.HashParser();
-    TypeScript.logging.log(tree);
-    TypeScript.logging.log(assembly);
-    $('#vbproj-tree').jstree({
-        core: {
-            data: tree
-        }
-    });
-    $('#vbproj-tree').on("changed.jstree", function (e, data) {
-        var nodeID = data.selected[0];
-        var file = vbprojfiles[nodeID];
-        CodeEditor.highLightVBfile(file.replace("\\", "/"));
-    });
-    if (!isNullOrUndefined(line)) {
-        Navigate.Do(function () {
-            if (line && line.line > 0) {
-                CodeEditor.doLineHighlight(line.line);
-            }
-        });
-    }
-    else {
-        // 首页，则显示assembly信息
-        var info = $ts("#md-text");
-        for (var name in assembly) {
-        }
-    }
-});
-window.onhashchange = Navigate.Do;
 var CodeEditor;
 (function (CodeEditor) {
     var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
@@ -119,4 +85,38 @@ var Navigate;
     }
     Navigate.JumpToLine = JumpToLine;
 })(Navigate || (Navigate = {}));
+/// <reference path="../build/linq.d.ts" />
+/// <reference path="../build/vbcode.d.ts" />
+$ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
+    var assembly = data["assembly"];
+    var tree = new Dictionary(data["tree"]).Values.ToArray(false);
+    var vbprojfiles = data["path"];
+    var line = Navigate.HashParser();
+    TypeScript.logging.log(tree);
+    TypeScript.logging.log(assembly);
+    $('#vbproj-tree').jstree({
+        core: {
+            data: tree
+        }
+    });
+    $('#vbproj-tree').on("changed.jstree", function (e, data) {
+        var nodeID = data.selected[0];
+        var file = vbprojfiles[nodeID];
+        CodeEditor.highLightVBfile(file.replace("\\", "/"));
+    });
+    if (!isNullOrUndefined(line)) {
+        Navigate.Do(function () {
+            if (line && line.line > 0) {
+                CodeEditor.doLineHighlight(line.line);
+            }
+        });
+    }
+    else {
+        // 首页，则显示assembly信息
+        var info = $ts("#md-text");
+        for (var name in assembly) {
+        }
+    }
+});
+window.onhashchange = Navigate.Do;
 //# sourceMappingURL=vbproj.js.map
