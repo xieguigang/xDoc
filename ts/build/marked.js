@@ -11,95 +11,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-/**
- * marked - a markdown parser
- * Copyright (c) 2011-2018, Christopher Jeffrey. (MIT Licensed)
- * https://github.com/markedjs/marked
-*/
-var marked = (function () {
-    var Parser = new parser();
-    var marked = function marked(src, opt, callback) {
-        // throw error in case of non string input
-        if (typeof src === 'undefined' || src === null) {
-            throw new Error('marked(): input parameter is undefined or null');
-        }
-        if (typeof src !== 'string') {
-            throw new Error('marked(): input parameter is of type '
-                + Object.prototype.toString.call(src) + ', string expected');
-        }
-        if (callback || typeof opt === 'function') {
-            if (!callback) {
-                callback = opt;
-                opt = null;
-            }
-            opt = helpers.merge({}, option.Defaults, opt || {});
-            var highlight = opt.highlight, tokens, pending, i = 0;
-            try {
-                tokens = Lexer.lex(src, opt);
-            }
-            catch (e) {
-                return callback(e);
-            }
-            pending = tokens.length;
-            var done = function (err) {
-                if (err) {
-                    opt.highlight = highlight;
-                    return callback(err);
-                }
-                var out;
-                try {
-                    out = Parser.parse(tokens, opt);
-                }
-                catch (e) {
-                    err = e;
-                }
-                opt.highlight = highlight;
-                return err
-                    ? callback(err)
-                    : callback(null, out);
-            };
-            if (!highlight || highlight.length < 3) {
-                return done();
-            }
-            delete opt.highlight;
-            if (!pending)
-                return done();
-            for (; i < tokens.length; i++) {
-                (function (token) {
-                    if (token.type !== 'code') {
-                        return --pending || done();
-                    }
-                    return highlight(token.text, token.lang, function (err, code) {
-                        if (err)
-                            return done(err);
-                        if (code == null || code === token.text) {
-                            return --pending || done();
-                        }
-                        token.text = code;
-                        token.escaped = true;
-                        --pending || done();
-                    });
-                })(tokens[i]);
-            }
-            return;
-        }
-        try {
-            if (opt)
-                opt = helpers.merge({}, option.Defaults, opt);
-            return Parser.parse(Lexer.lex(src, opt), opt);
-        }
-        catch (e) {
-            e.message += '\nPlease report this to https://github.com/markedjs/marked.';
-            if ((opt || option.Defaults).silent) {
-                return '<p>An error occurred:</p><pre>'
-                    + helpers.escape.doescape(e.message + '', true)
-                    + '</pre>';
-            }
-            throw e;
-        }
-    };
-    return marked;
-})();
 var option = /** @class */ (function () {
     function option() {
     }
@@ -257,7 +168,7 @@ var helpers;
             args[_i - 1] = arguments[_i];
         }
         var target, key;
-        for (var i = 1; i < args.length; i++) {
+        for (var i = 0; i < args.length; i++) {
             target = args[i];
             for (key in target) {
                 if (Object.prototype.hasOwnProperty.call(target, key)) {
@@ -269,6 +180,7 @@ var helpers;
     }
     helpers.merge = merge;
     function splitCells(tableRow, count) {
+        if (count === void 0) { count = 0; }
         // ensure that every cell-delimiting pipe has a space
         // before it to distinguish it from an escaped pipe
         var row = tableRow.replace(/\|/g, function (match, offset, str) {
@@ -332,30 +244,10 @@ var helpers;
     }
     helpers.rtrim = rtrim;
 })(helpers || (helpers = {}));
-var helpers;
-(function (helpers) {
-    /**
-     * No operation: this regexp object do nothing.
-    */
-    helpers.noop = (function () {
-        var empty = function noop() {
-            // do nothing
-        };
-        empty.exec = empty;
-        // This regexp do nothing
-        return empty;
-    })();
-})(helpers || (helpers = {}));
 var Grammer = /** @class */ (function () {
     function Grammer() {
     }
     return Grammer;
-}());
-var component = /** @class */ (function () {
-    function component(opt) {
-        this.options = opt;
-    }
-    return component;
 }());
 /// <reference path="../models/abstract.ts" />
 /**
@@ -373,9 +265,6 @@ var block = /** @class */ (function (_super) {
             + '|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option'
             + '|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr'
             + '|track|ul';
-        _this.item = helpers.edit(/^( *)(bull) ?[^\n]*(?:\n(?!\1bull ?)[^\n]*)*/, 'gm')
-            .replace(/bull/g, block.bullet)
-            .getRegex();
         // base class initialize
         _this.newline = /^\n+/;
         _this.code = /^( {4}[^\n]+\n*)+/;
@@ -396,6 +285,9 @@ var block = /** @class */ (function (_super) {
             .replace('label', _this._label)
             .replace('title', _this._title)
             .getRegex();
+        _this.item = helpers.edit(/^( *)(bull) ?[^\n]*(?:\n(?!\1bull ?)[^\n]*)*/, 'gm')
+            .replace(/bull/g, block.bullet)
+            .getRegex();
         _this.list = helpers.edit(_this.list)
             .replace(/bull/g, block.bullet)
             .replace('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))')
@@ -415,17 +307,18 @@ var block = /** @class */ (function (_super) {
         _this.blockquote = helpers.edit(_this.blockquote)
             .replace('paragraph', _this.paragraph)
             .getRegex();
-        _this.normal = helpers.merge({}, _this);
+        var vm = _this;
+        _this.normal = helpers.merge({}, vm);
         _this.gfm = (function () {
-            var rule = helpers.merge({}, this.normal, {
+            var rule = helpers.merge({}, vm.normal, {
                 fences: /^ {0,3}(`{3,}|~{3,})([^`\n]*)\n(?:|([\s\S]*?)\n)(?: {0,3}\1[~`]* *(?:\n+|$)|$)/,
                 paragraph: /^/,
                 heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n+|$)/
             });
-            rule.paragraph = helpers.edit(this.paragraph)
+            rule.paragraph = helpers.edit(rule.paragraph)
                 .replace('(?!', '(?!'
                 + rule.fences.source.replace('\\1', '\\2') + '|'
-                + this.list.source.replace('\\1', '\\3') + '|')
+                + vm.list.source.replace('\\1', '\\3') + '|')
                 .getRegex();
             return rule;
         })();
@@ -553,6 +446,12 @@ var inline = /** @class */ (function (_super) {
     };
     return inline;
 }(Grammer));
+var component = /** @class */ (function () {
+    function component(opt) {
+        this.options = opt;
+    }
+    return component;
+}());
 /// <reference path="../models/component.ts" />
 /**
  * Inline Lexer & Compiler
@@ -560,7 +459,7 @@ var inline = /** @class */ (function (_super) {
 var inlineLexer = /** @class */ (function (_super) {
     __extends(inlineLexer, _super);
     function inlineLexer(links, options) {
-        if (options === void 0) { options = option.Defaults; }
+        if (options === void 0) { options = null; }
         var _this = _super.call(this, options) || this;
         var inline = options.inline;
         _this.links = links;
@@ -1126,10 +1025,6 @@ var Lexer = /** @class */ (function () {
         }
         return this.tokens;
     };
-    Lexer.lex = function (src, options) {
-        var lexer = new Lexer(options);
-        return lexer.lex(src);
-    };
     return Lexer;
 }());
 /// <reference path="../models/component.ts" />
@@ -1140,7 +1035,7 @@ var Lexer = /** @class */ (function () {
 var parser = /** @class */ (function (_super) {
     __extends(parser, _super);
     function parser(options) {
-        if (options === void 0) { options = option.Defaults; }
+        if (options === void 0) { options = null; }
         var _this = _super.call(this, options) || this;
         _this.tokens = [];
         _this.token = null;
@@ -1149,13 +1044,6 @@ var parser = /** @class */ (function (_super) {
         _this.renderer.options = _this.options;
         return _this;
     }
-    /**
-     * Static Parse Method
-    */
-    parser.parse = function (src, options) {
-        var parser = new Parser(options);
-        return parser.parse(src);
-    };
     /**
      * Parse Loop
     */
@@ -1281,6 +1169,119 @@ var parser = /** @class */ (function (_super) {
     };
     return parser;
 }(component));
+/// <reference path="./option.ts" />
+/// <reference path="./helpers/escape.ts" />
+/// <reference path="./helpers/helpers.ts" />
+/// <reference path="./parser/block.ts" />
+/// <reference path="./parser/inline.ts" />
+/// <reference path="./parser/inlineLexer.ts" />
+/// <reference path="./parser/lexer.ts" />
+/// <reference path="./parser/parser.ts" />
+/**
+ * marked - a markdown parser
+ * Copyright (c) 2011-2018, Christopher Jeffrey. (MIT Licensed)
+ * https://github.com/markedjs/marked
+*/
+var marked = (function () {
+    var marked = function marked(src, opt, callback) {
+        if (opt === void 0) { opt = option.Defaults; }
+        if (callback === void 0) { callback = null; }
+        // throw error in case of non string input
+        if (typeof src === 'undefined' || src === null) {
+            throw new Error('marked(): input parameter is undefined or null');
+        }
+        if (typeof src !== 'string') {
+            throw new Error('marked(): input parameter is of type '
+                + Object.prototype.toString.call(src) + ', string expected');
+        }
+        if (callback || typeof opt === 'function') {
+            if (!callback) {
+                callback = opt;
+                opt = null;
+            }
+            opt = helpers.merge({}, option.Defaults, opt || {});
+            var highlight = opt.highlight, tokens, pending, i = 0;
+            try {
+                tokens = new Lexer(opt).lex(src);
+            }
+            catch (e) {
+                return callback(e);
+            }
+            pending = tokens.length;
+            var done = function (err) {
+                if (err === void 0) { err = null; }
+                if (err) {
+                    opt.highlight = highlight;
+                    return callback(err);
+                }
+                var out;
+                try {
+                    out = new parser(opt).parse(tokens);
+                }
+                catch (e) {
+                    err = e;
+                }
+                opt.highlight = highlight;
+                return err
+                    ? callback(err)
+                    : callback(null, out);
+            };
+            if (!highlight || highlight.length < 3) {
+                return done();
+            }
+            delete opt.highlight;
+            if (!pending)
+                return done();
+            for (; i < tokens.length; i++) {
+                (function (token) {
+                    if (token.type !== 'code') {
+                        return --pending || done();
+                    }
+                    return highlight(token.text, token.lang, function (err, code) {
+                        if (err)
+                            return done(err);
+                        if (code == null || code === token.text) {
+                            return --pending || done();
+                        }
+                        token.text = code;
+                        token.escaped = true;
+                        --pending || done();
+                    });
+                })(tokens[i]);
+            }
+            return;
+        }
+        try {
+            if (opt)
+                opt = helpers.merge({}, option.Defaults, opt);
+            return new parser(opt).parse(new Lexer(opt).lex(src));
+        }
+        catch (e) {
+            e.message += '\nPlease report this to https://github.com/markedjs/marked.';
+            if ((opt || option.Defaults).silent) {
+                return '<p>An error occurred:</p><pre>'
+                    + helpers.escape.doescape(e.message + '', true)
+                    + '</pre>';
+            }
+            throw e;
+        }
+    };
+    return marked;
+})();
+var helpers;
+(function (helpers) {
+    /**
+     * No operation: this regexp object do nothing.
+    */
+    helpers.noop = (function () {
+        var empty = function noop() {
+            // do nothing
+        };
+        empty.exec = empty;
+        // This regexp do nothing
+        return empty;
+    })();
+})(helpers || (helpers = {}));
 var htmlRenderer = /** @class */ (function (_super) {
     __extends(htmlRenderer, _super);
     function htmlRenderer() {

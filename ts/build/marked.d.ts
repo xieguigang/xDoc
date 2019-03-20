@@ -1,9 +1,3 @@
-/**
- * marked - a markdown parser
- * Copyright (c) 2011-2018, Christopher Jeffrey. (MIT Licensed)
- * https://github.com/markedjs/marked
-*/
-declare const marked: Imarked;
 declare class option {
     baseUrl: string;
     breaks: boolean;
@@ -16,7 +10,7 @@ declare class option {
     pedantic: boolean;
     renderer: Renderer;
     sanitize: boolean;
-    sanitizer: boolean;
+    sanitizer?: (text: string) => string;
     silent: boolean;
     smartLists: boolean;
     smartypants: boolean;
@@ -27,7 +21,7 @@ declare class option {
     static readonly Defaults: option;
 }
 interface highlightCallback {
-    (err: string, code: number): void;
+    (err: string, code: number | string): void;
 }
 declare module helpers {
     module escape {
@@ -54,7 +48,7 @@ declare module helpers {
     function cleanUrl(sanitize: boolean, base: string, href: string): string;
     function resolveUrl(base: string, href: string): string;
     function merge(obj: {}, ...args: {}[]): {};
-    function splitCells(tableRow: string, count: number): string[];
+    function splitCells(tableRow: string, count?: number): string[];
     /**
      * Remove trailing 'c's. Equivalent to str.replace(/c*$/, '').
      * ``/c*$/`` is vulnerable to REDOS.
@@ -62,22 +56,6 @@ declare module helpers {
      * @param invert Remove suffix of non-c chars instead. Default falsey.
     */
     function rtrim(str: string, c: string, invert?: boolean): string;
-}
-declare module helpers {
-    /**
-     * 模拟正则表达式，因为正则表达式没有空操作，所以会需要用这个来进行模拟
-    */
-    interface Inoop {
-        (): void;
-        /**
-         * Execute regexp
-        */
-        exec: Inoop;
-    }
-    /**
-     * No operation: this regexp object do nothing.
-    */
-    const noop: Inoop;
 }
 declare class Grammer {
     newline: RegExp;
@@ -129,19 +107,6 @@ interface Itoken {
     loose?: boolean;
     checked?: boolean;
     task?: boolean;
-}
-declare abstract class component {
-    options: option;
-    constructor(opt: option);
-}
-interface Imarked {
-    options: option;
-    (src: string, opt: option, callback: markedCallback): any;
-    setOptions(opt: option): void;
-    parse: Imarked;
-}
-interface markedCallback {
-    (err: string, output?: string): void;
 }
 /**
  * Block-Level Grammar
@@ -203,6 +168,10 @@ declare class inline extends Grammer {
     constructor();
     private static inlineTag;
 }
+declare abstract class component {
+    options: option;
+    constructor(opt: option);
+}
 /**
  * Inline Lexer & Compiler
 */
@@ -246,7 +215,6 @@ declare class Lexer {
     private tokens;
     private rules;
     constructor(options: option);
-    static lex: (src: any, options: any) => Itoken[];
     /**
      * Preprocessing
     */
@@ -264,15 +232,12 @@ declare class parser extends component {
     private tokens;
     private inline;
     private token;
+    private inlineText;
     constructor(options?: option);
-    /**
-     * Static Parse Method
-    */
-    static parse(src: any, options: any): any;
     /**
      * Parse Loop
     */
-    parse(src: string): string;
+    parse(src: Itoken[]): string;
     /**
      * Next Token
     */
@@ -280,7 +245,7 @@ declare class parser extends component {
     /**
      * Preview Next Token
     */
-    peek(): Itoken | 0;
+    peek(): 0 | Itoken;
     /**
      * Parse Text Tokens
     */
@@ -289,6 +254,37 @@ declare class parser extends component {
      * Parse Current Token
     */
     tok(): string;
+}
+/**
+ * marked - a markdown parser
+ * Copyright (c) 2011-2018, Christopher Jeffrey. (MIT Licensed)
+ * https://github.com/markedjs/marked
+*/
+declare const marked: Imarked;
+declare module helpers {
+    /**
+     * 模拟正则表达式，因为正则表达式没有空操作，所以会需要用这个来进行模拟
+    */
+    interface Inoop {
+        (): void;
+        /**
+         * Execute regexp
+        */
+        exec: Inoop;
+    }
+    /**
+     * No operation: this regexp object do nothing.
+    */
+    const noop: Inoop;
+}
+interface Imarked {
+    options: option;
+    (src: string, opt: option, callback: markedCallback): any;
+    setOptions(opt: option): void;
+    parse: Imarked;
+}
+interface markedCallback {
+    (err: string, output?: string): void;
 }
 declare class htmlRenderer extends component implements Renderer {
     constructor();
