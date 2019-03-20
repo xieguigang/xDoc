@@ -3410,6 +3410,9 @@ var Internal;
                 }
             });
         };
+        ts.getText = function (url, callback) {
+            HttpHelpers.GetAsyn(urlSolver(url), callback);
+        };
         ts.get = function (url, callback) {
             HttpHelpers.GetAsyn(urlSolver(url), function (response) {
                 if (callback) {

@@ -52,4 +52,8 @@
 
         previousHighlight = line;
     }
+
+    export function requestGithubFile(fileName: string, callback: Delegate.Sub) {
+        $ts.getText(github.RawfileURL(fileName), callback);
+    }
 }

@@ -1,3 +1,45 @@
+var Navigate;
+(function (Navigate) {
+    function HashParser(hash) {
+        if (hash === void 0) { hash = window.location.hash; }
+        if (Strings.Empty(hash, true)) {
+            return null;
+        }
+        else {
+            var tokens = hash.substr(1).split("#");
+            var line = -1;
+            var path = tokens[0];
+            if (tokens.length > 1) {
+                line = parseInt(/\d+/.exec(tokens[1])[0]);
+            }
+            if (path.charAt(0) == "/") {
+                path = path.substr(1);
+            }
+            return { fileName: path, line: line };
+        }
+    }
+    Navigate.HashParser = HashParser;
+    function Do(callback) {
+        if (callback === void 0) { callback = null; }
+        var input = Navigate.HashParser();
+        if (!isNullOrUndefined(input)) {
+            CodeEditor.highLightVBfile(input.fileName, function () {
+                if (input.line > 0) {
+                    $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
+                    JumpToLine(input.line);
+                }
+                if (callback) {
+                    callback();
+                }
+            });
+        }
+    }
+    Navigate.Do = Do;
+    function JumpToLine(line) {
+        window.scrollTo(0, 16 * line);
+    }
+    Navigate.JumpToLine = JumpToLine;
+})(Navigate || (Navigate = {}));
 var CodeEditor;
 (function (CodeEditor) {
     var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
@@ -43,51 +85,15 @@ var CodeEditor;
         previousHighlight = line;
     }
     CodeEditor.doLineHighlight = doLineHighlight;
+    function requestGithubFile(fileName, callback) {
+        $ts.getText(github.RawfileURL(fileName), callback);
+    }
+    CodeEditor.requestGithubFile = requestGithubFile;
 })(CodeEditor || (CodeEditor = {}));
-var Navigate;
-(function (Navigate) {
-    function HashParser(hash) {
-        if (hash === void 0) { hash = window.location.hash; }
-        if (Strings.Empty(hash, true)) {
-            return null;
-        }
-        else {
-            var tokens = hash.substr(1).split("#");
-            var line = -1;
-            var path = tokens[0];
-            if (tokens.length > 1) {
-                line = parseInt(/\d+/.exec(tokens[1])[0]);
-            }
-            if (path.charAt(0) == "/") {
-                path = path.substr(1);
-            }
-            return { fileName: path, line: line };
-        }
-    }
-    Navigate.HashParser = HashParser;
-    function Do(callback) {
-        if (callback === void 0) { callback = null; }
-        var input = Navigate.HashParser();
-        if (!isNullOrUndefined(input)) {
-            CodeEditor.highLightVBfile(input.fileName, function () {
-                if (input.line > 0) {
-                    $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
-                    JumpToLine(input.line);
-                }
-                if (callback) {
-                    callback();
-                }
-            });
-        }
-    }
-    Navigate.Do = Do;
-    function JumpToLine(line) {
-        window.scrollTo(0, 16 * line);
-    }
-    Navigate.JumpToLine = JumpToLine;
-})(Navigate || (Navigate = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
+/// <reference path="./Navigate.ts" />
+/// <reference path="./Editor.ts" />
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
@@ -115,13 +121,18 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     }
     else {
         // 首页，则显示assembly信息
-        var info = $ts("#md-text");
+        var info_1 = $ts("#md-text");
+        var projReadme = $ts("<div>");
         for (var name in assembly) {
             var row = $ts("<p>");
             row.append($ts("<span>").display(name + ": "));
             row.append($ts("<span>").display(assembly[name]));
-            info.appendChild(row);
+            info_1.appendChild(row);
         }
+        info_1.appendChild(projReadme);
+        CodeEditor.requestGithubFile("README.md", function (markdown) {
+            info_1.display(window.marked(markdown));
+        });
     }
 });
 window.onhashchange = Navigate.Do;
