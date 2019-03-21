@@ -294,6 +294,9 @@ var vscode;
             while (!this.chars.EndRead) {
                 this.walkChar(this.chars.Next);
             }
+            if (this.token.length > 0) {
+                this.walkNewLine();
+            }
             return this.code;
         };
         VBParser.peekNextToken = function (chars, allowNewLine) {

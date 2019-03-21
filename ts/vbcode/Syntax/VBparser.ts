@@ -16,8 +16,8 @@ namespace vscode {
         /** 
          * @param chars A chars enumerator
         */
-        public constructor(hashHandler: Delegate.Sub, private chars: Pointer<string>) {
-            this.code = new tokenStyler(hashHandler);
+        public constructor(hashHandler: Delegate.Sub, private chars: Pointer<string>, parseTOC: boolean) {
+            this.code = new tokenStyler(hashHandler, parseTOC);
         }
 
         /**
@@ -26,6 +26,10 @@ namespace vscode {
         public GetTokens(): tokenStyler {
             while (!this.chars.EndRead) {
                 this.walkChar(this.chars.Next);
+            }
+
+            if (this.token.length > 0) {
+                this.walkNewLine();
             }
 
             return this.code;

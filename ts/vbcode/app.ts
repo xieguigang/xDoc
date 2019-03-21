@@ -82,7 +82,7 @@ namespace vscode {
         var codeList = $ts.select(className);
 
         for (let code of codeList.ToArray()) {
-            vscode.highlight(code.innerText, <any>code, style);
+            vscode.highlight(code.innerText, <any>code, style, null, false);
 
             if (code.tagName.toLowerCase() == "pre") {
                 code.style.border = "none";
@@ -113,9 +113,13 @@ namespace vscode {
      * @param code VB.NET source code in plain text. 
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    export function highlight(code: string, display: string | IHTMLElement, style: CSS = vscode.VisualStudio, hashhandler: Delegate.Sub = null): TOC.Summary {
+    export function highlight(code: string, display: string | IHTMLElement,
+        style: CSS = vscode.VisualStudio,
+        hashhandler: Delegate.Sub = null,
+        parseTOC: boolean = true): TOC.Summary {
+
         var pcode = new Pointer<string>(<string[]>Strings.ToCharArray(code));
-        var html: tokenStyler = new vscode.VBParser(hashhandler, pcode).GetTokens();
+        var html: tokenStyler = new vscode.VBParser(hashhandler, pcode, parseTOC).GetTokens();
 
         var container: HTMLElement = $ts("<tbody>");
         var preview = $ts("<table>", { class: "pre" }).display(container);

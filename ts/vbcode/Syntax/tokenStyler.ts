@@ -67,7 +67,7 @@
 
         //#endregion
 
-        public constructor(private hashHandler: Delegate.Sub) {
+        public constructor(private hashHandler: Delegate.Sub, private parseTOC: boolean) {
         }
 
         private tagClass(token: string, cls: string): string {
@@ -92,7 +92,10 @@
                 this.lastTypeKeyword = false;
                 this.lastDirective = false;
                 this.lastToken = token;
-                this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
+
+                if (this.parseTOC) {
+                    this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
+                }
             }
 
             this.lastNewLine = false;
@@ -158,7 +161,10 @@
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
-            this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
+
+            if (this.parseTOC) {
+                this.summary.insertSymbol(token, TOC.symbolTypes.symbol, this.lineNumber);
+            }
         }
 
         public comment(token: string) {
@@ -205,7 +211,10 @@
                 this.lastTypeKeyword = false;
             }
 
-            this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
+            if (this.parseTOC) {
+                this.summary.insertSymbol(token, TOC.symbolTypes.keyword, this.lineNumber);
+            }
+
             this.lastNewLine = false;
             this.lastDirective = false;
         }
