@@ -56,4 +56,12 @@
     export function requestGithubFile(fileName: string, callback: Delegate.Sub) {
         $ts.getText(github.RawfileURL(fileName), callback);
     }
+
+    export function githubImageURL(href: string): string {
+        if (href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1) {
+            return href;
+        } else {
+            github.RawfileURL(href);
+        }
+    }
 }

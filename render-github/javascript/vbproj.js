@@ -89,11 +89,22 @@ var CodeEditor;
         $ts.getText(github.RawfileURL(fileName), callback);
     }
     CodeEditor.requestGithubFile = requestGithubFile;
+    function githubImageURL(href) {
+        if (href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1) {
+            return href;
+        }
+        else {
+            github.RawfileURL(href);
+        }
+    }
+    CodeEditor.githubImageURL = githubImageURL;
 })(CodeEditor || (CodeEditor = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
 /// <reference path="./Navigate.ts" />
 /// <reference path="./Editor.ts" />
+/// <reference path="../build/marked.d.ts" />
+htmlRenderer.hrefSolver = CodeEditor.githubImageURL;
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);

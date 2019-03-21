@@ -4,6 +4,10 @@
 /// <reference path="./Navigate.ts" />
 /// <reference path="./Editor.ts" />
 
+/// <reference path="../build/marked.d.ts" />
+
+htmlRenderer.hrefSolver = CodeEditor.githubImageURL;
+
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);

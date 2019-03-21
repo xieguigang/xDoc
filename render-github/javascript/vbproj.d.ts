@@ -1,5 +1,6 @@
 /// <reference path="../../ts/build/linq.d.ts" />
 /// <reference path="../../ts/build/vbcode.d.ts" />
+/// <reference path="../../ts/build/marked.d.ts" />
 declare module Navigate {
     function HashParser(hash?: string): Reference;
     interface Reference {
@@ -13,4 +14,5 @@ declare module CodeEditor {
     function highLightVBfile(file: string, callback?: Delegate.Sub): void;
     function doLineHighlight(L: number): void;
     function requestGithubFile(fileName: string, callback: Delegate.Sub): void;
+    function githubImageURL(href: string): string;
 }

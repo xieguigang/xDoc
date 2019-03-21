@@ -1432,6 +1432,9 @@ var htmlRenderer = /** @class */ (function (_super) {
         if (href === null) {
             return text;
         }
+        else if (htmlRenderer.hrefSolver && htmlRenderer.hrefSolver != undefined) {
+            href = htmlRenderer.hrefSolver(href);
+        }
         var out = '<img src="' + href + '" alt="' + text + '"';
         if (title) {
             out += ' title="' + title + '"';
