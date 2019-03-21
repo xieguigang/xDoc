@@ -69,13 +69,4 @@
             return github.RawfileURL(href);
         }
     }
-
-    export function processMarkdownImage() {
-        let images = $ts("#md-text").getElementsByTagName("img");
-        let img: HTMLImageElement;
-
-        for (let i = 0; i < images.length; i++) {
-            img.src = githubImageURL(img.src);
-        }
-    }
 }
