@@ -546,9 +546,10 @@ var vscode;
     /**
      * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
-    function highlightVB(style) {
+    function highlightVB(style, className) {
         if (style === void 0) { style = vscode.VisualStudio; }
-        var codeList = $ts.select(".vbnet");
+        if (className === void 0) { className = ".vbnet"; }
+        var codeList = $ts.select(className);
         for (var _i = 0, _a = codeList.ToArray(); _i < _a.length; _i++) {
             var code = _a[_i];
             vscode.highlight(code.innerText, code, style);

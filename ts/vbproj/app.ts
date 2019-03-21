@@ -36,17 +36,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     } else {
         // 首页，则显示assembly信息
         let info = $ts("#md-text");
-        let projReadme: IHTMLElement = $ts("<div>");
 
-        for (var name in assembly) {
-            let row = $ts("<p>");
-
-            row.append($ts("<span>").display(`${name}: `));
-            row.append($ts("<span>").display(assembly[name]));
-            info.appendChild(row)
-        }
-
-        info.appendChild(projReadme);
         CodeEditor.requestGithubFile("README.md", <any>function (markdown: string) {
             info.display((<any>window).marked(markdown));
             vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");

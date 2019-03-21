@@ -136,7 +136,7 @@ declare namespace vscode {
     /**
      * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
-    function highlightVB(style?: CSS): void;
+    function highlightVB(style?: CSS, className?: string): void;
     function highlightGithub(github: github.raw, filename: string, display: string | IHTMLElement, style?: CSS, TOC?: (toc: TOC.Summary) => void, hashHandler?: Delegate.Sub): void;
     /**
      * 解析所给定的VB.NET源代码文件为带格式的高亮HTML文本字符串，然后将HTML文件渲染到指定的id的标签之中
