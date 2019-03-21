@@ -6,8 +6,6 @@
 
 /// <reference path="../build/marked.d.ts" />
 
-htmlRenderer.hrefSolver = CodeEditor.githubImageURL;
-
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
@@ -44,6 +42,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         CodeEditor.requestGithubFile("README.md", <any>function (markdown: string) {
             info.display((<any>window).marked(markdown));
             vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");
+            CodeEditor.processMarkdownImage();
         })
     }
 });

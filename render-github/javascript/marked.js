@@ -182,7 +182,6 @@ var helpers;
     }
     helpers.merge = merge;
     function splitCells(tableRow, count) {
-        if (count === void 0) { count = 0; }
         // ensure that every cell-delimiting pipe has a space
         // before it to distinguish it from an escaped pipe
         var row = tableRow.replace(/\|/g, function (match, offset, str) {
@@ -1262,7 +1261,10 @@ var marked = (function () {
         try {
             if (opt)
                 opt = helpers.merge({}, option.Defaults, opt);
-            return new parser(opt).parse(new Lexer(opt).lex(src));
+            var lexer = new Lexer(opt);
+            var tokens_1 = lexer.lex(src);
+            var mdparser = new parser(opt);
+            return mdparser.parse(tokens_1);
         }
         catch (e) {
             e.message += '\nPlease report this to https://github.com/markedjs/marked.';

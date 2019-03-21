@@ -15,4 +15,5 @@ declare module CodeEditor {
     function doLineHighlight(L: number): void;
     function requestGithubFile(fileName: string, callback: Delegate.Sub): void;
     function githubImageURL(href: string): string;
+    function processMarkdownImage(): void;
 }
