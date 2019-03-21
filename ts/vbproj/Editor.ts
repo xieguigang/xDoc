@@ -58,10 +58,15 @@
     }
 
     export function githubImageURL(href: string): string {
-        if (href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1) {
+        let url = href.toLowerCase();
+        let isFullName: boolean = href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1;
+
+        console.log(`${url} is full path? ${isFullName}`);
+
+        if (isFullName) {
             return href;
         } else {
-            github.RawfileURL(href);
+            return github.RawfileURL(href);
         }
     }
 }

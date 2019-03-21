@@ -90,11 +90,14 @@ var CodeEditor;
     }
     CodeEditor.requestGithubFile = requestGithubFile;
     function githubImageURL(href) {
-        if (href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1) {
+        var url = href.toLowerCase();
+        var isFullName = href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1;
+        console.log(url + " is full path? " + isFullName);
+        if (isFullName) {
             return href;
         }
         else {
-            github.RawfileURL(href);
+            return github.RawfileURL(href);
         }
     }
     CodeEditor.githubImageURL = githubImageURL;
