@@ -78,8 +78,8 @@ namespace vscode {
     /** 
      * 一般用于高亮markdown之中的代码转换结果部分：``<pre class="vbnet">``
     */
-    export function highlightVB(style: CSS = vscode.VisualStudio) {
-        var codeList = $ts.select(".vbnet");
+    export function highlightVB(style: CSS = vscode.VisualStudio, className: string = ".vbnet") {
+        var codeList = $ts.select(className);
 
         for (let code of codeList.ToArray()) {
             vscode.highlight(code.innerText, <any>code, style);

@@ -651,7 +651,7 @@ var inlineLexer = /** @class */ (function (_super) {
                 throw new Error('Infinite loop on byte: ' + src.charCodeAt(0));
             }
         }
-        return out;
+        return unescape(out);
     };
     ;
     inlineLexer.prototype.escapes = function (text) {
@@ -1051,15 +1051,19 @@ var parser = /** @class */ (function (_super) {
      * Parse Loop
     */
     parser.prototype.parse = function (src) {
-        this.inline = new inlineLexer(src.links, this.options);
+        var out = "";
+        var links = src.links;
+        var textOpt = helpers.merge({}, this.options, {
+            renderer: new textRenderer()
+        });
+        this.inline = new inlineLexer(links, this.options);
         // use an InlineLexer with a TextRenderer to extract pure text
-        this.inlineText = new inlineLexer(src.links, helpers.merge({}, this.options, { renderer: new textRenderer() }));
+        this.inlineText = new inlineLexer(links, textOpt);
         this.tokens = src.reverse();
-        var out = '';
         while (this.next()) {
             out += this.tok();
         }
-        return decodeURIComponent(out);
+        return out;
     };
     ;
     /**
@@ -1099,7 +1103,8 @@ var parser = /** @class */ (function (_super) {
                 return this.renderer.hr();
             }
             case 'heading': {
-                return this.renderer.heading(this.inline.output(this.token.text), this.token.depth, unescape(this.inlineText.output(this.token.text)));
+                var raw = this.inlineText.output(this.token.text);
+                return this.renderer.heading(raw, this.token.depth, raw);
             }
             case 'code': {
                 return this.renderer.code(this.token.text, this.token.lang, this.token.escaped);

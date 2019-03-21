@@ -132,6 +132,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         info_1.appendChild(projReadme);
         CodeEditor.requestGithubFile("README.md", function (markdown) {
             info_1.display(window.marked(markdown));
+            vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");
         });
     }
 });
