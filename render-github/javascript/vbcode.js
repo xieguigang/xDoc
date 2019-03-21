@@ -51,8 +51,9 @@ var vscode;
     */
     var tokenStyler = /** @class */ (function () {
         //#endregion
-        function tokenStyler(hashHandler) {
+        function tokenStyler(hashHandler, parseTOC) {
             this.hashHandler = hashHandler;
+            this.parseTOC = parseTOC;
             this.code = new StringBuilder("", "<br />\n");
             this.rowList = [];
             /**
@@ -156,7 +157,9 @@ var vscode;
                 this.lastTypeKeyword = false;
                 this.lastDirective = false;
                 this.lastToken = token;
-                this.summary.insertSymbol(token, vscode.TOC.symbolTypes.symbol, this.lineNumber);
+                if (this.parseTOC) {
+                    this.summary.insertSymbol(token, vscode.TOC.symbolTypes.symbol, this.lineNumber);
+                }
             }
             this.lastNewLine = false;
         };
@@ -215,7 +218,9 @@ var vscode;
             this.lastTypeKeyword = false;
             this.lastNewLine = false;
             this.lastDirective = false;
-            this.summary.insertSymbol(token, vscode.TOC.symbolTypes.symbol, this.lineNumber);
+            if (this.parseTOC) {
+                this.summary.insertSymbol(token, vscode.TOC.symbolTypes.symbol, this.lineNumber);
+            }
         };
         tokenStyler.prototype.comment = function (token) {
             this.code.AppendLine(this.tagClass(tokenStyler.highlightURLs(token), "comment"));
@@ -254,7 +259,9 @@ var vscode;
             else {
                 this.lastTypeKeyword = false;
             }
-            this.summary.insertSymbol(token, vscode.TOC.symbolTypes.keyword, this.lineNumber);
+            if (this.parseTOC) {
+                this.summary.insertSymbol(token, vscode.TOC.symbolTypes.keyword, this.lineNumber);
+            }
             this.lastNewLine = false;
             this.lastDirective = false;
         };
@@ -277,7 +284,7 @@ var vscode;
         /**
          * @param chars A chars enumerator
         */
-        function VBParser(hashHandler, chars) {
+        function VBParser(hashHandler, chars, parseTOC) {
             this.chars = chars;
             this.escapes = {
                 string: false,
@@ -285,7 +292,7 @@ var vscode;
                 keyword: false // VB之中使用[]进行关键词的转义操作
             };
             this.token = [];
-            this.code = new vscode.tokenStyler(hashHandler);
+            this.code = new vscode.tokenStyler(hashHandler, parseTOC);
         }
         /**
          * Get source file document highlight result
@@ -555,7 +562,7 @@ var vscode;
         var codeList = $ts.select(className);
         for (var _i = 0, _a = codeList.ToArray(); _i < _a.length; _i++) {
             var code = _a[_i];
-            vscode.highlight(code.innerText, code, style);
+            vscode.highlight(code.innerText, code, style, null, false);
             if (code.tagName.toLowerCase() == "pre") {
                 code.style.border = "none";
                 code.style.padding = "0px";
@@ -582,11 +589,12 @@ var vscode;
      * @param code VB.NET source code in plain text.
      * @param style 可以传递一个null值来使用css进行样式的渲染
     */
-    function highlight(code, display, style, hashhandler) {
+    function highlight(code, display, style, hashhandler, parseTOC) {
         if (style === void 0) { style = vscode.VisualStudio; }
         if (hashhandler === void 0) { hashhandler = null; }
+        if (parseTOC === void 0) { parseTOC = true; }
         var pcode = new Pointer(Strings.ToCharArray(code));
-        var html = new vscode.VBParser(hashhandler, pcode).GetTokens();
+        var html = new vscode.VBParser(hashhandler, pcode, parseTOC).GetTokens();
         var container = $ts("<tbody>");
         var preview = $ts("<table>", { class: "pre" }).display(container);
         for (var _i = 0, _a = html.rows; _i < _a.length; _i++) {
