@@ -11,11 +11,15 @@
                 href = githubImageURL(href);
             }
 
-            var out = '<img style="max-width: 65%;" src="' + href + '" alt="' + text + '"';
+            var out = '<img style="max-width: 80%;" src="' + href + '" alt="' + text + '"';
+
             if (title) {
                 out += ' title="' + title + '"';
             }
+
             out += this.options.xhtml ? '/>' : '>';
+            out = `<div style="width: 100%; text-align: center;">${out}</div>`;
+
             return out;
         }
     }
