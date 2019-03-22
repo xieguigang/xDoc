@@ -40,10 +40,13 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     } else {
         // 首页，则显示assembly信息
         let info = $ts("#md-text");
+        let opt: option = option.Defaults;
+
+        opt.renderer = new CodeEditor.MDRender();
 
         CodeEditor.requestGithubFile("README.md", <any>function (markdown: string) {
-            info.display((<any>window).marked(markdown));
-            vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");           
+            info.display(marked(markdown, opt, null));
+            vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");
         })
     }
 });

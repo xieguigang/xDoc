@@ -1,3 +1,16 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Navigate;
 (function (Navigate) {
     function HashParser(hash) {
@@ -136,11 +149,39 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     else {
         // 首页，则显示assembly信息
         var info_1 = $ts("#md-text");
+        var opt_1 = option.Defaults;
+        opt_1.renderer = new CodeEditor.MDRender();
         CodeEditor.requestGithubFile("README.md", function (markdown) {
-            info_1.display(window.marked(markdown));
+            info_1.display(marked(markdown, opt_1, null));
             vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");
         });
     }
 });
 window.onhashchange = Navigate.Do;
+var CodeEditor;
+(function (CodeEditor) {
+    var MDRender = /** @class */ (function (_super) {
+        __extends(MDRender, _super);
+        function MDRender() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDRender.prototype.image = function (href, title, text) {
+            href = helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+            if (href === null) {
+                return text;
+            }
+            else if (htmlRenderer.hrefSolver && htmlRenderer.hrefSolver != undefined) {
+                href = htmlRenderer.hrefSolver(href);
+            }
+            var out = '<img style="max-width: 65%;" src="' + href + '" alt="' + text + '"';
+            if (title) {
+                out += ' title="' + title + '"';
+            }
+            out += this.options.xhtml ? '/>' : '>';
+            return out;
+        };
+        return MDRender;
+    }(htmlRenderer));
+    CodeEditor.MDRender = MDRender;
+})(CodeEditor || (CodeEditor = {}));
 //# sourceMappingURL=vbproj.js.map

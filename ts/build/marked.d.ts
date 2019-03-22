@@ -279,7 +279,7 @@ declare module helpers {
 }
 interface Imarked {
     options: option;
-    (src: string, opt: option, callback: markedCallback): any;
+    (src: string, opt: option, callback: markedCallback): string;
     setOptions(opt: option): void;
     parse: Imarked;
 }

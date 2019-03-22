@@ -169,7 +169,8 @@ var helpers;
         for (var _i = 1; _i < arguments.length; _i++) {
             args[_i - 1] = arguments[_i];
         }
-        var target, key;
+        var target;
+        var key;
         for (var i = 0; i < args.length; i++) {
             target = args[i];
             for (key in target) {
@@ -1190,6 +1191,57 @@ var parser = /** @class */ (function (_super) {
  * https://github.com/markedjs/marked
 */
 var marked = (function () {
+    var markedCallback = function (src, opt, callback) {
+        var highlight = opt.highlight, tokens, pending, i = 0;
+        try {
+            tokens = new Lexer(opt).lex(src);
+        }
+        catch (e) {
+            return callback(e);
+        }
+        pending = tokens.length;
+        var done = function (err) {
+            if (err === void 0) { err = null; }
+            if (err) {
+                opt.highlight = highlight;
+                return callback(err);
+            }
+            var out;
+            try {
+                out = new parser(opt).parse(tokens);
+            }
+            catch (e) {
+                err = e;
+            }
+            opt.highlight = highlight;
+            return err
+                ? callback(err)
+                : callback(null, out);
+        };
+        if (!highlight || highlight.length < 3) {
+            return done();
+        }
+        delete opt.highlight;
+        if (!pending)
+            return done();
+        for (; i < tokens.length; i++) {
+            (function (token) {
+                if (token.type !== 'code') {
+                    return --pending || done();
+                }
+                return highlight(token.text, token.lang, function (err, code) {
+                    if (err)
+                        return done(err);
+                    if (code == null || code === token.text) {
+                        return --pending || done();
+                    }
+                    token.text = code;
+                    token.escaped = true;
+                    --pending || done();
+                });
+            })(tokens[i]);
+        }
+    };
     var marked = function marked(src, opt, callback) {
         if (opt === void 0) { opt = option.Defaults; }
         if (callback === void 0) { callback = null; }
@@ -1207,73 +1259,26 @@ var marked = (function () {
                 opt = null;
             }
             opt = helpers.merge({}, option.Defaults, opt || {});
-            var highlight = opt.highlight, tokens, pending, i = 0;
+            markedCallback(src, opt, callback);
+        }
+        else {
             try {
-                tokens = new Lexer(opt).lex(src);
+                if (opt)
+                    opt = helpers.merge({}, option.Defaults, opt);
+                var lexer = new Lexer(opt);
+                var tokens = lexer.lex(src);
+                var mdparser = new parser(opt);
+                return mdparser.parse(tokens);
             }
             catch (e) {
-                return callback(e);
-            }
-            pending = tokens.length;
-            var done = function (err) {
-                if (err === void 0) { err = null; }
-                if (err) {
-                    opt.highlight = highlight;
-                    return callback(err);
+                e.message += '\nPlease report this to https://github.com/markedjs/marked.';
+                if ((opt || option.Defaults).silent) {
+                    return '<p>An error occurred:</p><pre>'
+                        + helpers.escape.doescape(e.message + '', true)
+                        + '</pre>';
                 }
-                var out;
-                try {
-                    out = new parser(opt).parse(tokens);
-                }
-                catch (e) {
-                    err = e;
-                }
-                opt.highlight = highlight;
-                return err
-                    ? callback(err)
-                    : callback(null, out);
-            };
-            if (!highlight || highlight.length < 3) {
-                return done();
+                throw e;
             }
-            delete opt.highlight;
-            if (!pending)
-                return done();
-            for (; i < tokens.length; i++) {
-                (function (token) {
-                    if (token.type !== 'code') {
-                        return --pending || done();
-                    }
-                    return highlight(token.text, token.lang, function (err, code) {
-                        if (err)
-                            return done(err);
-                        if (code == null || code === token.text) {
-                            return --pending || done();
-                        }
-                        token.text = code;
-                        token.escaped = true;
-                        --pending || done();
-                    });
-                })(tokens[i]);
-            }
-            return;
-        }
-        try {
-            if (opt)
-                opt = helpers.merge({}, option.Defaults, opt);
-            var lexer = new Lexer(opt);
-            var tokens_1 = lexer.lex(src);
-            var mdparser = new parser(opt);
-            return mdparser.parse(tokens_1);
-        }
-        catch (e) {
-            e.message += '\nPlease report this to https://github.com/markedjs/marked.';
-            if ((opt || option.Defaults).silent) {
-                return '<p>An error occurred:</p><pre>'
-                    + helpers.escape.doescape(e.message + '', true)
-                    + '</pre>';
-            }
-            throw e;
         }
     };
     return marked;

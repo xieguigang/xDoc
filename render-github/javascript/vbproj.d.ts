@@ -16,3 +16,8 @@ declare module CodeEditor {
     function requestGithubFile(fileName: string, callback: Delegate.Sub): void;
     function githubImageURL(href: string): string;
 }
+declare module CodeEditor {
+    class MDRender extends htmlRenderer {
+        image(href: string, title: string, text: string): string;
+    }
+}
