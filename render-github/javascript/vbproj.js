@@ -120,7 +120,6 @@ var CodeEditor;
 /// <reference path="./Navigate.ts" />
 /// <reference path="./Editor.ts" />
 /// <reference path="../build/marked.d.ts" />
-htmlRenderer.hrefSolver = CodeEditor.githubImageURL;
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
@@ -149,7 +148,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     else {
         // 首页，则显示assembly信息
         var info_1 = $ts("#md-text");
-        var opt_1 = option.Defaults;
+        var opt_1 = markedjs.option.Defaults;
         opt_1.renderer = new CodeEditor.MDRender();
         CodeEditor.requestGithubFile("README.md", function (markdown) {
             info_1.display(marked(markdown, opt_1, null));
@@ -166,12 +165,12 @@ var CodeEditor;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         MDRender.prototype.image = function (href, title, text) {
-            href = helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+            href = markedjs.helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
             if (href === null) {
                 return text;
             }
-            else if (htmlRenderer.hrefSolver && htmlRenderer.hrefSolver != undefined) {
-                href = htmlRenderer.hrefSolver(href);
+            else {
+                href = CodeEditor.githubImageURL(href);
             }
             var out = '<img style="max-width: 65%;" src="' + href + '" alt="' + text + '"';
             if (title) {
@@ -181,7 +180,7 @@ var CodeEditor;
             return out;
         };
         return MDRender;
-    }(htmlRenderer));
+    }(markedjs.htmlRenderer));
     CodeEditor.MDRender = MDRender;
 })(CodeEditor || (CodeEditor = {}));
 //# sourceMappingURL=vbproj.js.map

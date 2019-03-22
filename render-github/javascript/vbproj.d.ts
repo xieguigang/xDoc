@@ -17,7 +17,7 @@ declare module CodeEditor {
     function githubImageURL(href: string): string;
 }
 declare module CodeEditor {
-    class MDRender extends htmlRenderer {
+    class MDRender extends markedjs.htmlRenderer {
         image(href: string, title: string, text: string): string;
     }
 }

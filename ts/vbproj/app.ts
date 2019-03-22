@@ -6,8 +6,6 @@
 
 /// <reference path="../build/marked.d.ts" />
 
-htmlRenderer.hrefSolver = CodeEditor.githubImageURL;
-
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
@@ -40,7 +38,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     } else {
         // 首页，则显示assembly信息
         let info = $ts("#md-text");
-        let opt: option = option.Defaults;
+        let opt: markedjs.option = markedjs.option.Defaults;
 
         opt.renderer = new CodeEditor.MDRender();
 
