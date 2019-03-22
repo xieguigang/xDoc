@@ -17,6 +17,7 @@ declare namespace markedjs {
         smartypants: boolean;
         tables: boolean;
         xhtml: boolean;
+        debug: boolean;
         block: block;
         inline: inline;
         static readonly Defaults: option;

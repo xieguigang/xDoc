@@ -32,6 +32,8 @@ namespace vscode {
                 this.walkNewLine();
             }
 
+            this.code.flush();
+
             return this.code;
         }
 

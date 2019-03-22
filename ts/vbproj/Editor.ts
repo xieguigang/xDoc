@@ -61,7 +61,9 @@
         let url = href.toLowerCase();
         let isFullName: boolean = href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1;
 
-        console.log(`${url} is full path? ${isFullName}`);
+        if (TypeScript.logging.outputEverything) {
+            console.log(`${url} is full path? ${isFullName}`);
+        }
 
         if (isFullName) {
             return href;

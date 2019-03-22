@@ -6,6 +6,8 @@
 
 /// <reference path="../build/marked.d.ts" />
 
+$ts.mode = Modes.debug;
+
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
@@ -41,6 +43,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         let opt: markedjs.option = markedjs.option.Defaults;
 
         opt.renderer = new CodeEditor.MDRender();
+        opt.debug = false;
 
         CodeEditor.requestGithubFile("README.md", <any>function (markdown: string) {
             info.display(marked(markdown, opt, null));

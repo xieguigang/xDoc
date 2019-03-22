@@ -2346,9 +2346,21 @@ declare namespace Levenshtein {
 declare class StringBuilder {
     private buffer;
     private newLine;
+    /**
+     * 返回得到当前的缓冲区的字符串数据长度大小
+    */
     readonly Length: number;
+    /**
+     * @param newLine 换行符的文本，默认为纯文本格式，也可以指定为html格式的换行符``<br />``
+    */
     constructor(str?: string | StringBuilder, newLine?: string);
+    /**
+     * 向当前的缓冲之中添加目标文本
+    */
     Append(text: string): StringBuilder;
+    /**
+     * 向当前的缓冲之中添加目标文本病在最末尾添加一个指定的换行符
+    */
     AppendLine(text?: string): StringBuilder;
     toString(): string;
 }

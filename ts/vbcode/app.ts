@@ -82,6 +82,10 @@ namespace vscode {
         var codeList = $ts.select(className);
 
         for (let code of codeList.ToArray()) {
+            if (TypeScript.logging.outputEverything) {
+                console.log(code.innerText);
+            }
+
             vscode.highlight(code.innerText, <any>code, style, null, false);
 
             if (code.tagName.toLowerCase() == "pre") {

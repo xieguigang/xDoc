@@ -105,7 +105,9 @@ var CodeEditor;
     function githubImageURL(href) {
         var url = href.toLowerCase();
         var isFullName = href.toLowerCase().indexOf("http://") > -1 || href.toLowerCase().indexOf("https://") > -1;
-        console.log(url + " is full path? " + isFullName);
+        if (TypeScript.logging.outputEverything) {
+            console.log(url + " is full path? " + isFullName);
+        }
         if (isFullName) {
             return href;
         }
@@ -120,6 +122,7 @@ var CodeEditor;
 /// <reference path="./Navigate.ts" />
 /// <reference path="./Editor.ts" />
 /// <reference path="../build/marked.d.ts" />
+$ts.mode = Modes.debug;
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
@@ -150,6 +153,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         var info_1 = $ts("#md-text");
         var opt_1 = markedjs.option.Defaults;
         opt_1.renderer = new CodeEditor.MDRender();
+        opt_1.debug = false;
         CodeEditor.requestGithubFile("README.md", function (markdown) {
             info_1.display(marked(markdown, opt_1, null));
             vscode.highlightVB(vscode.VisualStudio, ".language-vbnet");

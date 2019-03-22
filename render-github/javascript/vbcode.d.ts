@@ -66,6 +66,10 @@ declare namespace vscode {
         */
         appendLine(token?: string): void;
         private buildHashLink;
+        /**
+         * 尝试将剩余的缓存数据写入结果数据之中
+        */
+        flush(): void;
         private appendNewRow;
         directive(token: string): void;
         type(token: string): void;

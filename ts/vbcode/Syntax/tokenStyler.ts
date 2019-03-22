@@ -135,6 +135,19 @@
             }
         }
 
+        /**
+         * 尝试将剩余的缓存数据写入结果数据之中
+        */
+        public flush() {
+            if (TypeScript.logging.outputEverything) {
+                console.log(this.code);
+            }
+
+            if (this.code.Length > 0) {
+                this.appendNewRow();
+            }
+        }
+
         private appendNewRow() {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
             var L: number = this.lineNumber;

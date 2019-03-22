@@ -195,6 +195,17 @@ var vscode;
                 });
             }
         };
+        /**
+         * 尝试将剩余的缓存数据写入结果数据之中
+        */
+        tokenStyler.prototype.flush = function () {
+            if (TypeScript.logging.outputEverything) {
+                console.log(this.code);
+            }
+            if (this.code.Length > 0) {
+                this.appendNewRow();
+            }
+        };
         tokenStyler.prototype.appendNewRow = function () {
             // 构建新的row对象，然后将原来的代码字符串缓存清空
             var L = this.lineNumber;
@@ -304,6 +315,7 @@ var vscode;
             if (this.token.length > 0) {
                 this.walkNewLine();
             }
+            this.code.flush();
             return this.code;
         };
         VBParser.peekNextToken = function (chars, allowNewLine) {
@@ -562,6 +574,9 @@ var vscode;
         var codeList = $ts.select(className);
         for (var _i = 0, _a = codeList.ToArray(); _i < _a.length; _i++) {
             var code = _a[_i];
+            if (TypeScript.logging.outputEverything) {
+                console.log(code.innerText);
+            }
             vscode.highlight(code.innerText, code, style, null, false);
             if (code.tagName.toLowerCase() == "pre") {
                 code.style.border = "none";

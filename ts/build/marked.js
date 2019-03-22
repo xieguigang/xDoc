@@ -15,6 +15,7 @@ var markedjs;
 (function (markedjs) {
     var option = /** @class */ (function () {
         function option() {
+            this.debug = false;
         }
         Object.defineProperty(option, "Defaults", {
             get: function () {
@@ -36,6 +37,7 @@ var markedjs;
                     smartypants: false,
                     tables: true,
                     xhtml: false,
+                    debug: false,
                     // grammers
                     inline: new markedjs.inline(),
                     block: new markedjs.block()
@@ -1306,7 +1308,11 @@ var marked = (function () {
                 var lexer = new markedjs.Lexer(opt);
                 var tokens = lexer.lex(src);
                 var mdparser = new markedjs.parser(opt);
-                return mdparser.parse(tokens);
+                var output = mdparser.parse(tokens);
+                if (opt.debug) {
+                    console.log(output);
+                }
+                return output;
             }
             catch (e) {
                 e.message += '\nPlease report this to https://github.com/markedjs/marked.';
