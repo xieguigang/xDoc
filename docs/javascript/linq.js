@@ -6047,6 +6047,13 @@ var Levenshtein;
         return d.ToArray(false);
     }
     Levenshtein.DistanceMatrix = DistanceMatrix;
+    function ComputeDistance(source, target, score) {
+        if (score === void 0) { score = defaultScore; }
+        var d = DistanceMatrix(source, target, score);
+        var distance = d[d.length - 1][d[0].length - 1];
+        return distance;
+    }
+    Levenshtein.ComputeDistance = ComputeDistance;
 })(Levenshtein || (Levenshtein = {}));
 var StringBuilder = /** @class */ (function () {
     /**
