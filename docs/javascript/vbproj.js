@@ -141,7 +141,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var showFileById = function (nodeID) {
         CodeEditor.highLightVBfile(vbprojfiles[nodeID].replace("\\", "/"));
     };
-    var suggests = CodeEditor.Search.makeSuggestions(indexTerms, "#suggest-display", function (term) { return showFileById(term.id); }, 10, true);
+    var suggests = CodeEditor.Search.makeSuggestions(indexTerms, "#file-suggest-list", function (term) { return showFileById(term.id); }, 10, true);
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
     $('#vbproj-tree').jstree({
@@ -250,9 +250,9 @@ var CodeEditor;
             var a = $ts("<a>", {
                 onclick: function () { return click(term); },
                 href: "#",
-                text: term.term,
                 title: term.term
             });
+            a.innerText = term.term;
             return $ts("<div>").display(a);
         }
         Search.listItem = listItem;
@@ -285,7 +285,7 @@ var CodeEditor;
                     .Take(top)
                     .Select(function (s) { return s.term; })
                     .ToArray();
-                if (result.length == top) {
+                if (result.length <= top) {
                     return result;
                 }
                 else {

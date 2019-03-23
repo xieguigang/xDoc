@@ -23,7 +23,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         CodeEditor.highLightVBfile(vbprojfiles[nodeID].replace("\\", "/"));
     }
     let suggests = CodeEditor.Search.makeSuggestions(
-        indexTerms, "#suggest-display",
+        indexTerms, "#file-suggest-list",
         term => showFileById(<string>term.id),
         10, true
     );

@@ -41,13 +41,13 @@
             });
     }
 
-    export function listItem(term: term, click: (term: term) => void): HTMLElement {       
+    export function listItem(term: term, click: (term: term) => void): HTMLElement {
         var a = $ts("<a>", {
             onclick: () => click(term),
             href: "#",
-            text: term.term,
             title: term.term
         });
+        a.innerText = term.term;
 
         return $ts("<div>").display(a);
     }

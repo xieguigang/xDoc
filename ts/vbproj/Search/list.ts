@@ -34,7 +34,7 @@ namespace CodeEditor.Search {
                 .Select(s => s.term)
                 .ToArray();
 
-            if (result.length == top) {
+            if (result.length <= top) {
                 return result;
             } else {
                 // 非NA得分的少于top的数量
