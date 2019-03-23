@@ -2,6 +2,13 @@
 /// <reference path="../../ts/build/vbcode.d.ts" />
 /// <reference path="../../ts/build/marked.d.ts" />
 declare module CodeEditor.Navigate {
+    interface IJsTreeTerm {
+        icon: string;
+        id: string;
+        parent: string;
+        text: string;
+        type: string;
+    }
     function HashParser(hash?: string): Reference;
     interface Reference {
         fileName: string;
@@ -46,12 +53,12 @@ declare namespace CodeEditor.Search {
      * Term for suggestion
     */
     class term {
-        id: number;
+        id: number | string;
         term: string;
         /**
          * @param id 这个term在数据库之中的id编号
         */
-        constructor(id: number, term: string);
+        constructor(id: number | string, term: string);
         /**
          * 使用动态规划算法计算出当前的这个term和用户输入之间的相似度
         */

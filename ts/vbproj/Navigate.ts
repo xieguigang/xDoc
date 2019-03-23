@@ -1,5 +1,13 @@
 ﻿module CodeEditor.Navigate {
 
+    export interface IJsTreeTerm {
+        icon: string;
+        id: string;
+        parent: string;
+        text: string;
+        type: string;
+    }
+
     export function HashParser(hash: string = window.location.hash): Reference {
         if (Strings.Empty(hash, true)) {
             return null;

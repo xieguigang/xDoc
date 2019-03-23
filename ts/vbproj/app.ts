@@ -7,12 +7,26 @@
 /// <reference path="../build/marked.d.ts" />
 
 $ts.mode = Modes.debug;
-
+$ts("#file-suggest-list").hide();
 $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
-    let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
+    let tree = new Dictionary<CodeEditor.Navigate.IJsTreeTerm>(data["tree"])
+        .Values
+        .ToArray(false);
     let vbprojfiles = data["path"];
     let line = CodeEditor.Navigate.HashParser();
+    let indexTerms = $ts(tree)
+        .Where(t => t.type != "folder")
+        .Select(t => new CodeEditor.Search.term(t.id, t.text))
+        .ToArray(false);
+    let showFileById = function (nodeID: string) {
+        CodeEditor.highLightVBfile(vbprojfiles[nodeID].replace("\\", "/"));
+    }
+    let suggests = CodeEditor.Search.makeSuggestions(
+        indexTerms, "#suggest-display",
+        term => showFileById(<string>term.id),
+        10, true
+    );
 
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
@@ -23,11 +37,22 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         }
     });
     $('#vbproj-tree').on("changed.jstree", function (e, data) {
-        let nodeID: string = data.selected[0];
-        let file: string = vbprojfiles[nodeID];
-
-        CodeEditor.highLightVBfile(file.replace("\\", "/"));
+        showFileById(data.selected[0]);
     });
+
+    $ts("#searchInput").onchange = function () {
+        let search: string = $ts("#searchInput").CType<HTMLInputElement>().value;
+
+        if (search) {
+            $ts("#vbproj-tree").hide();
+            $ts("#file-suggest-list").show();
+
+            suggests(search);
+        } else {
+            $ts("#vbproj-tree").show();
+            $ts("#file-suggest-list").hide();
+        }
+    }
 
     if (!isNullOrUndefined(line)) {
         CodeEditor.Navigate.Do(function () {

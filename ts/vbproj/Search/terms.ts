@@ -10,7 +10,7 @@
         /**
          * @param id 这个term在数据库之中的id编号
         */
-        constructor(public id: number, public term: string) {
+        constructor(public id: number | string, public term: string) {
             this.id = id;
             this.term = term;
         }

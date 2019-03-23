@@ -126,11 +126,22 @@ var CodeEditor;
 /// <reference path="./Editor.ts" />
 /// <reference path="../build/marked.d.ts" />
 $ts.mode = Modes.debug;
+$ts("#file-suggest-list").hide();
 $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
-    var tree = new Dictionary(data["tree"]).Values.ToArray(false);
+    var tree = new Dictionary(data["tree"])
+        .Values
+        .ToArray(false);
     var vbprojfiles = data["path"];
     var line = CodeEditor.Navigate.HashParser();
+    var indexTerms = $ts(tree)
+        .Where(function (t) { return t.type != "folder"; })
+        .Select(function (t) { return new CodeEditor.Search.term(t.id, t.text); })
+        .ToArray(false);
+    var showFileById = function (nodeID) {
+        CodeEditor.highLightVBfile(vbprojfiles[nodeID].replace("\\", "/"));
+    };
+    var suggests = CodeEditor.Search.makeSuggestions(indexTerms, "#suggest-display", function (term) { return showFileById(term.id); }, 10, true);
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
     $('#vbproj-tree').jstree({
@@ -139,10 +150,20 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         }
     });
     $('#vbproj-tree').on("changed.jstree", function (e, data) {
-        var nodeID = data.selected[0];
-        var file = vbprojfiles[nodeID];
-        CodeEditor.highLightVBfile(file.replace("\\", "/"));
+        showFileById(data.selected[0]);
     });
+    $ts("#searchInput").onchange = function () {
+        var search = $ts("#searchInput").CType().value;
+        if (search) {
+            $ts("#vbproj-tree").hide();
+            $ts("#file-suggest-list").show();
+            suggests(search);
+        }
+        else {
+            $ts("#vbproj-tree").show();
+            $ts("#file-suggest-list").hide();
+        }
+    };
     if (!isNullOrUndefined(line)) {
         CodeEditor.Navigate.Do(function () {
             if (line && line.line > 0) {
