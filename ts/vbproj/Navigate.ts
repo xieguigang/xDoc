@@ -1,4 +1,4 @@
-﻿module Navigate {
+﻿module CodeEditor.Navigate {
 
     export function HashParser(hash: string = window.location.hash): Reference {
         if (Strings.Empty(hash, true)) {
