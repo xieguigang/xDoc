@@ -6,7 +6,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "../dist",
-    "outFile": "../../render-github/javascript/vbcode.js",
+    "outFile": "../../docs/javascript/vbcode.js",
     "declaration": true
   },
   "exclude": [

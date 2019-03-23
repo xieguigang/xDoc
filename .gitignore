@@ -256,3 +256,4 @@ paket-files/
 /vbcode-highlight/Resources/splitter.zip
 /ts/build/linq.js
 /ts/build/vbcode.js
+*.map

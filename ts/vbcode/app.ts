@@ -16,7 +16,7 @@ namespace vscode {
      * All of the VB keywords that following type names
     */
     export const TypeDefine: string[] = [
-        "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType"
+        "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType", "Implements", "Inherits"
     ];
 
     /**

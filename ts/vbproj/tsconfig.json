@@ -6,7 +6,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "../dist",
-    "outFile": "../../render-github/javascript/vbproj.js",
+    "outFile": "../../docs/javascript/vbproj.js",
     "declaration": true
   },
   "exclude": [

@@ -6049,6 +6049,9 @@ var Levenshtein;
     Levenshtein.DistanceMatrix = DistanceMatrix;
 })(Levenshtein || (Levenshtein = {}));
 var StringBuilder = /** @class */ (function () {
+    /**
+     * @param newLine 换行符的文本，默认为纯文本格式，也可以指定为html格式的换行符``<br />``
+    */
     function StringBuilder(str, newLine) {
         if (str === void 0) { str = null; }
         if (newLine === void 0) { newLine = "\n"; }
@@ -6064,16 +6067,25 @@ var StringBuilder = /** @class */ (function () {
         this.newLine = newLine;
     }
     Object.defineProperty(StringBuilder.prototype, "Length", {
+        /**
+         * 返回得到当前的缓冲区的字符串数据长度大小
+        */
         get: function () {
             return this.buffer.length;
         },
         enumerable: true,
         configurable: true
     });
+    /**
+     * 向当前的缓冲之中添加目标文本
+    */
     StringBuilder.prototype.Append = function (text) {
         this.buffer = this.buffer + text;
         return this;
     };
+    /**
+     * 向当前的缓冲之中添加目标文本病在最末尾添加一个指定的换行符
+    */
     StringBuilder.prototype.AppendLine = function (text) {
         if (text === void 0) { text = ""; }
         return this.Append(text + this.newLine);

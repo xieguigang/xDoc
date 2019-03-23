@@ -536,7 +536,7 @@ var vscode;
      * All of the VB keywords that following type names
     */
     vscode.TypeDefine = [
-        "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType"
+        "As", "Class", "Structure", "Module", "Imports", "Of", "New", "GetType", "Implements", "Inherits"
     ];
     /**
      * 在VB.NET之中，单词与单词之间的分隔符列表
