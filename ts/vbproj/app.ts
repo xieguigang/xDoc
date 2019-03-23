@@ -40,8 +40,12 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         showFileById(data.selected[0]);
     });
 
-    $ts("#searchInput").onchange = function () {
+    let searchInputHandler = function () {
         let search: string = $ts("#searchInput").CType<HTMLInputElement>().value;
+
+        if (TypeScript.logging.outputEverything) {
+            console.log(search);
+        }
 
         if (search) {
             $ts("#vbproj-tree").hide();
@@ -53,6 +57,9 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
             $ts("#file-suggest-list").hide();
         }
     }
+
+    $ts("#searchInput").onkeypress = searchInputHandler;
+    $ts("#searchInput").onchange = searchInputHandler;
 
     if (!isNullOrUndefined(line)) {
         CodeEditor.Navigate.Do(function () {

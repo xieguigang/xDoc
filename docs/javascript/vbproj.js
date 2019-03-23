@@ -152,8 +152,11 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     $('#vbproj-tree').on("changed.jstree", function (e, data) {
         showFileById(data.selected[0]);
     });
-    $ts("#searchInput").onchange = function () {
+    var searchInputHandler = function () {
         var search = $ts("#searchInput").CType().value;
+        if (TypeScript.logging.outputEverything) {
+            console.log(search);
+        }
         if (search) {
             $ts("#vbproj-tree").hide();
             $ts("#file-suggest-list").show();
@@ -164,6 +167,8 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
             $ts("#file-suggest-list").hide();
         }
     };
+    $ts("#searchInput").onkeypress = searchInputHandler;
+    $ts("#searchInput").onchange = searchInputHandler;
     if (!isNullOrUndefined(line)) {
         CodeEditor.Navigate.Do(function () {
             if (line && line.line > 0) {
