@@ -11,48 +11,51 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Navigate;
-(function (Navigate) {
-    function HashParser(hash) {
-        if (hash === void 0) { hash = window.location.hash; }
-        if (Strings.Empty(hash, true)) {
-            return null;
-        }
-        else {
-            var tokens = hash.substr(1).split("#");
-            var line = -1;
-            var path = tokens[0];
-            if (tokens.length > 1) {
-                line = parseInt(/\d+/.exec(tokens[1])[0]);
+var CodeEditor;
+(function (CodeEditor) {
+    var Navigate;
+    (function (Navigate) {
+        function HashParser(hash) {
+            if (hash === void 0) { hash = window.location.hash; }
+            if (Strings.Empty(hash, true)) {
+                return null;
             }
-            if (path.charAt(0) == "/") {
-                path = path.substr(1);
+            else {
+                var tokens = hash.substr(1).split("#");
+                var line = -1;
+                var path = tokens[0];
+                if (tokens.length > 1) {
+                    line = parseInt(/\d+/.exec(tokens[1])[0]);
+                }
+                if (path.charAt(0) == "/") {
+                    path = path.substr(1);
+                }
+                return { fileName: path, line: line };
             }
-            return { fileName: path, line: line };
         }
-    }
-    Navigate.HashParser = HashParser;
-    function Do(callback) {
-        if (callback === void 0) { callback = null; }
-        var input = Navigate.HashParser();
-        if (!isNullOrUndefined(input)) {
-            CodeEditor.highLightVBfile(input.fileName, function () {
-                if (input.line > 0) {
-                    $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
-                    JumpToLine(input.line);
-                }
-                if (callback) {
-                    callback();
-                }
-            });
+        Navigate.HashParser = HashParser;
+        function Do(callback) {
+            if (callback === void 0) { callback = null; }
+            var input = Navigate.HashParser();
+            if (!isNullOrUndefined(input)) {
+                CodeEditor.highLightVBfile(input.fileName, function () {
+                    if (input.line > 0) {
+                        $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
+                        JumpToLine(input.line);
+                    }
+                    if (callback) {
+                        callback();
+                    }
+                });
+            }
         }
-    }
-    Navigate.Do = Do;
-    function JumpToLine(line) {
-        window.scrollTo(0, 16 * line);
-    }
-    Navigate.JumpToLine = JumpToLine;
-})(Navigate || (Navigate = {}));
+        Navigate.Do = Do;
+        function JumpToLine(line) {
+            window.scrollTo(0, 16 * line);
+        }
+        Navigate.JumpToLine = JumpToLine;
+    })(Navigate = CodeEditor.Navigate || (CodeEditor.Navigate = {}));
+})(CodeEditor || (CodeEditor = {}));
 var CodeEditor;
 (function (CodeEditor) {
     var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
@@ -67,7 +70,7 @@ var CodeEditor;
                 var jump = "#/" + file + line;
                 var n = parseInt(/\d+/.exec(line)[0]);
                 $ts.location.hash(false, jump);
-                Navigate.JumpToLine(n);
+                CodeEditor.Navigate.JumpToLine(n);
             };
             $ts.location.hash(false, "#/" + file);
             $('#toc-tree').jstree("destroy").empty();
@@ -79,7 +82,7 @@ var CodeEditor;
         };
         var handleHash = function (L) {
             $ts.location.hash(false, "#/" + file + "#L" + L);
-            Navigate.JumpToLine(L);
+            CodeEditor.Navigate.JumpToLine(L);
             doLineHighlight(L);
         };
         github.highlightCode(file, "#vbcode", vscode.VisualStudio, handleTOC, handleHash);
@@ -187,5 +190,165 @@ var CodeEditor;
         return MDRender;
     }(markedjs.htmlRenderer));
     CodeEditor.MDRender = MDRender;
+})(CodeEditor || (CodeEditor = {}));
+var CodeEditor;
+(function (CodeEditor) {
+    var Search;
+    (function (Search) {
+        /**
+         * 将结果显示到网页上面
+        */
+        function makeSuggestions(terms, div, click, top, caseInsensitive) {
+            if (top === void 0) { top = 10; }
+            if (caseInsensitive === void 0) { caseInsensitive = false; }
+            var suggestions = new Search.suggestion(terms);
+            return function (input) {
+                // console.log(input);
+                showSuggestions(suggestions, input, div, click, top, caseInsensitive);
+            };
+        }
+        Search.makeSuggestions = makeSuggestions;
+        function showSuggestions(suggestion, input, div, click, top, caseInsensitive) {
+            if (top === void 0) { top = 10; }
+            if (caseInsensitive === void 0) { caseInsensitive = false; }
+            var node = $ts(div);
+            if (!node) {
+                console.error("Unable to find node which its id equals to: " + div);
+                return;
+            }
+            else {
+                node.innerHTML = "";
+            }
+            suggestion.populateSuggestion(input, top, caseInsensitive)
+                .forEach(function (term) {
+                node.appendChild(listItem(term, click));
+            });
+        }
+        Search.showSuggestions = showSuggestions;
+        function listItem(term, click) {
+            var a = $ts("<a>", {
+                onclick: function () { return click(term); },
+                href: "#",
+                text: term.term,
+                title: term.term
+            });
+            return $ts("<div>").display(a);
+        }
+        Search.listItem = listItem;
+    })(Search = CodeEditor.Search || (CodeEditor.Search = {}));
+})(CodeEditor || (CodeEditor = {}));
+/// <reference path="../../build/linq.d.ts" />
+var CodeEditor;
+(function (CodeEditor) {
+    var Search;
+    (function (Search) {
+        var suggestion = /** @class */ (function () {
+            function suggestion(terms) {
+                this.terms = terms;
+            }
+            /**
+             * 返回最相似的前5个结果
+            */
+            suggestion.prototype.populateSuggestion = function (input, top, caseInsensitive) {
+                if (top === void 0) { top = 5; }
+                if (caseInsensitive === void 0) { caseInsensitive = false; }
+                var lowerInput = input.toLowerCase();
+                var scores = From(this.terms)
+                    .Select(function (q) {
+                    var score = suggestion.getScore(q, input, lowerInput, caseInsensitive);
+                    return new Search.scoreTerm(q, score);
+                })
+                    .OrderBy(function (rank) { return rank.score; });
+                var result = scores
+                    .Where(function (s) { return s.score != Search.NA; })
+                    .Take(top)
+                    .Select(function (s) { return s.term; })
+                    .ToArray();
+                if (result.length == top) {
+                    return result;
+                }
+                else {
+                    // 非NA得分的少于top的数量
+                    // 需要换一种方式计算结果，然后进行补充
+                    var addi = scores
+                        .Skip(result.length)
+                        .Select(function (s) {
+                        var q = s.term;
+                        var score;
+                        if (caseInsensitive) {
+                            score = leven.compute(q.term.toLowerCase(), lowerInput);
+                        }
+                        else {
+                            score = leven.compute(q.term, input);
+                        }
+                        return new Search.scoreTerm(q, score);
+                    }).OrderBy(function (s) { return s.score; })
+                        .Take(top - result.length)
+                        .Select(function (s) { return s.term; })
+                        .ToArray();
+                    result = result.concat(addi);
+                }
+                return result;
+            };
+            suggestion.getScore = function (q, input, lowerInput, caseInsensitive) {
+                if (caseInsensitive) {
+                    // 大小写不敏感的模式下，都转换为小写
+                    var lowerTerm = q.term.toLowerCase();
+                    return Search.term.indexOf(lowerTerm, lowerInput);
+                }
+                else {
+                    return q.dist(input);
+                }
+            };
+            return suggestion;
+        }());
+        Search.suggestion = suggestion;
+    })(Search = CodeEditor.Search || (CodeEditor.Search = {}));
+})(CodeEditor || (CodeEditor = {}));
+var CodeEditor;
+(function (CodeEditor) {
+    var Search;
+    (function (Search) {
+        Search.NA = 100000000000;
+        /**
+         * Term for suggestion
+        */
+        var term = /** @class */ (function () {
+            /**
+             * @param id 这个term在数据库之中的id编号
+            */
+            function term(id, term) {
+                this.id = id;
+                this.term = term;
+                this.id = id;
+                this.term = term;
+            }
+            /**
+             * 使用动态规划算法计算出当前的这个term和用户输入之间的相似度
+            */
+            term.prototype.dist = function (input) {
+                return term.indexOf(this.term, input);
+            };
+            term.indexOf = function (term, input) {
+                var i = term.indexOf(input);
+                if (i == -1) {
+                    return Search.NA;
+                }
+                else {
+                    return Math.abs(input.length - term.length);
+                }
+            };
+            return term;
+        }());
+        Search.term = term;
+        var scoreTerm = /** @class */ (function () {
+            function scoreTerm(term, score) {
+                this.term = term;
+                this.score = score;
+            }
+            return scoreTerm;
+        }());
+        Search.scoreTerm = scoreTerm;
+    })(Search = CodeEditor.Search || (CodeEditor.Search = {}));
 })(CodeEditor || (CodeEditor = {}));
 //# sourceMappingURL=vbproj.js.map

@@ -26,7 +26,7 @@
         top: number = 10,
         caseInsensitive: boolean = false) {
 
-        var node = document.getElementById(div);
+        var node: HTMLElement = $ts(div);
 
         if (!node) {
             console.error(`Unable to find node which its id equals to: ${div}`);
@@ -41,19 +41,14 @@
             });
     }
 
-    export function listItem(term: term, click: (term: term) => void): HTMLElement {
-        var div = document.createElement("div");
-        var a = document.createElement("a");
+    export function listItem(term: term, click: (term: term) => void): HTMLElement {       
+        var a = $ts("<a>", {
+            onclick: () => click(term),
+            href: "#",
+            text: term.term,
+            title: term.term
+        });
 
-        a.onclick = function () {
-            click(term);
-        }
-        a.href = "#";
-        a.text = term.term;
-        a.title = term.term;
-
-        div.appendChild(a);
-
-        return div;
+        return $ts("<div>").display(a);
     }
 }
