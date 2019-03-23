@@ -13,7 +13,8 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let tree = new Dictionary<CodeEditor.Navigate.IJsTreeTerm>(data["tree"])
         .Values
         .ToArray(false);
-    let vbprojfiles = data["path"];
+    let vbprojfiles: {} = data["path"];
+    let nodeIDlist = Object.keys(vbprojfiles);
     let line = CodeEditor.Navigate.HashParser();
     let indexTerms = $ts(tree)
         .Where(t => t.type != "folder")
@@ -27,6 +28,9 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         term => showFileById(<string>term.id),
         10, true
     );
+    let randomFile = function () {
+        showFileById(nodeIDlist[Math.floor(Math.random() * nodeIDlist.length)]);
+    }
 
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
@@ -58,6 +62,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
         }
     }
 
+    $ts("#random-file").onclick = randomFile;
     $ts("#searchInput").onkeypress = searchInputHandler;
     $ts("#searchInput").onchange = searchInputHandler;
 
