@@ -2248,6 +2248,7 @@ declare namespace Levenshtein {
         substitute(s: string | number, t: string | number): number;
     }
     function DistanceMatrix(source: string, target: string, score?: IScoreFunc): number[][];
+    function ComputeDistance(source: string, target: string, score?: IScoreFunc): number;
 }
 declare class StringBuilder {
     private buffer;

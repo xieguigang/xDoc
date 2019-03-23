@@ -130,7 +130,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     var assembly = data["assembly"];
     var tree = new Dictionary(data["tree"]).Values.ToArray(false);
     var vbprojfiles = data["path"];
-    var line = Navigate.HashParser();
+    var line = CodeEditor.Navigate.HashParser();
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
     $('#vbproj-tree').jstree({
@@ -144,7 +144,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         CodeEditor.highLightVBfile(file.replace("\\", "/"));
     });
     if (!isNullOrUndefined(line)) {
-        Navigate.Do(function () {
+        CodeEditor.Navigate.Do(function () {
             if (line && line.line > 0) {
                 CodeEditor.doLineHighlight(line.line);
             }
@@ -163,7 +163,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
         });
     }
 });
-window.onhashchange = Navigate.Do;
+window.onhashchange = CodeEditor.Navigate.Do;
 var CodeEditor;
 (function (CodeEditor) {
     var MDRender = /** @class */ (function (_super) {
@@ -276,10 +276,10 @@ var CodeEditor;
                         var q = s.term;
                         var score;
                         if (caseInsensitive) {
-                            score = leven.compute(q.term.toLowerCase(), lowerInput);
+                            score = Levenshtein.ComputeDistance(q.term.toLowerCase(), lowerInput);
                         }
                         else {
-                            score = leven.compute(q.term, input);
+                            score = Levenshtein.ComputeDistance(q.term, input);
                         }
                         return new Search.scoreTerm(q, score);
                     }).OrderBy(function (s) { return s.score; })

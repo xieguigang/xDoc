@@ -12,7 +12,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     let assembly = data["assembly"];
     let tree = new Dictionary<any>(data["tree"]).Values.ToArray(false);
     let vbprojfiles = data["path"];
-    let line = Navigate.HashParser();
+    let line = CodeEditor.Navigate.HashParser();
 
     TypeScript.logging.log(tree);
     TypeScript.logging.log(assembly);
@@ -30,7 +30,7 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     });
 
     if (!isNullOrUndefined(line)) {
-        Navigate.Do(function () {
+        CodeEditor.Navigate.Do(function () {
             if (line && line.line > 0) {
                 CodeEditor.doLineHighlight(line.line);
             }
@@ -52,4 +52,4 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", data => {
     }
 });
 
-window.onhashchange = <any>Navigate.Do;
+window.onhashchange = <any>CodeEditor.Navigate.Do;

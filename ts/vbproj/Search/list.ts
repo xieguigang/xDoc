@@ -46,12 +46,9 @@ namespace CodeEditor.Search {
                         var score: number;
 
                         if (caseInsensitive) {
-                            score = leven.compute(
-                                q.term.toLowerCase(),
-                                lowerInput
-                            );
+                            score = Levenshtein.ComputeDistance(q.term.toLowerCase(), lowerInput);
                         } else {
-                            score = leven.compute(q.term, input);
+                            score = Levenshtein.ComputeDistance(q.term, input);
                         }
 
                         return new scoreTerm(q, score);
