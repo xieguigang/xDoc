@@ -6,14 +6,14 @@ namespace vscode.TOC {
     /**
      * 在VB之中用于类型申明的关键词
     */
-    export const typeDeclares: {} = TypeInfo.EmptyObject(["Class", "Structure", "Enum", "Module", "Delegate", "Interface"], true);
-    export const fieldDeclares: {} = TypeInfo.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected", "ReadOnly", "Const", "Shared"], true);
+    export const typeDeclares: {} = Activator.EmptyObject(["Class", "Structure", "Enum", "Module", "Delegate", "Interface"], true);
+    export const fieldDeclares: {} = Activator.EmptyObject(["Dim", "Public", "Private", "Friend", "Protected", "ReadOnly", "Const", "Shared"], true);
     export const propertyDeclare: string = "Property";
     export const operatorDeclare: string = "Operator";
     export const functionDeclare: string = "Function";
     export const subroutineDeclare: string = "Sub";
     export const endStack: string = "End";
-    export const operatorKeywords: {} = TypeInfo.EmptyObject(["And", "Or", "Not", "AndAlso", "OrElse", "Xor", "IsTrue", "IsFalse", "CType", "Like"], true);
+    export const operatorKeywords: {} = Activator.EmptyObject(["And", "Or", "Not", "AndAlso", "OrElse", "Xor", "IsTrue", "IsFalse", "CType", "Like"], true);
 
     export enum symbolTypes {
         /**

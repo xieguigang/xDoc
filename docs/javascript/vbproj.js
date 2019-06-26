@@ -4,58 +4,13 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var CodeEditor;
-(function (CodeEditor) {
-    var Navigate;
-    (function (Navigate) {
-        function HashParser(hash) {
-            if (hash === void 0) { hash = window.location.hash; }
-            if (Strings.Empty(hash, true)) {
-                return null;
-            }
-            else {
-                var tokens = hash.substr(1).split("#");
-                var line = -1;
-                var path = tokens[0];
-                if (tokens.length > 1) {
-                    line = parseInt(/\d+/.exec(tokens[1])[0]);
-                }
-                if (path.charAt(0) == "/") {
-                    path = path.substr(1);
-                }
-                return { fileName: path, line: line };
-            }
-        }
-        Navigate.HashParser = HashParser;
-        function Do(callback) {
-            if (callback === void 0) { callback = null; }
-            var input = Navigate.HashParser();
-            if (!isNullOrUndefined(input)) {
-                CodeEditor.highLightVBfile(input.fileName, function () {
-                    if (input.line > 0) {
-                        $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
-                        JumpToLine(input.line);
-                    }
-                    if (callback) {
-                        callback();
-                    }
-                });
-            }
-        }
-        Navigate.Do = Do;
-        function JumpToLine(line) {
-            window.scrollTo(0, 16 * line);
-        }
-        Navigate.JumpToLine = JumpToLine;
-    })(Navigate = CodeEditor.Navigate || (CodeEditor.Navigate = {}));
-})(CodeEditor || (CodeEditor = {}));
 var CodeEditor;
 (function (CodeEditor) {
     var github = new vscode.github.raw("@github.user", "@github.repo", "@github.commits");
@@ -119,6 +74,78 @@ var CodeEditor;
         }
     }
     CodeEditor.githubImageURL = githubImageURL;
+})(CodeEditor || (CodeEditor = {}));
+var CodeEditor;
+(function (CodeEditor) {
+    var MDRender = /** @class */ (function (_super) {
+        __extends(MDRender, _super);
+        function MDRender() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDRender.prototype.image = function (href, title, text) {
+            href = markedjs.helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+            if (href === null) {
+                return text;
+            }
+            else {
+                href = CodeEditor.githubImageURL(href);
+            }
+            var out = '<img style="max-width: 65%;" src="' + href + '" alt="' + text + '"';
+            if (title) {
+                out += ' title="' + title + '"';
+            }
+            out += this.options.xhtml ? '/>' : '>';
+            // out = `<div style="width: 100%; text-align: center;">${out}</div>`;
+            return out;
+        };
+        return MDRender;
+    }(markedjs.htmlRenderer));
+    CodeEditor.MDRender = MDRender;
+})(CodeEditor || (CodeEditor = {}));
+var CodeEditor;
+(function (CodeEditor) {
+    var Navigate;
+    (function (Navigate) {
+        function HashParser(hash) {
+            if (hash === void 0) { hash = window.location.hash; }
+            if (Strings.Empty(hash, true)) {
+                return null;
+            }
+            else {
+                var tokens = hash.substr(1).split("#");
+                var line = -1;
+                var path = tokens[0];
+                if (tokens.length > 1) {
+                    line = parseInt(/\d+/.exec(tokens[1])[0]);
+                }
+                if (path.charAt(0) == "/") {
+                    path = path.substr(1);
+                }
+                return { fileName: path, line: line };
+            }
+        }
+        Navigate.HashParser = HashParser;
+        function Do(callback) {
+            if (callback === void 0) { callback = null; }
+            var input = Navigate.HashParser();
+            if (!isNullOrUndefined(input)) {
+                CodeEditor.highLightVBfile(input.fileName, function () {
+                    if (input.line > 0) {
+                        $ts.location.hash(false, "#/" + input.fileName + "#L" + input.line);
+                        JumpToLine(input.line);
+                    }
+                    if (callback) {
+                        callback();
+                    }
+                });
+            }
+        }
+        Navigate.Do = Do;
+        function JumpToLine(line) {
+            window.scrollTo(0, 16 * line);
+        }
+        Navigate.JumpToLine = JumpToLine;
+    })(Navigate = CodeEditor.Navigate || (CodeEditor.Navigate = {}));
 })(CodeEditor || (CodeEditor = {}));
 /// <reference path="../build/linq.d.ts" />
 /// <reference path="../build/vbcode.d.ts" />
@@ -195,33 +222,6 @@ $ts.get("projects/Microsoft.VisualBasic.Core.json", function (data) {
     }
 });
 window.onhashchange = CodeEditor.Navigate.Do;
-var CodeEditor;
-(function (CodeEditor) {
-    var MDRender = /** @class */ (function (_super) {
-        __extends(MDRender, _super);
-        function MDRender() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        MDRender.prototype.image = function (href, title, text) {
-            href = markedjs.helpers.cleanUrl(this.options.sanitize, this.options.baseUrl, href);
-            if (href === null) {
-                return text;
-            }
-            else {
-                href = CodeEditor.githubImageURL(href);
-            }
-            var out = '<img style="max-width: 65%;" src="' + href + '" alt="' + text + '"';
-            if (title) {
-                out += ' title="' + title + '"';
-            }
-            out += this.options.xhtml ? '/>' : '>';
-            // out = `<div style="width: 100%; text-align: center;">${out}</div>`;
-            return out;
-        };
-        return MDRender;
-    }(markedjs.htmlRenderer));
-    CodeEditor.MDRender = MDRender;
-})(CodeEditor || (CodeEditor = {}));
 var CodeEditor;
 (function (CodeEditor) {
     var Search;

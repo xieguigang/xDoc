@@ -12,6 +12,7 @@
         directive: string;
 
         globalFont: CanvasHelper.CSSFont;
+        lineHeight: string;
     }
 
     export function defaultStyle(): CSS {
@@ -25,7 +26,8 @@
             globalFont: {
                 fontName: "Consolas",
                 size: { pixel: 11 }
-            }
+            },
+            lineHeight: "11px"
         };
     }
 
@@ -43,6 +45,6 @@
         CanvasHelper.CSSFont.applyCSS(preview, style.globalFont);
 
         // set additional styles.
-        preview.style.lineHeight = "1.125em;";
+        preview.style.lineHeight = style.lineHeight;
     }
 }
