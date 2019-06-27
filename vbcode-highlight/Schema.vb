@@ -27,7 +27,7 @@ Public Class Schema
     ''' 
     ''' </summary>
     ''' <returns></returns>
-    Public Shared Function VisualStudioDefault() As DefaultValue(Of Schema)
+    Public Shared Function VisualStudioDefault() As [Default](Of Schema)
         Return New Schema With {
             .background = "white",
             .comments = "#008000",

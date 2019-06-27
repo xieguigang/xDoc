@@ -8,6 +8,7 @@ Imports Microsoft.VisualBasic.ApplicationServices.Development.XmlDoc.Assembly
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Net.H
 Imports Microsoft.VisualBasic.Net.Http
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
@@ -46,7 +47,7 @@ Imports DevAssmInfo = Microsoft.VisualBasic.ApplicationServices.Development.Asse
 
         Call $"{path} --> {mdOutputFolder}".__DEBUG_ECHO
 
-        Dim type As Libraries = args.GetValue("/lib", Libraries.Github, __ctype:=AddressOf GetLibraryType)
+        Dim type As Libraries = args.GetValue("/lib", Libraries.Github, cast:=AddressOf GetLibraryType)
         Dim url As New URLBuilder(type, mdOutputFolder)
         Dim library As New ProjectSpaceExports(ps)
 
