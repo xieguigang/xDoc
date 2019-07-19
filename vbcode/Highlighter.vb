@@ -22,8 +22,13 @@ Public Module Highlighter
     Public ReadOnly VBKeywords As Index(Of String) = KeywordProcessor.TokenWords
 
     Public Function HighlightHtml(code As String) As String
-        Dim pcode As New Pointer(Of Char)(code)
+        Dim rows = New VBParser(New Pointer(Of Char)(code)).getTokens.ToString
 
+        Return $"<table class=""pre"">
+<tbody>
+{rows}
+</tbody>
+</table>"
     End Function
 
 End Module

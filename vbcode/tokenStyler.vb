@@ -181,4 +181,8 @@ Public Class tokenStyler
         LastNewLine = False
         LastDirective = False
     End Sub
+
+    Public Overrides Function ToString() As String
+        Return rowList.JoinBy(vbCrLf)
+    End Function
 End Class
