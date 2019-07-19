@@ -142,6 +142,14 @@ Public Class tokenStyler
     End Sub
 
     Public Shared Function highlightURLs(token As String) As String
+        Dim urls = token.Matches("((https?)|(ftp))[:]\/{2}\S+\.[a-z]+[^ >""]*").ToArray
+        Dim a As String
+
+        For Each url As String In urls
+            a = $"<a href=""{url}"">{url}</a>"
+            token = token.Replace(url, a)
+        Next
+
         Return token
     End Function
 

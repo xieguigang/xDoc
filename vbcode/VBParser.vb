@@ -5,7 +5,7 @@ Imports Microsoft.VisualBasic.Text
 Public Class VBParser
 
     Dim code As New tokenStyler
-    Dim escapes As escapes
+    Dim escapes As New escapes
     Dim token As New List(Of Char)
 
     Dim chars As Pointer(Of Char)
