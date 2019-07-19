@@ -29,15 +29,15 @@ Public Class tokenStyler
         End Get
     End Property
 
-    ''' <summary>
-    ''' 获取得到代码源文件的大纲概览结构信息
-    ''' </summary>
-    ''' <returns></returns>
-    Public ReadOnly Property CodeSummary As TOC.Summary
-        Get
-            Return this.summary
-        End Get
-    End Property
+    '''' <summary>
+    '''' 获取得到代码源文件的大纲概览结构信息
+    '''' </summary>
+    '''' <returns></returns>
+    'Public ReadOnly Property CodeSummary As TOC.Summary
+    '    Get
+    '        Return this.summary
+    '    End Get
+    'End Property
 
     ''' <summary>
     ''' 上一个追加的单词是一个类型定义或者引用的关键词
@@ -113,5 +113,64 @@ Public Class tokenStyler
 
         rowList += tr
         code.Clear()
+    End Sub
+
+    Public Sub directive(token As String)
+        Call code.Append(tagClass(token, NameOf(directive)))
+        LastTypeKeyword = False
+        LastNewLine = False
+        LastDirective = True
+    End Sub
+
+    Public Sub type(token As String)
+        code.Append(tagClass(token, NameOf(type)))
+        LastTypeKeyword = False
+        LastNewLine = False
+        LastDirective = False
+
+
+    End Sub
+
+    Public Sub comment(token As String)
+        code.AppendLine(tagClass(highlightURLs(token), NameOf(comment)) & "<br />")
+
+        LastTypeKeyword = False
+        LastNewLine = True
+        LastDirective = False
+
+        appendNewRow()
+    End Sub
+
+    Public Shared Function highlightURLs(token As String) As String
+        Return token
+    End Function
+
+    Public Sub [string](token As String)
+        code.Append(highlightURLs(token), NameOf([string]))
+
+        LastTypeKeyword = False
+        LastNewLine = False
+        LastDirective = False
+    End Sub
+
+    Public Sub keyword(token As String)
+        code.Append(tagClass(token, NameOf(keyword)))
+
+        If token Like Highlighter.typeDefine Then
+            LastTypeKeyword = True
+        Else
+            LastTypeKeyword = False
+        End If
+
+        LastNewLine = False
+        LastDirective = False
+    End Sub
+
+    Public Sub attribute(token As String)
+        code.Append(tagClass(token, NameOf(attribute)))
+
+        LastTypeKeyword = False
+        LastNewLine = False
+        LastDirective = False
     End Sub
 End Class
