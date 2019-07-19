@@ -189,7 +189,7 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\vbcode-highlight\vbcode.vbproj">
+    <ProjectReference Include="..\vbcode\vbcode.vbproj">
       <Project>{4a1d6588-3574-40b5-881a-2707846a7318}</Project>
       <Name>vbcode</Name>
     </ProjectReference>
