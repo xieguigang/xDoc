@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.VisualBasic.ComponentModel.Collection
+Imports Microsoft.VisualBasic.Emit.Marshal
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder.VBLanguage
 
 Public Class Class1
@@ -27,5 +28,10 @@ Public Class Class1
     ''' List of VB.NET language keywords
     ''' </summary>
     Public ReadOnly VBKeywords As String() = KeywordProcessor.TokenWords
+
+    Public Function HighlightHtml(code As String) As String
+        Dim pcode As New Pointer(Of Char)(code)
+
+    End Function
 
 End Class
