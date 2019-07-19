@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Dev.xDoc.VBCode.jstree
-Imports Microsoft.VisualBasic.ApplicationServices
+Imports Microsoft.VisualBasic.ApplicationServices.Zip
 Imports Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
@@ -37,7 +37,7 @@ Public Module ProjectDocument
 
         With App.GetAppSysTempFile(".zip", App.PID)
             Call My.Resources.splitter.FlushStream(.ByRef)
-            Call ZipLib.ImprovedExtractToDirectory(.ByRef, EXPORT)
+            Call UnZip.ImprovedExtractToDirectory(.ByRef, EXPORT)
         End With
 
         With App.GetAppSysTempFile(".zip", App.PID)
@@ -46,7 +46,7 @@ Public Module ProjectDocument
             Call My.Resources.url.SaveTo($"{EXPORT}/lib/url.js")
             Call My.Resources._lib.FlushStream(.ByRef)
 
-            Call ZipLib.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
+            Call UnZip.ImprovedExtractToDirectory(.ByRef, $"{EXPORT}/lib")
         End With
 
         ' itemgroups\compiles
@@ -74,7 +74,7 @@ Public Module ProjectDocument
     Private Function renderVBfileImpl(file$, folder$, EXPORT$, fontStyle$, css$) As String
         Dim vb$ = $"{folder}/{file}".ReadAllText
         Dim html$ = vb _
-            .ToVBhtml _
+            .HighlightHtml _
             .jsfilelinecontainer
         Dim urlPath$ = "./" & file.BaseName & ".html"
         Dim htmlPath$ = $"{EXPORT}/{file}".ChangeSuffix("html").GetFullPath

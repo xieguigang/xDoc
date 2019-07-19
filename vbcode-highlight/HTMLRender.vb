@@ -76,129 +76,6 @@ Public Module HTMLRender
     Const commentQuot$ = "${vb_comment_quot}"
 
     ''' <summary>
-    ''' Render *.vb source file to html page
-    ''' </summary>
-    ''' <param name="vb"></param>
-    ''' <returns></returns>
-    <Extension>
-    Public Function ToVBhtml(vb As String) As String
-        Dim html As New ScriptBuilder(vb)
-        Dim span$
-        Dim keywords$() = KeywordProcessor _
-            .VBKeywords _
-            .Split("|"c) _
-            .Where(Function(w)
-                       Return Not w.StringEmpty
-                   End Function) _
-            .OrderByDescending(Function(s) s.Length) _
-            .ToArray
-
-        ' html 之中的 & <> 要在第一步进行转义，否则会将后面所生成的html标签也给转义掉的
-        html.Replace("&", "&amp;") _
-            .Replace("<", "&lt;") _
-            .Replace(">", "&gt;") _
-            .Replace(" ", "&nbsp;")
-
-        Dim xmlComments$() = html.Preview _
-            .Matches("[']{3}.+$", RegexICMul) _
-            .ToArray
-
-        For Each xmlComment$ In xmlComments
-            span = (<span class="xml_comment"><%= xmlComment.TrimNewLine %></span>) _
-               .ToString _
-               .Replace("&amp;", "&") _
-               .Replace("'", commentQuot) _
-               .Replace("""", stringQuot)
-
-            Call html.Replace(xmlComment, span)
-        Next
-
-        Dim xmlInterpolate$() = html.Preview _
-            .Matches("<%[=].*%>", RegexICSng) _
-            .ToArray
-
-        For Each interpolate As String In xmlInterpolate
-            span = (<span class="xml_interpolate"><%= interpolate %></span>) _
-                .ToString
-
-            Call html.Replace(interpolate, span)
-        Next
-
-        Dim comments$() = html.Preview _
-            .Matches("['][^'].+$", RegexICMul) _
-            .ToArray
-
-        Dim strings$() = html.Preview _
-            .Matches("[""].*?[""]", RegexICSng) _
-            .ToArray
-
-        For Each str As String In strings
-            span = (<span class="string"><%= str %></span>) _
-                .ToString _
-                .Replace("&amp;", "&") _
-                .Replace("""", stringQuot)
-
-            Call html.Replace(str, span)
-        Next
-
-        Call html.Replace(stringQuot, """")
-        Call html.Replace(commentQuot, "'")
-
-        ' 如果comment数量很多的画，可能会在这里造成长时间的堵塞
-        For Each [REM] As String In comments
-            span = (<span class="comment"><%= [REM].TrimNewLine %></span>) _
-                .ToString _
-                .Replace("&amp;", "&")
-
-            Call html.Replace([REM], span)
-        Next
-
-        ' As type
-        ' 因为As是一个关键词，所以需要在keyword的前面发生替换
-        Dim objName$ = "As(&nbsp;)(New(&nbsp;))?(&nbsp;)+" & Patterns.Identifer
-        Dim types$() = html _
-            .Preview _
-            .Matches(objName, RegexICSng) _
-            .ToArray
-
-        For Each type As String In types
-            span = Mid(type, 3)
-            span = (<span class="type"><%= span %></span>) _
-                .ToString _
-                .Replace("&amp;", "&")
-
-            Call html.Replace(type, "As" & span)
-        Next
-
-        For Each word As String In keywords
-            span = (<span class="keyword"><%= word %></span>) _
-                .ToString
-            html.Replace($"&nbsp;{word}&nbsp;", $"&nbsp;{span}&nbsp;")
-
-            Dim lineBreaks$() = html.Preview _
-                .Matches($"^{word}[&]nbsp;", RegexICMul) _
-                .ToArray
-
-            For Each l In lineBreaks
-                html.Replace(l, $"{span}&nbsp;")
-            Next
-
-            Call html.Replace($"&nbsp;{word}", $"&nbsp;{span}")
-        Next
-
-        ' fix for lambda function
-        span = (<span class="keyword">Function</span>) _
-            .ToString & "("
-
-        Call html.Replace("Function(", span)
-
-        Call html.Replace(vbLf, "<br />" & ASCII.LF)
-        Call html.Replace(vbCr, "")
-
-        Return html.ToString
-    End Function
-
-    ''' <summary>
     ''' Rendering ``*.vb`` source file to html page with code syntax highlights.
     ''' </summary>
     ''' <param name="vb$">The file content of the vb source file.</param>
@@ -207,7 +84,8 @@ Public Module HTMLRender
     <Extension>
     Public Function Render(vb$, Optional schema As Schema = Nothing) As String
         Dim css$ = (schema Or Schema.VisualStudioDefault).CSSStyle
-        Dim html$ = vb.ToVBhtml
+        Dim html$ = vb.HighlightHtml
+
         Return ApplyCSS(html, css)
     End Function
 

@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.ComponentModel.Collection
+﻿Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Emit.Marshal
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder.VBLanguage
 
@@ -21,6 +22,7 @@ Public Module Highlighter
     ''' </summary>
     Public ReadOnly VBKeywords As Index(Of String) = KeywordProcessor.TokenWords
 
+    <Extension>
     Public Function HighlightHtml(code As String) As String
         Dim rows = New VBParser(New Pointer(Of Char)(code)).getTokens.ToString
 

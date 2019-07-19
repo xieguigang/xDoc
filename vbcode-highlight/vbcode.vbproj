@@ -126,6 +126,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="vbcode\Highlighter.vb" />
     <Compile Include="HTMLRender.vb" />
     <Compile Include="jstree\jstreeNode.vb" />
     <Compile Include="jstree\jstreeBuilder.vb" />
@@ -146,6 +147,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="vbcode\tokenStyler.vb" />
+    <Compile Include="vbcode\VBParser.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

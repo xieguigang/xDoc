@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Yilia", "Yilia\Yilia\Yilia.vbproj", "{6561DAB5-596D-4BAE-9161-C27821B1B8F1}"
 EndProject
@@ -27,7 +27,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "xDoc", "xDoc\xDoc.vbproj", 
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VisualStudio", "Yilia\runtime\sciBASIC#\vs_solutions\dev\VisualStudio\VisualStudio.vbproj", "{3A65D811-FC5C-4AD9-8456-8F720FF14C16}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "vbcode-highlight", "vbcode-highlight\vbcode-highlight.vbproj", "{4A1D6588-3574-40B5-881A-2707846A7318}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "vbcode", "vbcode-highlight\vbcode.vbproj", "{4A1D6588-3574-40B5-881A-2707846A7318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

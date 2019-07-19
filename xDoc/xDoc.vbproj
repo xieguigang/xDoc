@@ -189,9 +189,9 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\vbcode-highlight\vbcode-highlight.vbproj">
+    <ProjectReference Include="..\vbcode-highlight\vbcode.vbproj">
       <Project>{4a1d6588-3574-40b5-881a-2707846a7318}</Project>
-      <Name>vbcode-highlight</Name>
+      <Name>vbcode</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yilia\runtime\sciBASIC#\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj">
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
