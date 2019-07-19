@@ -18,9 +18,12 @@ Public Class VBParser
 
     Public ReadOnly Property isAttribute As Boolean
         Get
-            Dim haveTagEnd = token.Last = ">"c OrElse chars.Value(-1) = "("c
-
-            Return token(Scan0) = "<" AndAlso haveTagEnd
+            If token > 0 Then
+                Dim haveTagEnd = token.Last = ">"c OrElse chars.Value(-1) = "("c
+                Return token(Scan0) = "<" AndAlso haveTagEnd
+            Else
+                Return False
+            End If
         End Get
     End Property
 
@@ -55,6 +58,10 @@ Public Class VBParser
     End Function
 
     Private Sub endToken()
+        If token = 0 Then
+            Return
+        End If
+
         If isAttribute Then
             code.append(token(0))
 

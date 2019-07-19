@@ -154,7 +154,7 @@ Public Class tokenStyler
     End Function
 
     Public Sub [string](token As String)
-        code.Append(highlightURLs(token), NameOf([string]))
+        code.Append(tagClass(highlightURLs(token), NameOf([string])))
 
         LastTypeKeyword = False
         LastNewLine = False

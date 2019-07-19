@@ -2,6 +2,7 @@
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Emit.Marshal
 Imports Microsoft.VisualBasic.Scripting.SymbolBuilder.VBLanguage
+Imports Microsoft.VisualBasic.Text
 
 Public Module Highlighter
 
@@ -24,7 +25,8 @@ Public Module Highlighter
 
     <Extension>
     Public Function HighlightHtml(code As String) As String
-        Dim rows = New VBParser(New Pointer(Of Char)(code)).getTokens.ToString
+        Dim trimCr = code.LineTokens.JoinBy(ASCII.LF)
+        Dim rows = New VBParser(New Pointer(Of Char)(trimCr)).getTokens.ToString
 
         Return $"<table class=""pre"">
 <tbody>
