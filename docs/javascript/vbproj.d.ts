@@ -1,5 +1,4 @@
 /// <reference path="../../ts/build/linq.d.ts" />
-/// <reference path="../../ts/build/vbcode.d.ts" />
 /// <reference path="../../ts/build/marked.d.ts" />
 declare module CodeEditor {
     function highLightVBfile(file: string, callback?: Delegate.Sub): void;
