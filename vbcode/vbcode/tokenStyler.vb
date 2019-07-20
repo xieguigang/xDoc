@@ -83,7 +83,7 @@ Public Class tokenStyler
     End Sub
 
     Public Sub appendLine(Optional token As String = "")
-        code.AppendLine((lastToken = token) & "<br />")
+        code.AppendLine((lastToken = token))
         LastTypeKeyword = False
         LastNewLine = True
         LastDirective = False
@@ -111,7 +111,7 @@ Public Class tokenStyler
  {snippet}
 </tr>"
 
-        rowList += tr
+        rowList += snippet  'tr
         code.Clear()
     End Sub
 
@@ -132,7 +132,7 @@ Public Class tokenStyler
     End Sub
 
     Public Sub comment(token As String)
-        code.AppendLine(tagClass(highlightURLs(token), NameOf(comment)) & "<br />")
+        code.AppendLine(tagClass(highlightURLs(token), NameOf(comment)))
 
         LastTypeKeyword = False
         LastNewLine = True

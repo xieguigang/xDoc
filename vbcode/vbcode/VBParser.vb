@@ -140,8 +140,10 @@ Public Class VBParser
     End Sub
 
     Private Sub walkChar(c As Char)
-        If c = ASCII.LF OrElse c = ASCII.CR Then
+        If c = ASCII.LF Then
             walkNewline()
+        ElseIf c = ASCII.CR Then
+            ' do nothing
         ElseIf escapes.comment Then
             addToken(c)
         ElseIf c = """"c Then

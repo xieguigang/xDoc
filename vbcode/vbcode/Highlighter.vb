@@ -28,11 +28,7 @@ Public Module Highlighter
         Dim trimCr = code.LineTokens.JoinBy(ASCII.LF)
         Dim rows = New VBParser(New Pointer(Of Char)(trimCr)).getTokens.ToString
 
-        Return $"<table class=""pre"">
-<tbody>
-{rows}
-</tbody>
-</table>"
+        Return rows
     End Function
 
 End Module
