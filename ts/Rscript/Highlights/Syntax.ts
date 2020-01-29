@@ -22,7 +22,46 @@ export class Syntax {
         return this.code;
     }
 
-    private walkChar(c: string) {
+    /** 
+     * ??????????
+    */
+    private walkNewLine() {
+        // ??????
+        if (this.escapes.comment) {
+            // vb???????????????????                    
+            this.code.comment(this.tokenBuffer.join("").replace("<", "&lt;"));
+            this.escapes.comment = false;
+            this.tokenBuffer = [];
+        } else if (this.escapes.string) {
+            // vb??????????????????
+            // this.token.push("<br />");
+            this.code.string(this.tokenBuffer.join(""));
+            this.code.appendLine();
+            this.tokenBuffer = [];
+        } else {
+            // ?????token
+            this.endToken();
+            this.code.appendLine();
+        }
+    }
 
+    private endToken() {
+
+    }
+
+    private walkChar(c: string) {
+        let escapes = this.escapes;
+
+        if (c == "\n") {
+            this.walkNewLine();
+        }
+
+        if (escapes.comment) {
+
+        }
+
+        if (c == "#") {
+
+        }
     }
 }
