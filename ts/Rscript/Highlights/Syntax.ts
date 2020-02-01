@@ -1,4 +1,4 @@
-﻿export class Syntax {
+﻿class Syntax {
 
     private code: CodeStyler = new CodeStyler();
     private escapes = {
