@@ -41,6 +41,9 @@
     <TypeScriptCompile Include="Highlights\CodeStyler.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Highlights\Tokens.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Highlights\" />

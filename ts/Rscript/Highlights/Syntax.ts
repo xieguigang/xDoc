@@ -86,7 +86,10 @@
         } else if (c == "'" || c == '"' || c == '`') {
             escapes.string = true;
             escapes.quot = c;
-
+        } else if (c == " " || c == "\t") {
+            this.endToken();
+        } else {
+            this.tokenBuffer.push(c);
         }
     }
 }
