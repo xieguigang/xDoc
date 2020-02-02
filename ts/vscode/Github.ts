@@ -1,4 +1,4 @@
-namespace vscode.github {
+﻿namespace vscode.github {
 
     /**
      * Github 源文件请求帮助模块
