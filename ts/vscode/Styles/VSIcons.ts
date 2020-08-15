@@ -10,23 +10,32 @@ namespace vscode.TOC.View.Icons {
             .Select(line => line.replace(blanks, ""))
             .JoinBy("");
 
-        return dataUri;
+        return `data:image/png;base64,${dataUri}`;
     }
 
-    export const vbclass: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
-                                        7DAAAOwwHHb6hkAAAAhklEQVR4XrWTwQ2AIBAEqcMqLMkGLMGGLMMibMMPgadmH5coOeZMjJdsgMcOYY
-                                        9LbeWcx1LKIWmfuHzzvs6nBBA2b8sgASQ2dyFapZ4ZAW4+L8wPtfkAgGUQCk/S2W52Adi+BsDd8QIygP
-                                        P+s9Y6ue008w3AIUIZAEMMARKF+PmL/z1k8ZhfVF3/7pBb/jcAAAAASUVORK5CYII=`);
+    export const vbclass: string = uri(`
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXM
+        AAA7DAAAOwwHHb6hkAAAAhklEQVR4XrWTwQ2AIBAEqcMqLMkGLMGGLM
+        MibMMPgadmH5coOeZMjJdsgMcOYY9LbeWcx1LKIWmfuHzzvs6nBBA2b
+        8sgASQ2dyFapZ4ZAW4+L8wPtfkAgGUQCk/S2W52Adi+BsDd8QIygPP+
+        s9Y6ue008w3AIUIZAEMMARKF+PmL/z1k8ZhfVF3/7pBb/jcAAAAASUV
+        ORK5CYII=
+    `);
 
-    export const vbnamespace: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
-                                            7EAAAOxAGVKw4bAAABmElEQVR4XnVTsU7CUBS9YGqR9AcYbPwD4wIkxoWtUhgIowvExAjqx6gbi4kz6N
-                                            CYsBDYCJN+AbbdykhbIgXqvS8v8eXxPMnLgXPPPc1r74U0TUFGHMc5PIbw3yBN9lFvVmq8w+NiYYWCI5
-                                            Sc3W63wpqH5x4EZIXmpu/7T91u16zVaiCjXq9Dp9M5Rs8jeeUAQrPf74PrutDr9UAGaZ7nwWAwIEEZkA
-                                            vDEIrFIhQKhQ8UbKFmk1YqlWC5XDKvIoALWSYl+Xw+BA7+O8lkMrDn5/e/QTqbTqegaRpJP7CPSNd1IA
-                                            /iFHuuxCvc2rZtklCtVokmioCJZVlMQO8J0vVfgPDEJEmIDhQBh9vtVnkFwrPjON8kDIdDogtFwDmvAX
-                                            pdpBcWwF/SK9JXuVyGzWbDnqYIOFqv10AexCdegwdIwIljAfIoI2mibzQagRwQG4YBs9kMgiCw5FFeLB
-                                            aX9AXIg4hUc/DWaDTANE1ot9sgo9VqsRp5EO/iRonL9IBnHkVRijwW9DFOKWlz8oi9/62zrlhnvVKp7K
-                                            3zLyx/3SSKVVkEAAAAAElFTkSuQmCC`);
+    export const vbnamespace: string = uri(`
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXM
+        AAA7EAAAOxAGVKw4bAAABmElEQVR4XnVTsU7CUBS9YGqR9AcYbPwD4w
+        IkxoWtUhgIowvExAjqx6gbi4kz6NCYsBDYCJN+AbbdykhbIgXqvS8v8
+        eXxPMnLgXPPPc1r74U0TUFGHMc5PIbw3yBN9lFvVmq8w+NiYYWCI5Sc
+        3W63wpqH5x4EZIXmpu/7T91u16zVaiCjXq9Dp9M5Rs8jeeUAQrPf74P
+        rutDr9UAGaZ7nwWAwIEEZkAvDEIrFIhQKhQ8UbKFmk1YqlWC5XDKvIo
+        ALWSYl+Xw+BA7+O8lkMrDn5/e/QTqbTqegaRpJP7CPSNd1IA/iFHuux
+        Cvc2rZtklCtVokmioCJZVlMQO8J0vVfgPDEJEmIDhQBh9vtVnkFwrPj
+        ON8kDIdDogtFwDmvAXpdpBcWwF/SK9JXuVyGzWbDnqYIOFqv10AexCd
+        egwdIwIljAfIoI2mibzQagRwQG4YBs9kMgiCw5FFeLBaX9AXIg4hUc/
+        DWaDTANE1ot9sgo9VqsRp5EO/iRonL9IBnHkVRijwW9DFOKWlz8oi9/
+        62zrlhnvVKp7K3zLyx/3SSKVVkEAAAAAElFTkSuQmCC
+    `);
 
     export const vbinterface: string = uri(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA
                                             7DAAAOwwHHb6hkAAAAkElEQVR4Xu1SIQ6EMBDsT+6ewh/4wLkz/ADDOwiWIPsIFBaD5uyJgmgrC9OEzQ
