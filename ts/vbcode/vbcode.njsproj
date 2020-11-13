@@ -62,9 +62,6 @@
     <TypeScriptCompile Include="Syntax\View\TOCJsTree.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Syntax\View\VSIcons.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Syntax\" />
