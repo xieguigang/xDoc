@@ -174,11 +174,13 @@ Public Module TotpModule
         End Using
 
         ' (3) 动态截断 Dynamic Truncation（RFC 4226 §5.3）
+        ' 注意：必须先 CInt 再移位。VB 中 Byte << N 的结果仍是 Byte（8 位），
+        ' 移位位数会按 8 取模，导致 << 16、<< 8 实际不生效。
         Dim offset As Integer = hash(hash.Length - 1) And &HF
-        Dim codeValue As Integer = ((hash(offset) And &H7F) << 24) _
-                                Or (hash(offset + 1) << 16) _
-                                Or (hash(offset + 2) << 8) _
-                                Or hash(offset + 3)
+        Dim codeValue As Integer = ((CInt(hash(offset)) And &H7F) << 24) _
+                                Or (CInt(hash(offset + 1)) << 16) _
+                                Or (CInt(hash(offset + 2)) << 8) _
+                                Or CInt(hash(offset + 3))
 
         ' (4) 按 10^digits 取模，左侧补零到指定位数
         Dim modulus As Integer = CInt(Math.Pow(10, digits))

@@ -24,7 +24,9 @@ Module Program
         Dim input As String = Console.ReadLine()
         Console.WriteLine("校验结果: " & If(TotpModule.VerifyTotp(secretBase32, input), "验证通过", "验证失败"))
 
-        Console.ReadKey()
+        If Not Console.IsInputRedirected Then
+            Console.ReadKey()
+        End If
     End Sub
 
     '==================== 6. RFC 6238 官方测试向量自检 ====================
