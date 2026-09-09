@@ -3,7 +3,16 @@
   <PropertyGroup>
     <RootNamespace>Nuget</RootNamespace>
     <TargetFramework>net10.0</TargetFramework>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <UseApplicationFramework>True</UseApplicationFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj" />
