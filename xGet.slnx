@@ -11,6 +11,9 @@
       <Platform Solution="*|x64" Project="x64" />
     </Project>
   </Folder>
+  <Project Path="../GCModeller/src/runtime/httpd/src/HTTP_SERVER/Fluteway.vbproj">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
   <Project Path="src/Nuget/Nuget.vbproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
