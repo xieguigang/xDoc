@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/framework/">
+    <Project Path="../GCModeller/src/runtime/httpd/src/Flute/Flute.NET5.vbproj" />
+    <Project Path="../GCModeller/src/runtime/sciBASIC#/Microsoft.VisualBasic.Core/src/Core.vbproj" />
+  </Folder>
+  <Project Path="src/Nuget/Nuget.vbproj" />
+</Solution>

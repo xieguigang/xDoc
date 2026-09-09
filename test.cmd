@@ -1,1 +1,0 @@
-"./App/xDoc" /Build.vbproj.docs /in "E:\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj" /default "LICENSE.html" /out X:/docs/
