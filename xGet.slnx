@@ -17,4 +17,7 @@
   <Project Path="src/Nuget/Nuget.vbproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
+  <Project Path="src/xGet/xGet.vbproj" Id="b217e061-6101-4314-850b-29c931e01485">
+    <Platform Solution="Debug|x64" Project="x64" />
+  </Project>
 </Solution>

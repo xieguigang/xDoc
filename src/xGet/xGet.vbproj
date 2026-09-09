@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Nuget</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>xGet</RootNamespace>
     <TargetFramework>net10.0</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <UseApplicationFramework>True</UseApplicationFramework>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Platforms>AnyCPU;x64</Platforms>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -32,9 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj" />
-    <ProjectReference Include="..\..\..\GCModeller\src\runtime\httpd\src\HTTP_SERVER\Fluteway.vbproj" />
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\Nuget\Nuget.vbproj" />
   </ItemGroup>
 
 </Project>
