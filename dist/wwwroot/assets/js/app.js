@@ -216,6 +216,12 @@
     function renderPackageDetail(pkg) {
         document.title = (pkg.id || 'package') + ' · nuget';
 
+        var placeholder = $('package-detail');
+        if (placeholder) {
+            placeholder.innerHTML = '';
+            placeholder.style.display = 'none';
+        }
+
         var headline = $('pkg-headline');
         if (headline) {
             headline.innerHTML = '<span class="u">' + esc(pkg.id) + '</span>';
