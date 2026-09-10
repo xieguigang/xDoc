@@ -1,0 +1,1843 @@
+{
+  "table": "package_tags",
+  "comment": "package tag index",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "package_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "tag",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "tag": "scibasic"
+    },
+    {
+      "id": 2,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "tag": "visual-studio"
+    },
+    {
+      "id": 3,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "tag": "solution-parser"
+    },
+    {
+      "id": 4,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "tag": "code-analysis"
+    },
+    {
+      "id": 5,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "tag": "vbnet"
+    },
+    {
+      "id": 6,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "tag": "scibasic"
+    },
+    {
+      "id": 7,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "tag": "pdb"
+    },
+    {
+      "id": 8,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "tag": "debug-symbols"
+    },
+    {
+      "id": 9,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "tag": "portable-pdb"
+    },
+    {
+      "id": 10,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "tag": "source-mapping"
+    },
+    {
+      "id": 11,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "scibasic"
+    },
+    {
+      "id": 12,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "binary-data"
+    },
+    {
+      "id": 13,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "binary-reader"
+    },
+    {
+      "id": 14,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "endianness"
+    },
+    {
+      "id": 15,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "compression"
+    },
+    {
+      "id": 16,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "tag": "pickle"
+    },
+    {
+      "id": 17,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "scibasic"
+    },
+    {
+      "id": 18,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "curve-fitting"
+    },
+    {
+      "id": 19,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "regression"
+    },
+    {
+      "id": 20,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "lasso"
+    },
+    {
+      "id": 21,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "loess"
+    },
+    {
+      "id": 22,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "tag": "levenberg-marquardt"
+    },
+    {
+      "id": 23,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "scibasic"
+    },
+    {
+      "id": 24,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "chart"
+    },
+    {
+      "id": 25,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "plotting"
+    },
+    {
+      "id": 26,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "data-visualization"
+    },
+    {
+      "id": 27,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "gdi-plus"
+    },
+    {
+      "id": 28,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "tag": "graphics"
+    },
+    {
+      "id": 29,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "scibasic"
+    },
+    {
+      "id": 30,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "statistics"
+    },
+    {
+      "id": 31,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "roc-curve"
+    },
+    {
+      "id": 32,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "heatmap"
+    },
+    {
+      "id": 33,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "qq-plot"
+    },
+    {
+      "id": 34,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "tag": "pca-plot"
+    },
+    {
+      "id": 35,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "scibasic"
+    },
+    {
+      "id": 36,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "dataframe"
+    },
+    {
+      "id": 37,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "csv"
+    },
+    {
+      "id": 38,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "arff"
+    },
+    {
+      "id": 39,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "storage-provider"
+    },
+    {
+      "id": 40,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "tag": "tabular-data"
+    },
+    {
+      "id": 41,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "scibasic"
+    },
+    {
+      "id": 42,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "dataframe"
+    },
+    {
+      "id": 43,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "extensions"
+    },
+    {
+      "id": 44,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "serialization"
+    },
+    {
+      "id": 45,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "datatable"
+    },
+    {
+      "id": 46,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "tag": "outlining"
+    },
+    {
+      "id": 47,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "scibasic"
+    },
+    {
+      "id": 48,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "graph-query"
+    },
+    {
+      "id": 49,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "html"
+    },
+    {
+      "id": 50,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "css-selector"
+    },
+    {
+      "id": 51,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "xpath"
+    },
+    {
+      "id": 52,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "tag": "json"
+    },
+    {
+      "id": 53,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "tag": "scibasic"
+    },
+    {
+      "id": 54,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "tag": "graph-theory"
+    },
+    {
+      "id": 55,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "tag": "graph-algorithm"
+    },
+    {
+      "id": 56,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "tag": "shortest-path"
+    },
+    {
+      "id": 57,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "tag": "community-detection"
+    },
+    {
+      "id": 58,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "scibasic"
+    },
+    {
+      "id": 59,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "hdf5"
+    },
+    {
+      "id": 60,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "scientific-data"
+    },
+    {
+      "id": 61,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "dataset"
+    },
+    {
+      "id": 62,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "binary-format"
+    },
+    {
+      "id": 63,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "tag": "reader"
+    },
+    {
+      "id": 64,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "scibasic"
+    },
+    {
+      "id": 65,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "msgpack"
+    },
+    {
+      "id": 66,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "messagepack"
+    },
+    {
+      "id": 67,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "serialization"
+    },
+    {
+      "id": 68,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "binary-format"
+    },
+    {
+      "id": 69,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "tag": "deserialization"
+    },
+    {
+      "id": 70,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "scibasic"
+    },
+    {
+      "id": 71,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "sqlite3"
+    },
+    {
+      "id": 72,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "database"
+    },
+    {
+      "id": 73,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "btree"
+    },
+    {
+      "id": 74,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "sql-parser"
+    },
+    {
+      "id": 75,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "tag": "reader"
+    },
+    {
+      "id": 76,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "tag": "scibasic"
+    },
+    {
+      "id": 77,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "tag": "nlp"
+    },
+    {
+      "id": 78,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "tag": "tokenizer"
+    },
+    {
+      "id": 79,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "tag": "topic-model"
+    },
+    {
+      "id": 80,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "tag": "bm25"
+    },
+    {
+      "id": 81,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "tag": "scibasic"
+    },
+    {
+      "id": 82,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "tag": "word2vec"
+    },
+    {
+      "id": 83,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "tag": "word-embedding"
+    },
+    {
+      "id": 84,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "tag": "skip-gram"
+    },
+    {
+      "id": 85,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 86,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "scibasic"
+    },
+    {
+      "id": 87,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "signal-io"
+    },
+    {
+      "id": 88,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "netcdf"
+    },
+    {
+      "id": 89,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "time-series"
+    },
+    {
+      "id": 90,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "data-exchange"
+    },
+    {
+      "id": 91,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "tag": "file-format"
+    },
+    {
+      "id": 92,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "scibasic"
+    },
+    {
+      "id": 93,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "data-storage"
+    },
+    {
+      "id": 94,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "sas-xport"
+    },
+    {
+      "id": 95,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "asn1"
+    },
+    {
+      "id": 96,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "dataframe"
+    },
+    {
+      "id": 97,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "tag": "binary-serialization"
+    },
+    {
+      "id": 98,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "scibasic"
+    },
+    {
+      "id": 99,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "nlp"
+    },
+    {
+      "id": 100,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "textrank"
+    },
+    {
+      "id": 101,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "keyword-extraction"
+    },
+    {
+      "id": 102,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "summarization"
+    },
+    {
+      "id": 103,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "tag": "pos-tagging"
+    },
+    {
+      "id": 104,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "scibasic"
+    },
+    {
+      "id": 105,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "visualization"
+    },
+    {
+      "id": 106,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "network-graph"
+    },
+    {
+      "id": 107,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "embedding"
+    },
+    {
+      "id": 108,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "clustering"
+    },
+    {
+      "id": 109,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "tag": "umap"
+    },
+    {
+      "id": 110,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "tag": "scibasic"
+    },
+    {
+      "id": 111,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "tag": "network-graph"
+    },
+    {
+      "id": 112,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "tag": "graph-model"
+    },
+    {
+      "id": 113,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "tag": "graph-analysis"
+    },
+    {
+      "id": 114,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "tag": "centrality"
+    },
+    {
+      "id": 115,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "tag": "scibasic"
+    },
+    {
+      "id": 116,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "tag": "network-io"
+    },
+    {
+      "id": 117,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "tag": "cytoscape"
+    },
+    {
+      "id": 118,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "tag": "gephi"
+    },
+    {
+      "id": 119,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "tag": "file-format"
+    },
+    {
+      "id": 120,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "tag": "scibasic"
+    },
+    {
+      "id": 121,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "tag": "graph-layout"
+    },
+    {
+      "id": 122,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "tag": "force-directed"
+    },
+    {
+      "id": 123,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "tag": "orthogonal-routing"
+    },
+    {
+      "id": 124,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "tag": "edge-bundling"
+    },
+    {
+      "id": 125,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "tag": "scibasic"
+    },
+    {
+      "id": 126,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "tag": "network-rendering"
+    },
+    {
+      "id": 127,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "tag": "data-visualization"
+    },
+    {
+      "id": 128,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "tag": "style-mapping"
+    },
+    {
+      "id": 129,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "tag": "convex-hull"
+    },
+    {
+      "id": 130,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "scibasic"
+    },
+    {
+      "id": 131,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "wav"
+    },
+    {
+      "id": 132,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "audio"
+    },
+    {
+      "id": 133,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "voiceprint"
+    },
+    {
+      "id": 134,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "mfcc"
+    },
+    {
+      "id": 135,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "tag": "riff"
+    },
+    {
+      "id": 136,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "tag": "scibasic"
+    },
+    {
+      "id": 137,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "tag": "clustering"
+    },
+    {
+      "id": 138,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "tag": "binary-tree"
+    },
+    {
+      "id": 139,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "tag": "avl-tree"
+    },
+    {
+      "id": 140,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "tag": "newick"
+    },
+    {
+      "id": 141,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "tag": "scibasic"
+    },
+    {
+      "id": 142,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "tag": "density"
+    },
+    {
+      "id": 143,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "tag": "superpixel"
+    },
+    {
+      "id": 144,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "tag": "slic"
+    },
+    {
+      "id": 145,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "tag": "kd-tree"
+    },
+    {
+      "id": 146,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "tag": "scibasic"
+    },
+    {
+      "id": 147,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "tag": "dynamic-programming"
+    },
+    {
+      "id": 148,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "tag": "sequence-alignment"
+    },
+    {
+      "id": 149,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "tag": "smith-waterman"
+    },
+    {
+      "id": 150,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "tag": "needleman-wunsch"
+    },
+    {
+      "id": 151,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "tag": "scibasic"
+    },
+    {
+      "id": 152,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "tag": "feature-engineering"
+    },
+    {
+      "id": 153,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "tag": "encoder"
+    },
+    {
+      "id": 154,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "tag": "dataframe"
+    },
+    {
+      "id": 155,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 156,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "tag": "scibasic"
+    },
+    {
+      "id": 157,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "tag": "data-mining"
+    },
+    {
+      "id": 158,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "tag": "clustering"
+    },
+    {
+      "id": 159,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "tag": "association-rules"
+    },
+    {
+      "id": 160,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 161,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "tag": "scibasic"
+    },
+    {
+      "id": 162,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "tag": "hidden-markov-model"
+    },
+    {
+      "id": 163,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "tag": "viterbi"
+    },
+    {
+      "id": 164,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "tag": "baum-welch"
+    },
+    {
+      "id": 165,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "tag": "markov-chain"
+    },
+    {
+      "id": 166,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "tag": "scibasic"
+    },
+    {
+      "id": 167,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "tag": "hierarchical-clustering"
+    },
+    {
+      "id": 168,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "tag": "birch"
+    },
+    {
+      "id": 169,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "tag": "linkage"
+    },
+    {
+      "id": 170,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "tag": "clustering"
+    },
+    {
+      "id": 171,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "tag": "scibasic"
+    },
+    {
+      "id": 172,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "tag": "dendrogram"
+    },
+    {
+      "id": 173,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "tag": "visualization"
+    },
+    {
+      "id": 174,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "tag": "hierarchical-clustering"
+    },
+    {
+      "id": 175,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "tag": "plot"
+    },
+    {
+      "id": 176,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "tag": "scibasic"
+    },
+    {
+      "id": 177,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "tag": "umap"
+    },
+    {
+      "id": 178,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "tag": "dimensionality-reduction"
+    },
+    {
+      "id": 179,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "tag": "manifold-learning"
+    },
+    {
+      "id": 180,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "tag": "nearest-neighbor"
+    },
+    {
+      "id": 181,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "scibasic"
+    },
+    {
+      "id": 182,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "feather"
+    },
+    {
+      "id": 183,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "arrow"
+    },
+    {
+      "id": 184,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "columnar"
+    },
+    {
+      "id": 185,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "dataframe"
+    },
+    {
+      "id": 186,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "tag": "flatbuffers"
+    },
+    {
+      "id": 187,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "scibasic"
+    },
+    {
+      "id": 188,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "hdspack"
+    },
+    {
+      "id": 189,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "virtual-filesystem"
+    },
+    {
+      "id": 190,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "stream-pack"
+    },
+    {
+      "id": 191,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "archive"
+    },
+    {
+      "id": 192,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "tag": "binary-format"
+    },
+    {
+      "id": 193,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "scibasic"
+    },
+    {
+      "id": 194,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "netcdf"
+    },
+    {
+      "id": 195,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "scientific-data"
+    },
+    {
+      "id": 196,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "array-data"
+    },
+    {
+      "id": 197,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "dimensions"
+    },
+    {
+      "id": 198,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "tag": "variables"
+    },
+    {
+      "id": 199,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "tag": "scibasic"
+    },
+    {
+      "id": 200,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "tag": "deep-learning"
+    },
+    {
+      "id": 201,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "tag": "cnn"
+    },
+    {
+      "id": 202,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "tag": "rnn"
+    },
+    {
+      "id": 203,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "tag": "transformer"
+    },
+    {
+      "id": 204,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "tag": "scibasic"
+    },
+    {
+      "id": 205,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "tag": "gdi-plus"
+    },
+    {
+      "id": 206,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "tag": "system-drawing"
+    },
+    {
+      "id": 207,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "tag": "graphics-interop"
+    },
+    {
+      "id": 208,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "tag": "windows-forms"
+    },
+    {
+      "id": 209,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "tag": "scibasic"
+    },
+    {
+      "id": 210,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "tag": "graphics"
+    },
+    {
+      "id": 211,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "tag": "imaging"
+    },
+    {
+      "id": 212,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "tag": "svg"
+    },
+    {
+      "id": 213,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "tag": "postscript"
+    },
+    {
+      "id": 214,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "tag": "scibasic"
+    },
+    {
+      "id": 215,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "tag": "avi"
+    },
+    {
+      "id": 216,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "tag": "video-encoder"
+    },
+    {
+      "id": 217,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "tag": "riff"
+    },
+    {
+      "id": 218,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "tag": "animation"
+    },
+    {
+      "id": 219,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "tag": "scibasic"
+    },
+    {
+      "id": 220,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "tag": "3d-model"
+    },
+    {
+      "id": 221,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "tag": "mesh-parser"
+    },
+    {
+      "id": 222,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "tag": "voxelization"
+    },
+    {
+      "id": 223,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "tag": "geometry"
+    },
+    {
+      "id": 224,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "tag": "scibasic"
+    },
+    {
+      "id": 225,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "tag": "physics-engine"
+    },
+    {
+      "id": 226,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "tag": "rigid-body"
+    },
+    {
+      "id": 227,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "tag": "collision-detection"
+    },
+    {
+      "id": 228,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "tag": "particle-system"
+    },
+    {
+      "id": 229,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "tag": "scibasic"
+    },
+    {
+      "id": 230,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 231,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "tag": "random-forest"
+    },
+    {
+      "id": 232,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "tag": "svm"
+    },
+    {
+      "id": 233,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "tag": "genetic-algorithm"
+    },
+    {
+      "id": 234,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "tag": "scibasic"
+    },
+    {
+      "id": 235,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 236,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "tag": "q-learning"
+    },
+    {
+      "id": 237,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "tag": "dataset"
+    },
+    {
+      "id": 238,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "tag": "serialization"
+    },
+    {
+      "id": 239,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "tag": "scibasic"
+    },
+    {
+      "id": 240,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "tag": "machine-learning"
+    },
+    {
+      "id": 241,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "tag": "debugger"
+    },
+    {
+      "id": 242,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "tag": "roc"
+    },
+    {
+      "id": 243,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "tag": "error-curve"
+    },
+    {
+      "id": 244,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "tag": "scibasic"
+    },
+    {
+      "id": 245,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "tag": "t-sne"
+    },
+    {
+      "id": 246,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "tag": "dimensionality-reduction"
+    },
+    {
+      "id": 247,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "tag": "barnes-hut"
+    },
+    {
+      "id": 248,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "tag": "visualization"
+    },
+    {
+      "id": 249,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "tag": "scibasic"
+    },
+    {
+      "id": 250,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "tag": "tensor"
+    },
+    {
+      "id": 251,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "tag": "numpy"
+    },
+    {
+      "id": 252,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "tag": "automatic-differentiation"
+    },
+    {
+      "id": 253,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "tag": "numerical"
+    },
+    {
+      "id": 254,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "tag": "scibasic"
+    },
+    {
+      "id": 255,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "tag": "variational-autoencoder"
+    },
+    {
+      "id": 256,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "tag": "gmm"
+    },
+    {
+      "id": 257,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "tag": "generative-model"
+    },
+    {
+      "id": 258,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "tag": "clustering"
+    },
+    {
+      "id": 259,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "tag": "scibasic"
+    },
+    {
+      "id": 260,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "tag": "xgboost"
+    },
+    {
+      "id": 261,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "tag": "gradient-boosting"
+    },
+    {
+      "id": 262,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "tag": "decision-tree"
+    },
+    {
+      "id": 263,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "tag": "predictor"
+    },
+    {
+      "id": 264,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "tag": "scibasic"
+    },
+    {
+      "id": 265,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "tag": "xgboost"
+    },
+    {
+      "id": 266,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "tag": "dataset"
+    },
+    {
+      "id": 267,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "tag": "csv"
+    },
+    {
+      "id": 268,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "tag": "data-preprocessing"
+    },
+    {
+      "id": 269,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "scibasic"
+    },
+    {
+      "id": 270,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "mathematics"
+    },
+    {
+      "id": 271,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "linear-algebra"
+    },
+    {
+      "id": 272,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "numerics"
+    },
+    {
+      "id": 273,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "linear-programming"
+    },
+    {
+      "id": 274,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "tag": "spline"
+    },
+    {
+      "id": 275,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "scibasic"
+    },
+    {
+      "id": 276,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "symbolic-math"
+    },
+    {
+      "id": 277,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "computer-algebra"
+    },
+    {
+      "id": 278,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "calculus"
+    },
+    {
+      "id": 279,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "mathml"
+    },
+    {
+      "id": 280,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "tag": "polynomial"
+    },
+    {
+      "id": 281,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "scibasic"
+    },
+    {
+      "id": 282,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "machine-vision"
+    },
+    {
+      "id": 283,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "shape-matching"
+    },
+    {
+      "id": 284,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "hough-transform"
+    },
+    {
+      "id": 285,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "connected-component"
+    },
+    {
+      "id": 286,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "tag": "tracking"
+    },
+    {
+      "id": 287,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "scibasic"
+    },
+    {
+      "id": 288,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "data-matrix"
+    },
+    {
+      "id": 289,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "correlation"
+    },
+    {
+      "id": 290,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "distance-matrix"
+    },
+    {
+      "id": 291,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "matrix-market"
+    },
+    {
+      "id": 292,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "tag": "imputation"
+    },
+    {
+      "id": 293,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "scibasic"
+    },
+    {
+      "id": 294,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "ode"
+    },
+    {
+      "id": 295,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "runge-kutta"
+    },
+    {
+      "id": 296,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "dynamical-system"
+    },
+    {
+      "id": 297,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "numerical-integration"
+    },
+    {
+      "id": 298,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "tag": "simulation"
+    },
+    {
+      "id": 299,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "scibasic"
+    },
+    {
+      "id": 300,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "random"
+    },
+    {
+      "id": 301,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "mersenne-twister"
+    },
+    {
+      "id": 302,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "monte-carlo"
+    },
+    {
+      "id": 303,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "pseudorandom"
+    },
+    {
+      "id": 304,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "tag": "sampling"
+    },
+    {
+      "id": 305,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "scibasic"
+    },
+    {
+      "id": 306,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "signal-processing"
+    },
+    {
+      "id": 307,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "fft"
+    },
+    {
+      "id": 308,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "wavelet"
+    },
+    {
+      "id": 309,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "peak-detection"
+    },
+    {
+      "id": 310,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "tag": "filtering"
+    },
+    {
+      "id": 311,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "scibasic"
+    },
+    {
+      "id": 312,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "statistics"
+    },
+    {
+      "id": 313,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "hypothesis-testing"
+    },
+    {
+      "id": 314,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "distribution"
+    },
+    {
+      "id": 315,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "fastica"
+    },
+    {
+      "id": 316,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "tag": "shapley-value"
+    },
+    {
+      "id": 317,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "scibasic"
+    },
+    {
+      "id": 318,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "anova"
+    },
+    {
+      "id": 319,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "kruskal-wallis"
+    },
+    {
+      "id": 320,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "multivariate-analysis"
+    },
+    {
+      "id": 321,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "pca"
+    },
+    {
+      "id": 322,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "tag": "pls"
+    },
+    {
+      "id": 323,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "tag": "scibasic"
+    },
+    {
+      "id": 324,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "tag": "json"
+    },
+    {
+      "id": 325,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "tag": "bson"
+    },
+    {
+      "id": 326,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "tag": "serialization"
+    },
+    {
+      "id": 327,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "tag": "json-parser"
+    },
+    {
+      "id": 328,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "tag": "scibasic"
+    },
+    {
+      "id": 329,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "tag": "rdf"
+    },
+    {
+      "id": 330,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "tag": "semantic-web"
+    },
+    {
+      "id": 331,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "tag": "turtle"
+    },
+    {
+      "id": 332,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "tag": "linked-data"
+    },
+    {
+      "id": 333,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "tag": "scibasic"
+    },
+    {
+      "id": 334,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "tag": "xml"
+    },
+    {
+      "id": 335,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "tag": "xsd"
+    },
+    {
+      "id": 336,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "tag": "mathml"
+    },
+    {
+      "id": 337,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "tag": "xpath"
+    },
+    {
+      "id": 338,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "tag": "scibasic"
+    },
+    {
+      "id": 339,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "tag": "html"
+    },
+    {
+      "id": 340,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "tag": "css"
+    },
+    {
+      "id": 341,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "tag": "html-renderer"
+    },
+    {
+      "id": 342,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "tag": "dom"
+    },
+    {
+      "id": 343,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "tag": "scibasic"
+    },
+    {
+      "id": 344,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "tag": "xlsx"
+    },
+    {
+      "id": 345,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "tag": "excel"
+    },
+    {
+      "id": 346,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "tag": "openxml"
+    },
+    {
+      "id": 347,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "tag": "spreadsheet"
+    },
+    {
+      "id": 348,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "tag": "scibasic"
+    },
+    {
+      "id": 349,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "tag": "markdown"
+    },
+    {
+      "id": 350,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "tag": "parser"
+    },
+    {
+      "id": 351,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "tag": "html-renderer"
+    },
+    {
+      "id": 352,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "tag": "document"
+    },
+    {
+      "id": 353,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "tag": "scibasic"
+    },
+    {
+      "id": 354,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "tag": "yaml"
+    },
+    {
+      "id": 355,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "tag": "parser"
+    },
+    {
+      "id": 356,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "tag": "json"
+    },
+    {
+      "id": 357,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "tag": "front-matter"
+    },
+    {
+      "id": 358,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "tag": "scibasic"
+    },
+    {
+      "id": 359,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "tag": "runtime"
+    },
+    {
+      "id": 360,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "tag": "linq"
+    },
+    {
+      "id": 361,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "tag": "reflection"
+    },
+    {
+      "id": 362,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "tag": "application-services"
+    }
+  ]
+}

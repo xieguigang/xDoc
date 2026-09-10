@@ -119,22 +119,6 @@
   "rows": [
     {
       "id": 1,
-      "package_id": "Nuget",
-      "version": "1.0.0",
-      "description": "Package Description",
-      "authors": "Nuget",
-      "tags": "",
-      "project_url": "",
-      "license": "",
-      "dependencies": "Flute.Http|1.0.0;Fluteway|1.0.0;Microsoft.VisualBasic.Runtime|10.5.9742.7537;JSql|1.0.0",
-      "downloads": 0,
-      "size": 378973,
-      "sha256": "09bbae33691974d087ed3cacceff60e83ffe5e9752d5901975e0edebec88047f",
-      "published": "2026-09-10 08:50:32",
-      "listed": true
-    },
-    {
-      "id": 2,
       "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
       "version": "1.0.9742.7537",
       "description": "Parses and writes .sln/.slnx solutions and .vbproj files, builds VB.NET symbol trees with a recursive descent parser, maps compiled assemblies by reflection and decodes IL and source maps for sciBASIC# code tooling.",
@@ -146,11 +130,11 @@
       "downloads": 0,
       "size": 149170,
       "sha256": "dc3e3219c821d896f74fdcbe0128d3e5e01055925b363f222519a2b795d3afb6",
-      "published": "2026-09-10 08:51:08",
+      "published": "2026-09-10 09:42:46",
       "listed": true
     },
     {
-      "id": 3,
+      "id": 2,
       "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
       "version": "1.0.9742.7537",
       "description": "Reads both classic MSF and Portable PDB debug symbol files, decoding source documents, sequence points, line numbers, public symbols and type records into one uniform model for sciBASIC# tooling.",
@@ -162,11 +146,11 @@
       "downloads": 0,
       "size": 47980,
       "sha256": "a3630ffcd54e886eca197f2dfaf01cf1872e446f5c559c578c5cb7501319e48e",
-      "published": "2026-09-10 09:09:52",
+      "published": "2026-09-10 09:42:48",
       "listed": true
     },
     {
-      "id": 4,
+      "id": 3,
       "package_id": "Microsoft.VisualBasic.Data.BinaryData",
       "version": "1.0.9742.7537",
       "description": "Extends BinaryReader and BinaryWriter with endianness-aware primitives, length-prefixed strings, BZip2/LZW compression, XDR encoding and a Python pickle codec, for parsing custom binary file formats in sciBASIC#.",
@@ -178,11 +162,11 @@
       "downloads": 0,
       "size": 92762,
       "sha256": "db8cd87908bc04c5b45cfcfad3a6a1aaa72db42267c2c06d97f7927516399790",
-      "published": "2026-09-10 09:09:54",
+      "published": "2026-09-10 09:42:50",
       "listed": true
     },
     {
-      "id": 5,
+      "id": 4,
       "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
       "version": "5.0.9742.7537",
       "description": "Linear, polynomial, weighted and non-negative least squares, MLR, LOESS/LOWESS local regression, logistic, LASSO and Levenberg-Marquardt fitting with Bayesian and Gauss-Newton solvers. Part of sciBASIC#.",
@@ -194,11 +178,11 @@
       "downloads": 0,
       "size": 80275,
       "sha256": "87fce867b884b14dae80dafa05e589b78096246de88f475092a62ed7283ac361",
-      "published": "2026-09-10 09:09:57",
+      "published": "2026-09-10 09:42:52",
       "listed": true
     },
     {
-      "id": 6,
+      "id": 5,
       "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
       "version": "1.0.9742.7537",
       "description": "A charting engine for sciBASIC# that renders scatter, line, bar, histogram, box, violin, contour, heatmap, pie, radar, treemap, Venn and 3D plots with configurable axes, legends and themes.",
@@ -210,11 +194,11 @@
       "downloads": 0,
       "size": 176211,
       "sha256": "d51abd015819a85d6568b1cb2935b989acea7ec6dc7e5977e657ca5195cf4213",
-      "published": "2026-09-10 09:09:59",
+      "published": "2026-09-10 09:42:54",
       "listed": true
     },
     {
-      "id": 7,
+      "id": 6,
       "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
       "version": "1.0.9742.7537",
       "description": "Adds statistical graphics to the sciBASIC# chart engine: ROC and QQ plots, forest and Z-score plots, correlation heatmaps and triangles, density plots, time trends, PCA scree plots and regression plots.",
@@ -226,11 +210,11 @@
       "downloads": 0,
       "size": 84307,
       "sha256": "8b3748f3edc1880f37f2bfc6bfc6805d0a3848f93594b247af23a9e1569a7a1b",
-      "published": "2026-09-10 09:10:01",
+      "published": "2026-09-10 09:42:57",
       "listed": true
     },
     {
-      "id": 8,
+      "id": 7,
       "package_id": "Microsoft.VisualBasic.Data.DataPlot",
       "version": "1.0.9742.7537",
       "description": "Package Description",
@@ -242,11 +226,11 @@
       "downloads": 0,
       "size": 80380,
       "sha256": "96946c97df03d87017b0dbacbc6d0169dccb14099c1e61b7d9cac7dbb760e4dc",
-      "published": "2026-09-10 09:10:03",
+      "published": "2026-09-10 09:42:59",
       "listed": true
     },
     {
-      "id": 9,
+      "id": 8,
       "package_id": "Microsoft.VisualBasic.Data.Framework",
       "version": "5.0.9742.7537",
       "description": "Core tabular data library for sciBASIC#: DataFrame and DataSet objects, CSV and ARFF readers/writers, MySQL helpers, and reflection based storage providers that map .NET classes to table rows and columns.",
@@ -258,11 +242,11 @@
       "downloads": 0,
       "size": 198345,
       "sha256": "ecb99fc635aabbf88175c3605ce2f82d353b272f261b5801077419ad8d3a7203",
-      "published": "2026-09-10 09:10:05",
+      "published": "2026-09-10 09:43:01",
       "listed": true
     },
     {
-      "id": 10,
+      "id": 9,
       "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
       "version": "5.0.9742.7537",
       "description": "Extension helpers for the sciBASIC# data framework: streams CLR objects into DataTable, saves complex objects as multi-sheet Excel-like tables via outlining schemas, plus CSV template helpers.",
@@ -274,11 +258,11 @@
       "downloads": 0,
       "size": 55324,
       "sha256": "987db81f97672092f36c3dae8eb6f97a86a2215d0eb912964fdf398bce43c370",
-      "published": "2026-09-10 09:10:07",
+      "published": "2026-09-10 09:43:03",
       "listed": true
     },
     {
-      "id": 11,
+      "id": 10,
       "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
       "version": "5.0.9742.7537",
       "description": "Runs a piped graph query language over HTML/XML documents, combining CSS selectors, XPath expressions, attribute selectors and built-in functions to extract nodes, text and values and emit them as JSON.",
@@ -290,11 +274,11 @@
       "downloads": 0,
       "size": 72582,
       "sha256": "76db81aceeaca118e36fd39c4b0382a7ecb978e1bbcad0505e5365f8abcecfa3",
-      "published": "2026-09-10 09:10:09",
+      "published": "2026-09-10 09:43:05",
       "listed": true
     },
     {
-      "id": 12,
+      "id": 11,
       "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
       "version": "1.0.9742.7537",
       "description": "Algorithm library for sciBASIC# graphs: Dijkstra and A-star shortest paths, contraction hierarchies, Dinic max flow, Louvain, Leiden and label propagation communities, plus MST, Ullmann isomorphism and HNSW search.",
@@ -306,11 +290,11 @@
       "downloads": 0,
       "size": 175059,
       "sha256": "0db2012c3a74f745ddbd39cbf63a0def9061607ef7220350fe055b8b9dc6d7ad",
-      "published": "2026-09-10 09:10:11",
+      "published": "2026-09-10 09:43:07",
       "listed": true
     },
     {
-      "id": 13,
+      "id": 12,
       "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
       "version": "1.0.9742.7537",
       "description": "Reads HDF5 files without native libraries by decoding superblocks, B-trees, object headers, symbol tables and global heaps, exposing groups, attributes, and contiguous, chunked or compact datasets to sciBASIC# code.",
@@ -322,11 +306,11 @@
       "downloads": 0,
       "size": 89421,
       "sha256": "8451fd5b9a35f88c99bd999549ebf49c32ab223513298b30f390e456b375f62a",
-      "published": "2026-09-10 09:10:13",
+      "published": "2026-09-10 09:43:09",
       "listed": true
     },
     {
-      "id": 14,
+      "id": 13,
       "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
       "version": "1.0.9742.7537",
       "description": "Serializes and deserializes .NET objects to and from the MessagePack binary format, with reflection based member schemas, MessagePackMember attributes, nil implication handling and typed collection support.",
@@ -338,11 +322,11 @@
       "downloads": 0,
       "size": 55849,
       "sha256": "8c1b2683d6b3db53e04658dd2eb2251e46f0bd4068b6070da1aa0fb527b20193",
-      "published": "2026-09-10 09:10:15",
+      "published": "2026-09-10 09:43:11",
       "listed": true
     },
     {
-      "id": 15,
+      "id": 14,
       "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
       "version": "1.0.9742.7537",
       "description": "A pure managed parser for SQLite3 database files that decodes the database header, B-tree pages, master table and column types, exposes tables and rows, and parses CREATE TABLE schema SQL without the native SQLite engine.",
@@ -354,11 +338,11 @@
       "downloads": 0,
       "size": 52453,
       "sha256": "22608e1338d3cb1b72833273586642fabec5c8678155146a5ab8fdd14c82bf66",
-      "published": "2026-09-10 09:10:17",
+      "published": "2026-09-10 09:43:13",
       "listed": true
     },
     {
-      "id": 16,
+      "id": 15,
       "package_id": "Microsoft.VisualBasic.Data.NLP",
       "version": "1.0.9742.7537",
       "description": "NLP toolkit for sciBASIC#: Chinese word segmentation via max-match, HMM and a HuggingFace-compatible BPE/WordPiece/Unigram pipeline, plus a Porter stemmer, TF-IDF, BM25 ranked search and Gibbs-sampled LDA topic modeling.",
@@ -370,11 +354,11 @@
       "downloads": 0,
       "size": 122712,
       "sha256": "5bd15b4f56996178790cc9964891034845b9f6f413b8a4929f85510984a967a5",
-      "published": "2026-09-10 09:10:19",
+      "published": "2026-09-10 09:43:15",
       "listed": true
     },
     {
-      "id": 17,
+      "id": 16,
       "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
       "version": "5.0.9742.7537",
       "description": "Trains word embeddings for sciBASIC#: a multi-threaded Word2Vec using skip-gram and CBOW over Huffman trees, a fluent factory for vector size, window and sampling, plus vector models for similarity and analogy queries.",
@@ -386,11 +370,11 @@
       "downloads": 0,
       "size": 38406,
       "sha256": "1399599c4e88a9f03182f788f6bff3ecfe0041591fc547f064d6a52240f0eb6d",
-      "published": "2026-09-10 09:10:21",
+      "published": "2026-09-10 09:43:17",
       "listed": true
     },
     {
-      "id": 18,
+      "id": 17,
       "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
       "version": "1.0.9742.7537",
       "description": "Reads and writes time-series signal collections with their metadata, chunk indices and measure units to netCDF files, interoperating with R-based signal analysis pipelines. Part of sciBASIC#.",
@@ -402,11 +386,11 @@
       "downloads": 0,
       "size": 34436,
       "sha256": "3fd0d5eacfedc0be9a450c51b0768f3ec60511056f3355e4b004f6303097a4e3",
-      "published": "2026-09-10 09:10:23",
+      "published": "2026-09-10 09:43:19",
       "listed": true
     },
     {
-      "id": 19,
+      "id": 18,
       "package_id": "Microsoft.VisualBasic.Data.Storage",
       "version": "1.0.9742.7537",
       "description": "Reads SAS XPORT (XPT) transport files and ASN.1 encoded byte streams, and provides a binary frame reader/writer that persists sciBASIC# DataFrame objects with a typed column schema into a single seekable file.",
@@ -418,11 +402,11 @@
       "downloads": 0,
       "size": 48172,
       "sha256": "018bfb3e8149859a2c1c5fb7be598ec8d9156393b8b77af05ed0cc01971c8928",
-      "published": "2026-09-10 09:10:25",
+      "published": "2026-09-10 09:43:21",
       "listed": true
     },
     {
-      "id": 20,
+      "id": 19,
       "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
       "version": "1.0.9742.7537",
       "description": "NLP module of sciBASIC#: TextRank keyword and key phrase extraction, PageRank based sentence scoring for automatic summarization, Brill part-of-speech tagging, and HTML article body extraction.",
@@ -434,11 +418,11 @@
       "downloads": 0,
       "size": 52118,
       "sha256": "bb033ce298ad93de2e25d50ffcf997d194062ac3225c594b8f48586d759293c7",
-      "published": "2026-09-10 09:10:27",
+      "published": "2026-09-10 09:43:24",
       "listed": true
     },
     {
-      "id": 21,
+      "id": 20,
       "package_id": "Microsoft.VisualBasic.Data.visualize",
       "version": "5.0.9742.7537",
       "description": "Visualization abstractions for sciBASIC#: correlation and K-means network graphs, binary tree layouts, 2D and 3D rendering of UMAP, SOM and other data embeddings, plus tabular CSV rendering helpers.",
@@ -450,11 +434,11 @@
       "downloads": 0,
       "size": 108829,
       "sha256": "4595491d5d102cfd2567235405428e4227f1448148984fd27b020d8914098624",
-      "published": "2026-09-10 09:10:29",
+      "published": "2026-09-10 09:43:26",
       "listed": true
     },
     {
-      "id": 22,
+      "id": 21,
       "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
       "version": "1.0.9742.7537",
       "description": "Defines the NetworkGraph node and edge model with dynamic graph tables, and supplies community detection, shortest paths, degree and betweenness centrality. The data layer of the sciBASIC# network visualization stack.",
@@ -466,11 +450,11 @@
       "downloads": 0,
       "size": 81892,
       "sha256": "3c6bb8ac74d73fa2c447836185b39a48d6d2d4641df9299b7682a593aeeec883",
-      "published": "2026-09-10 09:10:31",
+      "published": "2026-09-10 09:43:28",
       "listed": true
     },
     {
-      "id": 23,
+      "id": 22,
       "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
       "version": "1.0.9742.7537",
       "description": "Reads and writes network graphs as CSV, JSON and VB.NET table sets, and imports or exports Cytoscape, Gephi, GML, Sigma.js and graphology documents. The IO layer of the sciBASIC# network visualization stack.",
@@ -482,11 +466,11 @@
       "downloads": 0,
       "size": 70058,
       "sha256": "e2ac834aa6eb62b5b60716b19c7007e81f3e0abed5677f121f678da60ac5a1c0",
-      "published": "2026-09-10 09:10:33",
+      "published": "2026-09-10 09:43:30",
       "listed": true
     },
     {
-      "id": 24,
+      "id": 23,
       "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
       "version": "1.0.9742.7537",
       "description": "Supplies force-directed, spring-embedder, constrained Cola, orthogonal, radial, circular, HOLA and edge-bundling layouts behind a common IPlanner interface. Computes node coordinates before rendering sciBASIC# networks.",
@@ -498,11 +482,11 @@
       "downloads": 0,
       "size": 170879,
       "sha256": "f95cfd7076f7f9d1c1d349809892d6fb51b15ce6707d30408a77827c2c73c47d",
-      "published": "2026-09-10 09:10:36",
+      "published": "2026-09-10 09:43:32",
       "listed": true
     },
     {
-      "id": 25,
+      "id": 24,
       "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
       "version": "1.0.9742.7537",
       "description": "Renders a laid-out NetworkGraph into bitmap or vector images, drawing nodes, edges, arrowheads, labels and convex-hull groups through a CSS-like map-expression language for colours, shapes and sizes in sciBASIC#.",
@@ -514,11 +498,11 @@
       "downloads": 0,
       "size": 75213,
       "sha256": "6cf0a0531b90e91c5573c7c4d4711fece69407c5ee0f13ee6e0cfadaa5caa140",
-      "published": "2026-09-10 09:10:38",
+      "published": "2026-09-10 09:43:34",
       "listed": true
     },
     {
-      "id": 26,
+      "id": 25,
       "package_id": "Microsoft.VisualBasic.Data.Wave",
       "version": "1.0.9742.7537",
       "description": "Parses and writes RIFF/WAVE audio files with FMT and data sub-chunk access, and extracts mel-filterbank voiceprint vectors with delta coefficients, CMVN and L2 normalisation. Part of sciBASIC#.",
@@ -530,11 +514,11 @@
       "downloads": 0,
       "size": 53929,
       "sha256": "06390cc416a2d3c34450e31bcfb11b9dc908944c4bf8bc790e7a2de1d675e3ea",
-      "published": "2026-09-10 09:10:40",
+      "published": "2026-09-10 09:43:36",
       "listed": true
     },
     {
-      "id": 27,
+      "id": 26,
       "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
       "version": "1.0.9742.7537",
       "description": "Clusters vector data by inserting items into an AVL binary tree under a fuzzy similarity comparison, then cutting the tree into partitions. Also offers Newick tree parsing, affinity propagation and KNN graph helpers.",
@@ -546,11 +530,11 @@
       "downloads": 0,
       "size": 50308,
       "sha256": "889a2424f4b7f24c95d507b8ceeac9082df5849a323c30c8808c15bcc82da1f9",
-      "published": "2026-09-10 09:10:42",
+      "published": "2026-09-10 09:43:38",
       "listed": true
     },
     {
-      "id": 28,
+      "id": 27,
       "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
       "version": "1.0.9742.7537",
       "description": "Estimates local point density on 2D grids and KD-tree indexes, and segments images into compact superpixels with the SLIC algorithm. Useful for outlier detection and image region grouping in the sciBASIC# framework.",
@@ -562,11 +546,11 @@
       "downloads": 0,
       "size": 49684,
       "sha256": "ec8c4fc0c5a53a27e76ba10c25f81c8514ce42f76a2e821e966d6c2d3b66110b",
-      "published": "2026-09-10 09:10:44",
+      "published": "2026-09-10 09:43:41",
       "listed": true
     },
     {
-      "id": 29,
+      "id": 28,
       "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
       "version": "1.0.9742.7537",
       "description": "Dynamic programming kernels for sciBASIC#, including Needleman-Wunsch global alignment, Smith-Waterman local alignment with HSP chaining, k-banded search, center star multiple alignment and the 0-1 knapsack solver.",
@@ -578,11 +562,11 @@
       "downloads": 0,
       "size": 71513,
       "sha256": "4ccca5feb7a91ebd8058064a8ed129780e53d9de2e897df677412a86cb033341",
-      "published": "2026-09-10 09:10:46",
+      "published": "2026-09-10 09:43:43",
       "listed": true
     },
     {
-      "id": 30,
+      "id": 29,
       "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
       "version": "1.0.9742.7537",
       "description": "Encodes raw feature vectors of a data frame into numeric columns for model training: one-hot style encoding for enums and flag bit fields, numeric binning and discretisation, and automatic per-field encoder selection.",
@@ -594,11 +578,11 @@
       "downloads": 0,
       "size": 44034,
       "sha256": "04741c7f85d9fbcfab9ea1b1c571877c1ecf7684c5d21167ce30da00e3d5ae02",
-      "published": "2026-09-10 09:10:48",
+      "published": "2026-09-10 09:43:45",
       "listed": true
     },
     {
-      "id": 31,
+      "id": 30,
       "package_id": "Microsoft.VisualBasic.DataMining.Framework",
       "version": "1.0.9742.7537",
       "description": "Data mining library for sciBASIC#: K-means, DBSCAN, HDBSCAN, OPTICS, fuzzy C-means and spectral clustering, Apriori association rules, decision trees, self-organizing maps and ROC or AUC model evaluation.",
@@ -610,11 +594,11 @@
       "downloads": 0,
       "size": 176663,
       "sha256": "724880d2e37ecefcb462945c227ae939357754d4b75134410402135fb110e708",
-      "published": "2026-09-10 09:10:50",
+      "published": "2026-09-10 09:43:47",
       "listed": true
     },
     {
-      "id": 32,
+      "id": 31,
       "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
       "version": "1.0.9742.7537",
       "description": "Implements hidden Markov models and Markov chains with forward, backward, Viterbi, Bayes and Baum-Welch EM algorithms, so you can score, decode and re-estimate state sequences from observation chains in sciBASIC#.",
@@ -626,11 +610,11 @@
       "downloads": 0,
       "size": 50819,
       "sha256": "52bd9a335a5775e49a1a444502a676bb8733c140b44f577596ddb89521aa46a0",
-      "published": "2026-09-10 09:10:52",
+      "published": "2026-09-10 09:43:49",
       "listed": true
     },
     {
-      "id": 33,
+      "id": 32,
       "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
       "version": "1.0.9742.7537",
       "description": "Agglomerative hierarchical clustering engine for sciBASIC#: the JBIRCH CF-tree for streaming data plus single, complete, average and weighted linkage strategies, distance maps and a reusable hierarchy tree builder.",
@@ -642,11 +626,11 @@
       "downloads": 0,
       "size": 71110,
       "sha256": "741cde8144bdc7645e438b95135d62000ca4b458be5b56e9682cabe3137212c0",
-      "published": "2026-09-10 09:10:54",
+      "published": "2026-09-10 09:43:51",
       "listed": true
     },
     {
-      "id": 34,
+      "id": 33,
       "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
       "version": "1.0.9742.7537",
       "description": "Renders hierarchical clustering results as publication-ready graphics: vertical dendrograms, circular and radial layouts, and horizon or right-to-left panels, with class colour legends, leaf labels and rulers.",
@@ -658,11 +642,11 @@
       "downloads": 0,
       "size": 37385,
       "sha256": "6c401b55a67c3aae93200795d5fee1884a95ac7d0a8aa8b237bf17afd1cbcdb1",
-      "published": "2026-09-10 09:10:56",
+      "published": "2026-09-10 09:43:53",
       "listed": true
     },
     {
-      "id": 35,
+      "id": 34,
       "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
       "version": "5.0.9742.7537",
       "description": "Uniform Manifold Approximation and Projection for sciBASIC#: builds a fuzzy simplicial set from k-nearest neighbours via NN-descent or KD-trees, then optimises a low-dimensional layout by stochastic gradient descent.",
@@ -674,11 +658,11 @@
       "downloads": 0,
       "size": 84815,
       "sha256": "9302c13fc7de6f089c98e915fc6db9719c9f134af5bd35ee93f30c239b2e3906",
-      "published": "2026-09-10 09:10:58",
+      "published": "2026-09-10 09:43:55",
       "listed": true
     },
     {
-      "id": 36,
+      "id": 35,
       "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
       "version": "0.6.9742.7537",
       "description": "A VB.NET port of the Feather columnar file format, built on an embedded FlatBuffers runtime. Reads and writes typed and untyped data frames with row/column access, null handling, and categorical or timestamp metadata.",
@@ -690,11 +674,11 @@
       "downloads": 0,
       "size": 133397,
       "sha256": "88a72d96fca1dd86bdfc9d6e3ca31c32d93fbfaaac5d679c4aad4e0a4b281f5c",
-      "published": "2026-09-10 09:11:00",
+      "published": "2026-09-10 09:43:58",
       "listed": true
     },
     {
-      "id": 37,
+      "id": 36,
       "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
       "version": "1.0.9742.7537",
       "description": "A packable virtual file system that stores many named streams, folders and attributes inside one binary file. Supports block allocation, buffered read/write, file deletion, metadata trees and read-only mounting for dataset archives.",
@@ -706,11 +690,11 @@
       "downloads": 0,
       "size": 50230,
       "sha256": "1dc1f98f4263f8157697b422bbe59e5105b5ddac6af426c2ec0e2212495cfa6b",
-      "published": "2026-09-10 09:11:02",
+      "published": "2026-09-10 09:44:00",
       "listed": true
     },
     {
-      "id": 38,
+      "id": 37,
       "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
       "version": "1.0.9742.7537",
       "description": "Reads and writes netCDF files for array oriented scientific data, handling dimensions, record dimensions, global and variable attributes, and typed data vectors over byte, short, integer, float and double.",
@@ -722,11 +706,11 @@
       "downloads": 0,
       "size": 60435,
       "sha256": "ed85c70d78ecd70edf7ca20e7b385caeb1f4d00d6fe145672c589bda2bd6d7cf",
-      "published": "2026-09-10 09:11:04",
+      "published": "2026-09-10 09:44:02",
       "listed": true
     },
     {
-      "id": 39,
+      "id": 38,
       "package_id": "Microsoft.VisualBasic.DeepLearning",
       "version": "6.0.9742.7537",
       "description": "Deep learning toolkit for sciBASIC#: a CeNiN CNN reader, trainable convolutional networks with SGD/AdaGrad/Adam trainers, character-level RNNs, Transformer attention models, and a general artificial neural network.",
@@ -738,11 +722,11 @@
       "downloads": 0,
       "size": 104645,
       "sha256": "c0e9f28292478cc5584b58b209e9b79c4d48b81df237dd3b00873e7705f905ff",
-      "published": "2026-09-10 09:11:06",
+      "published": "2026-09-10 09:44:04",
       "listed": true
     },
     {
-      "id": 40,
+      "id": 39,
       "package_id": "Microsoft.VisualBasic.Drawing.Windows",
       "version": "1.0.9742.7537",
       "description": "A Windows-only GDI\u002B canvas, image filter and font-metrics wrapper with converters that bridge sciBASIC# graphics models to System.Drawing. Keeps drawing code compatible across the System.Drawing and SkiaSharp back ends.",
@@ -754,11 +738,11 @@
       "downloads": 0,
       "size": 206378,
       "sha256": "3f7aa5feafb5f18bf85d9d2671ca99e2e4a8b0a482f283475b643dade4918c07",
-      "published": "2026-09-10 09:11:08",
+      "published": "2026-09-10 09:44:06",
       "listed": true
     },
     {
-      "id": 41,
+      "id": 40,
       "package_id": "Microsoft.VisualBasic.Imaging",
       "version": "1.0.9742.7537",
       "description": "A driver-based drawing engine that renders charts, heatmaps, shapes, text and isometric 3D scenes to bitmap, SVG or PostScript output through one IGraphics API. It is the visualization core of sciBASIC#.",
@@ -770,11 +754,11 @@
       "downloads": 0,
       "size": 687016,
       "sha256": "a0f91192801e61ee411e2fc2d64e05ad6be96c7809496f5f4fa70d39359f4cbf",
-      "published": "2026-09-10 09:11:10",
+      "published": "2026-09-10 09:44:08",
       "listed": true
     },
     {
-      "id": 42,
+      "id": 41,
       "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
       "version": "1.0.9742.7537",
       "description": "A dependency-free AVI (RIFF) writer that assembles main/stream headers and appends bitmap frames into a playable video file, ideal for exporting rendered animation frames from the sciBASIC# imaging pipeline.",
@@ -786,11 +770,11 @@
       "downloads": 0,
       "size": 47179,
       "sha256": "b47b87819ac64bd08446e78b311179a1b816ddab37ee67b6bda3bfb8c00ddeaa",
-      "published": "2026-09-10 09:11:12",
+      "published": "2026-09-10 09:44:11",
       "listed": true
     },
     {
-      "id": 43,
+      "id": 42,
       "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
       "version": "1.0.9742.7537",
       "description": "Loads STL, OBJ, glTF/GLB, COLLADA, 3DS, 3MF and PLY meshes into one unified scene model, then converts the surfaces into voxel and signed-distance volumes for CFD simulation. Part of the sciBASIC# imaging stack.",
@@ -802,11 +786,11 @@
       "downloads": 0,
       "size": 83359,
       "sha256": "26a0f70245f60ee22477e873e9797605808bda9cb4a9a410ed831021234ee3ae",
-      "published": "2026-09-10 09:11:15",
+      "published": "2026-09-10 09:44:13",
       "listed": true
     },
     {
-      "id": 44,
+      "id": 43,
       "package_id": "Microsoft.VisualBasic.Imaging.Physics",
       "version": "1.0.9742.7537",
       "description": "A fixed-step 2D physics world with rigid bodies, broad and narrow phase collision, revolute, prismatic, spring and weld joints, force fields, SPH fluids and boids flocking, plus force-driven label placement for sciBASIC#.",
@@ -818,11 +802,11 @@
       "downloads": 0,
       "size": 79333,
       "sha256": "bae9519f26c9e373cc9a87071e75a3bbe3eaf1923ceabdff1bdca721b38be1dc",
-      "published": "2026-09-10 09:11:17",
+      "published": "2026-09-10 09:44:15",
       "listed": true
     },
     {
-      "id": 45,
+      "id": 44,
       "package_id": "Microsoft.VisualBasic.MachineLearning",
       "version": "5.0.9742.7537",
       "description": "Classical machine learning library for sciBASIC#: random forests, a LibSVM support vector machine port, genetic algorithms and differential evolution, Q-learning tables, activation functions and normalised sample datasets.",
@@ -834,11 +818,11 @@
       "downloads": 0,
       "size": 138495,
       "sha256": "bea482f0eecca1c84fb0ab3acf6174d30c98de8247e3471986571bea7ae2ddea",
-      "published": "2026-09-10 09:11:19",
+      "published": "2026-09-10 09:44:17",
       "listed": true
     },
     {
-      "id": 46,
+      "id": 45,
       "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
       "version": "5.0.9742.7537",
       "description": "Helpers for sciBASIC# machine learning data: export a trained Q-table with state features to netCDF, record Q-value curves per iteration to CSV, and save or load labelled clustering matrices in a compact binary format.",
@@ -850,11 +834,11 @@
       "downloads": 0,
       "size": 45574,
       "sha256": "604f0c43e662b3c15af90e86420afbb41676a42c6859d3d24ed70ea86c70624c",
-      "published": "2026-09-10 09:11:21",
+      "published": "2026-09-10 09:44:19",
       "listed": true
     },
     {
-      "id": 47,
+      "id": 46,
       "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
       "version": "5.0.9742.7537",
       "description": "Diagnostics helpers for sciBASIC# neural network training: builds demo sample sets, converts XML datasets to tabular rows, extracts fitness and neuron value frames from training netCDF logs, and computes ROC validation curves.",
@@ -866,11 +850,11 @@
       "downloads": 0,
       "size": 46050,
       "sha256": "188f631ae66556bd72ee3db80f5fd968ab067257d70f85b85f0d5883c65ebee0",
-      "published": "2026-09-10 09:11:23",
+      "published": "2026-09-10 09:44:21",
       "listed": true
     },
     {
-      "id": 48,
+      "id": 47,
       "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
       "version": "1.0.9742.7537",
       "description": "t-Distributed Stochastic Neighbor Embedding for sciBASIC#: converts pairwise affinities into joint probabilities at a given perplexity and minimises KL divergence, with a Barnes-Hut SPTree approximation for large data.",
@@ -882,11 +866,11 @@
       "downloads": 0,
       "size": 47537,
       "sha256": "0cf18249821f481c94d96440496680a14351b9e4b543e62a361aa3eb13e0a60c",
-      "published": "2026-09-10 09:11:25",
+      "published": "2026-09-10 09:44:24",
       "listed": true
     },
     {
-      "id": 49,
+      "id": 48,
       "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
       "version": "1.0.9742.7537",
       "description": "Self-contained tensor engine for sciBASIC#, not a Google TensorFlow binding: a managed multi-dimensional Tensor, a NumPy-style API, neural network activations and losses, and reverse-mode automatic differentiation.",
@@ -898,11 +882,11 @@
       "downloads": 0,
       "size": 55513,
       "sha256": "c074d689b39c6ea9f147885f5bf116b8a494e43c82ddb681cd250c526e5b3cf1",
-      "published": "2026-09-10 09:11:27",
+      "published": "2026-09-10 09:44:26",
       "listed": true
     },
     {
-      "id": 50,
+      "id": 49,
       "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
       "version": "1.0.9742.7537",
       "description": "Generative modelling library for sciBASIC#: a graph variational autoencoder with GCN encoder and inner-product decoder, a Gaussian mixture VAE with categorical latents, and an EM-trained Gaussian mixture model.",
@@ -914,11 +898,11 @@
       "downloads": 0,
       "size": 43302,
       "sha256": "b1af79ec5bbd3070de4c09fe2f034fe98acc2d2d9010a51f3dddc2d3b539446e",
-      "published": "2026-09-10 09:11:29",
+      "published": "2026-09-10 09:44:28",
       "listed": true
     },
     {
-      "id": 51,
+      "id": 50,
       "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
       "version": "1.0.9742.7537",
       "description": "Gradient boosting toolkit for sciBASIC#: reads and scores XGBoost model files through GBTree, GBLinear and Dart boosters, and trains ternary gradient boosting trees with categorical and missing value handling.",
@@ -930,11 +914,11 @@
       "downloads": 0,
       "size": 66886,
       "sha256": "fbed022ebf62a9735f908187891b7fee326487a7e7a9aa9e15497e8e636f1494",
-      "published": "2026-09-10 09:11:31",
+      "published": "2026-09-10 09:44:30",
       "listed": true
     },
     {
-      "id": 52,
+      "id": 51,
       "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
       "version": "1.0.9742.7537",
       "description": "Training data preparation for sciBASIC# XGBoost: two-pass CSV readers for test and validation tables, and converters building labelled TrainData with categorical columns and missing value indexes.",
@@ -946,11 +930,11 @@
       "downloads": 0,
       "size": 31069,
       "sha256": "c76a10ca0f9458e3dc01542f5be334dd0a8b4559c25b68a0a06b2de51e39c35f",
-      "published": "2026-09-10 09:11:33",
+      "published": "2026-09-10 09:44:32",
       "listed": true
     },
     {
-      "id": 53,
+      "id": 52,
       "package_id": "Microsoft.VisualBasic.Math.Core",
       "version": "5.0.9742.7537",
       "description": "Core math for sciBASIC#: dense and sparse matrices, SVD and linear solvers, simplex linear programming, BigDecimal arithmetic, splines, quantiles, distributions, fuzzy logic and an expression scripting engine.",
@@ -962,11 +946,11 @@
       "downloads": 0,
       "size": 367415,
       "sha256": "049a328d69a4d021bc9dbdf1d69a7931670e63a9f7d9876f9f7029f505a36325",
-      "published": "2026-09-10 09:11:35",
+      "published": "2026-09-10 09:44:35",
       "listed": true
     },
     {
-      "id": 54,
+      "id": 53,
       "package_id": "Microsoft.VisualBasic.Math.Lambda",
       "version": "5.0.9742.7537",
       "description": "Immutable expression-tree computer algebra for sciBASIC#: derivatives, integrals, limits, Taylor expansion, polynomial factorisation, simplification, Boolean algebra and a MathML to LINQ expression compiler.",
@@ -978,11 +962,11 @@
       "downloads": 0,
       "size": 71707,
       "sha256": "6163a335c9d24940e0d379a383f50794663aa9b103d95e65c8f9a5718653386a",
-      "published": "2026-09-10 09:11:37",
+      "published": "2026-09-10 09:44:37",
       "listed": true
     },
     {
-      "id": 55,
+      "id": 54,
       "package_id": "Microsoft.VisualBasic.Math.MachineVision",
       "version": "1.0.9742.7537",
       "description": "2D curve and shape matching with Procrustes and Frechet distance, connected component labelling, Hough circle detection, text OCR, RANSAC point-set alignment and multi-object tracking. Part of sciBASIC#.",
@@ -994,11 +978,11 @@
       "downloads": 0,
       "size": 86900,
       "sha256": "41a0e8a2c0bcd72407db4e31e84d515006a69fbbabdeeab66a516582fb93efd0",
-      "published": "2026-09-10 09:11:39",
+      "published": "2026-09-10 09:44:39",
       "listed": true
     },
     {
-      "id": 56,
+      "id": 55,
       "package_id": "Microsoft.VisualBasic.Math.Matrix",
       "version": "1.0.9742.7537",
       "description": "Labelled numeric matrix model with pairwise correlation and distance matrix builders, missing-value imputation, scaling and centering transforms, and Matrix Market MTX/RUA file IO. Part of sciBASIC#.",
@@ -1010,11 +994,11 @@
       "downloads": 0,
       "size": 54566,
       "sha256": "ca34fd201f59651e493c8042356c369cf5aff85e7da4c183325f604061a98f0c",
-      "published": "2026-09-10 09:11:41",
+      "published": "2026-09-10 09:44:41",
       "listed": true
     },
     {
-      "id": 57,
+      "id": 56,
       "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
       "version": "5.0.9742.7537",
       "description": "Integrates systems of ordinary differential equations with Euler, RK2, RK4, Gill and trapezoidal solvers over a declarative model of variables, parameters and initial values. Part of sciBASIC#.",
@@ -1026,11 +1010,11 @@
       "downloads": 0,
       "size": 58734,
       "sha256": "2647f9c139561c98817c1e08262c3798fc9f1f82f6faf5b6bea5f228748dce34",
-      "published": "2026-09-10 09:11:43",
+      "published": "2026-09-10 09:44:43",
       "listed": true
     },
     {
-      "id": 58,
+      "id": 57,
       "package_id": "Microsoft.VisualBasic.Math.Randomizer",
       "version": "1.0.9742.7537",
       "description": "Random number generation for sciBASIC#: Mersenne Twister, a fast xorshift-style generator, a thread-safe wrapper and a table-driven RAND randomizer for normal deviates and Monte Carlo simulation.",
@@ -1042,11 +1026,11 @@
       "downloads": 0,
       "size": 983743,
       "sha256": "284163477c6eabc3ae856694be5b0e002047a1e832aad1c42242eb4059be6470",
-      "published": "2026-09-10 09:11:45",
+      "published": "2026-09-10 09:44:46",
       "listed": true
     },
     {
-      "id": 59,
+      "id": 58,
       "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
       "version": "1.0.9742.7537",
       "description": "Algorithms for one-dimensional signals in sciBASIC#: FFT and wavelet transforms, Savitzky-Golay filtering, peak detection, baseline removal, resampling, DTW and COW alignment, plus Kalman filtering.",
@@ -1058,11 +1042,11 @@
       "downloads": 0,
       "size": 154719,
       "sha256": "eef9f6f16a7cc805efc40309d22c241f1563d62161e1fff84efa99fbf377dd5f",
-      "published": "2026-09-10 09:11:47",
+      "published": "2026-09-10 09:44:48",
       "listed": true
     },
     {
-      "id": 60,
+      "id": 59,
       "package_id": "Microsoft.VisualBasic.Math.Statistics",
       "version": "1.0.9742.7537",
       "description": "Probability distributions, moment functions, hypothesis tests such as t-test, F-test, chi-square, Fisher exact, Mantel and Moran\u0027s I, plus FastICA, RANSAC and Shapley/TreeSHAP values. Part of sciBASIC#.",
@@ -1074,11 +1058,11 @@
       "downloads": 0,
       "size": 99782,
       "sha256": "6962d0cc322674484bbfbde08cd2126b50f07e21ead44f2741f2e420e97e7939",
-      "published": "2026-09-10 09:11:49",
+      "published": "2026-09-10 09:44:50",
       "listed": true
     },
     {
-      "id": 61,
+      "id": 60,
       "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
       "version": "1.0.9742.7537",
       "description": "One-way ANOVA F-tests, Kruskal-Wallis non-parametric group comparison with FDR correction, and multivariate methods (PCA, PLS, OPLS-DA) for omics data. Part of the sciBASIC# scientific computing framework.",
@@ -1090,11 +1074,11 @@
       "downloads": 0,
       "size": 81654,
       "sha256": "b067e80fbcbf582046b2fd03d997d698ed8f753608122711df0262f38ad8e464",
-      "published": "2026-09-10 09:11:51",
+      "published": "2026-09-10 09:44:52",
       "listed": true
     },
     {
-      "id": 62,
+      "id": 61,
       "package_id": "Microsoft.VisualBasic.MIME.application.json",
       "version": "1.0.9742.7537",
       "description": "A JSON and BSON toolkit for sciBASIC#: a streaming JSON tokenizer and parser, a lenient parser that repairs malformed large language model output, plus BSON binary encoding and object serialization.",
@@ -1106,11 +1090,11 @@
       "downloads": 0,
       "size": 76079,
       "sha256": "2aac12f5cd55df6fb7d39d4eab8c0b2f90bc759eea03a265c6ece29724c4dc3b",
-      "published": "2026-09-10 09:11:53",
+      "published": "2026-09-10 09:44:55",
       "listed": true
     },
     {
-      "id": 63,
+      "id": 62,
       "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
       "version": "1.0.9742.7537",
       "description": "Supports the application/rdf\u002Bxml MIME type for sciBASIC#: XML serialization models for RDF descriptions, bags and DCMI metadata, plus a RDF 1.1 Turtle parser that streams subject-predicate-object triples.",
@@ -1122,11 +1106,11 @@
       "downloads": 0,
       "size": 55694,
       "sha256": "c89c6ffbf32cb586c6afb052ddde3b4bed9fdf487bd9ffa1adcfab5806f19956",
-      "published": "2026-09-10 09:11:55",
+      "published": "2026-09-10 09:44:57",
       "listed": true
     },
     {
-      "id": 64,
+      "id": 63,
       "package_id": "Microsoft.VisualBasic.MIME.application.xml",
       "version": "1.0.9742.7537",
       "description": "XML helpers for sciBASIC#: an XSD element data model with VB.NET class code generation, MathML expression builders, a lightweight XPath query engine, and a generic XmlElement tree with reflection-based graph loading.",
@@ -1138,11 +1122,11 @@
       "downloads": 0,
       "size": 61632,
       "sha256": "510a5578c54ec7bfead93b8ded27257ce0497dab61e54039a8c923b6ce123fd1",
-      "published": "2026-09-10 09:11:58",
+      "published": "2026-09-10 09:44:59",
       "listed": true
     },
     {
-      "id": 65,
+      "id": 64,
       "package_id": "Microsoft.VisualBasic.MIME.Html",
       "version": "1.0.9742.7537",
       "description": "A professional HTML renderer for sciBASIC#: tokenizes HTML into a queryable DOM, parses CSS selectors and property values, lays out boxes, lines and tables, and paints the result onto a GDI\u002B graphics canvas.",
@@ -1154,11 +1138,11 @@
       "downloads": 0,
       "size": 114480,
       "sha256": "209edee7d43165c6bdd38e45b2d3d4afb7ff6b0892fd37eaf4d31e728e9d6afd",
-      "published": "2026-09-10 09:12:00",
+      "published": "2026-09-10 09:45:01",
       "listed": true
     },
     {
-      "id": 66,
+      "id": 65,
       "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
       "version": "1.0.9742.7537",
       "description": "XLSX Transitional Office Open XML support for sciBASIC#: reads an xlsx package into typed directory parts, sheets and styles, generates styled workbooks with formulas and number formats, and parses legacy BIFF files.",
@@ -1170,11 +1154,11 @@
       "downloads": 0,
       "size": 147336,
       "sha256": "ff35e205e4887266e1c30aa5f3260361889d5c1952d028258689f1ada116c638",
-      "published": "2026-09-10 09:12:02",
+      "published": "2026-09-10 09:45:03",
       "listed": true
     },
     {
-      "id": 67,
+      "id": 66,
       "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
       "version": "1.0.9742.7537",
       "description": "A markdown processor for sciBASIC#: parses CommonMark-style blocks and inline spans into a typed block model or JSON document, renders it to HTML or plain text, and generates nested tables of contents from ATX headers.",
@@ -1186,11 +1170,11 @@
       "downloads": 0,
       "size": 61528,
       "sha256": "5f4be08cef541c71db867d044398f41a1fcf19478101ca8e67b7a312ec807b68",
-      "published": "2026-09-10 09:12:04",
+      "published": "2026-09-10 09:45:06",
       "listed": true
     },
     {
-      "id": 68,
+      "id": 67,
       "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
       "version": "1.0.9742.7537",
       "description": "Parses YAML for the sciBASIC# framework into the JsonElement model with block mappings, sequences, flow collections, block scalars, anchors, aliases and comments, plus a lightweight markdown front-matter reader.",
@@ -1202,11 +1186,11 @@
       "downloads": 0,
       "size": 39832,
       "sha256": "feef64a4ab3e15c5eab7d9902b146bb4934b9ea895819de5042e4772a468fd69",
-      "published": "2026-09-10 09:12:06",
+      "published": "2026-09-10 09:45:08",
       "listed": true
     },
     {
-      "id": 69,
+      "id": 68,
       "package_id": "Microsoft.VisualBasic.Runtime",
       "version": "10.5.9742.7537",
       "description": "Runtime core of sciBASIC#: LINQ and collection extensions, reflection and dynamic native interop, text and tabular data handling, command line parsing, parallel helpers, application services and logging.",
@@ -1218,7 +1202,7 @@
       "downloads": 0,
       "size": 1553804,
       "sha256": "9123b23825447479587f9df6a0fef4b64c7c3719116a562e91d6cf7cffb68532",
-      "published": "2026-09-10 09:12:08",
+      "published": "2026-09-10 09:45:10",
       "listed": true
     }
   ]

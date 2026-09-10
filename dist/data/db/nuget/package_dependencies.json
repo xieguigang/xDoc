@@ -1,0 +1,2481 @@
+{
+  "table": "package_dependencies",
+  "comment": "package dependency index",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "package_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(100)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "dependency_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "version_range",
+      "type": "VARCHAR(100)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "target_framework",
+      "type": "VARCHAR(100)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 2,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Configuration.ConfigurationManager",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 3,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Reflection.MetadataLoadContext",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 4,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 5,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio.ProgramDatabase",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 6,
+      "package_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 7,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 8,
+      "package_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 9,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 10,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 11,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 12,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 13,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 14,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 15,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 16,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 17,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 18,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 19,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 20,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 21,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 22,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 23,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 24,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 25,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 26,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 27,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 28,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 29,
+      "package_id": "Microsoft.VisualBasic.Data.ChartPlots.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 30,
+      "package_id": "Microsoft.VisualBasic.Data.DataPlot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 31,
+      "package_id": "Microsoft.VisualBasic.Data.DataPlot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 32,
+      "package_id": "Microsoft.VisualBasic.Data.DataPlot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 33,
+      "package_id": "Microsoft.VisualBasic.Data.DataPlot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 34,
+      "package_id": "Microsoft.VisualBasic.Data.Framework",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 35,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 36,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 37,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 38,
+      "package_id": "Microsoft.VisualBasic.Data.Framework.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 39,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 40,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.json",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 41,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 42,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 43,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 44,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 45,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 46,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.json",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 47,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 48,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 49,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 50,
+      "package_id": "Microsoft.VisualBasic.Data.GraphQuery",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 51,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 52,
+      "package_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 53,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 54,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 55,
+      "package_id": "Microsoft.VisualBasic.Data.IO.HDF5",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 56,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 57,
+      "package_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 58,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 59,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 60,
+      "package_id": "Microsoft.VisualBasic.Data.IO.SQLite3",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 61,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 62,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 63,
+      "package_id": "Microsoft.VisualBasic.Data.NLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 64,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 65,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 66,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 67,
+      "package_id": "Microsoft.VisualBasic.Data.NLP.Word2Vec",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.NLP",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 68,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Storage",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 69,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 70,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 71,
+      "package_id": "Microsoft.VisualBasic.Data.Signal.IO",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 72,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 73,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "version_range": "0.6.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 74,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 75,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 76,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 77,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 78,
+      "package_id": "Microsoft.VisualBasic.Data.Storage",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 79,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 80,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 81,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 82,
+      "package_id": "Microsoft.VisualBasic.Data.TrinityNLP",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.NLP",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 83,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 84,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 85,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 86,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 87,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DeepLearning",
+      "version_range": "6.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 88,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 89,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 90,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 91,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 92,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 93,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 94,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 95,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 96,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 97,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 98,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 99,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 100,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DeepLearning",
+      "version_range": "6.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 101,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 102,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 103,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 104,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 105,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 106,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 107,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 108,
+      "package_id": "Microsoft.VisualBasic.Data.visualize",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 109,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 110,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 111,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 112,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 113,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 114,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 115,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 116,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 117,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 118,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 119,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 120,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 121,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 122,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 123,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 124,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 125,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 126,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 127,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 128,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 129,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network.Layouts",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 130,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 131,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 132,
+      "package_id": "Microsoft.VisualBasic.Data.visualize.Network.Visualizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 133,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 134,
+      "package_id": "Microsoft.VisualBasic.Data.Wave",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 135,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 136,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 137,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 138,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 139,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 140,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.visualize.Network",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 141,
+      "package_id": "Microsoft.VisualBasic.DataMining.BinaryTreeClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 142,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 143,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 144,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 145,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 146,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 147,
+      "package_id": "Microsoft.VisualBasic.DataMining.DensityQuery",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 148,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 149,
+      "package_id": "Microsoft.VisualBasic.DataMining.DynamicProgramming",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 150,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 151,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 152,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 153,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 154,
+      "package_id": "Microsoft.VisualBasic.DataMining.FeatureFrame",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 155,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 156,
+      "package_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 157,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 158,
+      "package_id": "Microsoft.VisualBasic.DataMining.HiddenMarkovChain",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 159,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 160,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 161,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 162,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 163,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 164,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 165,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 166,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 167,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 168,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.ChartPlots",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 169,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 170,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 171,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 172,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 173,
+      "package_id": "Microsoft.VisualBasic.DataMining.HierarchicalClustering.Plot",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 174,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 175,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 176,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 177,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 178,
+      "package_id": "Microsoft.VisualBasic.DataMining.UMAP",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 179,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "version": "0.6.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 180,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "version": "0.6.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 181,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "version": "0.6.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 182,
+      "package_id": "Microsoft.VisualBasic.DataStorage.FeatherFormat",
+      "version": "0.6.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 183,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 184,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.IO.MessagePack",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 185,
+      "package_id": "Microsoft.VisualBasic.DataStorage.HDSPack",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 186,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 187,
+      "package_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 188,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "version": "6.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 189,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "version": "6.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 190,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "version": "6.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 191,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "version": "6.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 192,
+      "package_id": "Microsoft.VisualBasic.DeepLearning",
+      "version": "6.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 193,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 194,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 195,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 196,
+      "package_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Drawing.Common",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 197,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 198,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 199,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 200,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 201,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 202,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Drawing.Windows",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 203,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 204,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 205,
+      "package_id": "Microsoft.VisualBasic.Imaging",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 206,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 207,
+      "package_id": "Microsoft.VisualBasic.Imaging.AVIMedia",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Drawing.Common",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 208,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 209,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Imaging",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 210,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 211,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.Html",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 212,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Drawing.Common",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 213,
+      "package_id": "Microsoft.VisualBasic.Imaging.Landscape",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 214,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.GraphTheory",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 215,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 216,
+      "package_id": "Microsoft.VisualBasic.Imaging.Physics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 217,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 218,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 219,
+      "package_id": "Microsoft.VisualBasic.MachineLearning",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 220,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 221,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 222,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 223,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 224,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DeepLearning",
+      "version_range": "6.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 225,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 226,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 227,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 228,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 229,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 230,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataStorage.netCDF",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 231,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 232,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 233,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DeepLearning",
+      "version_range": "6.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 234,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning.Data.Extensions",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 235,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 236,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 237,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 238,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.Debugger",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 239,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 240,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 241,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 242,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 243,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.t-SNE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 244,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 245,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 246,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 247,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DeepLearning",
+      "version_range": "6.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 248,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 249,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning.TensorFlow",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 250,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 251,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 252,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.VAE",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 253,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.BinaryData",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 254,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.DataMining.Framework",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 255,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 256,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 257,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 258,
+      "package_id": "Microsoft.VisualBasic.MachineLearning.XGBoost.DataSet",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MachineLearning.XGBoost",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 259,
+      "package_id": "Microsoft.VisualBasic.Math.Core",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 260,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 261,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 262,
+      "package_id": "Microsoft.VisualBasic.Math.Lambda",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 263,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 264,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 265,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 266,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 267,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 268,
+      "package_id": "Microsoft.VisualBasic.Math.MachineVision",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 269,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 270,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 271,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 272,
+      "package_id": "Microsoft.VisualBasic.Math.Matrix",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 273,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 274,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "version": "5.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 275,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 276,
+      "package_id": "Microsoft.VisualBasic.Math.ODEsSolver",
+      "version": "5.0.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 277,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 278,
+      "package_id": "Microsoft.VisualBasic.Math.Randomizer",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 279,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Bootstrapping.Fittings",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 280,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 281,
+      "package_id": "Microsoft.VisualBasic.Math.SignalProcessing",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 282,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 283,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 284,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 285,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Statistics",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 286,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Math.Core",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 287,
+      "package_id": "Microsoft.VisualBasic.Math.Statistics.ANOVA",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 288,
+      "package_id": "Microsoft.VisualBasic.MIME.application.json",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 289,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 290,
+      "package_id": "Microsoft.VisualBasic.MIME.application.rdf_xml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 291,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 292,
+      "package_id": "Microsoft.VisualBasic.MIME.application.xml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0-windows7.0"
+    },
+    {
+      "id": 293,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 294,
+      "package_id": "Microsoft.VisualBasic.MIME.Html",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.Configuration.ConfigurationManager",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 295,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Data.Framework",
+      "version_range": "5.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 296,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 297,
+      "package_id": "Microsoft.VisualBasic.MIME.Office.Excel",
+      "version": "1.0.9742.7537",
+      "dependency_id": "System.IO.Packaging",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 298,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 299,
+      "package_id": "Microsoft.VisualBasic.MIME.text.markdown",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.json",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 300,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.Runtime",
+      "version_range": "10.5.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 301,
+      "package_id": "Microsoft.VisualBasic.MIME.text.yaml",
+      "version": "1.0.9742.7537",
+      "dependency_id": "Microsoft.VisualBasic.MIME.application.json",
+      "version_range": "1.0.9742.7537",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 302,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "version": "10.5.9742.7537",
+      "dependency_id": "System.Composition",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    },
+    {
+      "id": 303,
+      "package_id": "Microsoft.VisualBasic.Runtime",
+      "version": "10.5.9742.7537",
+      "dependency_id": "System.Resources.Extensions",
+      "version_range": "10.0.12",
+      "target_framework": "net10.0"
+    }
+  ]
+}

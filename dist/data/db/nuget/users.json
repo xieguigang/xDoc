@@ -47,17 +47,10 @@
   "rows": [
     {
       "id": 1,
-      "email": "i@xieguigang.me",
-      "salt": "hOGkrWe3u9HDA1mxvI12JOmIm1WBfvSpvtJbuoDjGQuQduP1oUhL4Pq5do1TZaQENn3VfUzMRORv3x63CChUzOOzc3sLdiGI4XQKONTeEpx3DCh87887hg0xk4k2AxG5",
-      "secret": "I5MLTGONWK4PIFQGAPP32JEQVMGON5FL",
-      "created": "2026-09-10 08:48:50"
-    },
-    {
-      "id": 2,
       "email": "stats@example.com",
-      "salt": "F401YnwEifUVmTMO03qkC3XqATJRhEqVyxzlvvUokUCnsCUiFJtl1mkIH4cCjmJLVuhhrZA4g3fQ5i82yGEjH1RvHkkYzjL5CdZCLhlUxi7uRlTFxW3ruO0KsEo5byUV",
-      "secret": "RZP3GIQQCRHZ5ZO4PWN7B2SVVLB6PKK7",
-      "created": "2026-09-10 09:09:36"
+      "salt": "a0Ki62b821SXor86BBhyl2hZjfp5fUS2dhGLujGXuqtueePynJJO4beDQBtclUh154Z5EkDEiCAxv3OjNhjdLiZmFFjDW4u0VLfKoFucDb3kx5Oph4PywUTctbv0PDo4",
+      "secret": "4P7TW3IIM7CLGQMCZ4VVZPT4ED65EYZH",
+      "created": "2026-09-10 09:42:44"
     }
   ]
 }
