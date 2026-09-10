@@ -558,8 +558,11 @@
 
             return '<tr class="row-link" data-id="' + esc(encodeURIComponent(id)) + '">' +
                 '<td><span class="pkg-name">' + esc(id) + '</span>' +
-                '<span class="pkg-desc">' + esc(pkg.description || '—') + '</span></td>' +
-                '<td><span class="ver">' + esc(pkg.latestVersion || '') + '</span></td>' +
+                '<span class="pkg-desc">' + esc(pkg.description || '—') + '</span>' +
+                (pkg.latestVersion
+                    ? '<span class="ver pkg-ver">' + esc(pkg.latestVersion) + '</span>'
+                    : '') +
+                '</td>' +
                 '<td class="num">' + formatNumber(pkg.totalDownloads) + '</td>' +
                 '<td class="num">' + formatNumber(pkg.versions) + '</td>' +
                 '<td class="mono">' + formatDate(pkg.published) + '</td>' +
@@ -567,9 +570,11 @@
                 '</tr>';
         }).join('');
 
+        /* the latest version is rendered inside the package cell (as its third
+           line) so that the table stays narrow. */
         host.innerHTML = '<div class="tablewrap fade-in"><table>' +
             '<thead><tr>' +
-            '<th>Package</th><th>Latest</th><th class="num">Downloads</th>' +
+            '<th>Package</th><th class="num">Downloads</th>' +
             '<th class="num">Versions</th><th>Published</th><th>Tags</th>' +
             '</tr></thead><tbody>' + rows + '</tbody></table></div>';
 

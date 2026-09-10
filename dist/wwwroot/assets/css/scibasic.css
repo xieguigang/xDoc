@@ -454,6 +454,15 @@ td .pkg-desc {
     white-space: nowrap;
 }
 
+/* the latest version of the package, rendered as the third line of the
+   package cell (the dedicated "Latest" column was merged into it) */
+td .pkg-ver {
+    display: inline-block;
+    margin-top: 7px;
+    color: var(--ink-faint);
+    border-color: var(--hairline2);
+}
+
 .mono {
     font-family: var(--mono);
     font-size: 12px;
