@@ -73,6 +73,27 @@
         });
     }
 
+    function fetchText(url) {
+        return fetch(url, { headers: { Accept: 'text/plain, text/markdown' } }).then(function (response) {
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status);
+            }
+            return response.text();
+        });
+    }
+
+    function hexToRgba(hex, alpha) {
+        var value = String(hex || '').replace('#', '');
+        if (value.length === 3) {
+            value = value[0] + value[0] + value[1] + value[1] + value[2] + value[2];
+        }
+        var number = parseInt(value, 16);
+        if (isNaN(number)) {
+            return 'rgba(63,174,74,' + alpha + ')';
+        }
+        return 'rgba(' + ((number >> 16) & 255) + ',' + ((number >> 8) & 255) + ',' + (number & 255) + ',' + alpha + ')';
+    }
+
     function debounce(fn, delay) {
         var timer = null;
         return function () {
@@ -97,6 +118,7 @@
         setText('stat-versions', formatNumber(stats.versions));
         setText('stat-downloads', formatNumber(stats.downloads));
         setText('stat-users', formatNumber(stats.users));
+        setText('stat-views', formatNumber(stats.views));
     }
 
     function setText(id, value) {
@@ -175,6 +197,285 @@
             html += '</ul></div>';
         });
         host.innerHTML = html;
+    }
+
+    /* ----------------------------- daily activity charts ----------------------------- */
+
+    var trendCharts = {};
+
+    var TREND = {
+        downloads: '#3fae4a',
+        views: '#6fa8dc',
+        hairline: 'rgba(255,255,255,.16)',
+        split: 'rgba(255,255,255,.06)',
+        text: '#9a9a9a',
+        strong: '#f2f2f2'
+    };
+
+    function trendSeries(points) {
+        var days = [];
+        var downloads = [];
+        var views = [];
+
+        (points || []).forEach(function (point) {
+            days.push(point.day);
+            downloads.push(Number(point.downloads || 0));
+            views.push(Number(point.views || 0));
+        });
+
+        return { days: days, downloads: downloads, views: views };
+    }
+
+    function areaLine(name, data, color) {
+        return {
+            name: name,
+            type: 'line',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            showSymbol: false,
+            data: data,
+            lineStyle: { width: 2, color: color },
+            itemStyle: { color: color },
+            emphasis: { focus: 'series' },
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: hexToRgba(color, .3) },
+                    { offset: 1, color: hexToRgba(color, 0) }
+                ])
+            }
+        };
+    }
+
+    function trendOption(series) {
+        return {
+            backgroundColor: 'transparent',
+            grid: { left: 10, right: 16, top: 34, bottom: 4, containLabel: true },
+            legend: {
+                data: ['downloads', 'page views'],
+                right: 6,
+                top: 0,
+                icon: 'roundRect',
+                itemWidth: 12,
+                itemHeight: 3,
+                textStyle: { color: TREND.text, fontSize: 11 }
+            },
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(10,10,10,.94)',
+                borderColor: TREND.hairline,
+                borderWidth: 1,
+                textStyle: { color: TREND.strong, fontSize: 12 },
+                extraCssText: 'backdrop-filter: blur(6px);',
+                formatter: function (params) {
+                    var lines = [esc(params[0].axisValue)];
+                    params.forEach(function (p) {
+                        lines.push(p.marker + ' ' + esc(p.seriesName) + ' · <b>' + formatNumber(p.value) + '</b>');
+                    });
+                    return lines.join('<br/>');
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: series.days,
+                axisLine: { lineStyle: { color: TREND.hairline } },
+                axisTick: { show: false },
+                axisLabel: { color: TREND.text, fontSize: 10.5, hideOverlap: true }
+            },
+            yAxis: {
+                type: 'value',
+                minInterval: 1,
+                axisLine: { show: false },
+                splitLine: { lineStyle: { color: TREND.split } },
+                axisLabel: { color: TREND.text, fontSize: 10.5 }
+            },
+            series: [
+                areaLine('downloads', series.downloads, TREND.downloads),
+                areaLine('page views', series.views, TREND.views)
+            ]
+        };
+    }
+
+    function disposeTrend(hostId) {
+        var chart = trendCharts[hostId];
+        if (chart) {
+            chart.dispose();
+            delete trendCharts[hostId];
+        }
+    }
+
+    function renderTrend(hostId, points) {
+        var host = $(hostId);
+        if (!host || typeof echarts === 'undefined') {
+            return;
+        }
+
+        disposeTrend(hostId);
+
+        if (!points || !points.length) {
+            host.innerHTML = '<div class="empty">no activity recorded yet</div>';
+            return;
+        }
+
+        host.innerHTML = '';
+
+        var chart = echarts.init(host, null, { renderer: 'canvas' });
+        chart.setOption(trendOption(trendSeries(points)));
+        trendCharts[hostId] = chart;
+    }
+
+    function renderActivityTotals(prefix, result) {
+        setText(prefix + '-activity-downloads', formatNumber(result.totalDownloads));
+        setText(prefix + '-activity-views', formatNumber(result.totalViews));
+
+        var host = $(prefix + '-activity-totals');
+        if (host) {
+            host.hidden = false;
+        }
+    }
+
+    function loadActivity(hostId, prefix, url) {
+        var host = $(hostId);
+        if (!host) {
+            return;
+        }
+
+        disposeTrend(hostId);
+        host.innerHTML = '<div class="loading"><span class="spinner"></span>loading activity…</div>';
+
+        fetchJSON(url).then(function (result) {
+            renderTrend(hostId, result.points || []);
+            renderActivityTotals(prefix, result);
+        }).catch(function (error) {
+            host.innerHTML = '<div class="empty">failed to load activity: ' + esc(error.message) + '</div>';
+        });
+    }
+
+    function loadPackageActivity(id, days) {
+        loadActivity('pkg-trend', 'pkg',
+            '/api/activity/package/' + encodeURIComponent(id) + '?days=' + (days || 30));
+    }
+
+    function loadFeedActivity(days) {
+        loadActivity('feed-trend', 'feed', '/api/activity/feed?days=' + (days || 30));
+    }
+
+    function bindTrendTools(toolsId, load) {
+        var tools = $(toolsId);
+        if (!tools) {
+            return;
+        }
+
+        var buttons = tools.querySelectorAll('button[data-days]');
+
+        Array.prototype.forEach.call(buttons, function (button) {
+            button.addEventListener('click', function () {
+                Array.prototype.forEach.call(buttons, function (other) {
+                    other.classList.remove('on');
+                });
+                button.classList.add('on');
+                load(parseInt(button.getAttribute('data-days'), 10) || 30);
+            });
+        });
+    }
+
+    window.addEventListener('resize', debounce(function () {
+        Object.keys(trendCharts).forEach(function (key) {
+            trendCharts[key].resize();
+        });
+    }, 150));
+
+    /* ----------------------------- readme (marked.js) ----------------------------- */
+
+    var markedConfigured = false;
+
+    function configureMarked() {
+        if (markedConfigured || typeof marked === 'undefined') {
+            return;
+        }
+
+        markedConfigured = true;
+
+        if (typeof marked.setOptions === 'function') {
+            marked.setOptions({ gfm: true, breaks: false });
+        }
+
+        /* the readme comes from an untrusted package, so raw html is dropped */
+        if (typeof marked.use === 'function') {
+            marked.use({ renderer: { html: function () { return ''; } } });
+        }
+    }
+
+    /* tags and attributes that must never be rendered from a readme document */
+    var BLOCKED_TAGS = 'script,style,iframe,object,embed,link,meta,form,input,button,select,textarea,base';
+
+    function sanitize(html) {
+        var host = document.createElement('div');
+        host.innerHTML = html;
+
+        Array.prototype.forEach.call(host.querySelectorAll(BLOCKED_TAGS), function (node) {
+            if (node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
+        });
+
+        Array.prototype.forEach.call(host.querySelectorAll('*'), function (node) {
+            Array.prototype.slice.call(node.attributes || []).forEach(function (attribute) {
+                var name = attribute.name.toLowerCase();
+                var value = String(attribute.value || '').replace(/\s+/g, '').toLowerCase();
+
+                if (name.indexOf('on') === 0) {
+                    node.removeAttribute(attribute.name);
+                } else if ((name === 'href' || name === 'src' || name === 'xlink:href') &&
+                    (value.indexOf('javascript:') === 0 || value.indexOf('vbscript:') === 0)) {
+                    node.removeAttribute(attribute.name);
+                }
+            });
+        });
+
+        return host;
+    }
+
+    function loadPackageReadme(pkg) {
+        var section = $('readme-section');
+        var host = $('pkg-readme');
+
+        if (!section || !host) {
+            return;
+        }
+
+        var info = pkg.readme || {};
+        if (!info.available || !info.url) {
+            section.hidden = true;
+            return;
+        }
+
+        section.hidden = false;
+        setText('pkg-readme-file', info.file || 'README');
+        host.innerHTML = '<div class="loading"><span class="spinner"></span>loading readme…</div>';
+
+        fetchText(info.url).then(function (text) {
+            if (info.markdown && typeof marked !== 'undefined') {
+                configureMarked();
+
+                var html = typeof marked.parse === 'function' ? marked.parse(text) : marked(text);
+                var clean = sanitize(html);
+
+                host.innerHTML = '';
+                while (clean.firstChild) {
+                    host.appendChild(clean.firstChild);
+                }
+            } else {
+                host.innerHTML = '';
+                var pre = document.createElement('pre');
+                pre.className = 'readme-raw';
+                pre.textContent = text;
+                host.appendChild(pre);
+            }
+        }).catch(function () {
+            section.hidden = true;
+        });
     }
 
     /* ----------------------------- package list ----------------------------- */
@@ -380,6 +681,13 @@
                     '<tbody>' + rows + '</tbody></table></div>';
             }
         }
+
+        loadPackageReadme(pkg);
+
+        bindTrendTools('pkg-trend-tools', function (days) {
+            loadPackageActivity(pkg.id, days);
+        });
+        loadPackageActivity(pkg.id, 30);
     }
 
     /* ----------------------------- about page ----------------------------- */
@@ -398,6 +706,9 @@
         }).catch(function (error) {
             host.innerHTML = '<div class="empty">failed to load statistics: ' + esc(error.message) + '</div>';
         });
+
+        bindTrendTools('feed-trend-tools', loadFeedActivity);
+        loadFeedActivity(30);
     }
 
     function renderTop(items) {

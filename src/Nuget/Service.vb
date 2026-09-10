@@ -113,7 +113,8 @@ Public Class Service
             Dim package As String = nupkgFilePath(pkg)
 
             If File.Exists(package) Then
-                Call store.IncrementDownload(pkg.package_id, pkg.version)
+                ' count both the lifetime version counter and the daily activity
+                Call store.RecordDownload(pkg.package_id, pkg.version)
                 res.AccessControlAllowOrigin = "*"
                 res.SendFile(package)
             Else
@@ -502,7 +503,8 @@ Public Class Service
                 {"packages", stats.packages},
                 {"versions", stats.versions},
                 {"downloads", stats.downloads},
-                {"users", stats.users}
+                {"users", stats.users},
+                {"views", stats.views}
             }},
             {"topDownloads", top},
             {"recent", recent},
@@ -579,6 +581,9 @@ Public Class Service
             metadataJson(item.Key) = item.Value
         Next
 
+        ' count the detail page view of the current utc day
+        Call store.RecordView(latest.package_id)
+
         res.AccessControlAllowOrigin = "*"
         writeJson(res, New Dictionary(Of String, Object) From {
             {"id", latest.package_id},
@@ -601,10 +606,120 @@ Public Class Service
             {"totalDownloads", versions.Sum(Function(v) v.downloads)},
             {"published", isoDate(latest.published)},
             {"iconUrl", If(String.IsNullOrEmpty(iconFile), "", $"{baseUrl}/api/icon/{Uri.EscapeDataString(latest.package_id)}")},
+            {"readme", readmeInfo(baseUrl, latest)},
             {"metadata", metadataJson},
             {"dependencies", dependencies},
             {"versions", versionList}
         })
+    End Sub
+
+    ''' <summary>
+    ''' describe the readme document of one package version for the web front
+    ''' end. the document body is intentionally not inlined; the client fetches
+    ''' it from <see cref="ApiPackageReadme(HttpRequest, HttpResponse)"/> on
+    ''' demand.
+    ''' </summary>
+    Private Function readmeInfo(baseUrl As String, pkg As PackageRecord) As Dictionary(Of String, Object)
+        Dim file As String = findReadmeFile(pkg)
+
+        If String.IsNullOrEmpty(file) Then
+            Return New Dictionary(Of String, Object) From {{"available", False}}
+        End If
+
+        Dim extension As String = Path.GetExtension(file).TrimStart("."c).ToLowerInvariant()
+        If String.IsNullOrEmpty(extension) Then
+            extension = "md"
+        End If
+
+        Dim idLower As String = pkg.package_id.ToLowerInvariant()
+        Dim versionLower As String = pkg.version.ToLowerInvariant()
+
+        Return New Dictionary(Of String, Object) From {
+            {"available", True},
+            {"file", Path.GetFileName(file)},
+            {"format", extension},
+            {"markdown", extension = "md" OrElse extension = "markdown"},
+            {"url", $"{baseUrl}/api/readme/{Uri.EscapeDataString(idLower)}/{Uri.EscapeDataString(versionLower)}"}
+        }
+    End Function
+
+    ''' <summary>
+    ''' locate the readme document of one package version inside its version
+    ''' directory; returns <c>Nothing</c> when the package ships no readme.
+    ''' </summary>
+    Private Function findReadmeFile(pkg As PackageRecord) As String
+        If pkg Is Nothing Then
+            Return Nothing
+        End If
+
+        Dim folder As String = versionDirectory(pkg)
+        If Not folder.DirectoryExists Then
+            Return Nothing
+        End If
+
+        ' the file name is recorded by the upload, but fall back to a directory
+        ' scan so that a readme uploaded by an older build is still served.
+        Dim metadata As Dictionary(Of String, String) = store.GetPackageMetadata(pkg.package_id, pkg.version)
+        Dim readmeFile As String = fieldValue(metadata, "readmeFile")
+
+        If Not readmeFile.StringEmpty Then
+            Dim recorded As String = Path.Combine(folder, readmeFile)
+            If File.Exists(recorded) Then
+                Return recorded
+            End If
+        End If
+
+        Return Directory.GetFiles(folder, "readme.*") _
+            .OrderBy(Function(f) f, StringComparer.OrdinalIgnoreCase) _
+            .FirstOrDefault()
+    End Function
+
+    <HttpGet("/api/readme/{id}")>
+    Public Sub ApiPackageReadme(req As HttpRequest, res As HttpResponse)
+        Call writeReadme(res, routeValue(req, "id"), Nothing)
+    End Sub
+
+    <HttpGet("/api/readme/{id}/{version}")>
+    Public Sub ApiPackageReadmeVersion(req As HttpRequest, res As HttpResponse)
+        Call writeReadme(res, routeValue(req, "id"), routeValue(req, "version"))
+    End Sub
+
+    ''' <summary>
+    ''' stream the readme document of a package version as plain text (or
+    ''' markdown) so that the detail page can render it.
+    ''' </summary>
+    Private Sub writeReadme(res As HttpResponse, id As String, version As String)
+        Dim versions As List(Of PackageRecord) = store.GetVersions(id)
+
+        If versions.Count = 0 Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, $"package '{id}' was not found")
+            Return
+        End If
+
+        Dim pkg As PackageRecord = If(String.IsNullOrEmpty(version), versions.Last(),
+            versions.FirstOrDefault(Function(v) v.version.Equals(version, StringComparison.OrdinalIgnoreCase)))
+
+        If pkg Is Nothing Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, $"package '{id}' {version} was not found")
+            Return
+        End If
+
+        Dim readmePath As String = findReadmeFile(pkg)
+
+        If readmePath.StringEmpty OrElse Not File.Exists(readmePath) Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, "this package version ships no readme document")
+            Return
+        End If
+
+        Dim extension As String = Path.GetExtension(readmePath).TrimStart("."c).ToLowerInvariant()
+        Dim mime As String = If(extension = "md" OrElse extension = "markdown",
+            "text/markdown; charset=utf-8", "text/plain; charset=utf-8")
+
+        Dim bytes As Byte() = File.ReadAllBytes(readmePath)
+
+        res.AccessControlAllowOrigin = "*"
+        res.WriteHeader(mime, bytes.Length)
+        Call res.SendData(bytes)
     End Sub
 
     Private Shared Function fieldValue(metadata As Dictionary(Of String, String), name As String) As String
@@ -669,6 +784,104 @@ Public Class Service
             {"versions", pkg.versions},
             {"published", isoDate(pkg.published)}
         }
+    End Function
+
+#End Region
+
+#Region "daily activity"
+
+    ''' <summary>
+    ''' the daily download / page view series of a single package.
+    ''' </summary>
+    <HttpGet("/api/activity/package/{id}")>
+    Public Sub ApiPackageActivity(req As HttpRequest, res As HttpResponse)
+        Dim id As String = routeValue(req, "id")
+        Dim days As Integer = clampDays(req)
+
+        If store.GetVersions(id).Count = 0 Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, $"package '{id}' was not found")
+            Return
+        End If
+
+        Dim activity As List(Of DailyActivity) = store.GetPackageActivity(id, days)
+
+        res.AccessControlAllowOrigin = "*"
+        writeJson(res, New Dictionary(Of String, Object) From {
+            {"id", id},
+            {"days", days},
+            {"totalDownloads", activity.Sum(Function(a) a.downloads)},
+            {"totalViews", activity.Sum(Function(a) a.views)},
+            {"points", activitySeries(activity, days)}
+        })
+    End Sub
+
+    ''' <summary>
+    ''' the daily download / page view series summed over the whole feed.
+    ''' </summary>
+    <HttpGet("/api/activity/feed")>
+    Public Sub ApiFeedActivity(req As HttpRequest, res As HttpResponse)
+        Dim days As Integer = clampDays(req)
+        Dim activity As List(Of DailyActivity) = store.GetFeedActivity(days)
+
+        res.AccessControlAllowOrigin = "*"
+        writeJson(res, New Dictionary(Of String, Object) From {
+            {"days", days},
+            {"totalDownloads", activity.Sum(Function(a) a.downloads)},
+            {"totalViews", activity.Sum(Function(a) a.views)},
+            {"points", activitySeries(activity, days)}
+        })
+    End Sub
+
+    ''' <summary>
+    ''' read and clamp the ``days`` query parameter of the activity endpoints.
+    ''' </summary>
+    Private Shared Function clampDays(req As HttpRequest) As Integer
+        Dim days As Integer = queryInt(req, "days", 30)
+
+        If days < 1 Then
+            Return 1
+        ElseIf days > 365 Then
+            Return 365
+        Else
+            Return days
+        End If
+    End Function
+
+    ''' <summary>
+    ''' expand the recorded activity into a continuous per day series, filling
+    ''' the days without traffic with zeros so that the chart has a stable time
+    ''' axis.
+    ''' </summary>
+    Private Shared Function activitySeries(activity As List(Of DailyActivity), days As Integer) As List(Of Object)
+        Dim table As New Dictionary(Of String, DailyActivity)(StringComparer.Ordinal)
+
+        For Each item As DailyActivity In activity
+            table(item.day) = item
+        Next
+
+        Dim points As New List(Of Object)
+        Dim today As Date = Date.UtcNow
+
+        For offset As Integer = days - 1 To 0 Step -1
+            Dim day As String = NugetStore.DayKey(today.AddDays(-offset))
+            Dim item As DailyActivity = Nothing
+
+            If table.TryGetValue(day, item) Then
+                points.Add(New Dictionary(Of String, Object) From {
+                    {"day", day},
+                    {"downloads", item.downloads},
+                    {"views", item.views}
+                })
+            Else
+                points.Add(New Dictionary(Of String, Object) From {
+                    {"day", day},
+                    {"downloads", 0},
+                    {"views", 0}
+                })
+            End If
+        Next
+
+        Return points
     End Function
 
 #End Region
@@ -822,6 +1035,28 @@ Public Class Service
             Dim iconPath As String = Path.Combine(versionDirectory(pkg), "icon" & extension)
             If NupkgReader.ExtractIcon(nupkgFilePath(pkg), metadata.Icon, iconPath) Then
                 values("iconFile") = "icon" & extension
+            End If
+        End If
+
+        ' extract the embedded readme document so that the web detail page can
+        ' render it later on. the text itself is not stored in the database
+        ' because the JSql string literal escaping flattens the line breaks.
+        If Not String.IsNullOrEmpty(metadata.Readme) Then
+            Dim readmeExtension As String = Path.GetExtension(metadata.Readme)
+            If String.IsNullOrEmpty(readmeExtension) Then
+                readmeExtension = ".md"
+            End If
+
+            Dim readmeFile As String = "readme" & readmeExtension.ToLowerInvariant()
+            Dim readmePath As String = Path.Combine(versionDirectory(pkg), readmeFile)
+
+            If NupkgReader.ExtractEntry(nupkgFilePath(pkg), metadata.Readme, readmePath) Then
+                values("readme") = metadata.Readme
+                values("readmeFile") = readmeFile
+                values("readmeFormat") = readmeExtension.TrimStart("."c).ToLowerInvariant()
+                Call $"readme extracted: {pkg.package_id} {pkg.version} -> {readmeFile}".debug()
+            Else
+                Call $"the readme document '{metadata.Readme}' was not found in {pkg.package_id} {pkg.version}".warning()
             End If
         End If
 

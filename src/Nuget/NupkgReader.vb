@@ -2,6 +2,7 @@ Imports System.Collections.Generic
 Imports System.IO
 Imports System.IO.Compression
 Imports System.Linq
+Imports System.Text
 Imports System.Xml.Linq
 
 ''' <summary>
@@ -34,6 +35,12 @@ Public Class NupkgMetadata
     Public Property RequireLicenseAcceptance As String
     Public Property Repository As String
     Public Property Icon As String
+
+    ''' <summary>
+    ''' the package relative path of the readme document declared by the nuspec
+    ''' ``&lt;readme&gt;`` element, for example ``README.md`` or ``docs/README.md``.
+    ''' </summary>
+    Public Property Readme As String
 
     ''' <summary>the dependency list encoded as ``id|range`` pairs.</summary>
     Public Property Dependencies As String
@@ -100,6 +107,65 @@ Public Module NupkgReader
         End Using
     End Function
 
+    ''' <summary>
+    ''' extract a text entry of the package (for example the readme markdown
+    ''' document) to the given destination file, normalizing the encoding to
+    ''' utf-8 without a byte order mark.
+    ''' </summary>
+    ''' <param name="nupkgPath">the physical nupkg path.</param>
+    ''' <param name="entryName">
+    ''' the package relative entry path as declared in the nuspec, for example
+    ''' ``README.md`` or ``docs/README.md``.
+    ''' </param>
+    ''' <param name="destination">the file path to write the entry text to.</param>
+    ''' <returns><c>True</c> when the entry was found and extracted.</returns>
+    Public Function ExtractEntry(nupkgPath As String, entryName As String, destination As String) As Boolean
+        If String.IsNullOrEmpty(entryName) Then
+            Return False
+        End If
+
+        Using zip As ZipArchive = ZipFile.OpenRead(nupkgPath)
+            Dim key As String = entryName.Replace("\"c, "/"c).TrimStart("/"c)
+            Dim entry As ZipArchiveEntry = findEntry(zip, key)
+
+            If entry Is Nothing OrElse entry.Length = 0 Then
+                Return False
+            End If
+
+            Dim folder As String = Path.GetDirectoryName(destination)
+            If Not String.IsNullOrEmpty(folder) Then
+                Call Directory.CreateDirectory(folder)
+            End If
+
+            Using stream As Stream = entry.Open()
+                Using reader As New StreamReader(stream, detectEncodingFromByteOrderMarks:=True)
+                    Dim text As String = reader.ReadToEnd()
+                    Call File.WriteAllText(destination, text, New UTF8Encoding(encoderShouldEmitUTF8Identifier:=False))
+                End Using
+            End Using
+
+            Return True
+        End Using
+    End Function
+
+    ''' <summary>
+    ''' locate an entry by its package relative path, tolerating the path
+    ''' separators of the nuspec and a missing leading folder.
+    ''' </summary>
+    Private Function findEntry(zip As ZipArchive, key As String) As ZipArchiveEntry
+        Dim entry As ZipArchiveEntry = zip.Entries _
+            .FirstOrDefault(Function(e) e.FullName.Equals(key, StringComparison.OrdinalIgnoreCase))
+
+        If entry IsNot Nothing Then
+            Return entry
+        End If
+
+        ' fall back to a suffix match so that a readme declared as ``README.md``
+        ' is still found when it was packaged inside a sub folder.
+        Return zip.Entries _
+            .FirstOrDefault(Function(e) e.FullName.EndsWith("/" & key, StringComparison.OrdinalIgnoreCase))
+    End Function
+
     Private Function findNuspec(zip As ZipArchive) As ZipArchiveEntry
         Dim rootEntry As ZipArchiveEntry = zip.Entries _
             .FirstOrDefault(Function(e) Not e.FullName.Contains("/"c) AndAlso
@@ -138,7 +204,8 @@ Public Module NupkgReader
             .License = readLicense(metadata),
             .RequireLicenseAcceptance = childValue(metadata, "requireLicenseAcceptance"),
             .Repository = readRepository(metadata),
-            .Icon = childValue(metadata, "icon")
+            .Icon = childValue(metadata, "icon"),
+            .Readme = childValue(metadata, "readme")
         }
 
         readDependencies(metadata, result)

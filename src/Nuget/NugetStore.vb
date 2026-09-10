@@ -72,6 +72,24 @@ Public Class NugetStats
     Public Property versions As Long
     Public Property downloads As Long
     Public Property users As Long
+
+    ''' <summary>the accumulated number of package detail page views.</summary>
+    Public Property views As Long
+End Class
+
+''' <summary>
+''' one daily activity record of a package: how many package files were
+''' downloaded and how many package detail pages were viewed on a utc day.
+''' </summary>
+Public Class DailyActivity
+    ''' <summary>the package id, always stored in its lower-case form.</summary>
+    Public Property package_id As String
+
+    ''' <summary>the utc day key, formatted as ``yyyy-MM-dd``.</summary>
+    Public Property day As String
+
+    Public Property downloads As Long
+    Public Property views As Long
 End Class
 
 ''' <summary>
@@ -153,6 +171,14 @@ Public Class NugetStore
                 "  name VARCHAR(100) NOT NULL," &
                 "  value LONGTEXT" &
                 ") COMMENT='full nuspec metadata'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS package_activity (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  day VARCHAR(20) NOT NULL," &
+                "  downloads INT DEFAULT 0," &
+                "  views INT DEFAULT 0" &
+                ") COMMENT='daily download and page view counters'")
         End SyncLock
     End Sub
 
@@ -406,7 +432,8 @@ Public Class NugetStore
             .packages = all.Select(Function(p) p.package_id.ToLowerInvariant()).Distinct().Count(),
             .versions = all.Count,
             .downloads = all.Sum(Function(p) p.downloads),
-            .users = ReadAllUsers().Count
+            .users = ReadAllUsers().Count,
+            .views = ReadActivityRows().Sum(Function(a) a.views)
         }
     End Function
 
@@ -472,6 +499,169 @@ Public Class NugetStore
         Dim release As String = If(version.Contains("-"), "0", "1")
         Return sb.ToString() & release & version
     End Function
+
+#End Region
+
+#Region "daily activity"
+
+    ''' <summary>
+    ''' the utc day key (``yyyy-MM-dd``) of the given moment, or of the current
+    ''' moment when no value is given.
+    ''' </summary>
+    ''' <param name="value">the moment to convert; defaults to <see cref="Date.UtcNow"/>.</param>
+    Public Shared Function DayKey(Optional value As Date? = Nothing) As String
+        Dim moment As Date = If(value.HasValue, value.Value, Date.UtcNow)
+        Return moment.ToUniversalTime().ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+    End Function
+
+    ''' <summary>
+    ''' record a successful package file download: increments both the total
+    ''' download counter of the package version and the download counter of the
+    ''' current utc day.
+    ''' </summary>
+    ''' <param name="packageId">the package id.</param>
+    ''' <param name="version">the package version.</param>
+    Public Sub RecordDownload(packageId As String, version As String)
+        SyncLock sync
+            Dim pkg As PackageRecord = GetPackage(packageId, version)
+            If pkg IsNot Nothing Then
+                Call exec($"UPDATE packages SET downloads = downloads + 1 WHERE id = {pkg.id}")
+            End If
+
+            Call incrementActivity(packageId, DayKey(), "downloads")
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' record one package detail page view of the current utc day.
+    ''' </summary>
+    ''' <param name="packageId">the viewed package id.</param>
+    Public Sub RecordView(packageId As String)
+        SyncLock sync
+            Call incrementActivity(packageId, DayKey(), "views")
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' read the daily activity of one package. the missing days are not filled
+    ''' here; the controller expands the series before returning it to the web
+    ''' client.
+    ''' </summary>
+    ''' <param name="packageId">the package id (compared case insensitively).</param>
+    ''' <param name="days">the number of trailing days to read.</param>
+    ''' <returns>the recorded days, ordered from the oldest to the newest.</returns>
+    Public Function GetPackageActivity(packageId As String, days As Integer) As List(Of DailyActivity)
+        Dim key As String = If(packageId, "").Trim().ToLowerInvariant()
+        Dim from As String = DayKey(Date.UtcNow.AddDays(-(Math.Max(1, days) - 1)))
+        Dim aggregated As New Dictionary(Of String, DailyActivity)(StringComparer.Ordinal)
+
+        SyncLock sync
+            For Each row As DailyActivity In ReadActivityRows()
+                If row.day < from OrElse Not String.Equals(row.package_id, key, StringComparison.Ordinal) Then
+                    Continue For
+                End If
+
+                Dim item As DailyActivity = Nothing
+                If Not aggregated.TryGetValue(row.day, item) Then
+                    item = New DailyActivity With {.package_id = key, .day = row.day}
+                    aggregated(row.day) = item
+                End If
+
+                item.downloads += row.downloads
+                item.views += row.views
+            Next
+        End SyncLock
+
+        Return aggregated.Values.OrderBy(Function(a) a.day, StringComparer.Ordinal).ToList()
+    End Function
+
+    ''' <summary>
+    ''' read the daily activity summed over all of the packages of the feed.
+    ''' </summary>
+    ''' <param name="days">the number of trailing days to read.</param>
+    ''' <returns>the recorded days, ordered from the oldest to the newest.</returns>
+    Public Function GetFeedActivity(days As Integer) As List(Of DailyActivity)
+        Dim from As String = DayKey(Date.UtcNow.AddDays(-(Math.Max(1, days) - 1)))
+        Dim aggregated As New Dictionary(Of String, DailyActivity)(StringComparer.Ordinal)
+
+        SyncLock sync
+            For Each row As DailyActivity In ReadActivityRows()
+                If row.day < from Then
+                    Continue For
+                End If
+
+                Dim item As DailyActivity = Nothing
+                If Not aggregated.TryGetValue(row.day, item) Then
+                    item = New DailyActivity With {.day = row.day}
+                    aggregated(row.day) = item
+                End If
+
+                item.downloads += row.downloads
+                item.views += row.views
+            Next
+        End SyncLock
+
+        Return aggregated.Values.OrderBy(Function(a) a.day, StringComparer.Ordinal).ToList()
+    End Function
+
+    ''' <summary>
+    ''' read every daily activity row of the database.
+    ''' </summary>
+    Private Function ReadActivityRows() As List(Of DailyActivity)
+        Dim list As New List(Of DailyActivity)
+
+        SyncLock sync
+            Dim rs As ResultSet = query("SELECT package_id, day, downloads, views FROM package_activity")
+            If rs Is Nothing OrElse Not rs.IsQuery Then
+                Return list
+            End If
+
+            For Each row As Object() In rs.Rows
+                list.Add(New DailyActivity With {
+                    .package_id = toStr(row(0)).Trim().ToLowerInvariant(),
+                    .day = toStr(row(1)),
+                    .downloads = toLong(row(2)),
+                    .views = toLong(row(3))
+                })
+            Next
+        End SyncLock
+
+        Return list
+    End Function
+
+    ''' <summary>
+    ''' increment one counter of a (package, day) activity row, creating the row
+    ''' when the package has no activity recorded yet on that day.
+    ''' </summary>
+    ''' <param name="packageId">the package id.</param>
+    ''' <param name="day">the utc day key.</param>
+    ''' <param name="field">either ``downloads`` or ``views``.</param>
+    Private Sub incrementActivity(packageId As String, day As String, field As String)
+        Dim key As String = If(packageId, "").Trim().ToLowerInvariant()
+
+        If key.StringEmpty OrElse day.StringEmpty Then
+            Return
+        End If
+
+        Dim id As Long = -1
+        Dim rs As ResultSet = query($"SELECT id FROM package_activity WHERE package_id = '{esc(key)}' AND day = '{esc(day)}'")
+
+        If rs IsNot Nothing AndAlso rs.IsQuery AndAlso rs.Rows.Count > 0 Then
+            id = toLong(rs.Rows(0)(0))
+        End If
+
+        If id >= 0 Then
+            Call exec($"UPDATE package_activity SET {field} = {field} + 1 WHERE id = {id}")
+        Else
+            Dim downloads As Integer = If(field = "downloads", 1, 0)
+            Dim views As Integer = If(field = "views", 1, 0)
+            Dim newId As Long = nextId("package_activity")
+
+            Call exec(
+                "INSERT INTO package_activity (id, package_id, day, downloads, views) VALUES (" &
+                $"{newId}, '{esc(key)}', '{esc(day)}', {downloads}, {views})")
+        End If
+    End Sub
 
 #End Region
 
@@ -591,6 +781,17 @@ Public Class NugetStore
     ''' read the stored nuspec metadata of a package id (latest version first).
     ''' </summary>
     Public Function GetPackageMetadata(packageId As String) As Dictionary(Of String, String)
+        Return GetPackageMetadata(packageId, Nothing)
+    End Function
+
+    ''' <summary>
+    ''' read the stored nuspec metadata of a package id, optionally restricted
+    ''' to one package version.
+    ''' </summary>
+    ''' <param name="packageId">the package id.</param>
+    ''' <param name="version">the exact version to read; all versions when empty.</param>
+    ''' <returns>the metadata name/value pairs (the first row wins per name).</returns>
+    Public Function GetPackageMetadata(packageId As String, version As String) As Dictionary(Of String, String)
         Dim result As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
 
         SyncLock sync
@@ -600,6 +801,11 @@ Public Class NugetStore
             End If
 
             For Each row As Object() In rs.Rows
+                If Not String.IsNullOrEmpty(version) AndAlso
+                   Not String.Equals(toStr(row(1)), version, StringComparison.OrdinalIgnoreCase) Then
+                    Continue For
+                End If
+
                 Dim name As String = toStr(row(2))
                 If Not result.ContainsKey(name) Then
                     result(name) = toStr(row(3))

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ReadmeDemo</id>
+    <version>1.2.3</version>
+    <authors>xDoc</authors>
+    <description>A demo package that ships a readme rendered on the detail page.</description>
+    <tags>demo readme chart</tags>
+    <readme>README.md</readme>
+  </metadata>
+</package>
