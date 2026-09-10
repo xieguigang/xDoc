@@ -427,6 +427,7 @@ Public Class Service
             Call File.WriteAllText(nuspecFilePath(pkg), NupkgReader.ReadNuspecXml(temp))
             Call store.AddPackage(pkg)
             Call registerStaticFiles(pkg)
+            Call indexPackage(pkg, metadata)
             Call refreshStatistics()
 
             Call writeResult(res, True, $"published {pkg.package_id} {pkg.version}", New Dictionary(Of String, Object) From {
@@ -693,6 +694,51 @@ Public Class Service
 
         Call fs.AddMapping($"/packages/{idLower}/{versionLower}/{idLower}.{versionLower}.nupkg", nupkgFilePath(pkg))
         Call fs.AddMapping($"/packages/{idLower}/{versionLower}/{idLower}.nuspec", nuspecFilePath(pkg))
+    End Sub
+
+    ''' <summary>
+    ''' build the queryable tag / dependency index and persist the full nuspec
+    ''' metadata of a freshly published package version.
+    ''' </summary>
+    Private Sub indexPackage(pkg As PackageRecord, metadata As NupkgMetadata)
+        Call store.ReplacePackageTags(pkg.package_id, NugetStatistics.SplitTags(pkg.tags))
+        Call store.ReplacePackageDependencies(pkg.package_id, pkg.version, metadata.DependencyItems)
+
+        Dim values As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+            {"id", metadata.Id},
+            {"version", metadata.Version},
+            {"title", metadata.Title},
+            {"authors", metadata.Authors},
+            {"owners", metadata.Owners},
+            {"description", metadata.Description},
+            {"summary", metadata.Summary},
+            {"releaseNotes", metadata.ReleaseNotes},
+            {"copyright", metadata.Copyright},
+            {"language", metadata.Language},
+            {"tags", metadata.Tags},
+            {"projectUrl", metadata.ProjectUrl},
+            {"licenseUrl", metadata.LicenseUrl},
+            {"license", metadata.License},
+            {"requireLicenseAcceptance", metadata.RequireLicenseAcceptance},
+            {"repository", metadata.Repository},
+            {"icon", metadata.Icon},
+            {"nuspec", metadata.RawXml}
+        }
+
+        ' extract the embedded icon image so that it can be served on the web page
+        If Not String.IsNullOrEmpty(metadata.Icon) Then
+            Dim extension As String = Path.GetExtension(metadata.Icon)
+            If String.IsNullOrEmpty(extension) Then
+                extension = ".png"
+            End If
+
+            Dim iconPath As String = Path.Combine(versionDirectory(pkg), "icon" & extension)
+            If NupkgReader.ExtractIcon(nupkgFilePath(pkg), metadata.Icon, iconPath) Then
+                values("iconFile") = "icon" & extension
+            End If
+        End If
+
+        Call store.ReplacePackageMetadata(pkg.package_id, pkg.version, values)
     End Sub
 
     Private Function getBaseUrl(req As HttpRequest) As String
