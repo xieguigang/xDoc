@@ -129,6 +129,12 @@
             }]
         });
 
+        chart.on('click', function (params) {
+            if (params && params.name) {
+                window.location.href = 'tags.html?tag=' + encodeURIComponent(params.name);
+            }
+        });
+
         return chart;
     }
 
@@ -191,6 +197,12 @@
                     fontFamily: 'Inter, system-ui, sans-serif'
                 }
             }]
+        });
+
+        chart.on('click', function (params) {
+            if (params && params.name) {
+                window.location.href = 'tags.html?tag=' + encodeURIComponent(params.name);
+            }
         });
 
         return chart;

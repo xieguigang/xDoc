@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag · nuget</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="assets/css/scibasic.css" />
+</head>
+
+<body data-page="tags">
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <img src="favicon.png" alt="nuget server logo" onerror="this.style.display='none'" />
+            <strong>nuget</strong>
+            <span class="sub">package server</span>
+        </a>
+        <nav class="topnav">
+            <a href="index.html">Packages</a>
+            <a href="about.html">Statistics</a>
+            <a href="graph.html">Graphs</a>
+            <a href="v3/index.json">Service Index</a>
+        </nav>
+        <a class="home-btn" href="index.html" title="Back to packages" aria-label="Back">↖</a>
+    </header>
+
+    <main class="wrap">
+        <p class="eyebrow"><b>01</b> <span>Tag — browsing</span></p>
+        <h1 class="headline">Packages tagged <span class="u" id="tag-name">…</span></h1>
+        <p class="lede">All of the packages published in this feed that carry the given tag.</p>
+
+        <section id="packages">
+            <p class="sec-label"><b>02</b> <span>Packages</span></p>
+            <div class="toolbar">
+                <a class="btn" href="index.html">← All packages</a>
+                <div class="pager">
+                    <span id="page-info">0–0 of 0</span>
+                    <button class="btn" id="page-prev" disabled>Prev</button>
+                    <button class="btn" id="page-next" disabled>Next</button>
+                </div>
+            </div>
+            <div id="package-list">
+                <div class="loading"><span class="spinner"></span>loading packages…</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="pn">
+            <a href="index.html"><span>Previous</span>Packages</a>
+            <a href="graph.html"><span>Next</span>Graphs</a>
+        </div>
+        <div class="legal">nuget · experimental feed · powered by Fluteway + JSql</div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
