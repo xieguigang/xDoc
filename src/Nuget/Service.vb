@@ -627,14 +627,14 @@ Public Class Service
             Return
         End If
 
-        Dim path As String = Path.Combine(versionDirectory(pkg), iconFile)
-        If Not File.Exists(path) Then
+        Dim iconPath As String = Path.Combine(versionDirectory(pkg), iconFile)
+        If Not File.Exists(iconPath) Then
             res.WriteError(HTTP_RFC.RFC_NOT_FOUND, "no icon image for this package")
             Return
         End If
 
         res.AccessControlAllowOrigin = "*"
-        res.SendFile(path)
+        res.SendFile(iconPath)
     End Sub
 
     <HttpGet("/api/tag/{tag}")>
