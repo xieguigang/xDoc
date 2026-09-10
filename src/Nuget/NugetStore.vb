@@ -130,6 +130,29 @@ Public Class NugetStore
                 "  payload LONGTEXT," &
                 "  updated DATETIME" &
                 ") COMMENT='precomputed nuget statistics'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS package_tags (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  tag VARCHAR(200) NOT NULL" &
+                ") COMMENT='package tag index'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS package_dependencies (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  version VARCHAR(100)," &
+                "  dependency_id VARCHAR(200) NOT NULL," &
+                "  version_range VARCHAR(100)," &
+                "  target_framework VARCHAR(100)" &
+                ") COMMENT='package dependency index'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS package_metadata (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  version VARCHAR(100) NOT NULL," &
+                "  name VARCHAR(100) NOT NULL," &
+                "  value LONGTEXT" &
+                ") COMMENT='full nuspec metadata'")
         End SyncLock
     End Sub
 
@@ -500,6 +523,167 @@ Public Class NugetStore
     ''' <param name="name">the statistic key, for example ``tags``.</param>
     Public Function HasStatistic(name As String) As Boolean
         Return Not String.IsNullOrEmpty(GetStatistic(name))
+    End Function
+
+#End Region
+
+#Region "package index (tags / dependencies / metadata)"
+
+    ''' <summary>
+    ''' replace the tag index rows of the given package.
+    ''' </summary>
+    Public Sub ReplacePackageTags(packageId As String, tags As IEnumerable(Of String))
+        SyncLock sync
+            Call exec($"DELETE FROM package_tags WHERE package_id = '{esc(packageId)}'")
+
+            For Each tag As String In tags.Distinct(StringComparer.OrdinalIgnoreCase)
+                If tag.StringEmpty() Then
+                    Continue For
+                End If
+                Dim id As Long = nextId("package_tags")
+                Call exec($"INSERT INTO package_tags (id, package_id, tag) VALUES ({id}, '{esc(packageId)}', '{esc(tag.ToLowerInvariant())}')")
+            Next
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' replace the dependency index rows of the given package version.
+    ''' </summary>
+    Public Sub ReplacePackageDependencies(packageId As String, version As String, dependencies As List(Of NuspecDependency))
+        SyncLock sync
+            Call exec($"DELETE FROM package_dependencies WHERE package_id = '{esc(packageId)}'")
+
+            If dependencies Is Nothing Then
+                Return
+            End If
+
+            For Each dependency As NuspecDependency In dependencies
+                If dependency.id.StringEmpty() Then
+                    Continue For
+                End If
+                Dim id As Long = nextId("package_dependencies")
+                Call exec(
+                    "INSERT INTO package_dependencies (id, package_id, version, dependency_id, version_range, target_framework) VALUES (" &
+                    $"{id}, '{esc(packageId)}', '{esc(version)}', '{esc(dependency.id)}', '{esc(dependency.range)}', '{esc(dependency.targetFramework)}')")
+            Next
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' replace the full nuspec metadata rows of the given package version.
+    ''' </summary>
+    Public Sub ReplacePackageMetadata(packageId As String, version As String, values As Dictionary(Of String, String))
+        SyncLock sync
+            Call exec($"DELETE FROM package_metadata WHERE package_id = '{esc(packageId)}'")
+
+            If values Is Nothing Then
+                Return
+            End If
+
+            For Each item In values
+                Dim id As Long = nextId("package_metadata")
+                Call exec($"INSERT INTO package_metadata (id, package_id, version, name, value) VALUES ({id}, '{esc(packageId)}', '{esc(version)}', '{esc(item.Key)}', '{esc(item.Value)}')")
+            Next
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' read the stored nuspec metadata of a package id (latest version first).
+    ''' </summary>
+    Public Function GetPackageMetadata(packageId As String) As Dictionary(Of String, String)
+        Dim result As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
+
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT package_id, version, name, value FROM package_metadata WHERE package_id = '{esc(packageId)}'")
+            If rs Is Nothing OrElse Not rs.IsQuery Then
+                Return result
+            End If
+
+            For Each row As Object() In rs.Rows
+                Dim name As String = toStr(row(2))
+                If Not result.ContainsKey(name) Then
+                    result(name) = toStr(row(3))
+                End If
+            Next
+        End SyncLock
+
+        Return result
+    End Function
+
+    ''' <summary>
+    ''' read the indexed dependency list of the latest version of a package.
+    ''' </summary>
+    Public Function GetPackageDependencies(packageId As String) As List(Of NuspecDependency)
+        Dim list As New List(Of NuspecDependency)
+
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT dependency_id, version_range, target_framework, version FROM package_dependencies WHERE package_id = '{esc(packageId)}'")
+            If rs Is Nothing OrElse Not rs.IsQuery Then
+                Return list
+            End If
+
+            Dim version As String = latestVersionOf(packageId)
+
+            For Each row As Object() In rs.Rows
+                If Not String.Equals(toStr(row(3)), version, StringComparison.OrdinalIgnoreCase) Then
+                    Continue For
+                End If
+                Call list.Add(New NuspecDependency With {
+                    .id = toStr(row(0)),
+                    .range = toStr(row(1)),
+                    .targetFramework = toStr(row(2))
+                })
+            Next
+        End SyncLock
+
+        Return list
+    End Function
+
+    ''' <summary>
+    ''' test whether the package id exists in the feed (any version).
+    ''' </summary>
+    Public Function PackageExists(packageId As String) As Boolean
+        Dim rs As ResultSet = query($"SELECT package_id FROM packages WHERE package_id = '{esc(packageId)}'")
+        If rs IsNot Nothing AndAlso rs.IsQuery Then
+            For Each row As Object() In rs.Rows
+                If String.Equals(toStr(row(0)), packageId, StringComparison.OrdinalIgnoreCase) Then
+                    Return True
+                End If
+            Next
+        End If
+        Return False
+    End Function
+
+    ''' <summary>
+    ''' page through the packages that carry the given tag.
+    ''' </summary>
+    Public Function GetPackagesByTag(tag As String, skip As Integer, take As Integer, ByRef total As Integer) As List(Of PackageSummary)
+        Dim ids As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT package_id FROM package_tags WHERE tag = '{esc(If(tag, "").ToLowerInvariant())}'")
+            If rs IsNot Nothing AndAlso rs.IsQuery Then
+                For Each row As Object() In rs.Rows
+                    Call ids.Add(toStr(row(0)))
+                Next
+            End If
+        End SyncLock
+
+        Dim all As List(Of PackageSummary) = ListPackages("") _
+            .Where(Function(p) ids.Contains(p.package_id)) _
+            .ToList()
+
+        total = all.Count
+        Return all.Skip(skip).Take(take).ToList()
+    End Function
+
+    Private Function latestVersionOf(packageId As String) As String
+        Dim versions As List(Of PackageRecord) = ReadAllPackages() _
+            .Where(Function(p) p.package_id.Equals(packageId, StringComparison.OrdinalIgnoreCase)) _
+            .OrderBy(Function(p) VersionKey(p.version)) _
+            .ToList()
+
+        Return If(versions.Count = 0, "", versions.Last().version)
     End Function
 
 #End Region
