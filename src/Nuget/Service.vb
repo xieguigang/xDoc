@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Security.Cryptography
 Imports System.Text
+Imports System.Text.Json
 Imports Flute.Http.Core
 Imports Flute.Http.Core.HttpStream
 Imports Flute.Http.Core.Message
@@ -57,7 +58,7 @@ Public Class Service
         }
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"version", "3.0.0"},
             {"resources", resources}
         })
@@ -82,7 +83,7 @@ Public Class Service
             .ToArray()
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"versions", data}
         })
     End Sub
@@ -152,7 +153,7 @@ Public Class Service
         }
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"count", 1},
             {"items", New List(Of Object) From {range}}
         })
@@ -170,7 +171,7 @@ Public Class Service
         End If
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(registrationLeaf(getBaseUrl(req), pkg))
+        writeJson(res, registrationLeaf(getBaseUrl(req), pkg))
     End Sub
 
     Private Function registrationLeaf(baseUrl As String, pkg As PackageRecord) As Dictionary(Of String, Object)
@@ -285,7 +286,7 @@ Public Class Service
         Next
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"totalHits", groups.Count},
             {"data", data}
         })
@@ -298,7 +299,7 @@ Public Class Service
         If Not String.IsNullOrEmpty(packageId) Then
             Dim versions As List(Of PackageRecord) = store.GetVersions(packageId)
             res.AccessControlAllowOrigin = "*"
-            res.WriteJSON(New Dictionary(Of String, Object) From {
+            writeJson(res, New Dictionary(Of String, Object) From {
                 {"totalHits", versions.Count},
                 {"data", versions.Select(Function(v) v.version).ToArray()}
             })
@@ -309,7 +310,7 @@ Public Class Service
         Dim groups As List(Of PackageSearchResult) = store.GroupPackages(keyword)
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"totalHits", groups.Count},
             {"data", groups.Take(20).Select(Function(g) g.package_id.ToLowerInvariant()).ToArray()}
         })
@@ -459,7 +460,7 @@ Public Class Service
         Dim page As List(Of PackageSummary) = all.Skip(skip).Take(take).ToList()
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"total", all.Count},
             {"skip", skip},
             {"take", take},
@@ -493,7 +494,7 @@ Public Class Service
         Next
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"stats", New Dictionary(Of String, Object) From {
                 {"packages", stats.packages},
                 {"versions", stats.versions},
@@ -550,7 +551,7 @@ Public Class Service
         Next
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(New Dictionary(Of String, Object) From {
+        writeJson(res, New Dictionary(Of String, Object) From {
             {"id", latest.package_id},
             {"description", latest.description},
             {"authors", latest.authors},
@@ -710,7 +711,25 @@ Public Class Service
         Return Nothing
     End Function
 
+    Private Shared ReadOnly JsonOptions As New JsonSerializerOptions With {
+        .PropertyNameCaseInsensitive = True
+    }
+
+    ''' <summary>
+    ''' write the given object as a json response body. the system text json
+    ''' serializer is used instead of the built in <c>WriteJSON</c> because the
+    ''' nuget protocol documents are built from heterogeneous dictionaries.
+    ''' </summary>
+    Private Shared Sub writeJson(res As HttpResponse, payload As Object)
+        Dim json As String = JsonSerializer.Serialize(payload, JsonOptions)
+        Dim bytes As Byte() = Encoding.UTF8.GetBytes(json)
+
+        res.WriteHeader("application/json", bytes.Length)
+        Call res.SendData(bytes)
+    End Sub
+
     Private Shared Sub writeResult(res As HttpResponse, ok As Boolean, message As String, Optional data As Dictionary(Of String, Object) = Nothing)
+
         Dim payload As New Dictionary(Of String, Object) From {
             {"ok", ok},
             {"message", message}
@@ -723,7 +742,7 @@ Public Class Service
         End If
 
         res.AccessControlAllowOrigin = "*"
-        res.WriteJSON(payload)
+        writeJson(res, payload)
     End Sub
 
     Private Class DependencyInfo

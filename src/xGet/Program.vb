@@ -103,11 +103,14 @@ Module Program
             Return 2
         End If
 
-        Call Console.WriteLine($"uploaded {If(result.id, Path.GetFileNameWithoutExtension(package))} {If(result.version, "")}".Trim())
+        Dim name As String = If(String.IsNullOrEmpty(result.id), Path.GetFileNameWithoutExtension(package), result.id)
+        Dim version As String = If(result.version, "")
+
+        Call Console.WriteLine($"uploaded {name} {version}".Trim())
         Return 0
     End Function
 
-    Private Shared Function parseOptions(args As String()) As Dictionary(Of String, String)
+    Private Function parseOptions(args As String()) As Dictionary(Of String, String)
         Dim options As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
         Dim i As Integer = 1
 
@@ -139,7 +142,7 @@ Module Program
         Return options
     End Function
 
-    Private Shared Function getOption(options As Dictionary(Of String, String), ParamArray names As String()) As String
+    Private Function getOption(options As Dictionary(Of String, String), ParamArray names As String()) As String
         For Each name As String In names
             Dim value As String = Nothing
             If options.TryGetValue(name, value) AndAlso Not String.IsNullOrEmpty(value) Then
@@ -149,7 +152,7 @@ Module Program
         Return ""
     End Function
 
-    Private Shared Sub printUsage()
+    Private Sub printUsage()
         Call Console.WriteLine(UsageText)
     End Sub
 End Module

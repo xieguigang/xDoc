@@ -25,12 +25,12 @@ Public Class AccountStore
     Public ReadOnly Property StoreFile As String
 
     Public Sub New()
-        Dim directory As String = Path.Combine(
+        Dim folder As String = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "xGet")
 
-        Call Directory.CreateDirectory(directory)
+        Call Directory.CreateDirectory(folder)
 
-        Me.StoreFile = Path.Combine(directory, "accounts.json")
+        Me.StoreFile = Path.Combine(folder, "accounts.json")
         Me.accounts = load()
     End Sub
 
