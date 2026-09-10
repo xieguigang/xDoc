@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Index · nuget</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="assets/css/scibasic.css" />
+</head>
+
+<body data-page="index">
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <img src="favicon.png" alt="nuget server logo" onerror="this.style.display='none'" />
+            <strong>nuget</strong>
+            <span class="sub">package server</span>
+        </a>
+        <nav class="topnav">
+            <a href="index.html" class="on">Packages</a>
+            <a href="about.html">Statistics</a>
+            <a href="v3/index.json">Service Index</a>
+        </nav>
+        <a class="home-btn" href="index.html" title="Home" aria-label="Home">↑</a>
+    </header>
+
+    <main class="wrap">
+        <p class="eyebrow"><b>01</b> <span>Server — Package Index</span></p>
+        <h1 class="headline">An experimental <span class="u">NuGet</span> feed served from
+            <span class="accent">Fluteway</span>.</h1>
+
+        <div class="meta">
+            <span>Protocol <b>NuGet v3</b></span>
+            <span>Storage <b>JSql</b></span>
+            <span>Runtime <b>VB.NET · net10.0</b></span>
+            <span>Auth <b>TOTP upload</b></span>
+        </div>
+
+        <p class="lede">
+            Packages can be downloaded anonymously by the official Visual Studio NuGet client,
+            while publishing is gated behind an experimental TOTP authentication handled by the
+            xGet command line client. Pick a package below to inspect its versions and download
+            links.
+        </p>
+
+        <section id="overview">
+            <p class="sec-label"><b>02</b> <span>Database Statistics</span></p>
+            <div class="stats">
+                <div class="stat" style="animation-delay:.02s">
+                    <div class="no">01</div>
+                    <div class="value" id="stat-packages">0</div>
+                    <div class="label">Packages</div>
+                </div>
+                <div class="stat" style="animation-delay:.08s">
+                    <div class="no">02</div>
+                    <div class="value" id="stat-versions">0</div>
+                    <div class="label">Versions</div>
+                </div>
+                <div class="stat" style="animation-delay:.14s">
+                    <div class="no">03</div>
+                    <div class="value" id="stat-downloads">0</div>
+                    <div class="label">Total Downloads</div>
+                </div>
+                <div class="stat" style="animation-delay:.20s">
+                    <div class="no">04</div>
+                    <div class="value" id="stat-users">0</div>
+                    <div class="label">Registered Users</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="packages">
+            <p class="sec-label"><b>03</b> <span>Packages</span></p>
+
+            <div class="toolbar">
+                <div class="search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                    </svg>
+                    <input id="search-input" type="search" placeholder="search packages by id or tag…"
+                        autocomplete="off" />
+                </div>
+                <div class="pager">
+                    <span id="page-info">0–0 of 0</span>
+                    <button class="btn" id="page-prev" disabled>Prev</button>
+                    <button class="btn" id="page-next" disabled>Next</button>
+                </div>
+            </div>
+
+            <div id="package-list">
+                <div class="loading"><span class="spinner"></span>loading packages…</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="pn">
+            <a href="about.html"><span>Next</span>Statistics</a>
+        </div>
+        <div class="legal">nuget · experimental feed · powered by Fluteway + JSql</div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
