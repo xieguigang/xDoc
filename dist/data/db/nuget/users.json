@@ -1,0 +1,56 @@
+{
+  "table": "users",
+  "comment": "nuget server users",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR(320)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "salt",
+      "type": "VARCHAR(256)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "secret",
+      "type": "VARCHAR(128)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "created",
+      "type": "DATETIME",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "email": "i@xieguigang.me",
+      "salt": "hOGkrWe3u9HDA1mxvI12JOmIm1WBfvSpvtJbuoDjGQuQduP1oUhL4Pq5do1TZaQENn3VfUzMRORv3x63CChUzOOzc3sLdiGI4XQKONTeEpx3DCh87887hg0xk4k2AxG5",
+      "secret": "I5MLTGONWK4PIFQGAPP32JEQVMGON5FL",
+      "created": "2026-09-10 08:48:50"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "table": "packages",
+  "comment": "nuget package metadata",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "package_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(100)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "description",
+      "type": "VARCHAR(4000)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "authors",
+      "type": "VARCHAR(500)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "tags",
+      "type": "VARCHAR(500)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "project_url",
+      "type": "VARCHAR(500)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "license",
+      "type": "VARCHAR(300)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "dependencies",
+      "type": "VARCHAR(4000)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "downloads",
+      "type": "INT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": 0,
+      "comment": null
+    },
+    {
+      "name": "size",
+      "type": "INT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": 0,
+      "comment": null
+    },
+    {
+      "name": "sha256",
+      "type": "VARCHAR(128)",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "published",
+      "type": "DATETIME",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "listed",
+      "type": "BOOLEAN",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": true,
+      "comment": null
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "Nuget",
+      "version": "1.0.0",
+      "description": "Package Description",
+      "authors": "Nuget",
+      "tags": "",
+      "project_url": "",
+      "license": "",
+      "dependencies": "Flute.Http|1.0.0;Fluteway|1.0.0;Microsoft.VisualBasic.Runtime|10.5.9742.7537;JSql|1.0.0",
+      "downloads": 0,
+      "size": 378973,
+      "sha256": "09bbae33691974d087ed3cacceff60e83ffe5e9752d5901975e0edebec88047f",
+      "published": "2026-09-10 08:50:32",
+      "listed": true
+    },
+    {
+      "id": 2,
+      "package_id": "Microsoft.VisualBasic.ApplicationServices.Development.VisualStudio",
+      "version": "1.0.9742.7537",
+      "description": "Parses and writes .sln/.slnx solutions and .vbproj files, builds VB.NET symbol trees with a recursive descent parser, maps compiled assemblies by reflection and decodes IL and source maps for sciBASIC# code tooling.",
+      "authors": "xieguigang \u003CI@xieguigang.me\u003E",
+      "tags": "scibasic visual-studio solution-parser code-analysis vbnet",
+      "project_url": "http://scibasic.net/",
+      "license": "GPL-3.0-or-later",
+      "dependencies": "Microsoft.VisualBasic.Runtime|10.5.9742.7537;System.Configuration.ConfigurationManager|10.0.12;System.Reflection.MetadataLoadContext|10.0.12",
+      "downloads": 0,
+      "size": 149170,
+      "sha256": "dc3e3219c821d896f74fdcbe0128d3e5e01055925b363f222519a2b795d3afb6",
+      "published": "2026-09-10 08:51:08",
+      "listed": true
+    }
+  ]
+}
