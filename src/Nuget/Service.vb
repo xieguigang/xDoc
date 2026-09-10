@@ -367,7 +367,17 @@ Public Class Service
     End Sub
 
     Private Sub uploadPackage(req As HttpPOSTRequest, res As HttpResponse, email As String, code As String)
+        If req.POSTData IsNot Nothing Then
+            Dim bodyFile As String = req.POSTData.InputStream
+            Dim bodyLen As Long = 0
+            If Not String.IsNullOrEmpty(bodyFile) AndAlso File.Exists(bodyFile) Then
+                bodyLen = New FileInfo(bodyFile).Length
+            End If
+            Call $"upload payload: contentType='{req.POSTData.ContentType}', body='{bodyFile}', len={bodyLen}, form=[{String.Join(",", req.POSTData.Form.AllKeys)}], files={req.POSTData.files.Count}".info()
+        End If
+
         If Not auth.Authenticate(email, code) Then
+            Call $"upload rejected: email='{email}', code length={If(code, "").Length}".warning()
             res.WriteError(HTTP_RFC.RFC_UNAUTHORIZED, "invalid email or TOTP code")
             Return
         End If
@@ -644,15 +654,36 @@ Public Class Service
     End Function
 
     Private Shared Function argument(req As HttpRequest, name As String) As String
-        Dim value As String = CType(req.Argument(name), String)
-        If value Is Nothing Then
-            Return ""
+        Dim post As HttpPOSTRequest = TryCast(req, HttpPOSTRequest)
+
+        If post IsNot Nothing AndAlso post.POSTData IsNot Nothing Then
+            Dim value As String = post.POSTData.Form(name)
+            If Not String.IsNullOrEmpty(value) Then
+                Return value.Trim()
+            End If
+
+            Dim [object] As Object = Nothing
+            If post.POSTData.Objects IsNot Nothing AndAlso
+               post.POSTData.Objects.TryGetValue(name, [object]) AndAlso [object] IsNot Nothing Then
+                Return [object].ToString().Trim()
+            End If
         End If
-        Return value.Trim()
+
+        Return queryValue(req, name)
     End Function
 
     Private Shared Function queryValue(req As HttpRequest, name As String) As String
-        Return argument(req, name)
+        Dim table As Dictionary(Of String, String()) = req.URL.query
+
+        If table IsNot Nothing Then
+            Dim values As String() = Nothing
+            If table.TryGetValue(name.ToLowerInvariant(), values) AndAlso
+               values IsNot Nothing AndAlso values.Length > 0 Then
+                Return If(values(0), "").Trim()
+            End If
+        End If
+
+        Return ""
     End Function
 
     Private Shared Function queryInt(req As HttpRequest, name As String, fallback As Integer) As Integer
