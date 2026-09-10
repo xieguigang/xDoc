@@ -116,5 +116,22 @@
       "comment": null
     }
   ],
-  "rows": []
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "Nuget",
+      "version": "1.0.0",
+      "description": "Package Description",
+      "authors": "Nuget",
+      "tags": "",
+      "project_url": "",
+      "license": "",
+      "dependencies": "Flute.Http|1.0.0;Fluteway|1.0.0;Microsoft.VisualBasic.Runtime|10.5.9742.7537;JSql|1.0.0",
+      "downloads": 1,
+      "size": 388609,
+      "sha256": "e2904a8b8a6f2ffa8efbb5412ffb1c93d52b39cb7d46d17f4338aa271e4215d1",
+      "published": "2026-09-10 08:37:50",
+      "listed": true
+    }
+  ]
 }

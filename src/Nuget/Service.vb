@@ -367,17 +367,8 @@ Public Class Service
     End Sub
 
     Private Sub uploadPackage(req As HttpPOSTRequest, res As HttpResponse, email As String, code As String)
-        If req.POSTData IsNot Nothing Then
-            Dim bodyFile As String = req.POSTData.InputStream
-            Dim bodyLen As Long = 0
-            If Not String.IsNullOrEmpty(bodyFile) AndAlso File.Exists(bodyFile) Then
-                bodyLen = New FileInfo(bodyFile).Length
-            End If
-            Call $"upload payload: contentType='{req.POSTData.ContentType}', body='{bodyFile}', len={bodyLen}, form=[{String.Join(",", req.POSTData.Form.AllKeys)}], files={req.POSTData.files.Count}".info()
-        End If
-
         If Not auth.Authenticate(email, code) Then
-            Call $"upload rejected: email='{email}', code length={If(code, "").Length}".warning()
+            Call $"upload rejected: email='{email}'".warning()
             res.WriteError(HTTP_RFC.RFC_UNAUTHORIZED, "invalid email or TOTP code")
             Return
         End If
