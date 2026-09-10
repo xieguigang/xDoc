@@ -1,0 +1,10 @@
+目前我想要你在当前的这个项目中开发出一个实验性质的nuget程序包服务器，具体为：src\Nuget\Nuget.vbproj项目为服务器端代码，src\xGet\xGet.vbproj项目为客户端代码。
+
+对于Nuget.vbproj项目而言，这个服务器端代码项目是一个class类库，其会通过"G:\GCModeller\src\runtime\httpd\src\HTTP_SERVER\Fluteway.vbproj"这个http服务器项目进行运行，具体的原理为Fluteway.vbproj项目会通过命令行参数获取得到Nuget.vbproj所编译出来的dll文件的路径，然后通过反射加载在Nuget.vbproj项目中所实现的http服务控制器模块，进行控制器对象的实例化，然后将控制器实例通过"G:\GCModeller\src\runtime\httpd\src\Flute\Http\Core\HttpRouter.vb"来运行。对于在这里所提到的控制器加载功能，目前在Fluteway.vbproj项目中尚未被实现，这个功能还需要你在"G:\GCModeller\src\runtime\httpd\src\HTTP_SERVER\Program.vb"命令行文件中进行编写实现，最终能够让我按照类似于下面的命令行来运行Nuget.vbproj项目：``Fluteway /run --app ./Nuget.dll --listen=80 --wwwroot="../wwwroot"``。
+
+在Nuget.vbproj服务器端项目中，会实现最新的标准的nuget协议，从而能够提供程序包服务让visual studio 2026中的官方的nuget客户端获取对应的nuget程序包。对于nuget程序包的下载，可以让用户通过visual studio中的nuget客户端匿名下载，但是上传nuget程序包需要通过src\xGet\xGet.vbproj客户端来实现，这是因为我准备将xGet.vbproj客户端的上传操作中的用户认证机制修改为实验性质的基于TOTP密码认证的机制，具体为，你需要使用src\Nuget\TotpModule.vb模块来做身份认证，当新用户通过xGet.vbproj客户端在服务器端注册一个新用户的时候，会需要提供email，服务器端会通过email加盐的方式，产生TOTP密钥，并将这个TOTP密钥返回给xGet.vbproj客户端，xGet.vbproj客户端会将这个TOTP密钥保存到本地，当用户需要上传一个新的nuget程序包的时候，需要通过xGet.vbproj客户端来进行上传，xGet.vbproj客户端会通过这个TOTP密钥生成验证码，验证码，email和上传的nuget程序包一起发送给Nuget.vbproj服务器端，Nuget.vbproj服务器端会通过TotpModule.vb模块来验证TOTP密码是否正确，如果正确，则允许上传，否则不允许上传。在Nuget.vbproj服务器端生成TOTP密钥的时候，每一个用户单独有自己的盐字符串，盐字符串应该是长度为128个字符的随机字符串。xGet.vbproj客户端应该是一个控制台程序，只需要实现上传功能即可。nuget程序包下载功能不需要实现，我使用visual studio中的官方客户端来从Nuget.vbproj服务器端匿名下载nuget程序包。
+
+对于Nuget.vbproj服务器端，你需要使用"G:\JSql\src\JSql\JSql.vbproj"项目用作为数据库引擎，这个数据库引擎实现了比较完整的支持mysql查询语法的数据操作语言以及数据查询语言，但是没有实现触发器，自定义函数，数据库用户权限等高级功能，但是目前已经满足当前的使用需求了。
+
+在Nuget.vbproj服务器端中，你还需要编写具体的网页，用于展示nuget程序包的列表，数据库统计信息，以及nuget程序包的详细信息，以及nuget程序包的下载链接。对应的页面文件和javascript代码，你需要在dist\wwwroot文件夹中进行编写。要求在这里所编写的前端页面的样式，应该是与scibasic.net官网的样式保持一致的。scibasic.net官网的css样式你可以从G:\scibasic-website文件夹中的html文件中获取得到。
+
