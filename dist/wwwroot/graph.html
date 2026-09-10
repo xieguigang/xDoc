@@ -32,10 +32,10 @@
             <span class="accent">relation</span> networks.</h1>
 
         <p class="lede">
-            The statistics below are precomputed when a package is published and stored inside the
-            JSql database, then streamed to this page as json. Tags drive the word cloud and the
-            relation network, while the nuspec dependency graph reveals how the hosted packages
-            depend on each other.
+            The statistics below are precomputed by the server, stored inside the JSql database and
+            streamed to this page as json. Tags drive the word cloud, a periodic analysis embeds
+            the package tag matrix into three dimensions and clusters it, while the nuspec
+            dependency graph reveals how the hosted packages depend on each other.
         </p>
 
         <section id="graph-summary">
@@ -53,8 +53,8 @@
                 </div>
                 <div class="stat" style="animation-delay:.14s">
                     <div class="no">03</div>
-                    <div class="value" id="stat-graph-tag-edges">0</div>
-                    <div class="label">Tag Relations</div>
+                    <div class="value" id="stat-graph-clusters">0</div>
+                    <div class="label">Clusters</div>
                 </div>
                 <div class="stat" style="animation-delay:.20s">
                     <div class="no">04</div>
@@ -82,13 +82,20 @@
             </div>
         </section>
 
-        <section id="tag-network">
-            <p class="sec-label"><b>04</b> <span>Package Relation Network</span></p>
+        <section id="package-clusters">
+            <p class="sec-label"><b>04</b> <span>Package Clusters</span></p>
             <div class="chart">
-                <div class="chart-head"><span>Shared Tags</span><span class="mono">3D · drag to rotate, scroll to zoom</span></div>
-                <div id="chart-tag-network" class="chart-canvas chart-canvas-3d">
-                    <div class="loading"><span class="spinner"></span>loading 3D network…</div>
+                <div class="chart-head"><span>UMAP 3D · KMeans</span><span class="mono">click a point to open the package</span></div>
+                <div id="chart-package-clusters" class="chart-canvas chart-canvas-3d">
+                    <div class="loading"><span class="spinner"></span>loading cluster scatter…</div>
                 </div>
+            </div>
+            <div class="chip-list cluster-legend" id="cluster-legend"></div>
+            <div class="note">
+                Every point is one package: its tag set is encoded as a 0/1 vector, embedded into
+                three dimensions with <b>UMAP</b> and classified with <b>KMeans</b>. The colour
+                encodes the cluster label, the point size reflects the cluster size, and dragging /
+                scrolling orbits the static embedding.
             </div>
         </section>
 

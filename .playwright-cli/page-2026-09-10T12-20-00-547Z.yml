@@ -1,0 +1,88 @@
+- generic [active] [ref=f5e1]:
+  - banner [ref=f5e2]:
+    - link "nuget server logo nuget package server" [ref=f5e3] [cursor=pointer]:
+      - /url: index.html
+      - img "nuget server logo" [ref=f5e4]
+      - strong [ref=f5e5]: nuget
+      - generic [ref=f5e6]: package server
+    - navigation [ref=f5e7]:
+      - link "Packages" [ref=f5e8] [cursor=pointer]:
+        - /url: index.html
+      - link "Statistics" [ref=f5e9] [cursor=pointer]:
+        - /url: about.html
+      - link "Graphs" [ref=f5e10] [cursor=pointer]:
+        - /url: graph.html
+      - link "Service Index" [ref=f5e11] [cursor=pointer]:
+        - /url: v3/index.json
+    - link "Home" [ref=f5e12] [cursor=pointer]:
+      - /url: index.html
+      - text: ↖
+  - main [ref=f5e13]:
+    - paragraph [ref=f5e14]:
+      - generic [ref=f5e15]: "01"
+      - generic [ref=f5e16]: Feed — Visualisation
+    - heading "Tag distribution and package relation networks." [level=1] [ref=f5e17]
+    - paragraph [ref=f5e18]: The statistics below are precomputed by the server, stored inside the JSql database and streamed to this page as json. Tags drive the word cloud, a periodic analysis embeds the package tag matrix into three dimensions and clusters it, while the nuspec dependency graph reveals how the hosted packages depend on each other.
+    - generic [ref=f5e19]:
+      - paragraph [ref=f5e20]:
+        - generic [ref=f5e21]: "02"
+        - generic [ref=f5e22]: Overview
+      - generic [ref=f5e23]:
+        - generic [ref=f5e24]:
+          - generic [ref=f5e25]: "01"
+          - generic [ref=f5e26]: "135"
+          - generic [ref=f5e27]: Packages
+        - generic [ref=f5e28]:
+          - generic [ref=f5e29]: "02"
+          - generic [ref=f5e30]: "256"
+          - generic [ref=f5e31]: Distinct Tags
+        - generic [ref=f5e32]:
+          - generic [ref=f5e33]: "03"
+          - generic [ref=f5e34]: "0"
+          - generic [ref=f5e35]: Clusters
+        - generic [ref=f5e36]:
+          - generic [ref=f5e37]: "04"
+          - generic [ref=f5e38]: "0"
+          - generic [ref=f5e39]: Dependencies
+    - generic [ref=f5e40]:
+      - paragraph [ref=f5e41]:
+        - generic [ref=f5e42]: "03"
+        - generic [ref=f5e43]: Tag Distribution
+      - generic [ref=f5e44]:
+        - generic [ref=f5e46]:
+          - generic [ref=f5e47]: Word Cloud
+          - generic [ref=f5e48]: by package count
+        - generic [ref=f5e52]:
+          - generic [ref=f5e53]: Top 25 Tags
+          - generic [ref=f5e54]: bar chart
+    - generic [ref=f5e58]:
+      - paragraph [ref=f5e59]:
+        - generic [ref=f5e60]: "04"
+        - generic [ref=f5e61]: Package Clusters
+      - generic [ref=f5e62]:
+        - generic [ref=f5e63]:
+          - generic [ref=f5e64]: UMAP 3D · KMeans
+          - generic [ref=f5e65]: click a point to open the package
+        - generic [ref=f5e66]: loading cluster scatter…
+      - generic [ref=f5e69]: "Every point is one package: its tag set is encoded as a 0/1 vector, embedded into three dimensions with UMAP and classified with KMeans. The colour encodes the cluster label, the point size reflects the cluster size, and dragging / scrolling orbits the static embedding."
+    - generic [ref=f5e70]:
+      - paragraph [ref=f5e71]:
+        - generic [ref=f5e72]: "05"
+        - generic [ref=f5e73]: Dependency Network
+      - generic [ref=f5e74]:
+        - generic [ref=f5e75]:
+          - generic [ref=f5e76]: Nuspec Dependencies
+          - generic [ref=f5e77]: arrow = depends on
+        - generic [ref=f5e78]: loading dependency network…
+      - generic [ref=f5e81]: Green nodes are packages hosted in this feed, blue nodes are external dependencies that were not uploaded here. An arrow points from a package to the package it depends on.
+  - contentinfo [ref=f5e82]:
+    - generic [ref=f5e83]:
+      - link "Previous Statistics" [ref=f5e84] [cursor=pointer]:
+        - /url: about.html
+        - generic [ref=f5e85]: Previous
+        - text: Statistics
+      - link "Next Packages" [ref=f5e86] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=f5e87]: Next
+        - text: Packages
+    - generic [ref=f5e88]: nuget · experimental feed · powered by Fluteway + JSql

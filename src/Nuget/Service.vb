@@ -28,6 +28,13 @@ Public Class Service
     Private auth As TotpAuth
     Private router As HttpRouter
 
+    ''' <summary>
+    ''' the timer driving the periodic package cluster analysis. the instance is
+    ''' kept in a field because an unreferenced timer would be garbage
+    ''' collected and the periodic task would silently stop.
+    ''' </summary>
+    Private analysisTimer As System.Threading.Timer
+
     Public Sub Mount(router As HttpRouter, config As IReadOnlyDictionary(Of String, String)) Implements IHttpAppModule.Mount
         Me.router = router
         Me.config = NugetConfiguration.FromConfig(config)
@@ -40,6 +47,41 @@ Public Class Service
         Me.auth = New TotpAuth(Me.store)
 
         Call $"nuget server data directory: {Me.config.DataDirectory}".info()
+
+        If Me.config.ClusterEnabled Then
+            ' the first run is delayed so that it does not compete with the
+            ' server startup, then it repeats on the configured interval.
+            Me.analysisTimer = New System.Threading.Timer(
+                AddressOf analysisTick,
+                Nothing,
+                dueTime:=TimeSpan.FromSeconds(30),
+                period:=TimeSpan.FromMinutes(Me.config.ClusterIntervalMinutes))
+
+            Call $"package cluster analysis scheduled: every {Me.config.ClusterIntervalMinutes} minute(s), k={Me.config.ClusterK}".info()
+        Else
+            Call "package cluster analysis is disabled by the configuration".info()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' the periodic analysis callback: rebuild the tag matrix / umap / kmeans
+    ''' result when the feed has changed. every exception is swallowed (and
+    ''' logged) so that the background task can never take the server down.
+    ''' </summary>
+    Private Sub analysisTick(state As Object)
+        Try
+            Dim summary As PackageClusterAnalysis.AnalysisSummary = PackageClusterAnalysis.RunIfChanged(store, config)
+
+            If summary.Rebuilt Then
+                Call $"package cluster analysis: {summary.Message} (elapsed={summary.ElapsedMilliseconds}ms)".info()
+            ElseIf summary.Success Then
+                Call $"package cluster analysis skipped: {summary.Message}".debug()
+            Else
+                Call $"package cluster analysis failed: {summary.Message}".warning()
+            End If
+        Catch ex As Exception
+            Call App.LogException(ex)
+        End Try
     End Sub
 
 #Region "service index"
@@ -607,6 +649,7 @@ Public Class Service
             {"published", isoDate(latest.published)},
             {"iconUrl", If(String.IsNullOrEmpty(iconFile), "", $"{baseUrl}/api/icon/{Uri.EscapeDataString(latest.package_id)}")},
             {"readme", readmeInfo(baseUrl, latest)},
+            {"cluster", clusterInfo(latest.package_id)},
             {"metadata", metadataJson},
             {"dependencies", dependencies},
             {"versions", versionList}
@@ -640,6 +683,28 @@ Public Class Service
             {"format", extension},
             {"markdown", extension = "md" OrElse extension = "markdown"},
             {"url", $"{baseUrl}/api/readme/{Uri.EscapeDataString(idLower)}/{Uri.EscapeDataString(versionLower)}"}
+        }
+    End Function
+
+    ''' <summary>
+    ''' the umap coordinate and the kmeans label of one package as produced by
+    ''' the periodic tag space analysis; <c>available=False</c> when the package
+    ''' was not part of the last analysis (for example a package without tags).
+    ''' </summary>
+    Private Function clusterInfo(packageId As String) As Dictionary(Of String, Object)
+        Dim record As PackageClusterRecord = store.GetPackageCluster(packageId)
+
+        If record Is Nothing Then
+            Return New Dictionary(Of String, Object) From {{"available", False}}
+        End If
+
+        Return New Dictionary(Of String, Object) From {
+            {"available", True},
+            {"label", record.cluster},
+            {"x", record.x},
+            {"y", record.y},
+            {"z", record.z},
+            {"updated", isoDate(record.updated)}
         }
     End Function
 
@@ -902,6 +967,71 @@ Public Class Service
     Public Sub ApiStatsDependencyNetwork(req As HttpRequest, res As HttpResponse)
         Call writeStatistic(res, NugetStatistics.DependencyNetworkStatName, Function() NugetStatistics.BuildDependencyNetwork(store.ReadAllPackages()))
     End Sub
+
+    ''' <summary>
+    ''' the precomputed umap / kmeans cluster document of the feed. an empty
+    ''' document is returned (with a hint message) while the first periodic
+    ''' analysis has not finished yet.
+    ''' </summary>
+    <HttpGet("/api/stats/clusters")>
+    Public Sub ApiStatsClusters(req As HttpRequest, res As HttpResponse)
+        Dim document As String = store.GetStatistic(PackageClusterAnalysis.ClustersStatName)
+
+        res.AccessControlAllowOrigin = "*"
+
+        If document.StringEmpty() Then
+            writeJson(res, New Dictionary(Of String, Object) From {
+                {"k", 0},
+                {"samples", 0},
+                {"tags", 0},
+                {"clusters", New List(Of Object)},
+                {"points", New List(Of Object)},
+                {"message", "the cluster analysis has not been built yet"}
+            })
+            Return
+        End If
+
+        Call writeRawJson(res, document)
+    End Sub
+
+    ''' <summary>
+    ''' force a cluster analysis rebuild; the uploaded TOTP credentials of a
+    ''' registered user are required. an optional ``k`` argument overrides the
+    ''' configured number of clusters.
+    ''' </summary>
+    <HttpPost("/api/stats/clusters/rebuild")>
+    Public Sub ApiStatsClustersRebuild(req As HttpPOSTRequest, res As HttpResponse)
+        If Not auth.Authenticate(argument(req, "email"), argument(req, "code")) Then
+            res.WriteError(HTTP_RFC.RFC_UNAUTHORIZED, "invalid email or TOTP code")
+            Return
+        End If
+
+        Dim k As Integer = 0
+        Dim requested As String = argument(req, "k")
+
+        If Not requested.StringEmpty() Then
+            If Not Integer.TryParse(requested, k) OrElse k < 2 OrElse k > 64 Then
+                res.WriteError(HTTP_RFC.RFC_BAD_REQUEST, "invalid k value: an integer between 2 and 64 is expected")
+                Return
+            End If
+        End If
+
+        Dim summary As PackageClusterAnalysis.AnalysisSummary = PackageClusterAnalysis.RunIfChanged(store, config, forceK:=k)
+
+        Call writeResult(res, summary.Success, summary.Message, analysisSummaryJson(summary))
+    End Sub
+
+    Private Shared Function analysisSummaryJson(summary As PackageClusterAnalysis.AnalysisSummary) As Dictionary(Of String, Object)
+        Return New Dictionary(Of String, Object) From {
+            {"rebuilt", summary.Rebuilt},
+            {"samples", summary.Samples},
+            {"tags", summary.Tags},
+            {"k", summary.K},
+            {"clusters", summary.Clusters},
+            {"latestPackages", summary.LatestPackages},
+            {"elapsedMilliseconds", summary.ElapsedMilliseconds}
+        }
+    End Function
 
     <HttpPost("/api/stats/rebuild")>
     Public Sub ApiStatsRebuild(req As HttpPOSTRequest, res As HttpResponse)

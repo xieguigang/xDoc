@@ -1,0 +1,95 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - link "nuget server logo nuget package server" [ref=f7e3] [cursor=pointer]:
+      - /url: index.html
+      - img "nuget server logo" [ref=f7e4]
+      - strong [ref=f7e5]: nuget
+      - generic [ref=f7e6]: package server
+    - navigation [ref=f7e7]:
+      - link "Packages" [ref=f7e8] [cursor=pointer]:
+        - /url: index.html
+      - link "Statistics" [ref=f7e9] [cursor=pointer]:
+        - /url: about.html
+      - link "Graphs" [ref=f7e10] [cursor=pointer]:
+        - /url: graph.html
+      - link "Service Index" [ref=f7e11] [cursor=pointer]:
+        - /url: v3/index.json
+    - link "Home" [ref=f7e12] [cursor=pointer]:
+      - /url: index.html
+      - text: ↖
+  - main [ref=f7e13]:
+    - paragraph [ref=f7e14]:
+      - generic [ref=f7e15]: "01"
+      - generic [ref=f7e16]: Feed — Visualisation
+    - heading "Tag distribution and package relation networks." [level=1] [ref=f7e17]
+    - paragraph [ref=f7e18]: The statistics below are precomputed by the server, stored inside the JSql database and streamed to this page as json. Tags drive the word cloud, a periodic analysis embeds the package tag matrix into three dimensions and clusters it, while the nuspec dependency graph reveals how the hosted packages depend on each other.
+    - generic [ref=f7e19]:
+      - paragraph [ref=f7e20]:
+        - generic [ref=f7e21]: "02"
+        - generic [ref=f7e22]: Overview
+      - generic [ref=f7e23]:
+        - generic [ref=f7e24]:
+          - generic [ref=f7e25]: "01"
+          - generic [ref=f7e26]: "135"
+          - generic [ref=f7e27]: Packages
+        - generic [ref=f7e28]:
+          - generic [ref=f7e29]: "02"
+          - generic [ref=f7e30]: "256"
+          - generic [ref=f7e31]: Distinct Tags
+        - generic [ref=f7e32]:
+          - generic [ref=f7e33]: "03"
+          - generic [ref=f7e34]: "6"
+          - generic [ref=f7e35]: Clusters
+        - generic [ref=f7e36]:
+          - generic [ref=f7e37]: "04"
+          - generic [ref=f7e38]: "0"
+          - generic [ref=f7e39]: Dependencies
+    - generic [ref=f7e40]:
+      - paragraph [ref=f7e41]:
+        - generic [ref=f7e42]: "03"
+        - generic [ref=f7e43]: Tag Distribution
+      - generic [ref=f7e44]:
+        - generic [ref=f7e46]:
+          - generic [ref=f7e47]: Word Cloud
+          - generic [ref=f7e48]: by package count
+        - generic [ref=f7e52]:
+          - generic [ref=f7e53]: Top 25 Tags
+          - generic [ref=f7e54]: bar chart
+    - generic [ref=f7e58]:
+      - paragraph [ref=f7e59]:
+        - generic [ref=f7e60]: "04"
+        - generic [ref=f7e61]: Package Clusters
+      - generic [ref=f7e62]:
+        - generic [ref=f7e63]:
+          - generic [ref=f7e64]: UMAP 3D · KMeans
+          - generic [ref=f7e65]: click a point to open the package
+        - generic [ref=f7e66]: "Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan"
+      - generic [ref=f7e71]:
+        - generic [ref=f7e72]: cluster 1 · 9
+        - generic [ref=f7e74]: cluster 2 · 9
+        - generic [ref=f7e76]: cluster 3 · 14
+        - generic [ref=f7e78]: cluster 4 · 10
+        - generic [ref=f7e80]: cluster 5 · 11
+        - generic [ref=f7e82]: cluster 6 · 17
+      - generic [ref=f7e84]: "Every point is one package: its tag set is encoded as a 0/1 vector, embedded into three dimensions with UMAP and classified with KMeans. The colour encodes the cluster label, the point size reflects the cluster size, and dragging / scrolling orbits the static embedding."
+    - generic [ref=f7e85]:
+      - paragraph [ref=f7e86]:
+        - generic [ref=f7e87]: "05"
+        - generic [ref=f7e88]: Dependency Network
+      - generic [ref=f7e89]:
+        - generic [ref=f7e90]:
+          - generic [ref=f7e91]: Nuspec Dependencies
+          - generic [ref=f7e92]: arrow = depends on
+        - generic [ref=f7e93]: loading dependency network…
+      - generic [ref=f7e96]: Green nodes are packages hosted in this feed, blue nodes are external dependencies that were not uploaded here. An arrow points from a package to the package it depends on.
+  - contentinfo [ref=f7e97]:
+    - generic [ref=f7e98]:
+      - link "Previous Statistics" [ref=f7e99] [cursor=pointer]:
+        - /url: about.html
+        - generic [ref=f7e100]: Previous
+        - text: Statistics
+      - link "Next Packages" [ref=f7e101] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=f7e102]: Next
+        - text: Packages
+    - generic [ref=f7e103]: nuget · experimental feed · powered by Fluteway + JSql

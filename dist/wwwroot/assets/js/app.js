@@ -478,6 +478,44 @@
         });
     }
 
+    /* ----------------------------- kmeans cluster label ----------------------------- */
+
+    /* the cluster colours must match the scatter palette of the graphs page so
+       that the label chip and the 3d point agree. */
+    var CLUSTER_COLORS = [
+        '#3fae4a', '#6fa8dc', '#d9a94a', '#c07ad6', '#5cc46a', '#ff7a6e',
+        '#4fb0c6', '#b8d94a', '#e08f4a', '#8f7ae0', '#4ad6a5', '#d9d24a'
+    ];
+
+    function renderClusterLabel(cluster) {
+        var row = $('pkg-cluster-row');
+        if (!row) {
+            return;
+        }
+
+        if (!cluster || !cluster.available) {
+            row.hidden = true;
+            return;
+        }
+
+        var index = (Number(cluster.label) - 1) % CLUSTER_COLORS.length;
+        if (index < 0) {
+            index += CLUSTER_COLORS.length;
+        }
+
+        var node = $('pkg-cluster');
+        if (node) {
+            /* the label of the meta row already reads "Cluster", so only the
+               kmeans label number is rendered here. */
+            node.textContent = String(cluster.label);
+            node.style.color = CLUSTER_COLORS[index];
+        }
+
+        row.hidden = false;
+        row.title = 'umap embedding: ' + Number(cluster.x || 0).toFixed(3) + ', ' +
+            Number(cluster.y || 0).toFixed(3) + ', ' + Number(cluster.z || 0).toFixed(3);
+    }
+
     /* ----------------------------- package list ----------------------------- */
 
     function loadPackages() {
@@ -608,6 +646,7 @@
         setText('pkg-downloads', formatNumber(pkg.totalDownloads));
         setText('pkg-versions', formatNumber((pkg.versions || []).length));
         setText('pkg-published', formatDate(pkg.published));
+        renderClusterLabel(pkg.cluster);
 
         var titleNode = $('pkg-headline');
         if (titleNode) {

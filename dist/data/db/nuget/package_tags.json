@@ -1838,6 +1838,31 @@
       "id": 362,
       "package_id": "Microsoft.VisualBasic.Runtime",
       "tag": "application-services"
+    },
+    {
+      "id": 363,
+      "package_id": "SMRUCC.genomics.Analysis.HTS.GSVA",
+      "tag": "gsva"
+    },
+    {
+      "id": 364,
+      "package_id": "SMRUCC.genomics.Core",
+      "tag": "gcmodeller"
+    },
+    {
+      "id": 365,
+      "package_id": "SMRUCC.genomics.Core",
+      "tag": "bioinformatics"
+    },
+    {
+      "id": 366,
+      "package_id": "SMRUCC.genomics.Core",
+      "tag": "genomics"
+    },
+    {
+      "id": 367,
+      "package_id": "SMRUCC.genomics.foundation.BIOM",
+      "tag": "biom-format"
     }
   ]
 }

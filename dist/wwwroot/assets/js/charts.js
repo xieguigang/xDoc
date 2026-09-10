@@ -15,6 +15,13 @@
     var BG = '#030303';
     var PALETTE = ['#3fae4a', '#5cc46a', '#2e8b3a', '#6fa8dc', '#e0c24a', '#9a9a9a', '#1f6b2a', '#ff7a6e'];
 
+    /* the cluster palette of the umap + kmeans scatter: the scibasic green and
+       blue family extended with the hues needed by a custom k. */
+    var CLUSTER_PALETTE = [
+        '#3fae4a', '#6fa8dc', '#d9a94a', '#c07ad6', '#5cc46a', '#ff7a6e',
+        '#4fb0c6', '#b8d94a', '#e08f4a', '#8f7ae0', '#4ad6a5', '#d9d24a'
+    ];
+
     var echartsInstances = [];
 
     var tooltip = {
@@ -287,6 +294,156 @@
         return graph3d;
     }
 
+    /* --------------------- package clusters (umap + kmeans) --------------------- */
+
+    function clusterColor(label) {
+        var index = (Number(label) - 1) % CLUSTER_PALETTE.length;
+        if (index < 0) {
+            index += CLUSTER_PALETTE.length;
+        }
+        return CLUSTER_PALETTE[index];
+    }
+
+    function renderClusterLegend(clusters) {
+        var host = $('cluster-legend');
+        if (!host) {
+            return;
+        }
+
+        var list = clusters || [];
+        if (!list.length) {
+            host.innerHTML = '';
+            return;
+        }
+
+        host.innerHTML = list.map(function (c) {
+            return '<span class="legend-item"><span class="dot" style="background:' +
+                clusterColor(c.label) + '"></span>cluster ' + esc(c.label) +
+                ' · ' + esc(c.size) + '</span>';
+        }).join('');
+    }
+
+    function renderPackageClusters(containerId, doc) {
+        var host = $(containerId);
+        if (!host) {
+            return null;
+        }
+        host.innerHTML = '';
+        renderClusterLegend(doc && doc.clusters);
+
+        var points = (doc && doc.points) || [];
+        if (!points.length) {
+            showEmpty(containerId, (doc && doc.message) || 'the cluster analysis has not been built yet');
+            return null;
+        }
+
+        var sizes = {};
+        (doc.clusters || []).forEach(function (c) { sizes[c.label] = c.size; });
+
+        var maxSize = 1;
+        Object.keys(sizes).forEach(function (label) {
+            maxSize = Math.max(maxSize, Number(sizes[label]) || 1);
+        });
+
+        var nodes = points.map(function (p) {
+            /* the vendored 3d-force-graph build has no nodeX/nodeY/nodeZ
+               accessors, so the umap coordinates are provided as the node
+               positions themselves. fx/fy/fz pin them in the d3 force
+               simulation, which turns the force layout into a static scatter
+               and keeps the distance semantics of the embedding. */
+            var x = Number(p.x) || 0;
+            var y = Number(p.y) || 0;
+            var z = Number(p.z) || 0;
+
+            return {
+                id: p.id,
+                name: p.name || p.id,
+                x: x,
+                y: y,
+                z: z,
+                fx: x,
+                fy: y,
+                fz: z,
+                cluster: Number(p.cluster) || 0,
+                tags: p.tags || [],
+                value: Number(sizes[p.cluster]) || 1
+            };
+        });
+
+        /* the umap embedding may sit far away from the origin and span only a
+           few units, while the default camera distance of 3d-force-graph is
+           1000, so both the camera and the point size are derived from the
+           (robust) extent of the embedding. */
+        var centroid = { x: 0, y: 0, z: 0 };
+
+        nodes.forEach(function (n) {
+            centroid.x += n.x;
+            centroid.y += n.y;
+            centroid.z += n.z;
+        });
+
+        centroid.x /= nodes.length;
+        centroid.y /= nodes.length;
+        centroid.z /= nodes.length;
+
+        var radii = nodes.map(function (n) {
+            var dx = n.x - centroid.x;
+            var dy = n.y - centroid.y;
+            var dz = n.z - centroid.z;
+            return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        }).sort(function (a, b) { return a - b; });
+
+        /* the 90th percentile keeps a few outliers from squashing the view */
+        var spread = radii.length ? radii[Math.floor(radii.length * 0.9)] : 1;
+        var distance = Math.max(2, spread * 2.8);
+        var nodeSize = Math.max(0.06, spread * 0.05);
+
+        var graph3d = ForceGraph3D({
+            controlType: 'orbit',
+            rendererConfig: { antialias: true, alpha: false, preserveDrawingBuffer: true }
+        })(host)
+            .backgroundColor(BG)
+            .showNavInfo(false)
+            .nodeId('id')
+            .nodeLabel(function (n) {
+                return '<div style="color:#f2f2f2;font:12px Inter,sans-serif">'
+                    + '<b>' + esc(n.name) + '</b><br/>'
+                    + '<span style="color:#9a9a9a">cluster ' + esc(n.cluster)
+                    + ' · ' + esc((n.tags || []).join(', ')) + '</span></div>';
+            })
+            .nodeVal(function (n) { return 0.8 + 0.5 * (n.value / maxSize); })
+            .nodeRelSize(nodeSize)
+            .nodeColor(function (n) { return clusterColor(n.cluster); })
+            .nodeOpacity(0.9)
+            .nodeResolution(16)
+            .enableNodeDrag(false)
+            .warmupTicks(0)
+            .cooldownTicks(0)
+            .graphData({ nodes: nodes, links: [] })
+            .onNodeClick(function (node) {
+                window.location.href = packageLink(node.id, true);
+            });
+
+        var controls = graph3d.controls();
+        if (controls && controls.target) {
+            controls.target.set(centroid.x, centroid.y, centroid.z);
+        }
+
+        graph3d.cameraPosition({ x: centroid.x, y: centroid.y, z: centroid.z + distance });
+
+        // gently auto rotate for a lively 3d feel
+        if (controls && controls.autoRotate !== undefined) {
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.5;
+        }
+
+        /* the instance is published for debugging and for external tooling
+           (for example resolving a node coordinate to a screen position). */
+        window.__packageClusterGraph = graph3d;
+
+        return graph3d;
+    }
+
     /* ----------------------- dependency network ----------------------- */
 
     function renderDependencyNetwork(containerId, graph) {
@@ -423,12 +580,12 @@
             showEmpty('chart-tag-bar', 'failed to load tags: ' + error.message);
         });
 
-        showLoading('chart-tag-network', 'loading tag network…');
-        fetchJSON('/api/stats/tag-network').then(function (graph) {
-            setText('stat-graph-tag-edges', (graph && graph.links ? graph.links.length : 0));
-            renderTagNetwork('chart-tag-network', graph);
+        showLoading('chart-package-clusters', 'loading cluster scatter…');
+        fetchJSON('/api/stats/clusters').then(function (doc) {
+            setText('stat-graph-clusters', (doc && doc.k) || 0);
+            renderPackageClusters('chart-package-clusters', doc);
         }).catch(function (error) {
-            showEmpty('chart-tag-network', 'failed to load tag network: ' + error.message);
+            showEmpty('chart-package-clusters', 'failed to load the clusters: ' + error.message);
         });
 
         showLoading('chart-dependency-graph', 'loading dependency network…');

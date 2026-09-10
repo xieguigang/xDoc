@@ -1,0 +1,695 @@
+{
+  "table": "package_clusters",
+  "comment": "umap 3d embedding and kmeans cluster label",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "package_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "x",
+      "type": "DOUBLE",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "y",
+      "type": "DOUBLE",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "z",
+      "type": "DOUBLE",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "cluster",
+      "type": "INT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "updated",
+      "type": "DATETIME",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "microsoft.visualbasic.applicationservices.development.visualstudio",
+      "x": 0.1561630834,
+      "y": -0.5632279578,
+      "z": 0.1690352854,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 2,
+      "package_id": "microsoft.visualbasic.applicationservices.development.visualstudio.programdatabase",
+      "x": -1.0276531763,
+      "y": -0.2750847587,
+      "z": 0.9481869266,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 3,
+      "package_id": "microsoft.visualbasic.data.binarydata",
+      "x": 0.1940540987,
+      "y": -0.822983685,
+      "z": -0.1937499915,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 4,
+      "package_id": "microsoft.visualbasic.data.bootstrapping.fittings",
+      "x": -0.1557787281,
+      "y": 0.0974033004,
+      "z": 1.7060022433,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 5,
+      "package_id": "microsoft.visualbasic.data.chartplots",
+      "x": -1.2952037524,
+      "y": 0.7767426292,
+      "z": 0.10603984,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 6,
+      "package_id": "microsoft.visualbasic.data.chartplots.statistics",
+      "x": -1.0371690897,
+      "y": 0.1642138107,
+      "z": -0.8802584071,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 7,
+      "package_id": "microsoft.visualbasic.data.framework",
+      "x": 0.0495934933,
+      "y": -1.8914544485,
+      "z": -0.2757274161,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 8,
+      "package_id": "microsoft.visualbasic.data.framework.extensions",
+      "x": -0.4552784768,
+      "y": -1.5922827512,
+      "z": -0.8430987595,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 9,
+      "package_id": "microsoft.visualbasic.data.graphquery",
+      "x": -1.2176745201,
+      "y": 0.7861234259,
+      "z": -0.9675407368,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 10,
+      "package_id": "microsoft.visualbasic.data.graphtheory",
+      "x": 0.1406812877,
+      "y": -0.1651374702,
+      "z": -0.4782676718,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 11,
+      "package_id": "microsoft.visualbasic.data.io.hdf5",
+      "x": 0.0959154791,
+      "y": -0.1994727067,
+      "z": -2.1656120476,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 12,
+      "package_id": "microsoft.visualbasic.data.io.messagepack",
+      "x": -0.6900940988,
+      "y": -0.4899876017,
+      "z": -1.8006431661,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 13,
+      "package_id": "microsoft.visualbasic.data.io.sqlite3",
+      "x": 0.5685317719,
+      "y": 0.0827955303,
+      "z": -1.9848523095,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 14,
+      "package_id": "microsoft.visualbasic.data.nlp",
+      "x": 0.3620403811,
+      "y": 1.2748435615,
+      "z": -0.4257082297,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 15,
+      "package_id": "microsoft.visualbasic.data.nlp.word2vec",
+      "x": 0.7285393952,
+      "y": 1.0511967432,
+      "z": 0.5297200237,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 16,
+      "package_id": "microsoft.visualbasic.data.signal.io",
+      "x": 0.3010364319,
+      "y": -0.4919481178,
+      "z": -1.4931607805,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 17,
+      "package_id": "microsoft.visualbasic.data.storage",
+      "x": 0.0913458083,
+      "y": -1.7196654579,
+      "z": -0.619877967,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 18,
+      "package_id": "microsoft.visualbasic.data.trinitynlp",
+      "x": 0.8138917127,
+      "y": 1.3540623592,
+      "z": -0.4122528878,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 19,
+      "package_id": "microsoft.visualbasic.data.visualize",
+      "x": 1.3642972349,
+      "y": 0.3950995206,
+      "z": 1.0530643038,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 20,
+      "package_id": "microsoft.visualbasic.data.visualize.network",
+      "x": 0.4073531982,
+      "y": 0.4040492169,
+      "z": 1.4741322735,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 21,
+      "package_id": "microsoft.visualbasic.data.visualize.network.io.extensions",
+      "x": 0.5543570905,
+      "y": 0.1560152264,
+      "z": -0.9992694437,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 22,
+      "package_id": "microsoft.visualbasic.data.visualize.network.layouts",
+      "x": 0.9447225228,
+      "y": -0.4979366465,
+      "z": 0.0560576789,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 23,
+      "package_id": "microsoft.visualbasic.data.visualize.network.visualizer",
+      "x": -1.4193030753,
+      "y": 0.466572288,
+      "z": 0.6132793485,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 24,
+      "package_id": "microsoft.visualbasic.data.wave",
+      "x": 0.1492832864,
+      "y": 1.4393217598,
+      "z": 0.422102301,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 25,
+      "package_id": "microsoft.visualbasic.datamining.binarytreeclustering",
+      "x": 1.6390210641,
+      "y": 0.2213048406,
+      "z": 0.5987221897,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 26,
+      "package_id": "microsoft.visualbasic.datamining.densityquery",
+      "x": -0.2743612057,
+      "y": 0.0718244857,
+      "z": 0.7091097145,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 27,
+      "package_id": "microsoft.visualbasic.datamining.dynamicprogramming",
+      "x": 0.0635807502,
+      "y": 0.2053448733,
+      "z": -0.0782603481,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 28,
+      "package_id": "microsoft.visualbasic.datamining.featureframe",
+      "x": 0.1485585049,
+      "y": -1.5173918422,
+      "z": 0.3817293828,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 29,
+      "package_id": "microsoft.visualbasic.datamining.framework",
+      "x": 0.6816136082,
+      "y": 0.1921819394,
+      "z": 0.586224222,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 30,
+      "package_id": "microsoft.visualbasic.datamining.hiddenmarkovchain",
+      "x": 0.0111119876,
+      "y": 0.5272266497,
+      "z": -0.54937742,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 31,
+      "package_id": "microsoft.visualbasic.datamining.hierarchicalclustering",
+      "x": 1.2684988436,
+      "y": 0.546688455,
+      "z": 0.5384199126,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 32,
+      "package_id": "microsoft.visualbasic.datamining.hierarchicalclustering.plot",
+      "x": 0.8212079343,
+      "y": -0.0255890101,
+      "z": 1.3251761481,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 33,
+      "package_id": "microsoft.visualbasic.datamining.umap",
+      "x": -0.7364629913,
+      "y": -0.1613292597,
+      "z": 0.5249940167,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 34,
+      "package_id": "microsoft.visualbasic.datastorage.featherformat",
+      "x": -0.3642972347,
+      "y": -1.8556586801,
+      "z": -0.2648946615,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 35,
+      "package_id": "microsoft.visualbasic.datastorage.hdspack",
+      "x": -0.2872310465,
+      "y": 0.1537526805,
+      "z": -1.8757629038,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 36,
+      "package_id": "microsoft.visualbasic.datastorage.netcdf",
+      "x": -0.0089037093,
+      "y": -0.7005277685,
+      "z": -2.0432617866,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 37,
+      "package_id": "microsoft.visualbasic.deeplearning",
+      "x": 0.8335116489,
+      "y": -0.9296978893,
+      "z": 0.6273343261,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 38,
+      "package_id": "microsoft.visualbasic.drawing.windows",
+      "x": -0.6319220916,
+      "y": 0.7020280574,
+      "z": 0.3172784029,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 39,
+      "package_id": "microsoft.visualbasic.imaging",
+      "x": -1.2118269985,
+      "y": 0.1648930369,
+      "z": -0.0500665963,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 40,
+      "package_id": "microsoft.visualbasic.imaging.avimedia",
+      "x": 0.0569445686,
+      "y": 0.9032824495,
+      "z": 1.1579008815,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 41,
+      "package_id": "microsoft.visualbasic.imaging.landscape",
+      "x": 0.300426464,
+      "y": 0.8065264166,
+      "z": -0.0384841569,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 42,
+      "package_id": "microsoft.visualbasic.imaging.physics",
+      "x": 0.8377888711,
+      "y": -0.250422208,
+      "z": -0.4303127116,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 43,
+      "package_id": "microsoft.visualbasic.machinelearning",
+      "x": -0.8661431838,
+      "y": 0.308021796,
+      "z": 1.3895737321,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 44,
+      "package_id": "microsoft.visualbasic.machinelearning.data.extensions",
+      "x": -0.5428677306,
+      "y": -0.7878406044,
+      "z": -0.5607329634,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 45,
+      "package_id": "microsoft.visualbasic.machinelearning.debugger",
+      "x": 0.111468813,
+      "y": -0.560144215,
+      "z": 0.7887788588,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 46,
+      "package_id": "microsoft.visualbasic.machinelearning.t-sne",
+      "x": 0.6448897324,
+      "y": 0.8883177115,
+      "z": 1.133445646,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 47,
+      "package_id": "microsoft.visualbasic.machinelearning.tensorflow",
+      "x": 0.0185222026,
+      "y": -0.4840562469,
+      "z": 1.5063577882,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 48,
+      "package_id": "microsoft.visualbasic.machinelearning.vae",
+      "x": 1.5949749043,
+      "y": 0.3433561343,
+      "z": 0.1623943211,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 49,
+      "package_id": "microsoft.visualbasic.machinelearning.xgboost",
+      "x": -0.4359389071,
+      "y": -0.2668325618,
+      "z": -0.1672496695,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 50,
+      "package_id": "microsoft.visualbasic.machinelearning.xgboost.dataset",
+      "x": 0.5845772228,
+      "y": -0.9325133103,
+      "z": -0.5873411951,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 51,
+      "package_id": "microsoft.visualbasic.math.core",
+      "x": 0.8966300654,
+      "y": 0.6527533688,
+      "z": 1.2221910167,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 52,
+      "package_id": "microsoft.visualbasic.math.lambda",
+      "x": -0.5021111275,
+      "y": 1.5366538897,
+      "z": 0.2826421318,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 53,
+      "package_id": "microsoft.visualbasic.math.machinevision",
+      "x": -1.0571078159,
+      "y": -0.5884468466,
+      "z": 0.0738286133,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 54,
+      "package_id": "microsoft.visualbasic.math.matrix",
+      "x": -0.632139315,
+      "y": 0.734571481,
+      "z": 1.0193193959,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 55,
+      "package_id": "microsoft.visualbasic.math.odessolver",
+      "x": 0.6512778569,
+      "y": -0.2738437949,
+      "z": 0.5102122803,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 56,
+      "package_id": "microsoft.visualbasic.math.randomizer",
+      "x": 0.2204378842,
+      "y": 0.2114461739,
+      "z": 0.7226027275,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 57,
+      "package_id": "microsoft.visualbasic.math.signalprocessing",
+      "x": 1.3059178458,
+      "y": -0.6788052071,
+      "z": -0.3401752414,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 58,
+      "package_id": "microsoft.visualbasic.math.statistics",
+      "x": -1.4711307223,
+      "y": -0.1569995358,
+      "z": -0.6775265234,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 59,
+      "package_id": "microsoft.visualbasic.math.statistics.anova",
+      "x": -0.4444879252,
+      "y": -0.8564081658,
+      "z": 0.9473775548,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 60,
+      "package_id": "microsoft.visualbasic.mime.application.json",
+      "x": -0.7346118213,
+      "y": -0.576842614,
+      "z": -1.0772417087,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 61,
+      "package_id": "microsoft.visualbasic.mime.application.rdf_xml",
+      "x": 1.0379616604,
+      "y": 0.6406711498,
+      "z": -0.522811985,
+      "cluster": 6,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 62,
+      "package_id": "microsoft.visualbasic.mime.application.xml",
+      "x": -0.5469509775,
+      "y": 1.2750428578,
+      "z": 0.9553882641,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 63,
+      "package_id": "microsoft.visualbasic.mime.html",
+      "x": -0.7623540853,
+      "y": 1.1774162269,
+      "z": -0.4625247137,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 64,
+      "package_id": "microsoft.visualbasic.mime.office.excel",
+      "x": 1.4264940228,
+      "y": -0.2287851127,
+      "z": 0.0043969705,
+      "cluster": 1,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 65,
+      "package_id": "microsoft.visualbasic.mime.text.markdown",
+      "x": -0.3477773771,
+      "y": 0.7773896497,
+      "z": -0.6080430907,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 66,
+      "package_id": "microsoft.visualbasic.mime.text.yaml",
+      "x": -0.5759591493,
+      "y": 0.2985768543,
+      "z": -1.1359179753,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 67,
+      "package_id": "microsoft.visualbasic.runtime",
+      "x": -0.2945465787,
+      "y": -0.9488997029,
+      "z": 0.1640579275,
+      "cluster": 2,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 68,
+      "package_id": "smrucc.genomics.analysis.hts.gsva",
+      "x": -0.3916345341,
+      "y": -0.2874861213,
+      "z": 1.2506656408,
+      "cluster": 5,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 69,
+      "package_id": "smrucc.genomics.core",
+      "x": -0.0662237687,
+      "y": 0.3229806426,
+      "z": -1.0424289775,
+      "cluster": 4,
+      "updated": "2026-09-10 12:19:54"
+    },
+    {
+      "id": 70,
+      "package_id": "smrucc.genomics.foundation.biom",
+      "x": -1.5920775176,
+      "y": -0.3329888938,
+      "z": 0.0746921523,
+      "cluster": 3,
+      "updated": "2026-09-10 12:19:54"
+    }
+  ]
+}

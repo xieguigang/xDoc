@@ -44,5 +44,55 @@
       "comment": null
     }
   ],
-  "rows": []
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "microsoft.visualbasic.applicationservices.development.visualstudio",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 3
+    },
+    {
+      "id": 2,
+      "package_id": "smrucc.genomics.model.network.kegggraphvisualizer",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    },
+    {
+      "id": 3,
+      "package_id": "microsoft.visualbasic.data.visualize.network.visualizer",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    },
+    {
+      "id": 4,
+      "package_id": "microsoft.visualbasic.data.io.hdf5",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    },
+    {
+      "id": 5,
+      "package_id": "microsoft.visualbasic.math.core",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    },
+    {
+      "id": 6,
+      "package_id": "microsoft.visualbasic.runtime",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    },
+    {
+      "id": 7,
+      "package_id": "microsoft.visualbasic.machinelearning.vae",
+      "day": "2026-09-10",
+      "downloads": 0,
+      "views": 1
+    }
+  ]
 }

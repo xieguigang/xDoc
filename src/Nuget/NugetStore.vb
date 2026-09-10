@@ -93,6 +93,19 @@ Public Class DailyActivity
 End Class
 
 ''' <summary>
+''' the umap 3d embedding and the kmeans cluster label of one package, as
+''' produced by the periodic tag matrix analysis.
+''' </summary>
+Public Class PackageClusterRecord
+    Public Property package_id As String
+    Public Property x As Double
+    Public Property y As Double
+    Public Property z As Double
+    Public Property cluster As Integer
+    Public Property updated As Date
+End Class
+
+''' <summary>
 ''' a thin data access layer over the <see cref="SqlEngine"/> JSql engine.
 ''' </summary>
 ''' <remarks>
@@ -179,6 +192,16 @@ Public Class NugetStore
                 "  downloads INT DEFAULT 0," &
                 "  views INT DEFAULT 0" &
                 ") COMMENT='daily download and page view counters'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS package_clusters (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  x DOUBLE," &
+                "  y DOUBLE," &
+                "  z DOUBLE," &
+                "  cluster INT," &
+                "  updated DATETIME" &
+                ") COMMENT='umap 3d embedding and kmeans cluster label'")
         End SyncLock
     End Sub
 
@@ -215,6 +238,19 @@ Public Class NugetStore
         Return "'" & value.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) & "'"
     End Function
 
+    ''' <summary>
+    ''' format a floating point value as a plain invariant sql literal. the
+    ''' value is rounded to 10 decimals and never written in scientific
+    ''' notation, which the JSql tokenizer would not understand.
+    ''' </summary>
+    Private Shared Function number(value As Double) As String
+        If Double.IsNaN(value) OrElse Double.IsInfinity(value) Then
+            Return "0"
+        End If
+
+        Return value.ToString("0.##########", CultureInfo.InvariantCulture)
+    End Function
+
     Private Function nextId(table As String) As Long
         Dim rs As ResultSet = query($"SELECT MAX(id) AS max_id FROM {table}")
         If rs Is Nothing OrElse rs.Rows.Count = 0 Then
@@ -235,6 +271,17 @@ Public Class NugetStore
     Private Shared Function toLong(value As Object) As Long
         If value Is Nothing Then Return 0
         Return Convert.ToInt64(value, CultureInfo.InvariantCulture)
+    End Function
+
+    Private Shared Function toDouble(value As Object) As Double
+        If value Is Nothing Then Return 0
+
+        Dim parsed As Double
+        If Double.TryParse(value.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, parsed) Then
+            Return parsed
+        End If
+
+        Return 0
     End Function
 
     Private Shared Function toDate(value As Object) As Date
@@ -662,6 +709,81 @@ Public Class NugetStore
                 $"{newId}, '{esc(key)}', '{esc(day)}', {downloads}, {views})")
         End If
     End Sub
+
+#End Region
+
+#Region "package clusters (umap + kmeans)"
+
+    ''' <summary>
+    ''' replace the whole package cluster table with one analysis result. the
+    ''' rows are deleted and reinserted inside a single monitor lock so that the
+    ''' web front end never observes a half written cluster table.
+    ''' </summary>
+    ''' <param name="records">the per package embedding records.</param>
+    Public Sub ReplacePackageClusters(records As IEnumerable(Of PackageClusterRecord))
+        SyncLock sync
+            Call exec("DELETE FROM package_clusters")
+
+            Dim id As Long = 1
+
+            If records IsNot Nothing Then
+                For Each record As PackageClusterRecord In records
+                    If record Is Nothing OrElse record.package_id.StringEmpty() Then
+                        Continue For
+                    End If
+
+                    Call exec(
+                        "INSERT INTO package_clusters (id, package_id, x, y, z, cluster, updated) VALUES (" &
+                        $"{id}, '{esc(record.package_id)}', {number(record.x)}, {number(record.y)}, {number(record.z)}, {record.cluster}, {dateLiteral(record.updated)})")
+
+                    id += 1
+                Next
+            End If
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' read every package cluster row of the database.
+    ''' </summary>
+    ''' <returns>the per package embedding records.</returns>
+    Public Function ReadPackageClusters() As List(Of PackageClusterRecord)
+        Dim list As New List(Of PackageClusterRecord)
+
+        SyncLock sync
+            Dim rs As ResultSet = query("SELECT package_id, x, y, z, cluster, updated FROM package_clusters")
+            If rs Is Nothing OrElse Not rs.IsQuery Then
+                Return list
+            End If
+
+            For Each row As Object() In rs.Rows
+                list.Add(New PackageClusterRecord With {
+                    .package_id = toStr(row(0)),
+                    .x = toDouble(row(1)),
+                    .y = toDouble(row(2)),
+                    .z = toDouble(row(3)),
+                    .cluster = CInt(toLong(row(4))),
+                    .updated = toDate(row(5))
+                })
+            Next
+        End SyncLock
+
+        Return list
+    End Function
+
+    ''' <summary>
+    ''' read the cluster assignment of one package; returns <c>Nothing</c> when
+    ''' the package was not part of the last analysis (for example a package
+    ''' without any tag).
+    ''' </summary>
+    ''' <param name="packageId">the package id, compared case insensitively.</param>
+    Public Function GetPackageCluster(packageId As String) As PackageClusterRecord
+        If String.IsNullOrEmpty(packageId) Then
+            Return Nothing
+        End If
+
+        Return ReadPackageClusters() _
+            .FirstOrDefault(Function(item) item.package_id.Equals(packageId.Trim(), StringComparison.OrdinalIgnoreCase))
+    End Function
 
 #End Region
 

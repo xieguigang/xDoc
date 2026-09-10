@@ -1067,3 +1067,36 @@ details.raw pre {
         height: 260px;
     }
 }
+
+/* ===================== package cluster legend ===================== */
+
+.cluster-legend {
+    margin-top: 14px;
+}
+
+.cluster-legend .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border: 1px solid var(--hairline2);
+    border-radius: 2px;
+    background: var(--panel);
+    color: var(--ink-dim);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+
+.cluster-legend .legend-item:hover {
+    border-color: var(--hairline);
+    color: var(--ink);
+}
+
+.cluster-legend .dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
