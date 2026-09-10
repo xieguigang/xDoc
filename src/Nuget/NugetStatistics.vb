@@ -103,11 +103,21 @@ Public Module NugetStatistics
             Next
         Next
 
-        ' for every tag, accumulate the shared tag counter of each package pair
+        ' a tag that is shared by the majority of the packages (for example the
+        ' umbrella ``scibasic`` tag) would connect everything into a single dense
+        ' clique, so it is treated as a generic tag and ignored by the relation
+        ' network to keep the graph readable.
+        Dim genericLimit As Integer = Math.Max(2, CInt(Math.Ceiling(tagSets.Count * 0.5)))
+
+        ' for every (non generic) tag, accumulate the shared counter of each pair
         Dim weights As New Dictionary(Of String, Integer)(StringComparer.Ordinal)
 
         For Each item In inverted
             Dim ids As List(Of String) = item.Value
+
+            If ids.Count > genericLimit Then
+                Continue For
+            End If
 
             For i As Integer = 0 To ids.Count - 2
                 For j As Integer = i + 1 To ids.Count - 1
@@ -128,7 +138,17 @@ Public Module NugetStatistics
             Next
         Next
 
+        ' only keep the packages that take part in at least one relation
+        Dim connected As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+
+        For Each item In weights
+            Dim parts As String() = item.Key.Split(vbTab(0))
+            Call connected.Add(parts(0))
+            Call connected.Add(parts(1))
+        Next
+
         Dim nodes As List(Of Object) = tagSets _
+            .Where(Function(item) connected.Contains(item.Key)) _
             .Select(Function(item) CObj(New Dictionary(Of String, Object) From {
                 {"id", item.Key},
                 {"name", display(item.Key)},
