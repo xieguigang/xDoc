@@ -1,0 +1,48 @@
+{
+  "table": "package_activity",
+  "comment": "daily download and page view counters",
+  "keys": [],
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "package_id",
+      "type": "VARCHAR(200)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "day",
+      "type": "VARCHAR(20)",
+      "notNull": true,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "downloads",
+      "type": "INT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": 0,
+      "comment": null
+    },
+    {
+      "name": "views",
+      "type": "INT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": 0,
+      "comment": null
+    }
+  ],
+  "rows": []
+}
