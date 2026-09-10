@@ -553,19 +553,106 @@ Public Class Service
             })
         Next
 
+        Dim metadata As Dictionary(Of String, String) = store.GetPackageMetadata(latest.package_id)
+        Dim iconFile As String = ""
+        If metadata.TryGetValue("iconFile", iconFile) AndAlso Not String.IsNullOrEmpty(iconFile) Then
+            ' the icon is served by the controller endpoint
+        Else
+            iconFile = ""
+        End If
+
+        Dim dependencies As New List(Of Object)
+        For Each dependency As NuspecDependency In store.GetPackageDependencies(latest.package_id)
+            Dim hosted As Boolean = store.PackageExists(dependency.id)
+            dependencies.Add(New Dictionary(Of String, Object) From {
+                {"id", dependency.id},
+                {"range", dependency.range},
+                {"targetFramework", dependency.targetFramework},
+                {"hosted", hosted},
+                {"url", If(hosted, "package.html?id=" & Uri.EscapeDataString(dependency.id),
+                           "https://www.nuget.org/packages/" & Uri.EscapeDataString(dependency.id))}
+            })
+        Next
+
+        Dim metadataJson As New Dictionary(Of String, Object)
+        For Each item In metadata
+            metadataJson(item.Key) = item.Value
+        Next
+
         res.AccessControlAllowOrigin = "*"
         writeJson(res, New Dictionary(Of String, Object) From {
             {"id", latest.package_id},
+            {"title", fieldValue(metadata, "title")},
             {"description", latest.description},
+            {"summary", fieldValue(metadata, "summary")},
+            {"releaseNotes", fieldValue(metadata, "releaseNotes")},
             {"authors", latest.authors},
+            {"owners", fieldValue(metadata, "owners")},
+            {"copyright", fieldValue(metadata, "copyright")},
+            {"language", fieldValue(metadata, "language")},
             {"tags", splitTags(latest.tags)},
             {"license", latest.license},
+            {"licenseUrl", fieldValue(metadata, "licenseUrl")},
             {"projectUrl", latest.project_url},
+            {"repository", fieldValue(metadata, "repository")},
+            {"requireLicenseAcceptance", fieldValue(metadata, "requireLicenseAcceptance")},
             {"latestVersion", versions.Last().version},
             {"selectedVersion", latest.version},
             {"totalDownloads", versions.Sum(Function(v) v.downloads)},
             {"published", isoDate(latest.published)},
+            {"iconUrl", If(String.IsNullOrEmpty(iconFile), "", $"{baseUrl}/api/package/{Uri.EscapeDataString(latest.package_id)}/icon")},
+            {"metadata", metadataJson},
+            {"dependencies", dependencies},
             {"versions", versionList}
+        })
+    End Sub
+
+    Private Shared Function fieldValue(metadata As Dictionary(Of String, String), name As String) As String
+        Dim value As String = Nothing
+        If metadata IsNot Nothing AndAlso metadata.TryGetValue(name, value) Then
+            Return value
+        End If
+        Return ""
+    End Function
+
+    <HttpGet("/api/package/{id}/icon")>
+    Public Sub ApiPackageIcon(req As HttpRequest, res As HttpResponse)
+        Dim id As String = routeValue(req, "id")
+        Dim metadata As Dictionary(Of String, String) = store.GetPackageMetadata(id)
+        Dim iconFile As String = ""
+        Dim pkg As PackageRecord = store.GetVersions(id).LastOrDefault()
+
+        If pkg Is Nothing OrElse Not metadata.TryGetValue("iconFile", iconFile) OrElse iconFile.StringEmpty() Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, "no icon image for this package")
+            Return
+        End If
+
+        Dim path As String = Path.Combine(versionDirectory(pkg), iconFile)
+        If Not File.Exists(path) Then
+            res.WriteError(HTTP_RFC.RFC_NOT_FOUND, "no icon image for this package")
+            Return
+        End If
+
+        res.AccessControlAllowOrigin = "*"
+        res.SendFile(path)
+    End Sub
+
+    <HttpGet("/api/tag/{tag}")>
+    Public Sub ApiTagPackages(req As HttpRequest, res As HttpResponse)
+        Dim tag As String = routeValue(req, "tag")
+        Dim skip As Integer = queryInt(req, "skip", 0)
+        Dim take As Integer = queryInt(req, "take", 20)
+        Dim total As Integer = 0
+
+        Dim page As List(Of PackageSummary) = store.GetPackagesByTag(tag, skip, take, total)
+
+        res.AccessControlAllowOrigin = "*"
+        writeJson(res, New Dictionary(Of String, Object) From {
+            {"tag", tag},
+            {"total", total},
+            {"skip", skip},
+            {"take", take},
+            {"packages", page.Select(Function(p) packageSummaryJson(p)).ToList()}
         })
     End Sub
 
