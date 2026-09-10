@@ -118,7 +118,9 @@
 
     <script src="assets/vendor/echarts.min.js"></script>
     <script src="assets/vendor/echarts-wordcloud.min.js"></script>
-    <script src="assets/vendor/three.min.js"></script>
+    <!-- 3d-force-graph already bundles its own three.js build, so the vendored
+         assets/vendor/three.min.js is intentionally not loaded here to avoid a
+         duplicated three.js instance; it stays available for other pages. -->
     <script src="assets/vendor/3d-force-graph.min.js"></script>
     <script src="assets/js/charts.js"></script>
 </body>

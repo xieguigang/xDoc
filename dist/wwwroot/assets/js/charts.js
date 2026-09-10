@@ -220,7 +220,10 @@
         });
         var maxValue = nodes.reduce(function (a, n) { return Math.max(a, n.value); }, 1);
 
-        var graph3d = ForceGraph3D({ controlType: 'orbit' })(host)
+        var graph3d = ForceGraph3D({
+            controlType: 'orbit',
+            rendererConfig: { antialias: true, alpha: false, preserveDrawingBuffer: true }
+        })(host)
             .backgroundColor(BG)
             .showNavInfo(false)
             .nodeId('id')
