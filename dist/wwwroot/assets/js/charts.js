@@ -304,7 +304,20 @@
         return CLUSTER_PALETTE[index];
     }
 
-    function renderClusterLegend(clusters) {
+    /* the shared state of the graphs page: the cluster document is cached so
+       that a cluster filter can aggregate the tags of the selected packages
+       without another request to the server. */
+    var graphState = {
+        clusters: null,
+        filter: 0,
+        allTags: [],
+        totalTags: 0,
+        totalPackages: 0,
+        tagCloud: null,
+        tagBar: null
+    };
+
+    function renderClusterLegend(clusters, selected) {
         var host = $('cluster-legend');
         if (!host) {
             return;
@@ -316,11 +329,130 @@
             return;
         }
 
-        host.innerHTML = list.map(function (c) {
-            return '<span class="legend-item"><span class="dot" style="background:' +
-                clusterColor(c.label) + '"></span>cluster ' + esc(c.label) +
-                ' · ' + esc(c.size) + '</span>';
-        }).join('');
+        var active = Number(selected) || 0;
+        var chips = list.map(function (c) {
+            var on = Number(c.label) === active ? ' on' : '';
+
+            return '<button type="button" class="legend-item' + on + '" data-cluster="' +
+                esc(c.label) + '" title="filter the tag charts by cluster ' + esc(c.label) + '">' +
+                '<span class="dot" style="background:' + clusterColor(c.label) + '"></span>' +
+                'cluster ' + esc(c.label) + ' · ' + esc(c.size) + '</button>';
+        });
+
+        chips.push('<button type="button" class="legend-item all' + (active ? '' : ' on') +
+            '" data-cluster="0" title="show the tags of every package">All</button>');
+
+        host.innerHTML = chips.join('');
+    }
+
+    /* --------------------- cluster filter (tag charts) --------------------- */
+
+    /* aggregate the tag frequency of the given packages */
+    function aggregateTags(points) {
+        var counter = {};
+
+        (points || []).forEach(function (p) {
+            (p.tags || []).forEach(function (tag) {
+                var key = String(tag).trim();
+
+                if (key) {
+                    counter[key] = (counter[key] || 0) + 1;
+                }
+            });
+        });
+
+        return Object.keys(counter).map(function (name) {
+            return { name: name, count: counter[name] };
+        }).sort(function (a, b) {
+            if (b.count !== a.count) {
+                return b.count - a.count;
+            }
+            return a.name < b.name ? -1 : 1;
+        });
+    }
+
+    function disposeChart(containerId) {
+        var host = $(containerId);
+
+        if (!host) {
+            return;
+        }
+
+        var chart = echarts.getInstanceByDom(host);
+        var index = echartsInstances.indexOf(chart);
+
+        if (chart) {
+            chart.dispose();
+        }
+        if (index >= 0) {
+            echartsInstances.splice(index, 1);
+        }
+    }
+
+    function renderTagCharts(list, source) {
+        /* the tag charts are re-rendered on every filter change, so the
+           previous instances must be released first, otherwise the canvases
+           would stack up and the instance registry would keep growing. */
+        disposeChart('chart-tag-cloud');
+        disposeChart('chart-tag-bar');
+
+        if (!list.length) {
+            graphState.tagCloud = null;
+            graphState.tagBar = null;
+            showEmpty('chart-tag-cloud', 'no tags for ' + source);
+            showEmpty('chart-tag-bar', 'no tags for ' + source);
+            return;
+        }
+
+        graphState.tagCloud = renderTagCloud('chart-tag-cloud', list);
+        graphState.tagBar = renderTagBar('chart-tag-bar', list);
+    }
+
+    /* apply the cluster filter to the tag charts: cluster 0 means "all" */
+    function applyClusterFilter(cluster) {
+        var selected = Number(cluster) || 0;
+        var doc = graphState.clusters;
+        var points = (doc && doc.points) || [];
+        var tags;
+        var source;
+
+        graphState.filter = selected;
+        renderClusterLegend(doc && doc.clusters, selected);
+
+        if (selected) {
+            var filtered = points.filter(function (p) {
+                return Number(p.cluster) === selected;
+            });
+
+            tags = aggregateTags(filtered);
+            source = 'cluster ' + selected + ' · ' + filtered.length +
+                ' package' + (filtered.length === 1 ? '' : 's');
+
+            /* the distinct tags card follows the current filter, while the All
+               chip restores the global value of the feed. */
+            setText('stat-graph-tags', tags.length);
+
+            var info = $('cluster-filter-info');
+            if (info) {
+                info.textContent = 'cluster ' + selected + ' · ' + filtered.length + ' packages';
+            }
+        } else {
+            /* "all" uses the server side tag distribution of the whole feed
+               (which also counts the packages that have no tag at all). */
+            tags = graphState.allTags.length ? graphState.allTags : aggregateTags(points);
+            source = 'all packages';
+
+            setText('stat-graph-tags', graphState.totalTags || tags.length);
+
+            var all = $('cluster-filter-info');
+            if (all) {
+                all.textContent = 'all packages';
+            }
+        }
+
+        renderTagCharts(tags, source);
+        setText('tag-cloud-source', source);
+        setText('tag-bar-source', source);
     }
 
     function renderPackageClusters(containerId, doc) {
@@ -329,7 +461,9 @@
             return null;
         }
         host.innerHTML = '';
-        renderClusterLegend(doc && doc.clusters);
+        graphState.clusters = doc || null;
+
+        renderClusterLegend(doc && doc.clusters, graphState.filter);
 
         var points = (doc && doc.points) || [];
         if (!points.length) {
@@ -345,103 +479,105 @@
             maxSize = Math.max(maxSize, Number(sizes[label]) || 1);
         });
 
-        var nodes = points.map(function (p) {
-            /* the vendored 3d-force-graph build has no nodeX/nodeY/nodeZ
-               accessors, so the umap coordinates are provided as the node
-               positions themselves. fx/fy/fz pin them in the d3 force
-               simulation, which turns the force layout into a static scatter
-               and keeps the distance semantics of the embedding. */
-            var x = Number(p.x) || 0;
-            var y = Number(p.y) || 0;
-            var z = Number(p.z) || 0;
+        /* the echarts-gl scatter3D pipeline copies the item level symbolSize /
+           symbol / style into the item visuals, so the point size can encode
+           the cluster size while the colour encodes the cluster label. */
+        var data = points.map(function (p) {
+            var cluster = Number(p.cluster) || 0;
+            var size = Number(sizes[cluster]) || 1;
 
             return {
-                id: p.id,
+                value: [Number(p.x) || 0, Number(p.y) || 0, Number(p.z) || 0],
                 name: p.name || p.id,
-                x: x,
-                y: y,
-                z: z,
-                fx: x,
-                fy: y,
-                fz: z,
-                cluster: Number(p.cluster) || 0,
+                id: p.id,
+                cluster: cluster,
                 tags: p.tags || [],
-                value: Number(sizes[p.cluster]) || 1
+                symbolSize: 6 + 7 * Math.sqrt(size / maxSize),
+                itemStyle: { color: clusterColor(cluster), opacity: 0.92 }
             };
         });
 
-        /* the umap embedding may sit far away from the origin and span only a
-           few units, while the default camera distance of 3d-force-graph is
-           1000, so both the camera and the point size are derived from the
-           (robust) extent of the embedding. */
-        var centroid = { x: 0, y: 0, z: 0 };
+        /* one value axis per umap dimension, padded a little so that no point
+           sits exactly on the grid border */
+        function axis3D(name, index) {
+            var values = data.map(function (item) { return item.value[index]; });
+            var min = Math.min.apply(null, values);
+            var max = Math.max.apply(null, values);
+            var span = (max - min) || 1;
+            var padding = span * 0.08;
 
-        nodes.forEach(function (n) {
-            centroid.x += n.x;
-            centroid.y += n.y;
-            centroid.z += n.z;
+            return {
+                type: 'value',
+                name: name,
+                min: min - padding,
+                max: max + padding,
+                nameTextStyle: { color: TEXT, fontSize: 11 },
+                nameGap: 16,
+                axisLine: { lineStyle: { color: HAIRLINE } },
+                axisTick: { lineStyle: { color: HAIRLINE } },
+                axisLabel: { color: TEXT, fontSize: 10 },
+                splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } },
+                splitArea: { show: false }
+            };
+        }
+
+        var chart = echarts.init(host, null, { renderer: 'canvas' });
+        echartsInstances.push(chart);
+
+        chart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: Object.assign({
+                formatter: function (p) {
+                    var item = p.data || {};
+                    var name = item.name || p.name || '';
+                    var tags = item.tags || [];
+
+                    return '<b>' + esc(name) + '</b><br/>'
+                        + '<span style="color:#9a9a9a">cluster ' + esc(item.cluster) + '</span><br/>'
+                        + '<span style="color:#9a9a9a">' + esc(tags.join(', ')) + '</span>';
+                }
+            }, tooltip),
+            grid3D: {
+                boxWidth: 100,
+                boxHeight: 78,
+                boxDepth: 100,
+                left: 'center',
+                top: 'center',
+                axisPointer: { show: false },
+                axisLine: { lineStyle: { color: HAIRLINE } },
+                splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } },
+                viewControl: {
+                    autoRotate: true,
+                    autoRotateSpeed: 6,
+                    distance: 190,
+                    alpha: 22,
+                    beta: 26,
+                    rotateMouseButton: 'left',
+                    panMouseButton: 'right'
+                }
+            },
+            xAxis3D: axis3D('UMAP1', 0),
+            yAxis3D: axis3D('UMAP2', 1),
+            zAxis3D: axis3D('UMAP3', 2),
+            series: [{
+                type: 'scatter3D',
+                name: 'packages',
+                symbol: 'circle',
+                data: data,
+                emphasis: { itemStyle: { opacity: 1 } }
+            }]
         });
 
-        centroid.x /= nodes.length;
-        centroid.y /= nodes.length;
-        centroid.z /= nodes.length;
+        chart.on('click', function (params) {
+            if (params && params.data && params.data.id) {
+                window.location.href = packageLink(params.data.id, true);
+            }
+        });
 
-        var radii = nodes.map(function (n) {
-            var dx = n.x - centroid.x;
-            var dy = n.y - centroid.y;
-            var dz = n.z - centroid.z;
-            return Math.sqrt(dx * dx + dy * dy + dz * dz);
-        }).sort(function (a, b) { return a - b; });
+        /* published for debugging and for the end to end assertions */
+        window.__packageClusterChart = chart;
 
-        /* the 90th percentile keeps a few outliers from squashing the view */
-        var spread = radii.length ? radii[Math.floor(radii.length * 0.9)] : 1;
-        var distance = Math.max(2, spread * 2.8);
-        var nodeSize = Math.max(0.06, spread * 0.05);
-
-        var graph3d = ForceGraph3D({
-            controlType: 'orbit',
-            rendererConfig: { antialias: true, alpha: false, preserveDrawingBuffer: true }
-        })(host)
-            .backgroundColor(BG)
-            .showNavInfo(false)
-            .nodeId('id')
-            .nodeLabel(function (n) {
-                return '<div style="color:#f2f2f2;font:12px Inter,sans-serif">'
-                    + '<b>' + esc(n.name) + '</b><br/>'
-                    + '<span style="color:#9a9a9a">cluster ' + esc(n.cluster)
-                    + ' · ' + esc((n.tags || []).join(', ')) + '</span></div>';
-            })
-            .nodeVal(function (n) { return 0.8 + 0.5 * (n.value / maxSize); })
-            .nodeRelSize(nodeSize)
-            .nodeColor(function (n) { return clusterColor(n.cluster); })
-            .nodeOpacity(0.9)
-            .nodeResolution(16)
-            .enableNodeDrag(false)
-            .warmupTicks(0)
-            .cooldownTicks(0)
-            .graphData({ nodes: nodes, links: [] })
-            .onNodeClick(function (node) {
-                window.location.href = packageLink(node.id, true);
-            });
-
-        var controls = graph3d.controls();
-        if (controls && controls.target) {
-            controls.target.set(centroid.x, centroid.y, centroid.z);
-        }
-
-        graph3d.cameraPosition({ x: centroid.x, y: centroid.y, z: centroid.z + distance });
-
-        // gently auto rotate for a lively 3d feel
-        if (controls && controls.autoRotate !== undefined) {
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.5;
-        }
-
-        /* the instance is published for debugging and for external tooling
-           (for example resolving a node coordinate to a screen position). */
-        window.__packageClusterGraph = graph3d;
-
-        return graph3d;
+        return chart;
     }
 
     /* ----------------------- dependency network ----------------------- */
@@ -520,14 +656,19 @@
                     { name: 'hosted', itemStyle: { color: ACCENT } },
                     { name: 'external', itemStyle: { color: '#6fa8dc' } }
                 ],
+                /* the node names are hidden by default so that the network
+                   stays readable; hovering a node reveals the name of the
+                   focused node and of its one hop neighbours together with the
+                   connecting edges (the adjacency focus puts both of them into
+                   the emphasis state). */
                 label: {
-                    show: true,
+                    show: false,
                     position: 'right',
+                    distance: 6,
                     color: TEXT,
-                    fontSize: 10,
-                    formatter: function (p) {
-                        return p.data.value >= 3 ? p.data.name : '';
-                    }
+                    fontSize: 10.5,
+                    textBorderColor: 'rgba(3,3,3,.85)',
+                    textBorderWidth: 2
                 },
                 edgeSymbol: ['none', 'arrow'],
                 edgeSymbolSize: [0, 5],
@@ -538,7 +679,22 @@
                 },
                 emphasis: {
                     focus: 'adjacency',
-                    lineStyle: { color: ACCENT, opacity: 1 }
+                    label: {
+                        show: true,
+                        color: TEXT_STRONG,
+                        fontSize: 10.5,
+                        fontWeight: 500
+                    },
+                    itemStyle: {
+                        borderColor: TEXT_STRONG,
+                        borderWidth: 1
+                    },
+                    lineStyle: { color: ACCENT, opacity: 1, width: 1.6 }
+                },
+                blur: {
+                    itemStyle: { opacity: 0.25 },
+                    label: { show: false },
+                    lineStyle: { opacity: 0.08 }
                 },
                 force: {
                     repulsion: 160,
@@ -565,20 +721,46 @@
     function initGraph() {
         fetchJSON('/api/stats/tags').then(function (tags) {
             var list = (tags && tags.tags) || [];
-            setText('stat-graph-packages', tags && tags.totalPackages ? tags.totalPackages : 0);
-            setText('stat-graph-tags', (tags && tags.totalTags) || list.length);
+
+            /* the whole feed distribution is cached so that the All chip can
+               restore it without another request. */
+            graphState.allTags = list;
+            graphState.totalTags = (tags && tags.totalTags) || list.length;
+            graphState.totalPackages = (tags && tags.totalPackages) || 0;
+
+            setText('stat-graph-packages', graphState.totalPackages);
+            setText('stat-graph-tags', graphState.totalTags);
 
             if (!list.length) {
                 showEmpty('chart-tag-cloud', 'no tags found');
                 showEmpty('chart-tag-bar', 'no tags found');
             } else {
-                renderTagCloud('chart-tag-cloud', list);
-                renderTagBar('chart-tag-bar', list);
+                renderTagCharts(list, 'all packages');
             }
         }).catch(function (error) {
             showEmpty('chart-tag-cloud', 'failed to load tags: ' + error.message);
             showEmpty('chart-tag-bar', 'failed to load tags: ' + error.message);
         });
+
+        /* every cluster chip filters the tag charts; the listener is registered
+           once here (the legend is re-rendered, the listener is not). */
+        var legend = $('cluster-legend');
+
+        if (legend) {
+            legend.addEventListener('click', function (event) {
+                var button = event.target;
+
+                while (button && button.nodeType === 1 && button !== legend &&
+                    !button.getAttribute('data-cluster')) {
+                    button = button.parentNode;
+                }
+
+                if (button && button.nodeType === 1 && button !== legend &&
+                    button.getAttribute('data-cluster') !== null) {
+                    applyClusterFilter(button.getAttribute('data-cluster'));
+                }
+            });
+        }
 
         showLoading('chart-package-clusters', 'loading cluster scatter…');
         fetchJSON('/api/stats/clusters').then(function (doc) {

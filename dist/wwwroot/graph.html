@@ -68,13 +68,13 @@
             <p class="sec-label"><b>03</b> <span>Tag Distribution</span></p>
             <div class="chart-grid">
                 <div class="chart">
-                    <div class="chart-head"><span>Word Cloud</span><span class="mono">by package count</span></div>
+                    <div class="chart-head"><span>Word Cloud</span><span class="mono" id="tag-cloud-source">all packages</span></div>
                     <div id="chart-tag-cloud" class="chart-canvas" style="height:380px">
                         <div class="loading"><span class="spinner"></span>loading word cloud…</div>
                     </div>
                 </div>
                 <div class="chart">
-                    <div class="chart-head"><span>Top 25 Tags</span><span class="mono">bar chart</span></div>
+                    <div class="chart-head"><span>Top 25 Tags</span><span class="mono" id="tag-bar-source">all packages</span></div>
                     <div id="chart-tag-bar" class="chart-canvas" style="height:380px">
                         <div class="loading"><span class="spinner"></span>loading bar chart…</div>
                     </div>
@@ -85,7 +85,11 @@
         <section id="package-clusters">
             <p class="sec-label"><b>04</b> <span>Package Clusters</span></p>
             <div class="chart">
-                <div class="chart-head"><span>UMAP 3D · KMeans</span><span class="mono">click a point to open the package</span></div>
+                <div class="chart-head">
+                    <span>UMAP 3D · KMeans</span>
+                    <span class="mono">click a point to open the package ·
+                        <span id="cluster-filter-info">all packages</span></span>
+                </div>
                 <div id="chart-package-clusters" class="chart-canvas chart-canvas-3d">
                     <div class="loading"><span class="spinner"></span>loading cluster scatter…</div>
                 </div>
@@ -125,10 +129,12 @@
 
     <script src="assets/vendor/echarts.min.js"></script>
     <script src="assets/vendor/echarts-wordcloud.min.js"></script>
-    <!-- 3d-force-graph already bundles its own three.js build, so the vendored
-         assets/vendor/three.min.js is intentionally not loaded here to avoid a
-         duplicated three.js instance; it stays available for other pages. -->
-    <script src="assets/vendor/3d-force-graph.min.js"></script>
+    <!-- echarts-gl provides the grid3D / scatter3D support used by the package
+         cluster scatter and must be loaded after the echarts core. the
+         vendored 3d-force-graph (and its three.js build) is intentionally not
+         loaded anymore since the clusters are rendered with echarts now; the
+         files stay in assets/vendor so that the old rendering can be restored. -->
+    <script src="assets/vendor/echarts-gl.min.js"></script>
     <script src="assets/js/charts.js"></script>
 </body>
 
