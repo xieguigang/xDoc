@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics · nuget</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="assets/css/scibasic.css" />
+</head>
+
+<body data-page="about">
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <img src="favicon.png" alt="nuget server logo" onerror="this.style.display='none'" />
+            <strong>nuget</strong>
+            <span class="sub">package server</span>
+        </a>
+        <nav class="topnav">
+            <a href="index.html">Packages</a>
+            <a href="about.html" class="on">Statistics</a>
+            <a href="v3/index.json">Service Index</a>
+        </nav>
+        <a class="home-btn" href="index.html" title="Home" aria-label="Home">↖</a>
+    </header>
+
+    <main class="wrap">
+        <p class="eyebrow"><b>01</b> <span>Database — Statistics</span></p>
+        <h1 class="headline">Feed <span class="u">telemetry</span> and published packages.</h1>
+
+        <p class="lede">
+            The package metadata is stored inside the JSql engine as plain json tables, while the
+            physical <span class="mono">.nupkg</span> files live in the configured data directory.
+            Everything below is computed live from the server json api.
+        </p>
+
+        <section id="about-stats">
+            <p class="sec-label"><b>02</b> <span>Overview</span></p>
+            <div class="stats">
+                <div class="stat" style="animation-delay:.02s">
+                    <div class="no">01</div>
+                    <div class="value" id="stat-packages">0</div>
+                    <div class="label">Packages</div>
+                </div>
+                <div class="stat" style="animation-delay:.08s">
+                    <div class="no">02</div>
+                    <div class="value" id="stat-versions">0</div>
+                    <div class="label">Versions</div>
+                </div>
+                <div class="stat" style="animation-delay:.14s">
+                    <div class="no">03</div>
+                    <div class="value" id="stat-downloads">0</div>
+                    <div class="label">Total Downloads</div>
+                </div>
+                <div class="stat" style="animation-delay:.20s">
+                    <div class="no">04</div>
+                    <div class="value" id="stat-users">0</div>
+                    <div class="label">Registered Users</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="top">
+            <p class="sec-label"><b>03</b> <span>Top Downloads</span></p>
+            <div id="top-downloads">
+                <div class="loading"><span class="spinner"></span>loading…</div>
+            </div>
+        </section>
+
+        <section id="recent">
+            <p class="sec-label"><b>04</b> <span>Recent Publications</span></p>
+            <div id="recent-packages">
+                <div class="loading"><span class="spinner"></span>loading…</div>
+            </div>
+        </section>
+
+        <section id="endpoints">
+            <p class="sec-label"><b>05</b> <span>Protocol Endpoints</span></p>
+            <div class="endpoints">
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3/index.json</span></div>
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3-flatcontainer/{id}/index.json</span></div>
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3-flatcontainer/{id}/{version}/{file}</span></div>
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3/registration/{id}/index.json</span></div>
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3/search</span></div>
+                <div class="endpoint"><span class="method">GET</span><span class="path">/v3/autocomplete</span></div>
+                <div class="endpoint"><span class="method">POST</span><span class="path">/api/register</span></div>
+                <div class="endpoint"><span class="method">POST</span><span class="path">/api/v2/package</span></div>
+                <div class="endpoint"><span class="method">PUT</span><span class="path">/api/v2/package</span></div>
+            </div>
+
+            <div class="note">
+                <b>Upload</b> is only available through the xGet client using the experimental TOTP
+                authentication. <b>Download</b> is anonymous and follows the standard NuGet v3 flat
+                container layout.
+            </div>
+
+            <p class="mono">snapshot generated at <span id="about-generated">—</span></p>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="pn">
+            <a href="index.html"><span>Previous</span>Packages</a>
+        </div>
+        <div class="legal">nuget · experimental feed · powered by Fluteway + JSql</div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
