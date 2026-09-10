@@ -1,0 +1,161 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "nuget server logo nuget package server" [ref=e3] [cursor=pointer]:
+      - /url: index.html
+      - img "nuget server logo" [ref=e4]
+      - strong [ref=e5]: nuget
+      - generic [ref=e6]: package server
+    - navigation [ref=e7]:
+      - link "Packages" [ref=e8] [cursor=pointer]:
+        - /url: index.html
+      - link "Statistics" [ref=e9] [cursor=pointer]:
+        - /url: about.html
+      - link "Graphs" [ref=e10] [cursor=pointer]:
+        - /url: graph.html
+      - link "Service Index" [ref=e11] [cursor=pointer]:
+        - /url: v3/index.json
+    - link "Back" [ref=e12] [cursor=pointer]:
+      - /url: index.html
+      - text: ↖
+  - main [ref=e13]:
+    - paragraph [ref=e14]:
+      - generic [ref=e15]: "01"
+      - generic [ref=e16]: Package — ReadmeDemo
+    - article [ref=e17]:
+      - generic [ref=e20]:
+        - heading "ReadmeDemo" [level=1] [ref=e21]
+        - paragraph
+      - generic [ref=e22]:
+        - generic [ref=e23]: Version 1.2.3
+        - generic [ref=e24]: Versions 1
+        - generic [ref=e25]: Downloads 1
+        - generic [ref=e26]: Published 2026-09-10
+      - generic [ref=e27]:
+        - paragraph [ref=e28]:
+          - generic [ref=e29]: "02"
+          - generic [ref=e30]: Manifest
+        - generic [ref=e31]:
+          - term [ref=e32]: Authors
+          - definition [ref=e33]: xDoc
+          - term [ref=e34]: Owners
+          - definition [ref=e35]: —
+          - term [ref=e36]: License
+          - definition [ref=e37]: —
+          - term [ref=e38]: License URL
+          - definition [ref=e39]: —
+          - term [ref=e40]: Project
+          - definition [ref=e41]: —
+          - term [ref=e42]: Repository
+          - definition [ref=e43]: —
+          - term [ref=e44]: Language
+          - definition [ref=e45]: —
+          - term [ref=e46]: Copyright
+          - definition [ref=e47]: —
+          - term [ref=e48]: License acceptance
+          - definition [ref=e49]: "false"
+      - generic [ref=e50]:
+        - paragraph [ref=e51]:
+          - generic [ref=e52]: "03"
+          - generic [ref=e53]: Tags
+        - generic [ref=e54]:
+          - link "demo" [ref=e55] [cursor=pointer]:
+            - /url: tags.html?tag=demo
+          - link "readme" [ref=e56] [cursor=pointer]:
+            - /url: tags.html?tag=readme
+          - link "chart" [ref=e57] [cursor=pointer]:
+            - /url: tags.html?tag=chart
+      - generic [ref=e58]:
+        - paragraph [ref=e59]:
+          - generic [ref=e60]: "04"
+          - generic [ref=e61]: Dependencies
+        - generic [ref=e62]: this package has no dependencies
+      - generic [ref=e64]:
+        - paragraph [ref=e65]:
+          - generic [ref=e66]: "05"
+          - generic [ref=e67]: Description
+        - generic [ref=e68]: A demo package that ships a readme rendered on the detail page.
+      - generic [ref=e69]:
+        - paragraph [ref=e70]:
+          - generic [ref=e71]: "06"
+          - generic [ref=e72]: Release Notes
+        - generic [ref=e73]: —
+      - generic [ref=e74]:
+        - paragraph [ref=e75]:
+          - generic [ref=e76]: "07"
+          - generic [ref=e77]: Readme — readme.md
+        - generic [ref=e78]:
+          - heading "ReadmeDemo" [level=1] [ref=e79]
+          - blockquote [ref=e80]:
+            - paragraph [ref=e81]: An experimental nuget feed demo package.
+          - heading "Install" [level=2] [ref=e82]
+          - code [ref=e84]: <PackageReference Include="ReadmeDemo" Version="1.2.3" />
+          - heading "Features" [level=2] [ref=e85]
+          - list [ref=e86]:
+            - listitem [ref=e87]: daily download and page view chart
+            - listitem [ref=e88]: readme rendered on the package detail page
+            - listitem [ref=e89]: TOTP protected publishing through xGet
+          - table [ref=e90]:
+            - rowgroup [ref=e91]:
+              - row [ref=e92]:
+                - columnheader "field" [ref=e93]
+                - columnheader "value" [ref=e94]
+            - rowgroup [ref=e95]:
+              - row [ref=e96]:
+                - cell "feed" [ref=e97]
+                - cell "xDoc" [ref=e98]
+              - row [ref=e99]:
+                - cell "protocol" [ref=e100]
+                - cell "NuGet v3" [ref=e101]
+          - paragraph [ref=e102]: unsafe link
+      - generic [ref=e103]:
+        - paragraph [ref=e104]:
+          - generic [ref=e105]: "08"
+          - generic [ref=e106]: Versions
+        - table [ref=e109]:
+          - rowgroup [ref=e110]:
+            - row [ref=e111]:
+              - columnheader "Version" [ref=e112]
+              - columnheader "Downloads" [ref=e113]
+              - columnheader "Size" [ref=e114]
+              - columnheader "Published" [ref=e115]
+              - columnheader "Package" [ref=e116]
+          - rowgroup [ref=e117]:
+            - row [ref=e118]:
+              - cell "1.2.3" [ref=e119]
+              - cell "1" [ref=e121]
+              - cell "761 B" [ref=e122]
+              - cell "2026-09-10" [ref=e123]
+              - cell [ref=e124]:
+                - link "download →" [ref=e125] [cursor=pointer]:
+                  - /url: http://localhost:8092/v3-flatcontainer/readmedemo/1.2.3/readmedemo.1.2.3.nupkg
+      - generic [ref=e126]:
+        - paragraph [ref=e127]:
+          - generic [ref=e128]: "09"
+          - generic [ref=e129]: Original nuspec
+        - group [ref=e130]:
+          - generic "show the raw nuspec manifest" [ref=e131] [cursor=pointer]
+      - generic [ref=e132]:
+        - paragraph [ref=e133]:
+          - generic [ref=e134]: "10"
+          - generic [ref=e135]: Daily Activity
+        - generic [ref=e137]:
+          - generic [ref=e138]: Downloads & page views
+          - generic [ref=e139]:
+            - button "7d" [ref=e140] [cursor=pointer]
+            - button "30d" [ref=e141] [cursor=pointer]
+            - button "90d" [ref=e142] [cursor=pointer]
+        - generic [ref=e146]:
+          - generic [ref=e147]: Downloads (period) 1
+          - generic [ref=e148]: Page views (period) 2
+          - generic [ref=e149]: Basis UTC day
+  - contentinfo [ref=e150]:
+    - generic [ref=e151]:
+      - link "Previous Packages" [ref=e152] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e153]: Previous
+        - text: Packages
+      - link "Next Statistics" [ref=e154] [cursor=pointer]:
+        - /url: about.html
+        - generic [ref=e155]: Next
+        - text: Statistics
+    - generic [ref=e156]: nuget · experimental feed · powered by Fluteway + JSql

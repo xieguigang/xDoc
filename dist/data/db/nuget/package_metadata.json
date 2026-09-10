@@ -9081,6 +9081,153 @@
       "version": "10.5.9742.7537",
       "name": "iconFile",
       "value": "icon.png"
+    },
+    {
+      "id": 1292,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "id",
+      "value": "ReadmeDemo"
+    },
+    {
+      "id": 1293,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "version",
+      "value": "1.2.3"
+    },
+    {
+      "id": 1294,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "title",
+      "value": ""
+    },
+    {
+      "id": 1295,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "authors",
+      "value": "xDoc"
+    },
+    {
+      "id": 1296,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "owners",
+      "value": ""
+    },
+    {
+      "id": 1297,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "description",
+      "value": "A demo package that ships a readme rendered on the detail page."
+    },
+    {
+      "id": 1298,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "summary",
+      "value": ""
+    },
+    {
+      "id": 1299,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "releaseNotes",
+      "value": ""
+    },
+    {
+      "id": 1300,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "copyright",
+      "value": ""
+    },
+    {
+      "id": 1301,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "language",
+      "value": ""
+    },
+    {
+      "id": 1302,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "tags",
+      "value": "demo readme chart"
+    },
+    {
+      "id": 1303,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "projectUrl",
+      "value": ""
+    },
+    {
+      "id": 1304,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "licenseUrl",
+      "value": ""
+    },
+    {
+      "id": 1305,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "license",
+      "value": ""
+    },
+    {
+      "id": 1306,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "requireLicenseAcceptance",
+      "value": ""
+    },
+    {
+      "id": 1307,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "repository",
+      "value": ""
+    },
+    {
+      "id": 1308,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "icon",
+      "value": ""
+    },
+    {
+      "id": 1309,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "nuspec",
+      "value": "\u003C?xml version=\u00221.0\u0022 encoding=\u0022utf-8\u0022?\u003E \u003Cpackage xmlns=\u0022http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd\u0022\u003E   \u003Cmetadata\u003E     \u003Cid\u003EReadmeDemo\u003C/id\u003E     \u003Cversion\u003E1.2.3\u003C/version\u003E     \u003Cauthors\u003ExDoc\u003C/authors\u003E     \u003Cdescription\u003EA demo package that ships a readme rendered on the detail page.\u003C/description\u003E     \u003Ctags\u003Edemo readme chart\u003C/tags\u003E     \u003Creadme\u003EREADME.md\u003C/readme\u003E   \u003C/metadata\u003E \u003C/package\u003E "
+    },
+    {
+      "id": 1310,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "readme",
+      "value": "README.md"
+    },
+    {
+      "id": 1311,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "readmeFile",
+      "value": "readme.md"
+    },
+    {
+      "id": 1312,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "name": "readmeFormat",
+      "value": "md"
     }
   ]
 }

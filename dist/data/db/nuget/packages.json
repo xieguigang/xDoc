@@ -1204,6 +1204,22 @@
       "sha256": "9123b23825447479587f9df6a0fef4b64c7c3719116a562e91d6cf7cffb68532",
       "published": "2026-09-10 09:45:10",
       "listed": true
+    },
+    {
+      "id": 69,
+      "package_id": "ReadmeDemo",
+      "version": "1.2.3",
+      "description": "A demo package that ships a readme rendered on the detail page.",
+      "authors": "xDoc",
+      "tags": "demo readme chart",
+      "project_url": "",
+      "license": "",
+      "dependencies": "",
+      "downloads": 1,
+      "size": 761,
+      "sha256": "cfdc734e87ab14034f3ddc4ae59c430f3914e3b2827f738de12f0eb9693c3c06",
+      "published": "2026-09-10 10:02:45",
+      "listed": true
     }
   ]
 }

@@ -258,3 +258,7 @@ paket-files/
 /ts/build/vbcode.js
 *.map
 pkg.png
+readme-demo.png
+pkg-trend.png
+pkg-readme.png
+about-trend.png

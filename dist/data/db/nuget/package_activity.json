@@ -44,5 +44,13 @@
       "comment": null
     }
   ],
-  "rows": []
+  "rows": [
+    {
+      "id": 1,
+      "package_id": "readmedemo",
+      "day": "2026-09-10",
+      "downloads": 1,
+      "views": 5
+    }
+  ]
 }
