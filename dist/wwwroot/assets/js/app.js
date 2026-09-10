@@ -106,6 +106,77 @@
         }
     }
 
+    function setLink(id, url, external) {
+        var node = $(id);
+        if (!node) {
+            return;
+        }
+        if (!url) {
+            node.textContent = '—';
+            return;
+        }
+        node.innerHTML = '<a class="dl" href="' + esc(url) + '"' +
+            (external ? ' target="_blank" rel="noopener"' : '') + '>' + esc(url) + '</a>';
+    }
+
+    function tagUrl(tag) {
+        return 'tags.html?tag=' + encodeURIComponent(tag);
+    }
+
+    function renderTags(host, tags) {
+        if (!host) {
+            return;
+        }
+        var list = (tags || []);
+        if (typeof list === 'string') {
+            list = list.split(/[\s,;]+/);
+        }
+        list = list.filter(Boolean);
+
+        if (!list.length) {
+            host.innerHTML = '<span class="mono">—</span>';
+            return;
+        }
+        host.innerHTML = list.map(function (t) {
+            return '<a class="chip" href="' + tagUrl(t) + '">' + esc(t) + '</a>';
+        }).join('');
+    }
+
+    function renderDependencies(host, dependencies) {
+        if (!host) {
+            return;
+        }
+        var list = dependencies || [];
+        if (!list.length) {
+            host.innerHTML = '<div class="empty">this package has no dependencies</div>';
+            return;
+        }
+
+        var groups = {};
+        list.forEach(function (d) {
+            var key = d.targetFramework || '';
+            (groups[key] = groups[key] || []).push(d);
+        });
+
+        var html = '';
+        Object.keys(groups).forEach(function (framework) {
+            html += '<div class="dep-group">';
+            html += '<div class="dep-framework mono">' + esc(framework || 'any framework') + '</div>';
+            html += '<ul class="dep-list">';
+            groups[framework].forEach(function (d) {
+                var href = d.hosted ? ('package.html?id=' + encodeURIComponent(d.id)) : d.url;
+                var target = d.hosted ? '' : ' target="_blank" rel="noopener"';
+                var badge = d.hosted
+                    ? '<span class="dep-badge">local</span>'
+                    : '<span class="dep-badge ext">nuget.org</span>';
+                html += '<li><a class="dl" href="' + esc(href) + '"' + target + '>' + esc(d.id) + '</a>' +
+                    (d.range ? ' <span class="mono">' + esc(d.range) + '</span>' : '') + ' ' + badge + '</li>';
+            });
+            html += '</ul></div>';
+        });
+        host.innerHTML = html;
+    }
+
     /* ----------------------------- package list ----------------------------- */
 
     function loadPackages() {
@@ -236,30 +307,55 @@
         setText('pkg-downloads', formatNumber(pkg.totalDownloads));
         setText('pkg-versions', formatNumber((pkg.versions || []).length));
         setText('pkg-published', formatDate(pkg.published));
-        setText('pkg-authors', pkg.authors || '—');
-        setText('pkg-license', pkg.license || '—');
 
-        var project = $('pkg-project');
-        if (project) {
-            if (pkg.projectUrl) {
-                project.innerHTML = '<a class="dl" href="' + esc(pkg.projectUrl) + '" target="_blank" rel="noopener">' +
-                    esc(pkg.projectUrl) + '</a>';
+        var titleNode = $('pkg-headline');
+        if (titleNode) {
+            titleNode.innerHTML = '<span class="u">' + esc(pkg.title || pkg.id) + '</span>';
+        }
+
+        var iconNode = $('pkg-icon');
+        if (iconNode) {
+            if (pkg.iconUrl) {
+                iconNode.src = pkg.iconUrl;
+                iconNode.alt = (pkg.id || '') + ' icon';
+                iconNode.style.display = '';
             } else {
-                project.textContent = '—';
+                iconNode.style.display = 'none';
             }
         }
+
+        var summaryNode = $('pkg-summary');
+        if (summaryNode) {
+            summaryNode.textContent = pkg.summary || '';
+        }
+
+        setLink('pkg-project', pkg.projectUrl, true);
+        setLink('pkg-repository', pkg.repository, true);
+        setLink('pkg-license-url', pkg.licenseUrl, true);
+
+        setText('pkg-authors', pkg.authors || '—');
+        setText('pkg-owners', pkg.owners || '—');
+        setText('pkg-license', pkg.license || '—');
+        setText('pkg-language', pkg.language || '—');
+        setText('pkg-copyright', pkg.copyright || '—');
+        setText('pkg-require-license', String(pkg.requireLicenseAcceptance || 'false'));
+
+        renderTags($('pkg-tags'), pkg.tags);
+        renderDependencies($('pkg-dependencies'), pkg.dependencies);
 
         var desc = $('pkg-description');
         if (desc) {
             desc.textContent = pkg.description || 'no description provided.';
         }
 
-        var tagHost = $('pkg-tags');
-        if (tagHost) {
-            var tags = (pkg.tags || (typeof pkg.tags === 'string' ? pkg.tags.split(/[\s,;]+/) : [])).filter(Boolean);
-            tagHost.innerHTML = tags.length
-                ? tags.map(function (t) { return '<span class="ver">' + esc(t) + '</span>'; }).join(' ')
-                : '<span class="mono">—</span>';
+        var notes = $('pkg-release-notes');
+        if (notes) {
+            notes.textContent = pkg.releaseNotes || '—';
+        }
+
+        var nuspec = $('pkg-nuspec');
+        if (nuspec) {
+            nuspec.textContent = (pkg.metadata && pkg.metadata.nuspec) || 'not available';
         }
 
         var versionHost = $('version-list');
@@ -403,6 +499,83 @@
         }
     }
 
+    /* ----------------------------- tag query page ----------------------------- */
+
+    var tagState = { tag: '', skip: 0, take: 20, total: 0 };
+
+    function initTags() {
+        tagState.tag = queryParam('tag');
+
+        var label = $('tag-name');
+        if (label) {
+            label.textContent = tagState.tag || '(none)';
+        }
+        document.title = (tagState.tag || 'tag') + ' · nuget';
+
+        loadTagPackages();
+
+        var prev = $('page-prev');
+        if (prev) {
+            prev.addEventListener('click', function () {
+                tagState.skip = Math.max(0, tagState.skip - tagState.take);
+                loadTagPackages();
+            });
+        }
+
+        var next = $('page-next');
+        if (next) {
+            next.addEventListener('click', function () {
+                if (tagState.skip + tagState.take < tagState.total) {
+                    tagState.skip += tagState.take;
+                    loadTagPackages();
+                }
+            });
+        }
+    }
+
+    function loadTagPackages() {
+        var host = $('package-list');
+        if (!host) {
+            return;
+        }
+        if (!tagState.tag) {
+            host.innerHTML = '<div class="empty">no tag was specified in the url query string</div>';
+            return;
+        }
+
+        host.innerHTML = '<div class="loading"><span class="spinner"></span>loading packages…</div>';
+
+        fetchJSON('/api/tag/' + encodeURIComponent(tagState.tag) + '?skip=' + tagState.skip + '&take=' + tagState.take)
+            .then(function (result) {
+                tagState.total = result.total || 0;
+                renderPackages(result.packages || []);
+                renderTagPager();
+            })
+            .catch(function (error) {
+                host.innerHTML = '<div class="empty">failed to load the tag: ' + esc(error.message) + '</div>';
+            });
+    }
+
+    function renderTagPager() {
+        var info = $('page-info');
+        var prev = $('page-prev');
+        var next = $('page-next');
+        if (!info) {
+            return;
+        }
+
+        var from = tagState.total === 0 ? 0 : tagState.skip + 1;
+        var to = Math.min(tagState.skip + tagState.take, tagState.total);
+        info.textContent = from + '–' + to + ' of ' + tagState.total;
+
+        if (prev) {
+            prev.disabled = tagState.skip <= 0;
+        }
+        if (next) {
+            next.disabled = tagState.skip + tagState.take >= tagState.total;
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var page = document.body.getAttribute('data-page');
 
@@ -412,6 +585,8 @@
             loadPackageDetail();
         } else if (page === 'about') {
             loadAbout();
+        } else if (page === 'tags') {
+            initTags();
         }
     });
 })();
