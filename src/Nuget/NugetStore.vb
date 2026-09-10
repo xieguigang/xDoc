@@ -124,6 +124,12 @@ Public Class NugetStore
                 "  published DATETIME," &
                 "  listed BOOLEAN DEFAULT TRUE" &
                 ") COMMENT='nuget package metadata'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS statistics (" &
+                "  name VARCHAR(100) NOT NULL PRIMARY KEY," &
+                "  payload LONGTEXT," &
+                "  updated DATETIME" &
+                ") COMMENT='precomputed nuget statistics'")
         End SyncLock
     End Sub
 
@@ -442,6 +448,58 @@ Public Class NugetStore
 
         Dim release As String = If(version.Contains("-"), "0", "1")
         Return sb.ToString() & release & version
+    End Function
+
+#End Region
+
+#Region "statistics"
+
+    ''' <summary>
+    ''' insert or update a precomputed statistic json document.
+    ''' </summary>
+    ''' <param name="name">the statistic key, for example ``tags``.</param>
+    ''' <param name="payload">the precomputed json document.</param>
+    Public Sub SaveStatistic(name As String, payload As String)
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT name FROM statistics WHERE name = '{esc(name)}'")
+            Dim now As Date = Date.UtcNow
+
+            If rs IsNot Nothing AndAlso rs.IsQuery AndAlso rs.Rows.Count > 0 Then
+                Call exec($"UPDATE statistics SET payload = '{esc(payload)}', updated = {dateLiteral(now)} WHERE name = '{esc(name)}'")
+            Else
+                Call exec($"INSERT INTO statistics (name, payload, updated) VALUES ('{esc(name)}', '{esc(payload)}', {dateLiteral(now)})")
+            End If
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' read a precomputed statistic json document; returns <c>Nothing</c> when
+    ''' the statistic has never been computed.
+    ''' </summary>
+    ''' <param name="name">the statistic key, for example ``tags``.</param>
+    Public Function GetStatistic(name As String) As String
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT name, payload FROM statistics WHERE name = '{esc(name)}'")
+
+            If rs Is Nothing OrElse Not rs.IsQuery OrElse rs.Rows.Count = 0 Then
+                Return Nothing
+            End If
+
+            Dim index As Integer = rs.Columns.FindIndex(Function(c) c.Equals("payload", StringComparison.OrdinalIgnoreCase))
+            If index < 0 Then
+                Return Nothing
+            End If
+
+            Return toStr(rs.Rows(0)(index))
+        End SyncLock
+    End Function
+
+    ''' <summary>
+    ''' test whether a statistic document already exists.
+    ''' </summary>
+    ''' <param name="name">the statistic key, for example ``tags``.</param>
+    Public Function HasStatistic(name As String) As Boolean
+        Return Not String.IsNullOrEmpty(GetStatistic(name))
     End Function
 
 #End Region
