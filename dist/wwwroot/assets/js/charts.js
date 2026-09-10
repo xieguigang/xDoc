@@ -69,6 +69,12 @@
         }
     }
 
+    function packageLink(id, hosted) {
+        return hosted
+            ? ('package.html?id=' + encodeURIComponent(id))
+            : ('https://www.nuget.org/packages/' + encodeURIComponent(id));
+    }
+
     function bindResize() {
         window.addEventListener('resize', function () {
             echartsInstances.forEach(function (chart) {
@@ -263,6 +269,11 @@
                 links: graph.links.map(function (l) {
                     return { source: l.source, target: l.target, weight: l.weight || 1 };
                 })
+            })
+            .onNodeClick(function (node) {
+                // every node of the tag relation network is a package hosted in
+                // this feed, so it always links to the local detail page.
+                window.location.href = packageLink(node.id, true);
             });
 
         // gently auto rotate for a lively 3d feel
@@ -381,6 +392,12 @@
                 data: nodes,
                 links: links
             }]
+        });
+
+        chart.on('click', function (params) {
+            if (params && params.dataType === 'node' && params.data) {
+                window.location.href = packageLink(params.data.id, params.data.external !== true);
+            }
         });
 
         return chart;
