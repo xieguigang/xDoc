@@ -511,11 +511,21 @@
                 name: name,
                 min: min - padding,
                 max: max + padding,
-                nameTextStyle: { color: TEXT, fontSize: 11 },
-                nameGap: 16,
+                nameTextStyle: { color: TEXT_STRONG, fontSize: 12, fontWeight: 500 },
+                nameGap: 18,
+                splitNumber: 3,
                 axisLine: { lineStyle: { color: HAIRLINE } },
                 axisTick: { lineStyle: { color: HAIRLINE } },
-                axisLabel: { color: TEXT, fontSize: 10 },
+                axisLabel: {
+                    color: TEXT,
+                    fontSize: 10,
+                    margin: 6,
+                    /* the raw umap values are long floats, so the ticks are
+                       rounded for readability */
+                    formatter: function (value) {
+                        return Number(value).toFixed(1);
+                    }
+                },
                 splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } },
                 splitArea: { show: false }
             };
@@ -539,19 +549,20 @@
             }, tooltip),
             grid3D: {
                 boxWidth: 100,
-                boxHeight: 78,
+                boxHeight: 66,
                 boxDepth: 100,
                 left: 'center',
-                top: 'center',
+                top: 10,
+                bottom: 10,
                 axisPointer: { show: false },
                 axisLine: { lineStyle: { color: HAIRLINE } },
                 splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } },
                 viewControl: {
                     autoRotate: true,
                     autoRotateSpeed: 6,
-                    distance: 190,
-                    alpha: 22,
-                    beta: 26,
+                    distance: 205,
+                    alpha: 20,
+                    beta: 30,
                     rotateMouseButton: 'left',
                     panMouseButton: 'right'
                 }
@@ -711,6 +722,45 @@
             if (params && params.dataType === 'node' && params.data) {
                 window.location.href = packageLink(params.data.id, params.data.external !== true);
             }
+        });
+
+        /* the adjacency focus of echarts only emphasises the hovered element
+           itself, so the one hop neighbours are highlighted explicitly: that
+           reveals the package name label of the focused node together with the
+           names of every directly connected package. */
+        var adjacency = {};
+        var nodeIndex = {};
+
+        nodes.forEach(function (n, i) {
+            adjacency[n.id] = [];
+            nodeIndex[n.id] = i;
+        });
+
+        links.forEach(function (l) {
+            if (adjacency[l.source] && adjacency[l.target]) {
+                adjacency[l.source].push(l.target);
+                adjacency[l.target].push(l.source);
+            }
+        });
+
+        chart.on('mouseover', function (params) {
+            if (!params || params.dataType !== 'node' || !params.data) {
+                return;
+            }
+
+            var focus = [params.dataIndex];
+
+            (adjacency[params.data.id] || []).forEach(function (id) {
+                if (nodeIndex[id] !== undefined) {
+                    focus.push(nodeIndex[id]);
+                }
+            });
+
+            chart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: focus });
+        });
+
+        chart.on('mouseout', function () {
+            chart.dispatchAction({ type: 'downplay', seriesIndex: 0 });
         });
 
         return chart;
