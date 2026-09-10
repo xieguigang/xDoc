@@ -600,7 +600,7 @@ Public Class Service
             {"selectedVersion", latest.version},
             {"totalDownloads", versions.Sum(Function(v) v.downloads)},
             {"published", isoDate(latest.published)},
-            {"iconUrl", If(String.IsNullOrEmpty(iconFile), "", $"{baseUrl}/api/package/{Uri.EscapeDataString(latest.package_id)}/icon")},
+            {"iconUrl", If(String.IsNullOrEmpty(iconFile), "", $"{baseUrl}/api/icon/{Uri.EscapeDataString(latest.package_id)}")},
             {"metadata", metadataJson},
             {"dependencies", dependencies},
             {"versions", versionList}
@@ -615,7 +615,7 @@ Public Class Service
         Return ""
     End Function
 
-    <HttpGet("/api/package/{id}/icon")>
+    <HttpGet("/api/icon/{id}")>
     Public Sub ApiPackageIcon(req As HttpRequest, res As HttpResponse)
         Dim id As String = routeValue(req, "id")
         Dim metadata As Dictionary(Of String, String) = store.GetPackageMetadata(id)

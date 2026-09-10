@@ -257,3 +257,4 @@ paket-files/
 /ts/build/linq.js
 /ts/build/vbcode.js
 *.map
+pkg.png
