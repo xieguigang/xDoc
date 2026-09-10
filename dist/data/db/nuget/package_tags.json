@@ -1838,21 +1838,6 @@
       "id": 362,
       "package_id": "Microsoft.VisualBasic.Runtime",
       "tag": "application-services"
-    },
-    {
-      "id": 363,
-      "package_id": "ReadmeDemo",
-      "tag": "demo"
-    },
-    {
-      "id": 364,
-      "package_id": "ReadmeDemo",
-      "tag": "readme"
-    },
-    {
-      "id": 365,
-      "package_id": "ReadmeDemo",
-      "tag": "chart"
     }
   ]
 }
