@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graphs · nuget</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="assets/css/scibasic.css" />
+</head>
+
+<body data-page="graph">
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <img src="favicon.png" alt="nuget server logo" onerror="this.style.display='none'" />
+            <strong>nuget</strong>
+            <span class="sub">package server</span>
+        </a>
+        <nav class="topnav">
+            <a href="index.html">Packages</a>
+            <a href="about.html">Statistics</a>
+            <a href="graph.html" class="on">Graphs</a>
+            <a href="v3/index.json">Service Index</a>
+        </nav>
+        <a class="home-btn" href="index.html" title="Home" aria-label="Home">↖</a>
+    </header>
+
+    <main class="wrap">
+        <p class="eyebrow"><b>01</b> <span>Feed — Visualisation</span></p>
+        <h1 class="headline">Tag <span class="u">distribution</span> and package
+            <span class="accent">relation</span> networks.</h1>
+
+        <p class="lede">
+            The statistics below are precomputed when a package is published and stored inside the
+            JSql database, then streamed to this page as json. Tags drive the word cloud and the
+            relation network, while the nuspec dependency graph reveals how the hosted packages
+            depend on each other.
+        </p>
+
+        <section id="graph-summary">
+            <p class="sec-label"><b>02</b> <span>Overview</span></p>
+            <div class="stats">
+                <div class="stat" style="animation-delay:.02s">
+                    <div class="no">01</div>
+                    <div class="value" id="stat-graph-packages">0</div>
+                    <div class="label">Packages</div>
+                </div>
+                <div class="stat" style="animation-delay:.08s">
+                    <div class="no">02</div>
+                    <div class="value" id="stat-graph-tags">0</div>
+                    <div class="label">Distinct Tags</div>
+                </div>
+                <div class="stat" style="animation-delay:.14s">
+                    <div class="no">03</div>
+                    <div class="value" id="stat-graph-tag-edges">0</div>
+                    <div class="label">Tag Relations</div>
+                </div>
+                <div class="stat" style="animation-delay:.20s">
+                    <div class="no">04</div>
+                    <div class="value" id="stat-graph-dep-edges">0</div>
+                    <div class="label">Dependencies</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tags">
+            <p class="sec-label"><b>03</b> <span>Tag Distribution</span></p>
+            <div class="chart-grid">
+                <div class="chart">
+                    <div class="chart-head"><span>Word Cloud</span><span class="mono">by package count</span></div>
+                    <div id="chart-tag-cloud" class="chart-canvas" style="height:380px">
+                        <div class="loading"><span class="spinner"></span>loading word cloud…</div>
+                    </div>
+                </div>
+                <div class="chart">
+                    <div class="chart-head"><span>Top 25 Tags</span><span class="mono">bar chart</span></div>
+                    <div id="chart-tag-bar" class="chart-canvas" style="height:380px">
+                        <div class="loading"><span class="spinner"></span>loading bar chart…</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tag-network">
+            <p class="sec-label"><b>04</b> <span>Package Relation Network</span></p>
+            <div class="chart">
+                <div class="chart-head"><span>Shared Tags</span><span class="mono">3D · drag to rotate, scroll to zoom</span></div>
+                <div id="chart-tag-network" class="chart-canvas chart-canvas-3d">
+                    <div class="loading"><span class="spinner"></span>loading 3D network…</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dependency-network">
+            <p class="sec-label"><b>05</b> <span>Dependency Network</span></p>
+            <div class="chart">
+                <div class="chart-head"><span>Nuspec Dependencies</span><span class="mono">arrow = depends on</span></div>
+                <div id="chart-dependency-graph" class="chart-canvas" style="height:640px">
+                    <div class="loading"><span class="spinner"></span>loading dependency network…</div>
+                </div>
+            </div>
+            <div class="note">
+                <b>Green</b> nodes are packages hosted in this feed, <b>blue</b> nodes are external
+                dependencies that were not uploaded here. An arrow points from a package to the
+                package it depends on.
+            </div>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="pn">
+            <a href="about.html"><span>Previous</span>Statistics</a>
+            <a href="index.html"><span>Next</span>Packages</a>
+        </div>
+        <div class="legal">nuget · experimental feed · powered by Fluteway + JSql</div>
+    </footer>
+
+    <script src="assets/vendor/echarts.min.js"></script>
+    <script src="assets/vendor/echarts-wordcloud.min.js"></script>
+    <script src="assets/vendor/three.min.js"></script>
+    <script src="assets/vendor/3d-force-graph.min.js"></script>
+    <script src="assets/js/charts.js"></script>
+</body>
+
+</html>

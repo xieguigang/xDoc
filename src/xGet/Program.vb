@@ -15,11 +15,15 @@ Module Program
         "usage:" & vbCrLf &
         "  xGet register --server <url> --email <email>" & vbCrLf &
         "  xGet upload   --server <url> --email <email> --file <package.nupkg>" & vbCrLf &
+        "  xGet batch    --server <url> --email <email> --dir <folder> [--recursive] [--symbols]" & vbCrLf &
         vbCrLf &
         "options:" & vbCrLf &
         "  --server, -s   the nuget server base url, e.g. http://localhost:80" & vbCrLf &
         "  --email,  -e   the registered user email" & vbCrLf &
-        "  --file,   -f   the .nupkg file to upload"
+        "  --file,   -f   the .nupkg file to upload" & vbCrLf &
+        "  --dir,    -d   the folder to scan for batch upload" & vbCrLf &
+        "  --recursive    scan the sub directories too" & vbCrLf &
+        "  --symbols      also upload the *.snupkg / *.symbols.nupkg packages"
 
     Function Main(args As String()) As Integer
         If args Is Nothing OrElse args.Length = 0 Then
@@ -35,6 +39,8 @@ Module Program
                 Return register(options)
             Case "upload", "push"
                 Return upload(options)
+            Case "batch", "upload-dir"
+                Return batch(options)
             Case "help", "?", "h"
                 Call printUsage()
                 Return 0
@@ -108,6 +114,117 @@ Module Program
 
         Call Console.WriteLine($"uploaded {name} {version}".Trim())
         Return 0
+    End Function
+
+    ''' <summary>
+    ''' scan a folder for nuget packages and upload them one by one, reusing the
+    ''' stored TOTP secret of the given email.
+    ''' </summary>
+    Private Function batch(options As Dictionary(Of String, String)) As Integer
+        Dim server As String = getOption(options, "server", "s")
+        Dim email As String = getOption(options, "email", "e")
+        Dim folder As String = getOption(options, "dir", "d", "directory", "folder")
+        Dim recursive As Boolean = hasFlag(options, "recursive", "r")
+        Dim symbols As Boolean = hasFlag(options, "symbols")
+
+        If String.IsNullOrEmpty(server) OrElse String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(folder) Then
+            Call Console.WriteLine("usage: xGet batch --server <url> --email <email> --dir <folder> [--recursive] [--symbols]")
+            Return 1
+        End If
+
+        If Not Directory.Exists(folder) Then
+            Call Console.WriteLine($"folder not found: {folder}")
+            Return 1
+        End If
+
+        Dim account As New AccountStore()
+        Dim secret As String = account.GetSecret(server, email)
+
+        If String.IsNullOrEmpty(secret) Then
+            Call Console.WriteLine($"no TOTP secret was found for '{email}' on {server}.")
+            Call Console.WriteLine("please register this email first: xGet register --server <url> --email <email>")
+            Return 1
+        End If
+
+        Dim files As List(Of String) = findPackages(folder, recursive, symbols)
+
+        If files.Count = 0 Then
+            Call Console.WriteLine($"no nuget packages were found in '{folder}'")
+            Return 1
+        End If
+
+        Call Console.WriteLine($"found {files.Count} package(s) in '{folder}'" &
+                               If(symbols, " (including symbols)", "") &
+                               If(recursive, " (recursive)", ""))
+
+        Dim client As New NugetApiClient(server)
+        Dim uploaded As Integer = 0
+        Dim skipped As Integer = 0
+        Dim failed As Integer = 0
+
+        For i As Integer = 0 To files.Count - 1
+            Dim package As String = files(i)
+            Dim name As String = Path.GetFileName(package)
+
+            ' regenerate a fresh TOTP code for every package, otherwise a long
+            ' batch upload could outlive the 30 seconds time step of one code.
+            Dim code As String = Nuget.TotpModule.GenerateTotp(secret)
+            Dim result As ApiResult = client.Upload(email, code, package)
+            Dim message As String = If(result?.message, "")
+
+            If result IsNot Nothing AndAlso result.ok Then
+                uploaded += 1
+                Call Console.WriteLine($"[{i + 1}/{files.Count}] ok      {name}")
+            ElseIf message.IndexOf("already exists", StringComparison.OrdinalIgnoreCase) >= 0 Then
+                skipped += 1
+                Call Console.WriteLine($"[{i + 1}/{files.Count}] skip    {name} (already exists)")
+            ElseIf message.IndexOf("TOTP", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
+                   message.IndexOf("invalid email", StringComparison.OrdinalIgnoreCase) >= 0 Then
+                failed += 1
+                Call Console.WriteLine($"[{i + 1}/{files.Count}] FAILED  {name}: {message}")
+                Call Console.WriteLine("authentication failed, aborting the batch upload.")
+                Return 3
+            Else
+                failed += 1
+                Call Console.WriteLine($"[{i + 1}/{files.Count}] failed  {name}: {message}")
+            End If
+        Next
+
+        Call Console.WriteLine($"batch upload finished: {uploaded} uploaded, {skipped} skipped, {failed} failed (total {files.Count})")
+        Return 0
+    End Function
+
+    ''' <summary>
+    ''' scan a folder for the nuget packages to upload. by default only the top
+    ''' level ``*.nupkg`` files are collected; the symbol packages are skipped
+    ''' unless <paramref name="symbols"/> is set, and the sub directories are
+    ''' skipped unless <paramref name="recursive"/> is set.
+    ''' </summary>
+    Private Function findPackages(folder As String, recursive As Boolean, symbols As Boolean) As List(Of String)
+        Dim search As SearchOption = If(recursive, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly)
+        Dim result As New List(Of String)
+
+        For Each file As String In Directory.GetFiles(folder, "*.nupkg", search)
+            Dim name As String = Path.GetFileName(file).ToLowerInvariant()
+
+            If Not symbols AndAlso (name.EndsWith(".snupkg") OrElse name.Contains(".symbols.")) Then
+                Continue For
+            End If
+
+            Call result.Add(file)
+        Next
+
+        Call result.Sort(StringComparer.OrdinalIgnoreCase)
+        Return result
+    End Function
+
+    Private Function hasFlag(options As Dictionary(Of String, String), ParamArray names As String()) As Boolean
+        For Each name As String In names
+            If options.ContainsKey(name) Then
+                Return True
+            End If
+        Next
+        Return False
     End Function
 
     Private Function parseOptions(args As String()) As Dictionary(Of String, String)

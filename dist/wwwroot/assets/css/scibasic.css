@@ -651,3 +651,72 @@ footer.site .pn a:hover {
         justify-content: flex-end;
     }
 }
+
+/* ===================== charts ===================== */
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.chart {
+    margin-bottom: 4px;
+    border: 1px solid var(--hairline2);
+    border-radius: 2px;
+    background: var(--panel);
+    overflow: hidden;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+}
+
+.chart:hover {
+    border-color: var(--hairline);
+}
+
+.chart-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--hairline2);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.chart-head .mono {
+    font-size: 10px;
+    letter-spacing: .06em;
+    text-transform: none;
+    color: var(--ink-ghost);
+}
+
+.chart-canvas {
+    width: 100%;
+    min-height: 320px;
+}
+
+.chart-canvas canvas {
+    display: block;
+}
+
+.chart-canvas-3d {
+    height: 620px;
+    background: radial-gradient(circle at 50% 42%, #0a0a0a 0%, #030303 72%);
+}
+
+.chart-canvas-3d canvas {
+    outline: none;
+}
+
+@media (max-width: 900px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-canvas-3d {
+        height: 460px;
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "table": "statistics",
+  "comment": "precomputed nuget statistics",
+  "keys": [],
+  "columns": [
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "notNull": true,
+      "primaryKey": true,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "payload",
+      "type": "LONGTEXT",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    },
+    {
+      "name": "updated",
+      "type": "DATETIME",
+      "notNull": false,
+      "primaryKey": false,
+      "defaultValue": null,
+      "comment": null
+    }
+  ],
+  "rows": []
+}

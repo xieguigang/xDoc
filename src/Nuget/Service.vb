@@ -427,6 +427,7 @@ Public Class Service
             Call File.WriteAllText(nuspecFilePath(pkg), NupkgReader.ReadNuspecXml(temp))
             Call store.AddPackage(pkg)
             Call registerStaticFiles(pkg)
+            Call refreshStatistics()
 
             Call writeResult(res, True, $"published {pkg.package_id} {pkg.version}", New Dictionary(Of String, Object) From {
                 {"id", pkg.package_id},
@@ -579,6 +580,87 @@ Public Class Service
             {"totalDownloads", pkg.total_downloads},
             {"versions", pkg.versions},
             {"published", isoDate(pkg.published)}
+        }
+    End Function
+
+#End Region
+
+#Region "statistics"
+
+    <HttpGet("/api/stats/tags")>
+    Public Sub ApiStatsTags(req As HttpRequest, res As HttpResponse)
+        Call writeStatistic(res, NugetStatistics.TagsStatName, Function() NugetStatistics.BuildTags(store.ReadAllPackages()))
+    End Sub
+
+    <HttpGet("/api/stats/tag-network")>
+    Public Sub ApiStatsTagNetwork(req As HttpRequest, res As HttpResponse)
+        Call writeStatistic(res, NugetStatistics.TagNetworkStatName, Function() NugetStatistics.BuildTagNetwork(store.ReadAllPackages()))
+    End Sub
+
+    <HttpGet("/api/stats/dependency-network")>
+    Public Sub ApiStatsDependencyNetwork(req As HttpRequest, res As HttpResponse)
+        Call writeStatistic(res, NugetStatistics.DependencyNetworkStatName, Function() NugetStatistics.BuildDependencyNetwork(store.ReadAllPackages()))
+    End Sub
+
+    <HttpPost("/api/stats/rebuild")>
+    Public Sub ApiStatsRebuild(req As HttpPOSTRequest, res As HttpResponse)
+        If Not auth.Authenticate(argument(req, "email"), argument(req, "code")) Then
+            res.WriteError(HTTP_RFC.RFC_UNAUTHORIZED, "invalid email or TOTP code")
+            Return
+        End If
+
+        Dim summary As Dictionary(Of String, Object) = refreshStatistics()
+
+        Call writeResult(res, True, "statistics rebuilt", summary)
+    End Sub
+
+    ''' <summary>
+    ''' serve a precomputed statistic document, rebuilding it lazily on the
+    ''' first access (for example on a database that predates the statistics
+    ''' feature).
+    ''' </summary>
+    Private Sub writeStatistic(res As HttpResponse, name As String, build As Func(Of String))
+        Dim payload As String = store.GetStatistic(name)
+
+        If String.IsNullOrEmpty(payload) Then
+            payload = build()
+
+            If Not String.IsNullOrEmpty(payload) Then
+                Call store.SaveStatistic(name, payload)
+            Else
+                payload = "{}"
+            End If
+        End If
+
+        res.AccessControlAllowOrigin = "*"
+        Call writeRawJson(res, payload)
+    End Sub
+
+    ''' <summary>
+    ''' recompute and persist all of the feed statistics; returns a small
+    ''' summary of the produced documents.
+    ''' </summary>
+    Private Function refreshStatistics() As Dictionary(Of String, Object)
+        Dim packages As List(Of PackageRecord) = store.ReadAllPackages()
+
+        Dim tags As String = NugetStatistics.BuildTags(packages)
+        Dim tagNetwork As String = NugetStatistics.BuildTagNetwork(packages)
+        Dim dependencyNetwork As String = NugetStatistics.BuildDependencyNetwork(packages)
+
+        Call store.SaveStatistic(NugetStatistics.TagsStatName, tags)
+        Call store.SaveStatistic(NugetStatistics.TagNetworkStatName, tagNetwork)
+        Call store.SaveStatistic(NugetStatistics.DependencyNetworkStatName, dependencyNetwork)
+
+        Call $"statistics rebuilt: packages={packages.Count}".info()
+
+        Return New Dictionary(Of String, Object) From {
+            {"packages", packages.Count},
+            {"documents", New Dictionary(Of String, Object) From {
+                {"tags", tags.Length},
+                {"tagNetwork", tagNetwork.Length},
+                {"dependencyNetwork", dependencyNetwork.Length}
+            }},
+            {"updated", isoDate(Date.UtcNow)}
         }
     End Function
 
@@ -743,7 +825,14 @@ Public Class Service
     ''' nuget protocol documents are built from heterogeneous dictionaries.
     ''' </summary>
     Private Shared Sub writeJson(res As HttpResponse, payload As Object)
-        Dim json As String = JsonSerializer.Serialize(payload, JsonOptions)
+        Call writeRawJson(res, JsonSerializer.Serialize(payload, JsonOptions))
+    End Sub
+
+    ''' <summary>
+    ''' write a precomputed json document directly to the response body without
+    ''' any additional serialization.
+    ''' </summary>
+    Private Shared Sub writeRawJson(res As HttpResponse, json As String)
         Dim bytes As Byte() = Encoding.UTF8.GetBytes(json)
 
         res.WriteHeader("application/json", bytes.Length)
