@@ -1,0 +1,448 @@
+Imports System.Collections.Generic
+Imports System.Globalization
+Imports System.Linq
+Imports System.Text
+Imports JSql.Engine
+
+''' <summary>
+''' a registered nuget server user. the <see cref="salt"/> is a 128 characters
+''' random string unique per user, and <see cref="secretKey"/> is the base32
+''' encoded TOTP secret derived from the email and the salt.
+''' </summary>
+Public Class UserRecord
+    Public Property id As Long
+    Public Property email As String
+    Public Property salt As String
+    Public Property secretKey As String
+    Public Property created As Date
+End Class
+
+''' <summary>
+''' one published package version record.
+''' </summary>
+Public Class PackageRecord
+    Public Property id As Long
+    Public Property package_id As String
+    Public Property version As String
+    Public Property description As String
+    Public Property authors As String
+    Public Property tags As String
+    Public Property project_url As String
+    Public Property license As String
+    Public Property dependencies As String
+    Public Property downloads As Long
+    Public Property size As Long
+    Public Property sha256 As String
+    Public Property published As Date
+    Public Property listed As Boolean
+End Class
+
+''' <summary>
+''' a package group summary used by the web front end: one row per package id.
+''' </summary>
+Public Class PackageSummary
+    Public Property package_id As String
+    Public Property latest_version As String
+    Public Property description As String
+    Public Property authors As String
+    Public Property tags As String
+    Public Property license As String
+    Public Property project_url As String
+    Public Property total_downloads As Long
+    Public Property versions As Integer
+    Public Property published As Date
+End Class
+
+''' <summary>
+''' a package id group with its full version list, used by the nuget search
+''' protocol.
+''' </summary>
+Public Class PackageSearchResult
+    Public Property package_id As String
+    Public Property versions As List(Of PackageRecord)
+    Public Property latest As PackageRecord
+    Public Property total_downloads As Long
+End Class
+
+''' <summary>
+''' the database statistics shown on the web front end.
+''' </summary>
+Public Class NugetStats
+    Public Property packages As Long
+    Public Property versions As Long
+    Public Property downloads As Long
+    Public Property users As Long
+End Class
+
+''' <summary>
+''' a thin data access layer over the <see cref="SqlEngine"/> JSql engine.
+''' </summary>
+''' <remarks>
+''' JSql has no parameter binding, no transactions, no auto increment and is
+''' not thread safe, so every access is serialized through a monitor and every
+''' value is escaped manually. package ids are compared case insensitively in
+''' memory because the JSql string comparison is case sensitive.
+''' </remarks>
+Public Class NugetStore
+
+    Private Const DatabaseName As String = "nuget"
+
+    Private ReadOnly engine As SqlEngine
+    Private ReadOnly sync As New Object
+
+    Public Sub New(databaseDirectory As String)
+        Me.engine = New SqlEngine(databaseDirectory)
+        Call initialize()
+    End Sub
+
+    Private Sub initialize()
+        SyncLock sync
+            Call engine.Execute($"CREATE DATABASE IF NOT EXISTS {DatabaseName}")
+            Call engine.Execute($"USE {DatabaseName}")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS users (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  email VARCHAR(320) NOT NULL," &
+                "  salt VARCHAR(256) NOT NULL," &
+                "  secret VARCHAR(128) NOT NULL," &
+                "  created DATETIME" &
+                ") COMMENT='nuget server users'")
+            Call engine.Execute(
+                "CREATE TABLE IF NOT EXISTS packages (" &
+                "  id INT NOT NULL PRIMARY KEY," &
+                "  package_id VARCHAR(200) NOT NULL," &
+                "  version VARCHAR(100) NOT NULL," &
+                "  description VARCHAR(4000)," &
+                "  authors VARCHAR(500)," &
+                "  tags VARCHAR(500)," &
+                "  project_url VARCHAR(500)," &
+                "  license VARCHAR(300)," &
+                "  dependencies VARCHAR(4000)," &
+                "  downloads INT DEFAULT 0," &
+                "  size INT DEFAULT 0," &
+                "  sha256 VARCHAR(128)," &
+                "  published DATETIME," &
+                "  listed BOOLEAN DEFAULT TRUE" &
+                ") COMMENT='nuget package metadata'")
+        End SyncLock
+    End Sub
+
+#Region "sql helpers"
+
+    Private Function query(sql As String) As ResultSet
+        Call engine.Execute($"USE {DatabaseName}")
+        Return engine.Execute(sql)
+    End Function
+
+    Private Sub exec(sql As String)
+        Call engine.Execute($"USE {DatabaseName}")
+        Call engine.Execute(sql)
+    End Sub
+
+    ''' <summary>
+    ''' escape a string literal for the JSql tokenizer: a backslash is the
+    ''' escape character and a single quote is escaped by doubling it. line
+    ''' breaks are flattened to spaces to keep the literal on a single line.
+    ''' </summary>
+    Private Shared Function esc(value As String) As String
+        If value Is Nothing Then
+            Return ""
+        End If
+        Return value _
+            .Replace("\", "\\") _
+            .Replace("'", "''") _
+            .Replace(vbCrLf, " ") _
+            .Replace(vbCr, " ") _
+            .Replace(vbLf, " ")
+    End Function
+
+    Private Shared Function dateLiteral(value As Date) As String
+        Return "'" & value.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) & "'"
+    End Function
+
+    Private Function nextId(table As String) As Long
+        Dim rs As ResultSet = query($"SELECT MAX(id) AS max_id FROM {table}")
+        If rs Is Nothing OrElse rs.Rows.Count = 0 Then
+            Return 1
+        End If
+        Dim value As Object = rs.Rows(0)(0)
+        If value Is Nothing Then
+            Return 1
+        End If
+        Return Convert.ToInt64(value, CultureInfo.InvariantCulture) + 1
+    End Function
+
+    Private Shared Function toStr(value As Object) As String
+        If value Is Nothing Then Return ""
+        Return value.ToString()
+    End Function
+
+    Private Shared Function toLong(value As Object) As Long
+        If value Is Nothing Then Return 0
+        Return Convert.ToInt64(value, CultureInfo.InvariantCulture)
+    End Function
+
+    Private Shared Function toDate(value As Object) As Date
+        If value Is Nothing Then Return Date.MinValue
+        Dim text As String = value.ToString()
+        Dim result As Date
+        If Date.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.None, result) Then
+            Return result
+        End If
+        Return Date.MinValue
+    End Function
+
+    Private Shared Function toBool(value As Object) As Boolean
+        If value Is Nothing Then Return False
+        If TypeOf value Is Boolean Then Return CBool(value)
+        Dim text As String = value.ToString()
+        Return text.Equals("TRUE", StringComparison.OrdinalIgnoreCase) OrElse text = "1"
+    End Function
+
+#End Region
+
+#Region "users"
+
+    Public Function GetUser(email As String) As UserRecord
+        If String.IsNullOrEmpty(email) Then Return Nothing
+
+        SyncLock sync
+            Dim rs As ResultSet = query($"SELECT id, email, salt, secret, created FROM users")
+            For Each row As Object() In rs.Rows
+                Dim record = readUser(rs.Columns, row)
+                If record.email IsNot Nothing AndAlso record.email.Equals(email.Trim(), StringComparison.OrdinalIgnoreCase) Then
+                    Return record
+                End If
+            Next
+            Return Nothing
+        End SyncLock
+    End Function
+
+    Public Function CreateUser(email As String, salt As String, secret As String) As UserRecord
+        SyncLock sync
+            If GetUser(email) IsNot Nothing Then
+                Return Nothing
+            End If
+
+            Dim id As Long = nextId("users")
+            Dim now As Date = Date.UtcNow
+
+            Call exec(
+                $"INSERT INTO users (id, email, salt, secret, created) VALUES (" &
+                $"{id}, '{esc(email)}', '{esc(salt)}', '{esc(secret)}', {dateLiteral(now)})")
+
+            Return New UserRecord With {
+                .id = id,
+                .email = email,
+                .salt = salt,
+                .secretKey = secret,
+                .created = now
+            }
+        End SyncLock
+    End Function
+
+    Public Function ReadAllUsers() As List(Of UserRecord)
+        SyncLock sync
+            Dim rs As ResultSet = query("SELECT id, email, salt, secret, created FROM users")
+            Dim list As New List(Of UserRecord)
+
+            For Each row As Object() In rs.Rows
+                list.Add(readUser(rs.Columns, row))
+            Next
+
+            Return list
+        End SyncLock
+    End Function
+
+    Private Shared Function readUser(columns As List(Of String), row As Object()) As UserRecord
+        Dim record As New UserRecord
+
+        For i As Integer = 0 To columns.Count - 1
+            Select Case columns(i).ToLowerInvariant()
+                Case "id" : record.id = toLong(row(i))
+                Case "email" : record.email = toStr(row(i))
+                Case "salt" : record.salt = toStr(row(i))
+                Case "secret" : record.secretKey = toStr(row(i))
+                Case "created" : record.created = toDate(row(i))
+            End Select
+        Next
+
+        Return record
+    End Function
+
+#End Region
+
+#Region "packages"
+
+    Public Function ReadAllPackages() As List(Of PackageRecord)
+        SyncLock sync
+            Dim rs As ResultSet = query("SELECT * FROM packages")
+            Return readPackages(rs)
+        End SyncLock
+    End Function
+
+    Public Function GetVersions(packageId As String) As List(Of PackageRecord)
+        Return ReadAllPackages() _
+            .Where(Function(p) p.package_id.Equals(packageId, StringComparison.OrdinalIgnoreCase)) _
+            .OrderBy(Function(p) VersionKey(p.version)) _
+            .ToList()
+    End Function
+
+    Public Function GetPackage(packageId As String, version As String) As PackageRecord
+        Return ReadAllPackages() _
+            .Where(Function(p) p.package_id.Equals(packageId, StringComparison.OrdinalIgnoreCase)) _
+            .Where(Function(p) p.version.Equals(version, StringComparison.OrdinalIgnoreCase)) _
+            .FirstOrDefault()
+    End Function
+
+    Public Function PackageExists(packageId As String, version As String) As Boolean
+        Return GetPackage(packageId, version) IsNot Nothing
+    End Function
+
+    Public Function AddPackage(pkg As PackageRecord) As PackageRecord
+        SyncLock sync
+            pkg.id = nextId("packages")
+
+            Call exec(
+                "INSERT INTO packages (id, package_id, version, description, authors, tags, project_url, license, dependencies, downloads, size, sha256, published, listed) VALUES (" &
+                $"{pkg.id}, '{esc(pkg.package_id)}', '{esc(pkg.version)}', '{esc(pkg.description)}', '{esc(pkg.authors)}', '{esc(pkg.tags)}', '{esc(pkg.project_url)}', '{esc(pkg.license)}', '{esc(pkg.dependencies)}', {pkg.downloads}, {pkg.size}, '{esc(pkg.sha256)}', {dateLiteral(pkg.published)}, {If(pkg.listed, "TRUE", "FALSE")})")
+
+            Return pkg
+        End SyncLock
+    End Function
+
+    Public Sub IncrementDownload(packageId As String, version As String)
+        SyncLock sync
+            Dim pkg As PackageRecord = GetPackage(packageId, version)
+            If pkg IsNot Nothing Then
+                Call exec($"UPDATE packages SET downloads = downloads + 1 WHERE id = {pkg.id}")
+            End If
+        End SyncLock
+    End Sub
+
+    ''' <summary>
+    ''' group all listed packages by their (case insensitive) package id,
+    ''' optionally filtered by a keyword over the id and tags.
+    ''' </summary>
+    Public Function GroupPackages(keyword As String, Optional includeUnlisted As Boolean = False) As List(Of PackageSearchResult)
+        Dim text As String = If(keyword, "").Trim()
+        Dim all As List(Of PackageRecord) = ReadAllPackages()
+
+        Dim groups = all _
+            .Where(Function(p) includeUnlisted OrElse p.listed) _
+            .Where(Function(p) text = "" OrElse
+                (p.package_id IsNot Nothing AndAlso p.package_id.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0) OrElse
+                (p.tags IsNot Nothing AndAlso p.tags.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0)) _
+            .GroupBy(Function(p) p.package_id.ToLowerInvariant())
+
+        Dim list As New List(Of PackageSearchResult)
+
+        For Each group In groups
+            Dim versions As List(Of PackageRecord) = group.OrderBy(Function(p) VersionKey(p.version)).ToList()
+
+            list.Add(New PackageSearchResult With {
+                .package_id = versions.Last().package_id,
+                .versions = versions,
+                .latest = versions.Last(),
+                .total_downloads = versions.Sum(Function(p) p.downloads)
+            })
+        Next
+
+        Return list
+    End Function
+
+    Public Function ListPackages(keyword As String) As List(Of PackageSummary)
+        Return GroupPackages(keyword) _
+            .OrderByDescending(Function(g) g.total_downloads) _
+            .ThenBy(Function(g) g.package_id, StringComparer.OrdinalIgnoreCase) _
+            .Select(Function(g) New PackageSummary With {
+                .package_id = g.package_id,
+                .latest_version = g.latest.version,
+                .description = g.latest.description,
+                .authors = g.latest.authors,
+                .tags = g.latest.tags,
+                .license = g.latest.license,
+                .project_url = g.latest.project_url,
+                .total_downloads = g.total_downloads,
+                .versions = g.versions.Count,
+                .published = g.latest.published
+            }) _
+            .ToList()
+    End Function
+
+    Public Function Stats() As NugetStats
+        Dim all As List(Of PackageRecord) = ReadAllPackages()
+
+        Return New NugetStats With {
+            .packages = all.Select(Function(p) p.package_id.ToLowerInvariant()).Distinct().Count(),
+            .versions = all.Count,
+            .downloads = all.Sum(Function(p) p.downloads),
+            .users = ReadAllUsers().Count
+        }
+    End Function
+
+    Private Shared Function readPackages(rs As ResultSet) As List(Of PackageRecord)
+        Dim list As New List(Of PackageRecord)
+
+        If rs Is Nothing OrElse Not rs.IsQuery Then
+            Return list
+        End If
+
+        For Each row As Object() In rs.Rows
+            list.Add(readPackage(rs.Columns, row))
+        Next
+
+        Return list
+    End Function
+
+    Private Shared Function readPackage(columns As List(Of String), row As Object()) As PackageRecord
+        Dim record As New PackageRecord
+
+        For i As Integer = 0 To columns.Count - 1
+            Select Case columns(i).ToLowerInvariant()
+                Case "id" : record.id = toLong(row(i))
+                Case "package_id" : record.package_id = toStr(row(i))
+                Case "version" : record.version = toStr(row(i))
+                Case "description" : record.description = toStr(row(i))
+                Case "authors" : record.authors = toStr(row(i))
+                Case "tags" : record.tags = toStr(row(i))
+                Case "project_url" : record.project_url = toStr(row(i))
+                Case "license" : record.license = toStr(row(i))
+                Case "dependencies" : record.dependencies = toStr(row(i))
+                Case "downloads" : record.downloads = toLong(row(i))
+                Case "size" : record.size = toLong(row(i))
+                Case "sha256" : record.sha256 = toStr(row(i))
+                Case "published" : record.published = toDate(row(i))
+                Case "listed" : record.listed = toBool(row(i))
+            End Select
+        Next
+
+        Return record
+    End Function
+
+    ''' <summary>
+    ''' build a monotonically sortable key for a nuget version string so that
+    ''' the version list can be ordered without a full semver parser.
+    ''' </summary>
+    Public Shared Function VersionKey(version As String) As String
+        If String.IsNullOrEmpty(version) Then
+            Return ""
+        End If
+
+        Dim parts As String() = version.Split("-"c)(0).Split("."c)
+        Dim sb As New StringBuilder
+
+        For i As Integer = 0 To 3
+            Dim number As Integer = 0
+            If i < parts.Length Then
+                Integer.TryParse(parts(i), number)
+            End If
+            sb.Append(number.ToString("D6"))
+        Next
+
+        Dim release As String = If(version.Contains("-"), "0", "1")
+        Return sb.ToString() & release & version
+    End Function
+
+#End Region
+End Class
